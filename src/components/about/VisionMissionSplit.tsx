@@ -7,17 +7,17 @@ const missionPoints = [
     {
         title: "Educational Excellence",
         icon: GraduationCap,
-        content: "To start, establish, run, and maintain schools providing sound pre-primary, primary, middle, secondary, and higher education by seeking formal recognition.",
+        content: "To start, establish, run, take over or manage and maintain schools, with an object to provide sound pre-primary, primary, middle, secondary, senior secondary and higher education to the children by seeking recognition.",
     },
     {
         title: "Professional Training",
         icon: BookOpen,
-        content: "Arranging training in computer science, fine arts, music, and holistic health (Ayurveda, Naturopathy, Yoga, etc.), alongside skill development and placement services.",
+        content: "To arrange and manage the training institution in computer, fine arts, crafts, music, health (Allopathic, Ayurveda, Homeopathy, Naturopathy, Yoga, Acupressure, Acupuncture, Holistic Health System) other professional training subjects as well as Skill Development & Placement services.",
     },
     {
         title: "Research & Healthcare",
         icon: Microscope,
-        content: "Conducting rigorous research in education and healthcare disciplines across various subjects to advance holistic wellness and academic standards.",
+        content: "To conduct research in education and other disciplines on the different subjects relating to education & Healthcare.",
     }
 ];
 
