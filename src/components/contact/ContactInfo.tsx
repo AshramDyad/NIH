@@ -37,8 +37,8 @@ export default function ContactInfo() {
     return (
         <div className="space-y-4">
             {/* Header */}
-            <div className="mb-4">
-                <h3 className="text-2xl font-black text-secondary mb-2">
+            <div className="mb-4 space-y-2">
+                <h3 className="text-2xl font-black text-secondary">
                     Contact Information
                 </h3>
                 <p className="text-zinc-600">

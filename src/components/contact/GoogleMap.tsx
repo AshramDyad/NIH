@@ -13,12 +13,14 @@ export default function GoogleMap() {
     return (
         <div className="w-full mt-8">
             <div className="bg-white rounded-2xl sm:p-6 p-4 shadow-md border border-zinc-100 space-y-4">
-                <h3 className="text-2xl font-black text-secondary">
-                    Find Us
-                </h3>
-                <p className="text-zinc-600">
-                    Visit our office in Laxmi Nagar, Delhi. Click the map to get directions.
-                </p>
+                <div className="space-y-2">
+                    <h3 className="text-2xl font-black text-secondary">
+                        Find Us
+                    </h3>
+                    <p className="text-zinc-600">
+                        Visit our office in Laxmi Nagar, Delhi. Click the map to get directions.
+                    </p>
+                </div>
 
                 {/* Map Container with Responsive Aspect Ratio */}
                 <div className="relative w-full overflow-hidden rounded-xl border border-zinc-200">

@@ -25,7 +25,7 @@ export const contactFormSchema = z.object({
     phone: z
         .string()
         .min(10, 'Phone number must be at least 10 digits')
-        .max(15, 'Phone number must not exceed 15 digits')
+        .max(10, 'Phone number must not exceed 10 digits')
         .regex(/^[0-9+\-\s]+$/, 'Please enter a valid phone number')
         .trim(),
 

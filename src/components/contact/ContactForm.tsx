@@ -24,7 +24,7 @@ export default function ContactForm() {
         reset,
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema),
-        mode: 'onBlur',
+        mode: 'onSubmit',
     });
 
     const onSubmit = async (data: ContactFormData) => {
@@ -143,6 +143,7 @@ export default function ContactForm() {
                                 type="tel"
                                 id="phone"
                                 placeholder="+91 9953882605"
+                                maxLength={10}
                                 {...register('phone')}
                                 className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
                                     errors.phone
