@@ -59,8 +59,9 @@ export default function Footer() {
                             <FooterLink href="/gallery" label="Photo/Video Gallery" />
                             <FooterLink href="/magazine" label="E-magazine" />
                             <FooterLink href="/news" label="News" />
+                            <FooterLink href="/contact" label="Contact Us" />
                             <FooterLink href="/projects" label="Projects" />
-                            <FooterLink href="/membership" label="Membership" />
+                            <FooterLink href="https://forms.gle/gyXBhDGFnFX9vkmS7" label="Membership" />
                             <FooterLink href="/internship" label="Internship" />
                             <FooterLink href="/franchise" label="Franchise" />
                         </ul>

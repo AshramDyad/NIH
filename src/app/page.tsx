@@ -27,7 +27,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="font-sans">
+    <>
       <div id="hero">
         <HeroSlider slides={slides} />
       </div>
@@ -37,6 +37,6 @@ export default function Home() {
       <NewMembers />
       <QuickLinks />
       <EventsSection />
-    </main>
+    </>
   );
 }
