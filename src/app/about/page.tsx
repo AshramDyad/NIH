@@ -1,7 +1,9 @@
 import AboutNIH from "@/components/about/AboutNIH";
 import VisionMissionSplit from "@/components/about/VisionMissionSplit";
 import { Metadata } from "next";
-import FloatingAboutSidebar from "@/components/about/FloatingAboutSidebar";
+import FloatingSidebar from "@/components/shared/FloatingSidebar";
+import SidebarContent from "@/components/shared/SidebarContent";
+import { aboutConfig } from "@/config/sidebar/aboutConfig";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -12,7 +14,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <>
-            <FloatingAboutSidebar />
+            <FloatingSidebar>
+                <SidebarContent sections={aboutConfig.sections} />
+            </FloatingSidebar>
             <AboutNIH />
             <VisionMissionSplit />
 
