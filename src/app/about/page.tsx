@@ -30,7 +30,7 @@ export default function AboutPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
-                                Get Membership
+                                <Link href="https://forms.gle/gyXBhDGFnFX9vkmS7">Get Membership</Link>
                             </button>
                             <button className="bg-white hover:bg-white/90 text-secondary px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
                                 <Link href="/contact">Contact Us</Link>

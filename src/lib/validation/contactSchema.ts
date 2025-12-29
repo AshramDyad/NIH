@@ -29,6 +29,35 @@ export const contactFormSchema = z.object({
         .regex(/^[0-9+\-\s]+$/, 'Please enter a valid phone number')
         .trim(),
 
+    gender: z.enum(['Male', 'Female']).optional(),
+
+    dob: z
+        .string()
+        .refine((date) => !isNaN(Date.parse(date)), 'Please enter a valid date')
+        .refine((date) => new Date(date) <= new Date(), 'Date cannot be in the future')
+        .optional(),
+
+    qualification: z
+        .string()
+        .min(2, 'Qualification must be at least 2 characters')
+        .max(50, 'Qualification must not exceed 50 characters')
+        .trim()
+        .optional(),
+
+    city: z
+        .string()
+        .min(2, 'City must be at least 2 characters')
+        .max(50, 'City must not exceed 50 characters')
+        .trim()
+        .optional(),
+
+    state: z
+        .string()
+        .min(2, 'State must be at least 2 characters')
+        .max(50, 'State must not exceed 50 characters')
+        .trim()
+        .optional(),
+
     message: z
         .string()
         .min(10, 'Message must be at least 10 characters')

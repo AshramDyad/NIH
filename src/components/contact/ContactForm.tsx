@@ -64,107 +64,286 @@ export default function ContactForm() {
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
-                        {/* Name Field */}
-                        <div>
-                            <label
-                                htmlFor="name"
-                                className="block text-sm font-semibold text-zinc-700 mb-2"
-                            >
-                                Name <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                placeholder="Your full name"
-                                {...register('name')}
-                                className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                    errors.name
-                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                }`}
-                                aria-invalid={errors.name ? 'true' : 'false'}
-                                aria-describedby={errors.name ? 'name-error' : undefined}
-                            />
-                            {errors.name && (
-                                <p
-                                    id="name-error"
-                                    className="mt-1 text-sm text-red-600 flex items-center gap-1"
-                                    role="alert"
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+                        {/* Row 1: Name, Gender */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Name Field */}
+                            <div>
+                                <label
+                                    htmlFor="name"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
                                 >
-                                    <AlertCircle size={14} />
-                                    {errors.name.message}
-                                </p>
-                            )}
+                                    Name <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Your full name"
+                                    {...register('name')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.name
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.name ? 'true' : 'false'}
+                                    aria-describedby={errors.name ? 'name-error' : undefined}
+                                />
+                                {errors.name && (
+                                    <p
+                                        id="name-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.name.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Gender Field */}
+                            <div>
+                                <label
+                                    htmlFor="gender"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
+                                >
+                                    Gender
+                                </label>
+                                <select
+                                    id="gender"
+                                    {...register('gender')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 appearance-none bg-white cursor-pointer ${
+                                        errors.gender
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.gender ? 'true' : 'false'}
+                                    aria-describedby={errors.gender ? 'gender-error' : undefined}
+                                >
+                                    <option value="">Select gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                {errors.gender && (
+                                    <p
+                                        id="gender-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.gender.message}
+                                    </p>
+                                )}
+                            </div>
                         </div>
 
-                        {/* Email Field */}
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-sm font-semibold text-zinc-700 mb-2"
-                            >
-                                Email <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="your.email@example.com"
-                                {...register('email')}
-                                className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                    errors.email
-                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                }`}
-                                aria-invalid={errors.email ? 'true' : 'false'}
-                                aria-describedby={errors.email ? 'email-error' : undefined}
-                            />
-                            {errors.email && (
-                                <p
-                                    id="email-error"
-                                    className="mt-1 text-sm text-red-600 flex items-center gap-1"
-                                    role="alert"
+                        {/* Row 2: Email, Phone */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Email Field */}
+                            <div>
+                                <label
+                                    htmlFor="email"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
                                 >
-                                    <AlertCircle size={14} />
-                                    {errors.email.message}
-                                </p>
-                            )}
+                                    Email <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="your.email@example.com"
+                                    {...register('email')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.email
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.email ? 'true' : 'false'}
+                                    aria-describedby={errors.email ? 'email-error' : undefined}
+                                />
+                                {errors.email && (
+                                    <p
+                                        id="email-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.email.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Phone Field */}
+                            <div>
+                                <label
+                                    htmlFor="phone"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
+                                >
+                                    Phone <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="+91 9953882605"
+                                    maxLength={10}
+                                    {...register('phone')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.phone
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.phone ? 'true' : 'false'}
+                                    aria-describedby={errors.phone ? 'phone-error' : undefined}
+                                />
+                                {errors.phone && (
+                                    <p
+                                        id="phone-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.phone.message}
+                                    </p>
+                                )}
+                            </div>
                         </div>
 
-                        {/* Phone Field */}
-                        <div>
-                            <label
-                                htmlFor="phone"
-                                className="block text-sm font-semibold text-zinc-700 mb-2"
-                            >
-                                Phone <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                placeholder="+91 9953882605"
-                                maxLength={10}
-                                {...register('phone')}
-                                className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                    errors.phone
-                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                }`}
-                                aria-invalid={errors.phone ? 'true' : 'false'}
-                                aria-describedby={errors.phone ? 'phone-error' : undefined}
-                            />
-                            {errors.phone && (
-                                <p
-                                    id="phone-error"
-                                    className="mt-1 text-sm text-red-600 flex items-center gap-1"
-                                    role="alert"
+                        {/* Row 3: DOB, Qualification */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* DOB Field */}
+                            <div>
+                                <label
+                                    htmlFor="dob"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
                                 >
-                                    <AlertCircle size={14} />
-                                    {errors.phone.message}
-                                </p>
-                            )}
+                                    Date of Birth
+                                </label>
+                                <input
+                                    type="date"
+                                    id="dob"
+                                    {...register('dob')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.dob
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.dob ? 'true' : 'false'}
+                                    aria-describedby={errors.dob ? 'dob-error' : undefined}
+                                />
+                                {errors.dob && (
+                                    <p
+                                        id="dob-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.dob.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Qualification Field */}
+                            <div>
+                                <label
+                                    htmlFor="qualification"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
+                                >
+                                    Qualification
+                                </label>
+                                <input
+                                    type="text"
+                                    id="qualification"
+                                    placeholder="Your qualification"
+                                    {...register('qualification')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.qualification
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.qualification ? 'true' : 'false'}
+                                    aria-describedby={errors.qualification ? 'qualification-error' : undefined}
+                                />
+                                {errors.qualification && (
+                                    <p
+                                        id="qualification-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.qualification.message}
+                                    </p>
+                                )}
+                            </div>
                         </div>
 
+                        {/* Row 4: City, State */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* City Field */}
+                            <div>
+                                <label
+                                    htmlFor="city"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
+                                >
+                                    City
+                                </label>
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder="Your city"
+                                    {...register('city')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.city
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.city ? 'true' : 'false'}
+                                    aria-describedby={errors.city ? 'city-error' : undefined}
+                                />
+                                {errors.city && (
+                                    <p
+                                        id="city-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.city.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* State Field */}
+                            <div>
+                                <label
+                                    htmlFor="state"
+                                    className="block text-sm font-semibold text-zinc-700 mb-2"
+                                >
+                                    State
+                                </label>
+                                <input
+                                    type="text"
+                                    id="state"
+                                    placeholder="Your state"
+                                    {...register('state')}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
+                                        errors.state
+                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
+                                    aria-invalid={errors.state ? 'true' : 'false'}
+                                    aria-describedby={errors.state ? 'state-error' : undefined}
+                                />
+                                {errors.state && (
+                                    <p
+                                        id="state-error"
+                                        className="mt-1 text-sm text-red-600 flex items-center gap-1"
+                                        role="alert"
+                                    >
+                                        <AlertCircle size={14} />
+                                        {errors.state.message}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Row 5: Message (Full Width) */}
                         {/* Message Field */}
                         <div>
                             <label
