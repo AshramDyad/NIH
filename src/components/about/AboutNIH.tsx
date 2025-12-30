@@ -62,7 +62,7 @@ export default function AboutNIH() {
 
                                     <div className="relative z-10 space-y-6">
                                         <p className="sm:text-2xl text-xl font-serif italic text-zinc-800 leading-snug">
-                                            According to mythological beliefs, man&apos;s age was considered to be around 300 years. But in today's environment, we can keep our body perfectly healthy for 100 years and for this, we have to keep our diet, behavior and thoughts completely sattvic.
+                                            According to mythological beliefs, man&apos;s age was considered to be around 300 years. But in today&apos;s environment, we can keep our body perfectly healthy for 100 years and for this, we have to keep our diet, behavior and thoughts completely sattvic.
                                         </p>
 
                                         <div className="flex items-center gap-4">

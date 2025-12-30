@@ -10,7 +10,6 @@ import {
     Smile,
     UserPlus,
     HeartHandshake,
-    Check
 } from "lucide-react";
 
 const aims = [
