@@ -163,7 +163,7 @@ export default function AimsContent() {
             {/* Benefits Section */}
             <section className="bg-primary/5 sm:py-16 py-12">
                 <div className="container mx-auto px-4">
-                    <div className="text-center">
+                    <div className="sm:text-center text-left">
                         <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
                             Core <span className="text-primary italic">Benefits</span>
                         </h2>
@@ -185,8 +185,8 @@ export default function AimsContent() {
                         ))}
                     </div>
 
-                    <div className="mt-10 max-w-4xl mx-auto text-center px-4">
-                        <div className="p-8 rounded-2xl border-l-4 border-primary bg-white">
+                    <div className="mt-10 max-w-4xl mx-auto text-center">
+                        <div className="sm:p-6 p-4 rounded-2xl border-l-4 border-primary bg-white">
                             <p className="text-lg md:text-xl text-zinc-800 leading-relaxed italic">
                                 &quot;By focusing on the whole person and promoting a comprehensive approach to health,
                                 Holistic Health Systems aim to improve overall health and well-being.&quot;

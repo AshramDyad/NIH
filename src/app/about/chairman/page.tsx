@@ -21,13 +21,11 @@ export default function ChairmanPage() {
                 <SidebarContent sections={aboutConfig.sections} />
             </FloatingSidebar>
 
-            <main className="w-full">
-                <ChairmanHero />
-                <Responsibilities />
-                <ChairmanContributions />
-                <ChairmanAwards />
-                <SpreadingHealth />
-            </main>
+            <ChairmanHero />
+            <Responsibilities />
+            <ChairmanContributions />
+            <ChairmanAwards />
+            <SpreadingHealth />
         </>
     );
 }
