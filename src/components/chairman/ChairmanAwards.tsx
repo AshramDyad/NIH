@@ -17,7 +17,7 @@ const lectures = [
 
 export default function ChairmanAwards() {
     return (
-        <section className="sm:pb-16 pb-12bg-white">
+        <section className="sm:pb-16 pb-12 bg-white">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Awards Section */}

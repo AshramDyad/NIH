@@ -5,9 +5,9 @@ export default function ChairmanHero() {
     return (
         <section className="relative sm:py-16 py-12 bg-white overflow-hidden border-b border-slate-50">
             <div className="container mx-auto px-4 relative">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-center sm:gap-16 gap-10">
                     {/* Left Side: Content */}
-                    <div className="flex-1 space-y-6 ext-center lg:text-left">
+                    <div className="flex-1 space-y-6 text-center lg:text-left">
                         <div className="space-y-4">
                             <div
                                 className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-bold text-sm uppercase tracking-widest border border-primary/20"
@@ -24,7 +24,6 @@ export default function ChairmanHero() {
 
                         <div className="space-y-6 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
                             <div className="relative">
-                                <Quote className="absolute -top-6 -left-6 w-12 h-12 text-slate-100 -z-10" />
                                 <p className="md:text-xl text-lg font-bold text-secondary/90 leading-relaxed italic text-center lg:text-left">
                                     &quot;ॐ सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामयाः। सर्वे भद्राणि पश्यन्तु। <br />
                                     मा कश्चित् दुःख भाग्भवेत्॥ ॐ शान्तिः शान्तिः शान्तिः॥&quot;
