@@ -10,7 +10,7 @@ export const aboutConfig: SidebarConfig = {
             type: 'links',
             title: 'About NIH',
             items: [
-                { name: 'About Us', href: '#', icon: 'Info' },
+                { name: 'About Us', href: '/about', icon: 'Info' },
                 { name: 'NIH Profile', href: '#', icon: 'Activity' },
                 {
                     name: 'NIH Members',
