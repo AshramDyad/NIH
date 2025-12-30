@@ -14,6 +14,21 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <>
+            {/* Hero Section - Breadcrumb Only */}
+            <section className="bg-primary/10 py-4">
+                <div className="mx-auto container px-6">
+                    <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base">
+                        <Link href="/" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
+                            Home
+                        </Link>
+                        <span className="flex-shrink-0">&gt;</span>
+                        <span className="font-medium text-primary">
+                            About Us
+                        </span>
+                    </nav>
+                </div>
+            </section>
+
             <FloatingSidebar>
                 <SidebarContent sections={aboutConfig.sections} />
             </FloatingSidebar>
