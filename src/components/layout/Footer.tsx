@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,13 +12,49 @@ import {
     Phone,
     Mail,
 } from "lucide-react";
+import type { FooterConfig, FooterLink } from "@/types/footer";
+import { useFooterConfig } from "./FooterProvider";
+
+/**
+ * Default Footer Content
+ * Used when no custom config is provided by the page
+ */
+const defaultQuickLinks: FooterLink[] = [
+    { href: "/about", label: "About NIH" },
+    { href: "/gallery", label: "Photo/Video Gallery" },
+    { href: "/magazine", label: "E-magazine" },
+    { href: "/news", label: "News" },
+    { href: "/contact", label: "Contact Us" },
+    { href: "/projects", label: "Projects" },
+    { href: "https://forms.gle/gyXBhDGFnFX9vkmS7", label: "Membership" },
+    { href: "/internship", label: "Internship" },
+    { href: "/franchise", label: "Franchise" },
+];
+
+const defaultAdmissions: FooterLink[] = [
+    { label: "Certificate Course in Holistic Health (CCH)" },
+    { label: "Certificate Course in Yoga Mudra" },
+    { label: "Certificate Course in Meditation" },
+];
+
+const defaultContact = {
+    address: "Laxmi Nagar, Delhi-92, India",
+    phone: ["+91 9953882605", "+91 9311817707"],
+    email: "delhinih@gmail.com",
+};
 
 /**
  * Footer Component
  * Refined with white background and primary brand colors.
+ * Uses FooterContext for dynamic content per page.
  */
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const footerConfig = useFooterConfig();
+
+    const quickLinks = footerConfig?.quickLinks?.links || defaultQuickLinks;
+    const admissions = footerConfig?.admissions?.links || defaultAdmissions;
+    const contact = footerConfig?.contact || defaultContact;
 
     return (
         <footer className="bg-white text-secondary sm:py-16 py-12 relative border-t border-gray-100 overflow-hidden">
@@ -54,15 +92,9 @@ export default function Footer() {
                             <span className="absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full"></span>
                         </h4>
                         <ul className="space-y-3">
-                            <FooterLink href="/about" label="About NIH" />
-                            <FooterLink href="/gallery" label="Photo/Video Gallery" />
-                            <FooterLink href="/magazine" label="E-magazine" />
-                            <FooterLink href="/news" label="News" />
-                            <FooterLink href="/contact" label="Contact Us" />
-                            <FooterLink href="/projects" label="Projects" />
-                            <FooterLink href="https://forms.gle/gyXBhDGFnFX9vkmS7" label="Membership" />
-                            <FooterLink href="/internship" label="Internship" />
-                            <FooterLink href="/franchise" label="Franchise" />
+                            {quickLinks.map((link) => (
+                                <FooterLinkItem key={link.label} href={link.href} label={link.label} />
+                            ))}
                         </ul>
                     </div>
 
@@ -72,9 +104,9 @@ export default function Footer() {
                             <span className="absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full"></span>
                         </h4>
                         <ul className="space-y-4">
-                            <CourseLink label="Certificate Course in Holistic Health (CCH)" />
-                            <CourseLink label="Certificate Course in Yoga Mudra" />
-                            <CourseLink label="Certificate Course in Meditation" />
+                            {admissions.map((course) => (
+                                <CourseLink key={course.label} label={course.label} />
+                            ))}
                         </ul>
                     </div>
 
@@ -88,21 +120,21 @@ export default function Footer() {
                                 <div className="p-2 bg-primary/10 rounded-full shrink-0">
                                     <MapPin className="text-primary" size={18} />
                                 </div>
-                                <span className="mt-1 font-medium">Laxmi Nagar, Delhi-92, India</span>
+                                <span className="mt-1 font-medium">{contact.address}</span>
                             </li>
                             <li className="flex items-center gap-3 text-secondary/90">
                                 <div className="p-2 bg-primary/10 rounded-full shrink-0">
                                     <Phone className="text-primary" size={18} />
                                 </div>
-                                <span className="font-medium">+91 9953882605, +91 9311817707</span>
+                                <span className="font-medium">{contact.phone.join(", ")}</span>
                             </li>
                             <li className="flex items-center gap-3 text-secondary/90">
                                 <div className="p-2 bg-primary/10 rounded-full shrink-0">
                                     <Mail className="text-primary" size={18} />
                                 </div>
-                                <a href="mailto:delhinih@gmail.com" className="hover:text-primary transition-colors font-medium">
-                                    delhinih@gmail.com
-                                </a>
+                                <Link href={`mailto:${contact.email}`} className="hover:text-primary transition-colors font-medium">
+                                    {contact.email}
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -141,16 +173,23 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
     );
 }
 
-function FooterLink({ href, label }: { href: string; label: string }) {
+function FooterLinkItem({ href, label }: { href?: string; label: string }) {
     return (
         <li>
-            <Link
-                href={href}
-                className="text-secondary/80 hover:text-primary hover:translate-x-1 transition-all duration-300 flex items-center gap-2 font-medium"
-            >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary hover:opacity-100 transition-opacity" />
-                {label}
-            </Link>
+            {href ? (
+                <Link
+                    href={href}
+                    className="text-secondary/80 hover:text-primary hover:translate-x-1 transition-all duration-300 flex items-center gap-2 font-medium"
+                >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary hover:opacity-100 transition-opacity" />
+                    {label}
+                </Link>
+            ) : (
+                <span className="text-secondary/80 flex items-center gap-2 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary hover:opacity-100 transition-opacity" />
+                    {label}
+                </span>
+            )}
         </li>
     );
 }
