@@ -94,7 +94,7 @@ const Header = () => {
       icon: <User size={18} />,
       hasDropdown: true,
       dropdownItems: [
-        { name: "Membership form", href: "/membership/form" },
+        { name: "Membership form", href: "https://forms.gle/gyXBhDGFnFX9vkmS7" },
         { name: "Active Members", href: "/membership/active" },
         { name: "Member's Institutions", href: "/membership/institutions" },
         { name: "Life Members", href: "/membership/life" },
@@ -169,7 +169,7 @@ const Header = () => {
       name: "MEMBERSHIP",
       hasChildren: true,
       children: [
-        { name: "Become NIH Member", href: "/membership/form" }
+        { name: "Become NIH Member", href: "https://forms.gle/gyXBhDGFnFX9vkmS7" }
       ]
     },
     {

@@ -132,14 +132,14 @@ const HolisticImpact = () => {
                             <h3 className="text-[#155b2e] font-sans font-bold text-xl tracking-tight mb-8">Quick Links</h3>
                             <div className="grid grid-cols-1 gap-4 flex-grow">
                                 {[
-                                    { title: 'Membership', color: 'hover:bg-[#EEB9BB]' },
-                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]' },
-                                    { title: 'Health Checkup Camps', color: 'hover:bg-[#D3B6F0]' },
-                                    { title: 'Health Retreat', color: 'hover:bg-[#B2D1F2]' }
+                                    { title: 'Membership', color: 'hover:bg-[#EEB9BB]', href: 'https://forms.gle/gyXBhDGFnFX9vkmS7' },
+                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '#' },
+                                    { title: 'Health Checkup Camps', color: 'hover:bg-[#D3B6F0]', href: '#' },
+                                    { title: 'Health Retreat', color: 'hover:bg-[#B2D1F2]', href: '#' }
                                 ].map((activity, idx) => (
                                     <Link
                                         key={idx}
-                                        href="#"
+                                        href={activity.href}
                                         className={`group/item flex items-center justify-between p-5 rounded-xl border border-gray-100 transition-all duration-300 hover:border-transparent ${activity.color} hover:scale-[1.03] shadow-sm hover:shadow-md`}
                                     >
                                         <span className="text-[#155b2e] font-sans font-bold tracking-wide uppercase text-xs">{activity.title}</span>
