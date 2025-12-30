@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { aboutConfig } from "@/config/sidebar/aboutConfig";
-import Link from "next/link";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import AimsHero from "@/components/about/AimsHero";
 import AimsContent from "@/components/about/AimsContent";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Aims & Objectives | NIH Health",
@@ -14,28 +15,11 @@ export const metadata: Metadata = {
 export default function AimsPage() {
     return (
         <>
-            {/* Hero Section - Breadcrumb Only */}
-            <section className="bg-primary/10 py-4">
-                <div className="mx-auto container px-6">
-                    <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base">
-                        <Link href="/" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            Home
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <Link href="/about" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            About Us
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <span className="font-medium text-primary">
-                            Aims & Objectives
-                        </span>
-                    </nav>
-                </div>
-            </section>
-
             <FloatingSidebar>
                 <SidebarContent sections={aboutConfig.sections} />
             </FloatingSidebar>
+
+            <Breadcrumb />
 
             <AimsHero />
             <AimsContent />

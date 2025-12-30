@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { secretaryConfig } from '@/config/sidebar/secretaryConfig';
-import Link from 'next/link';
+import Breadcrumb from '@/components/shared/Breadcrumb';
 
 export const metadata: Metadata = {
     title: 'National Secretary | NIH - National Institute of Holistic Health',
@@ -17,24 +17,7 @@ export default function SecretaryPage() {
                 <SidebarContent sections={secretaryConfig.sections} />
             </FloatingSidebar>
 
-            {/* Hero Section - Breadcrumb Only */}
-            <section className="bg-gray-50 py-4 md:py-6">
-                <div className="max-w-7xl mx-auto px-6">
-                    <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base">
-                        <Link href="/" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            Home
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <Link href="/about" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            About Us
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <span className="font-medium text-primary">
-                            National Secretary
-                        </span>
-                    </nav>
-                </div>
-            </section>
+            <Breadcrumb />
 
             {/* Main Content Section */}
             <section className="bg-white sm:py-16 py-12">
@@ -129,7 +112,7 @@ export default function SecretaryPage() {
                                     <p className="font-semibold text-gray-600">Thank you,</p>
                                     <div className="mt-2">
                                         <p className="font-bold text-lg text-secondary">Sincerely,</p>
-                                        <p className="font-black text-2xl text-primary mt-1">Anurag Kashyap</p>
+                                        <p className="font-black text-xl sm:text-2xl text-primary mt-1">Anurag Kashyap</p>
                                         <p className="text-sm font-bold text-black/60 mt-1">National Secretary, NIH</p>
                                     </div>
                                 </div>

@@ -12,6 +12,7 @@ import GoogleMap from '@/components/contact/GoogleMap';
 import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { contactConfig } from '@/config/sidebar/contactConfig';
+import Breadcrumb from '@/components/shared/Breadcrumb';
 
 export const metadata: Metadata = {
     title: 'Contact Us | NIH Health - National Institute of Holistic Health',
@@ -24,6 +25,8 @@ export default function ContactPage() {
             <FloatingSidebar>
                 <SidebarContent sections={contactConfig.sections} />
             </FloatingSidebar>
+
+            <Breadcrumb />
 
             {/* Main Content Section */}
             <section className="sm:py16 py-12 bg-zinc-50">
