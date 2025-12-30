@@ -121,7 +121,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                                     }`}
                                             >
                                                 <span className="flex items-center gap-4">
-                                                    {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors" />}
+                                                    {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors shrink-0" />}
                                                     <span className="font-semibold text-lg">{link.name}</span>
                                                 </span>
                                             </Link>
