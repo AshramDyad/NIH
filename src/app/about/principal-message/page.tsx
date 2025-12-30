@@ -3,6 +3,7 @@ import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { principalConfig } from "@/config/sidebar/principalConfig";
 import { Metadata } from "next";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 
 export const metadata: Metadata = {
     title: "Principal's Message | National Institute of Holistic Health",
@@ -15,6 +16,9 @@ export default function PrincipalMessagePage() {
             <FloatingSidebar>
                 <SidebarContent sections={principalConfig.sections} />
             </FloatingSidebar>
+
+            <Breadcrumb />
+
             <PrincipalMessageContent />
         </>
     );
