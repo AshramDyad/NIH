@@ -1,6 +1,5 @@
 "use client";
 
-import { Quote, Calendar, Award } from "lucide-react";
 import Image from "next/image";
 
 export default function PrincipalMessageContent() {
