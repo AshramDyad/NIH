@@ -72,7 +72,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                                     >
                                                         <span className="flex items-center gap-4">
                                                             {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors" />}
-                                                            <span className="font-semibold text-lg">{link.name}</span>
+                                                            <span className="font-semibold">{link.name}</span>
                                                         </span>
                                                         <motion.span
                                                             initial={false}
@@ -99,7 +99,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                                                             key={childIndex}
                                                                             href={child.href}
                                                                             onClick={() => setOpenDropdown(null)}
-                                                                            className="flex items-center justify-between rounded-lg px-12 py-3 font-medium text-zinc-700 hover:text-primary hover:bg-primary/10 transition-colors"
+                                                                            className="flex items-center justify-between rounded-lg px-12 py-3 font-semibold text-zinc-700 hover:text-primary hover:bg-primary/10 transition-colors"
                                                                         >
                                                                             <span>{child.name}</span>
                                                                         </Link>
@@ -122,7 +122,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                             >
                                                 <span className="flex items-center gap-4">
                                                     {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors shrink-0" />}
-                                                    <span className="font-semibold text-lg">{link.name}</span>
+                                                    <span className="font-semibold">{link.name}</span>
                                                 </span>
                                             </Link>
                                         );
@@ -156,7 +156,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                                 >
                                                     {Icon && <Icon className={`w-6 h-6 ${link.iconColor}`} />}
                                                 </div>
-                                                <span className="font-bold text-zinc-600 text-lg group-hover:text-zinc-800 transition-colors">
+                                                <span className="font-semibold text-zinc-600 group-hover:text-zinc-800 transition-colors">
                                                     {link.name}
                                                 </span>
                                             </span>
@@ -180,7 +180,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                     <Link
                                         key={index}
                                         href={activity.href}
-                                        className={`block w-full text-center py-3 px-4 rounded-xl font-bold uppercase text-sm tracking-wide border-2 transition-all duration-300 hover:shadow-sm ${activity.color}`}
+                                        className={`block w-full text-center py-3 px-4 rounded-xl font-semibold border-2 transition-all duration-300 hover:shadow-sm ${activity.color}`}
                                     >
                                         {activity.name}
                                     </Link>

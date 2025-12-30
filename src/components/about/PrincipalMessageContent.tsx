@@ -15,7 +15,12 @@ export default function PrincipalMessageContent() {
     return (
         <section className="sm:py-16 py-12 bg-white relative">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row lg:gap-10 gap-8 items-start">
+                <div className="text-center">
+                    <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
+                        Director <span className="text-secondary italic">Principal Message</span>
+                    </h1>
+                </div>
+                <div className="flex flex-col md:flex-row lg:gap-10 gap-8 items-start mt-8">
                     {/* Profile Sidebar */}
                     <div className="md:w-1/3 w-full md:sticky top-24">
                         <div className="relative group">
@@ -52,8 +57,8 @@ export default function PrincipalMessageContent() {
 
                         <div className="space-y-6">
                             <div className="space-y-4">
-                                {message.map((para) => (
-                                    <p className="text-lg md:text-xl text-zinc-600 leading-relaxed">
+                                {message.map((para, index) => (
+                                    <p key={index} className="text-lg md:text-xl text-zinc-600 leading-relaxed">
                                         {para}
                                     </p>
                                 ))}
@@ -62,7 +67,7 @@ export default function PrincipalMessageContent() {
                                 <div className="aspect-video relative">
                                     <iframe
                                         className="absolute inset-0 w-full h-full"
-                                        
+
                                         src="https://www.youtube.com/embed/r8LbLO3zQdY?si=piQn2WzLGuCE1WTq"
                                         title="Message from the Director Principal"
                                         frameBorder="0"
