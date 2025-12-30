@@ -77,12 +77,12 @@ const HolisticImpact = () => {
                                 </div>
                             </div>
                             <div className="mt-8 flex items-center justify-between pt-6 border-t border-gray-100">
-                                <Link href="/about/chairman" className="text-gray-900 font-sans font-bold text-sm hover:text-[#f3972a] transition-colors flex items-center gap-1 group/link">
+                                <Link href="/about/principal-message" className="text-gray-900 font-sans font-bold text-sm hover:text-primary transition-colors flex items-center gap-1 group/link">
                                     Read Full Story <span className="transform group-hover/link:translate-x-1 transition-transform">→</span>
                                 </Link>
                                 <button
                                     onClick={() => setIsVideoOpen(true)}
-                                    className="bg-[#f3972a] text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-[#f3972a]/20 hover:bg-[#155b2e] transition-colors active:scale-95"
+                                    className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-[#f3972a]/20 hover:bg-[#155b2e] transition-colors active:scale-95 cursor-pointer"
                                 >
                                     Watch Video
                                 </button>
