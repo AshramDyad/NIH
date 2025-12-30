@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AimsPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <>
             <FloatingSidebar>
                 <SidebarContent sections={aboutConfig.sections} />
             </FloatingSidebar>
@@ -22,36 +22,27 @@ export default function AimsPage() {
             <AimsContent />
 
             {/* Final CTA Section */}
-            <section className="sm:py-20 py-12 bg-secondary overflow-hidden">
+            <section className="sm:py-16 py-12 bg-secondary overflow-hidden">
                 <div className="container mx-auto px-4 relative">
-                    {/* Background Pattern */}
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none -mr-20 -mt-20" />
-
-                    <div className="relative z-10 text-center text-white space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black">
+                    <div className="text-center text-white space-y-4">
+                        <h2 className="text-3xl md:text-5xl font-black">
                             Ready to embrace <span className="text-primary italic">Harmony?</span>
                         </h2>
-                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-medium">
+                        <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
                             Join us in our mission to promote holistic well-being worldwide.
                             Explore our programs and become part of a global movement.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-                            <Link
-                                href="https://forms.gle/gyXBhDGFnFX9vkmS7"
-                                className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-2xl font-black text-lg shadow-xl transition-all duration-300 transform hover:scale-105"
-                            >
-                                Get Membership
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="bg-white hover:bg-zinc-100 text-secondary px-10 py-4 rounded-2xl font-black text-lg shadow-xl transition-all duration-300 transform hover:scale-105"
-                            >
-                                Contact Us
-                            </Link>
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                            <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
+                                <Link href="https://forms.gle/DEajoyPQMDhhh1tC9">Join Us Now...</Link>
+                            </button>
+                            <button className="bg-white hover:bg-white/90 text-secondary px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
+                                <Link href="/contact">Contact Us</Link>
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     );
 }

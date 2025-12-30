@@ -34,8 +34,7 @@ export default function ChairmanHero() {
                             <div className="space-y-2">
                                 <p className="text-primary font-black text-sm mb-2">हिन्दी भावार्थ</p>
                                 <p className="text-slate-600 font-bold italic md:text-xl text-lg leading-relaxed">
-                                    सभी सुखी होवें, सभी रोगमुक्त रहें, सभी का जीवन मंगलमय बनें और कोई भी दुःख का भागी न बने।
-                                    <span className="text-secondary font-black ml-2">हे भगवन हमें ऐसा वर दो!</span>
+                                    सभी सुखी होवें, सभी रोगमुक्त रहें, सभी का जीवन मंगलमय बनें और कोई भी दुःख का भागी न बने। हे भगवन हमें ऐसा वर दो!
                                 </p>
                             </div>
                         </div>

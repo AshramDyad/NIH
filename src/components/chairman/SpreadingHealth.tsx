@@ -10,7 +10,7 @@ export default function SpreadingHealth() {
                         <span className="text-primary italic">Health Awareness activities:</span>
                     </h2>
 
-                    <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
+                    <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
                         In India, I&apos;ve visited most of the states to propagate Yoga, Naturopathy and social activities through conferences, seminars, camps &amp; meetings with NGO&apos;s, Govt officers as well as Ministers.
                     </p>
 

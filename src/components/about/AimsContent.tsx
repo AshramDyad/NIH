@@ -10,14 +10,7 @@ import {
     Smile,
     UserPlus,
     HeartHandshake,
-    Layers,
-    UserRoundCheck,
-    Users2,
-    Microscope,
-    Activity,
-    ThumbsUp,
-    Wallet,
-    Star
+    Check
 } from "lucide-react";
 
 const aims = [
@@ -92,22 +85,18 @@ const principles = [
     {
         title: "Holistic Approach",
         description: "Consider the whole person - physical, emotional, mental, and spiritual - in the healing process.",
-        icon: Layers,
     },
     {
         title: "Patient-Centered",
         description: "Focus on the patient's needs, values, and preferences.",
-        icon: UserRoundCheck,
     },
     {
         title: "Collaboration",
         description: "Encourage collaboration between healthcare providers, patients, and families.",
-        icon: Users2,
     },
     {
         title: "Evidence-Based",
         description: "Use evidence-based practices and therapies to ensure effective care.",
-        icon: Microscope,
     }
 ];
 
@@ -115,22 +104,18 @@ const benefits = [
     {
         title: "Improved Health Outcomes",
         description: "Improved health outcomes through comprehensive and preventive care.",
-        icon: Activity,
     },
     {
         title: "Increased Patient Satisfaction",
         description: "Increased patient satisfaction through patient-centered care.",
-        icon: ThumbsUp,
     },
     {
         title: "Reduced Healthcare Costs",
         description: "Reduced healthcare costs through preventive measures and reduced hospitalizations.",
-        icon: Wallet,
     },
     {
         title: "Enhanced Quality of Life",
         description: "Enhanced quality of life through holistic approach to health and well-being.",
-        icon: Star,
     }
 ];
 
@@ -175,6 +160,42 @@ export default function AimsContent() {
                 </div>
             </section>
 
+            {/* Benefits Section */}
+            <section className="bg-primary/5 sm:py-16 py-12">
+                <div className="container mx-auto px-4">
+                    <div className="text-center">
+                        <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
+                            Core <span className="text-primary italic">Benefits</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
+                        {benefits.map((b, index) => (
+                            <div
+                                key={index}
+                                className="space-y-2"
+                            >
+                                <h3 className="text-2xl font-semibold text-zinc-900">
+                                    {b.title}
+                                </h3>
+                                <p className="text-zinc-600 text-lg leading-relaxed">
+                                    {b.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-10 max-w-4xl mx-auto text-center px-4">
+                        <div className="p-8 rounded-2xl border-l-4 border-primary bg-white">
+                            <p className="text-lg md:text-xl text-zinc-800 leading-relaxed italic">
+                                &quot;By focusing on the whole person and promoting a comprehensive approach to health,
+                                Holistic Health Systems aim to improve overall health and well-being.&quot;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Objectives Section - Bento Grid Style */}
             <section className="bg-zinc-50 sm:py-16 py-12 overflow-hidden">
                 <div className="container mx-auto px-4">
@@ -212,26 +233,30 @@ export default function AimsContent() {
             </section>
 
             {/* Key Principles Section */}
-            <section className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col items-center text-center space-y-4 mb-16">
-                        <h2 className="text-3xl font-black text-zinc-900">
+            <section className="sm:py-16 py-12">
+                <div className="container mx-auto px-4">
+                    <div className="text-center">
+                        <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
                             Key <span className="text-primary italic">Principles</span>
                         </h2>
-                        <div className="w-20 h-1.5 bg-primary rounded-full" />
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 mt-8">
                         {principles.map((p, index) => (
-                            <div key={index} className="flex gap-5 group">
-                                <div className="flex-shrink-0 w-12 h-12 bg-zinc-100 rounded-xl flex items-center justify-center text-zinc-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                    <p.icon className="w-6 h-6" />
+                            <div
+                                key={index}
+                                className="flex gap-6 items-start"
+                            >
+                                <div className="flex-shrink-0">
+                                    <span className="text-4xl md:text-5xl font-black text-primary/20">
+                                        0{index + 1}
+                                    </span>
                                 </div>
-                                <div className="space-y-2">
-                                    <h3 className="text-lg font-bold text-zinc-900 group-hover:text-primary transition-colors">
+                                <div className="space-y-3">
+                                    <h3 className="text-xl font-semibold text-zinc-900">
                                         {p.title}
                                     </h3>
-                                    <p className="text-zinc-600 font-medium leading-relaxed">
+                                    <p className="text-zinc-600 leading-relaxed">
                                         {p.description}
                                     </p>
                                 </div>
@@ -239,48 +264,7 @@ export default function AimsContent() {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            {/* Benefits Section */}
-            <section className="bg-primary/5 py-20">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col items-center text-center space-y-4 mb-16">
-                        <h2 className="text-3xl font-black text-zinc-900">
-                            Core <span className="text-primary italic">Benefits</span>
-                        </h2>
-                        <div className="w-20 h-1.5 bg-primary rounded-full" />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {benefits.map((b, index) => (
-                            <div
-                                key={index}
-                                className="bg-white p-6 rounded-3xl border border-primary/10 shadow-sm hover:shadow-md transition-shadow text-center space-y-4"
-                            >
-                                <div className="mx-auto w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center">
-                                    <b.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-lg font-bold text-zinc-900 leading-tight">
-                                    {b.title}
-                                </h3>
-                                <p className="text-zinc-600 text-sm font-medium leading-relaxed">
-                                    {b.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-20 max-w-4xl mx-auto text-center px-4">
-                        <div className="p-8 rounded-3xl bg-zinc-900 text-white relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32" />
-                            <p className="text-lg md:text-xl font-medium leading-relaxed relative z-10 italic">
-                                &quot;By focusing on the whole person and promoting a comprehensive approach to health,
-                                Holistic Health Systems aim to improve overall health and well-being.&quot;
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </section> 
         </>
     );
 }
