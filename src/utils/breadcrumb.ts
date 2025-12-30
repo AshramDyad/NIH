@@ -10,6 +10,7 @@ export const defaultLabelMap: BreadcrumbLabelMap = {
     'chairman': 'Chairman',
     'central-council-board': 'Central Control Board',
     'secretary': 'National Secretary',
+    'principal-message': "Principal's Message",
     'contact': 'Contact Us',
     'members': 'Members',
     'news': 'News',
