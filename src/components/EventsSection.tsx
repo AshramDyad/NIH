@@ -49,7 +49,7 @@ const events: Event[] = [
 
 const EventCard = ({ event }: { event: Event }) => {
     return (
-        <div className="group bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-gray-100 hover:border-gray-100 flex flex-col h-full">
+        <div className="group bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-100 hover:border-gray-100 flex flex-col h-full">
             {/* Category Tag */}
             <div className="mb-6">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/5 px-3 py-1 rounded-full border border-secondary/10">
@@ -59,7 +59,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
             {/* Date and Title Section */}
             <div className="flex gap-5 mb-6">
-                <div className="flex flex-col items-center justify-center min-w-[70px] h-[70px] bg-secondary rounded-xl group-hover:text-white transition-colors duration-300">
+                <div className="flex flex-col items-center justify-center min-w-[70px] h-[70px] bg-secondary rounded-xl text-white transition-colors duration-300">
                     <span className="text-2xl font-black leading-none">{event.day}</span>
                     <span className="text-[10px] font-bold uppercase tracking-wider mt-1 opacity-80">{event.month}</span>
                 </div>
