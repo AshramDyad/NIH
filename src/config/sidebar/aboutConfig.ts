@@ -18,7 +18,7 @@ export const aboutConfig: SidebarConfig = {
                     icon: 'Users',
                     children: [
                         { name: 'Active Members', href: '#' },
-                        { name: 'Central Council Board', href: '/central-council-board' }
+                        { name: 'Central Council Board', href: '/about/central-council-board' }
                     ]
                 },
                 { name: 'Latest News', href: '#', icon: 'Newspaper' },

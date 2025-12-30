@@ -18,7 +18,7 @@ export const secretaryConfig: SidebarConfig = {
                     icon: 'Users',
                     children: [
                         { name: 'Active Members', href: '/members' },
-                        { name: 'Central Council Board', href: '/central-council-board' }
+                        { name: 'Central Council Board', href: '/about/central-council-board' }
                     ]
                 },
                 { name: 'Latest News', href: '/news', icon: 'Newspaper' },

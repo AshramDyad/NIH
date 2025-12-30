@@ -14,6 +14,25 @@ export const metadata: Metadata = {
 export default function AimsPage() {
     return (
         <main className="min-h-screen bg-white">
+            {/* Hero Section - Breadcrumb Only */}
+            <section className="bg-primary/10 py-4">
+                <div className="mx-auto container px-6">
+                    <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base">
+                        <Link href="/" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
+                            Home
+                        </Link>
+                        <span className="flex-shrink-0">&gt;</span>
+                        <Link href="/about" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
+                            About Us
+                        </Link>
+                        <span className="flex-shrink-0">&gt;</span>
+                        <span className="font-medium text-primary">
+                            Aims & Objectives
+                        </span>
+                    </nav>
+                </div>
+            </section>
+
             <FloatingSidebar>
                 <SidebarContent sections={aboutConfig.sections} />
             </FloatingSidebar>
