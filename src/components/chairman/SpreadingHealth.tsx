@@ -1,4 +1,3 @@
-import { ArrowRightCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function SpreadingHealth() {
@@ -12,7 +11,7 @@ export default function SpreadingHealth() {
                     </h2>
 
                     <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-                        In India, I've visited most of the states to propagate Yoga, Naturopathy and social activities through conferences, seminars, camps & meetings with NGO's, Govt officers as well as Ministers.
+                        In India, I&apos;ve visited most of the states to propagate Yoga, Naturopathy and social activities through conferences, seminars, camps &amp; meetings with NGO&apos;s, Govt officers as well as Ministers.
                     </p>
 
                     <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">

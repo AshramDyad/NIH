@@ -16,7 +16,7 @@ export default function FloatingSidebar({ children }: FloatingSidebarProps) {
             {/* Floating Trigger Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed top-1/2 left-0 z-50 flex items-center justify-center bg-primary text-white p-4 rounded-r-xl shadow-lg -translate-y-1/2"
+                className="fixed top-1/2 left-0 z-50 flex items-center justify-center bg-primary text-white p-4 rounded-r-xl shadow-lg -translate-y-1/2 cursor-pointer"
             >
                 <Menu className="w-6 h-6" />
             </button>

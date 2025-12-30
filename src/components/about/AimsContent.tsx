@@ -8,7 +8,6 @@ import {
     Sparkles,
     TrendingDown,
     Smile,
-    ArrowRight,
     UserPlus,
     HeartHandshake,
     Layers,
@@ -275,8 +274,8 @@ export default function AimsContent() {
                         <div className="p-8 rounded-3xl bg-zinc-900 text-white relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32" />
                             <p className="text-lg md:text-xl font-medium leading-relaxed relative z-10 italic">
-                                "By focusing on the whole person and promoting a comprehensive approach to health,
-                                Holistic Health Systems aim to improve overall health and well-being."
+                                &quot;By focusing on the whole person and promoting a comprehensive approach to health,
+                                Holistic Health Systems aim to improve overall health and well-being.&quot;
                             </p>
                         </div>
                     </div>

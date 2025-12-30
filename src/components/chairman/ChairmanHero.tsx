@@ -26,8 +26,8 @@ export default function ChairmanHero() {
                             <div className="relative">
                                 <Quote className="absolute -top-6 -left-6 w-12 h-12 text-slate-100 -z-10" />
                                 <p className="md:text-xl text-lg font-bold text-secondary/90 leading-relaxed italic text-center lg:text-left">
-                                    "ॐ सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामयाः। सर्वे भद्राणि पश्यन्तु। <br />
-                                    मा कश्चित् दुःख भाग्भवेत्॥ ॐ शान्तिः शान्तिः शान्तिः॥"
+                                    &quot;ॐ सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामयाः। सर्वे भद्राणि पश्यन्तु। <br />
+                                    मा कश्चित् दुःख भाग्भवेत्॥ ॐ शान्तिः शान्तिः शान्तिः॥&quot;
                                 </p>
                             </div>
 
