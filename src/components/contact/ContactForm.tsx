@@ -27,7 +27,7 @@ export default function ContactForm() {
         mode: 'onSubmit',
     });
 
-    const onSubmit = async (data: ContactFormData) => {
+    const onSubmit = async () => {
         setFormStatus('loading');
         setErrorMessage('');
 
@@ -80,11 +80,10 @@ export default function ContactForm() {
                                     id="name"
                                     placeholder="Your full name"
                                     {...register('name')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.name
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.name
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.name ? 'true' : 'false'}
                                     aria-describedby={errors.name ? 'name-error' : undefined}
                                 />
@@ -111,11 +110,10 @@ export default function ContactForm() {
                                 <select
                                     id="gender"
                                     {...register('gender')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 appearance-none bg-white cursor-pointer ${
-                                        errors.gender
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 appearance-none bg-white cursor-pointer ${errors.gender
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.gender ? 'true' : 'false'}
                                     aria-describedby={errors.gender ? 'gender-error' : undefined}
                                 >
@@ -151,11 +149,10 @@ export default function ContactForm() {
                                     id="email"
                                     placeholder="your.email@example.com"
                                     {...register('email')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.email
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.email
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.email ? 'true' : 'false'}
                                     aria-describedby={errors.email ? 'email-error' : undefined}
                                 />
@@ -185,11 +182,10 @@ export default function ContactForm() {
                                     placeholder="+91 9953882605"
                                     maxLength={10}
                                     {...register('phone')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.phone
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.phone
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.phone ? 'true' : 'false'}
                                     aria-describedby={errors.phone ? 'phone-error' : undefined}
                                 />
@@ -220,11 +216,10 @@ export default function ContactForm() {
                                     type="date"
                                     id="dob"
                                     {...register('dob')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.dob
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.dob
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.dob ? 'true' : 'false'}
                                     aria-describedby={errors.dob ? 'dob-error' : undefined}
                                 />
@@ -253,11 +248,10 @@ export default function ContactForm() {
                                     id="qualification"
                                     placeholder="Your qualification"
                                     {...register('qualification')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.qualification
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.qualification
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.qualification ? 'true' : 'false'}
                                     aria-describedby={errors.qualification ? 'qualification-error' : undefined}
                                 />
@@ -289,11 +283,10 @@ export default function ContactForm() {
                                     id="city"
                                     placeholder="Your city"
                                     {...register('city')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.city
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.city
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.city ? 'true' : 'false'}
                                     aria-describedby={errors.city ? 'city-error' : undefined}
                                 />
@@ -322,11 +315,10 @@ export default function ContactForm() {
                                     id="state"
                                     placeholder="Your state"
                                     {...register('state')}
-                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${
-                                        errors.state
-                                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                            : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                    }`}
+                                    className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 ${errors.state
+                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                        }`}
                                     aria-invalid={errors.state ? 'true' : 'false'}
                                     aria-describedby={errors.state ? 'state-error' : undefined}
                                 />
@@ -357,11 +349,10 @@ export default function ContactForm() {
                                 rows={5}
                                 placeholder="Write your message here..."
                                 {...register('message')}
-                                className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 resize-none ${
-                                    errors.message
-                                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
-                                        : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
-                                }`}
+                                className={`w-full text-zinc-700 px-4 py-3 rounded-lg border-2 transition-all duration-200 focus:outline-none focus:ring-2 resize-none ${errors.message
+                                    ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
+                                    : 'border-zinc-200 focus:border-primary focus:ring-primary/20 hover:border-zinc-300'
+                                    }`}
                                 aria-invalid={errors.message ? 'true' : 'false'}
                                 aria-describedby={errors.message ? 'message-error' : undefined}
                             />

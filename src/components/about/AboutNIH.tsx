@@ -26,7 +26,7 @@ export default function AboutNIH() {
                         <div
                             className="inline-flex items-center px-4 py-2 bg-secondary/10 rounded-full text-secondary font-bold text-sm uppercase tracking-widest border border-secondary/20"
                         >
-                            The NIH Philosophy
+                            <span>The NIH Philosophy</span>
                         </div>
 
                         <h2

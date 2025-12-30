@@ -25,7 +25,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4">
                     <div className="text-center text-white space-y-6">
                         <h2 className="text-4xl md:text-5xl font-black">Join the <span className="text-primary italic">Movement</span></h2>
-                        <p className="max-w-2xl mx-auto text-lg text-white/80">
+                        <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
                             Become a part of the global community dedicated to reclaiming balance and vitality through holistic wisdom.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
