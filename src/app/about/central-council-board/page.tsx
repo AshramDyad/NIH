@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import Breadcrumb from '@/components/shared/Breadcrumb';
 
 interface CouncilMember {
     id: number;
@@ -270,24 +270,7 @@ export default function CentralCouncilBoardPage() {
     const newLocal = "max-w-7xl mx-auto px-4 py-12 sm:py-16";
     return (
         <>
-            {/* Hero Section - Breadcrumb Only */}
-            <section className="bg-gray-50 py-4 md:py-6">
-                <div className="max-w-7xl mx-auto px-6">
-                    <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base">
-                        <Link href="/" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            Home
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <Link href="/about" className="hover:text-primary transition-colors font-medium whitespace-nowrap">
-                            About Us
-                        </Link>
-                        <span className="flex-shrink-0">&gt;</span>
-                        <span className="font-medium text-primary">
-                            Central Control Board
-                        </span>
-                    </nav>
-                </div>
-            </section>
+            <Breadcrumb />
 
             <section className={newLocal}>
                 {/* Main Heading */}
