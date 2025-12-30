@@ -15,6 +15,8 @@ import {
     Activity,
     Users,
     ChevronDown,
+    User,
+    Target,
 } from 'lucide-react';
 import type { SidebarSection } from '@/types/sidebar';
 
@@ -34,6 +36,8 @@ const iconMap: Record<string, React.ElementType> = {
     Info,
     Activity,
     Users,
+    User,
+    Target,
 };
 
 export default function SidebarContent({ sections }: SidebarContentProps) {
@@ -113,9 +117,8 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                             <Link
                                                 key={index}
                                                 href={link.href}
-                                                className={`group flex items-center justify-between p-5 text-zinc-700 hover:text-primary hover:bg-zinc-50 transition-all duration-300 ${
-                                                    index !== section.items.length - 1 ? 'border-b border-zinc-100' : ''
-                                                }`}
+                                                className={`group flex items-center justify-between p-5 text-zinc-700 hover:text-primary hover:bg-zinc-50 transition-all duration-300 ${index !== section.items.length - 1 ? 'border-b border-zinc-100' : ''
+                                                    }`}
                                             >
                                                 <span className="flex items-center gap-4">
                                                     {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors" />}

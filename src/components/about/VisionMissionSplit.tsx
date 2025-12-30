@@ -44,7 +44,7 @@ export default function VisionMissionSplit() {
                                     Creating a <span className="text-primary italic">Healthy World</span> through Unity
                                 </h3>
 
-                                <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-medium">
+                                <p className="text-lg md:text-xl text-zinc-400 leading-relaxed">
                                     To establish a global community where holistic health is accessible to all, bridging the gap between ancient wisdom and modern living.
                                 </p>
 
@@ -78,7 +78,7 @@ export default function VisionMissionSplit() {
                                             <point.icon className="w-7 h-7" />
                                         </div>
                                         <div className="space-y-3">
-                                            <h4 className="sm:text-xl text-lg font-bold text-zinc-900 group-hover:text-primary transition-colors">
+                                            <h4 className="sm:text-xl text-lg font-semibold text-zinc-900 group-hover:text-primary transition-colors">
                                                 {point.title}
                                             </h4>
                                             <p className="text-zinc-600 leading-relaxed">

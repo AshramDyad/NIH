@@ -9,7 +9,6 @@ import {
     MapPin,
     Phone,
     Mail,
-    ArrowRight,
 } from "lucide-react";
 
 /**
