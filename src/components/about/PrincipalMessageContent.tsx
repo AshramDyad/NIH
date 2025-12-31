@@ -28,7 +28,7 @@ export default function PrincipalMessageContent() {
                                 <div className="aspect-square w-full bg-zinc-100 rounded-2xl overflow-hidden">
                                     <Image
                                         src="/images/drvinod.jpg"
-                                        alt="MS. ADITI MISRA"
+                                        alt="Ms. Aditi Misra"
                                         width={500}
                                         height={500}
                                         className="w-full h-full object-cover"

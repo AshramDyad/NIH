@@ -1,7 +1,7 @@
 import PrincipalMessageContent from "@/components/about/PrincipalMessageContent";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
-import { principalConfig } from "@/config/sidebar/principalConfig";
+import { aboutDSPConfig } from "@/config/sidebar/aboutDSPConfig";
 import { Metadata } from "next";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 
@@ -14,7 +14,7 @@ export default function PrincipalMessagePage() {
     return (
         <>
             <FloatingSidebar>
-                <SidebarContent sections={principalConfig.sections} />
+                <SidebarContent sections={aboutDSPConfig.sections} />
             </FloatingSidebar>
 
             <Breadcrumb />
