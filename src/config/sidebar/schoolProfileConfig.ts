@@ -1,10 +1,11 @@
 /**
- * Sidebar configuration for About page
+ * Sidebar configuration for School Profile page
+ * Based on the old school-profile.html layout
  */
 
 import type { SidebarConfig } from '@/types/sidebar';
 
-export const aboutConfig: SidebarConfig = {
+export const schoolProfileConfig: SidebarConfig = {
     sections: [
         {
             type: 'links',
@@ -53,12 +54,12 @@ export const aboutConfig: SidebarConfig = {
         },
         {
             type: 'activitiesList',
-            title: 'Activities',
+            title: 'Schools',
             items: [
-                { name: 'International Conference', href: '#', color: 'bg-rose-100 text-rose-600 border-rose-200' },
-                { name: 'Health Check-up Camps', href: '#', color: 'bg-lime-100 text-lime-700 border-lime-200' },
-                { name: 'Health Retreat', href: '#', color: 'bg-purple-100 text-purple-700 border-purple-200' },
-                { name: 'Courses', href: '#', color: 'bg-sky-100 text-sky-700 border-sky-200' },
+                { name: 'Primary School', href: '#', color: 'bg-rose-100 text-rose-600 border-rose-200' },
+                { name: 'Junior School', href: '#', color: 'bg-lime-100 text-lime-700 border-lime-200' },
+                { name: 'Middle School', href: '#', color: 'bg-purple-100 text-purple-700 border-purple-200' },
+                { name: 'Senior School', href: '#', color: 'bg-sky-100 text-sky-700 border-sky-200' },
             ],
         },
     ],
