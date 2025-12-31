@@ -27,7 +27,7 @@ export default function PrincipalMessageContent() {
                                 {/* Photo Placeholder/Image Container */}
                                 <div className="aspect-square w-full bg-zinc-100 rounded-2xl overflow-hidden">
                                     <Image
-                                        src="/images/drvinod.jpg"
+                                        src="/images/about-the-school/aditi-misra.jpg"
                                         alt="Ms. Aditi Misra"
                                         width={500}
                                         height={500}

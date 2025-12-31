@@ -32,7 +32,7 @@ export default function ChairmanAwards() {
                                     <div className="flex-shrink-0 mt-1">
                                         <ArrowRightCircle className="w-6 h-6 text-secondary" />
                                     </div>
-                                    <p className="text-zinc-600 font-medium leading-relaxed">
+                                    <p className="text-lg text-zinc-600 font-semibold leading-relaxed">
                                         {award}
                                     </p>
                                 </div>
@@ -52,7 +52,7 @@ export default function ChairmanAwards() {
                                     <div className="flex-shrink-0 mt-1">
                                         <ArrowRightCircle className="w-6 h-6 text-primary" />
                                     </div>
-                                    <p className="text-zinc-600 font-medium leading-relaxed">
+                                    <p className="text-lg text-zinc-600 font-semibold leading-relaxed">
                                         {lecture}
                                     </p>
                                 </div>
