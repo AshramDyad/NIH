@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
-import { aboutConfig } from "@/config/sidebar/aboutConfig";
+import { aboutDSPConfig } from "@/config/sidebar/aboutDSPConfig";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function AboutTheSchoolPage() {
     return (
         <>
             <FloatingSidebar>
-                <SidebarContent sections={aboutConfig.sections} />
+                <SidebarContent sections={aboutDSPConfig.sections} />
             </FloatingSidebar>
 
             <Breadcrumb />

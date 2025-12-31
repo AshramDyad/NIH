@@ -3,18 +3,19 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDSPConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import SchoolProfileContent from '@/components/about/school-profile/SchoolProfileContent';
+import DpsSocietyContent from '@/components/about/dps-society/DpsSocietyContent';
 
 export const metadata: Metadata = {
-    title: 'NIH Profile | NIH Health - National Institute of Holistic Health',
-    description: 'View the complete NIH School Profile document. Access comprehensive information about the National Institute of Holistic Health.',
+    title: 'DPS Society | NIH Health - National Institute of Holistic Health',
+    description: 'Learn about the DPS Society (DPSS), a non-profit educational body committed to excellence in education. Meet our Chairman and Vice Chairman.',
 };
 
-export default function SchoolProfilePage() {
+export default function DpsSocietyPage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
         { label: 'About NIH', href: '/about' },
-        { label: 'NIH Profile', href: undefined },
+        { label: 'NIH Members', href: '/about' },
+        { label: 'DPS Society', href: undefined },
     ];
 
     return (
@@ -30,17 +31,17 @@ export default function SchoolProfilePage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-                            NIH <span className="italic">Profile</span>
+                            DPS <span className="italic">Society</span>
                         </h1>
                         <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
-                            Comprehensive overview of the National Institute of Holistic Health
+                            A non-profit educational body committed to excellence in education since 1949
                         </p>
                     </div>
                 </div>
             </section>
 
             {/* Main Content */}
-            <SchoolProfileContent />
+            <DpsSocietyContent />
         </>
     );
 }

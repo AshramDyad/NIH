@@ -4,7 +4,7 @@
 
 import type { SidebarConfig } from '@/types/sidebar';
 
-export const principalConfig: SidebarConfig = {
+export const aboutDSPConfig: SidebarConfig = {
     sections: [
         {
             type: 'links',
@@ -17,8 +17,8 @@ export const principalConfig: SidebarConfig = {
                     href: '#',
                     icon: 'Users',
                     children: [
-                        { name: 'DPS Society', href: '/' },
-                        { name: 'Managing Committee', href: '/' }
+                        { name: 'DPS Society', href: '/about/dps-society' },
+                        { name: 'Managing Committee', href: '/about/managing-committee' }
                     ]
                 },
                 { name: 'Shiksha Kendra - A School For Non-formal Education', href: '/', icon: 'Newspaper' },
