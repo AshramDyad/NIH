@@ -2,8 +2,11 @@
  * About The School Content Component
  * Displays information about the school mission, leadership team profiles
  */
+"use client"
 
+import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface LeadershipProfile {
     name: string;
@@ -22,6 +25,8 @@ interface LeadershipProfileCardProps {
 }
 
 function LeadershipProfileCard({ profile, sectionTitle }: LeadershipProfileCardProps) {
+    const [openAwardYear, setOpenAwardYear] = useState<string | null>(null);
+
     // Sort awards by year in descending order (latest year first)
     const sortedAwards = Object.entries(profile.awards).sort((a, b) => {
         const yearA = parseInt(a[0]) || 0;
@@ -81,7 +86,9 @@ function LeadershipProfileCard({ profile, sectionTitle }: LeadershipProfileCardP
                         <div className="space-y-3">
                             {sortedAwards.map(([year, awards]) => (
                                 <div key={year}>
-                                    {renderAwardsSection(year, awards)}
+                                    {renderAwardsSection(year, awards, openAwardYear === year, () => {
+                                        setOpenAwardYear(openAwardYear === year ? null : year);
+                                    })}
                                 </div>
                             ))}
                         </div>
@@ -92,24 +99,43 @@ function LeadershipProfileCard({ profile, sectionTitle }: LeadershipProfileCardP
     );
 }
 
-function renderAwardsSection(year: string, awards: string[]) {
+function renderAwardsSection(year: string, awards: string[], isOpen: boolean, onToggle: () => void) {
     return (
-        <details className="border border-zinc-200 rounded-lg overflow-hidden">
-            <summary className="flex items-center justify-between cursor-pointer bg-zinc-50 px-4 py-3 font-semibold text-zinc-900 hover:bg-zinc-100 transition-colors">
+        <div className="border border-zinc-200 rounded-lg overflow-hidden">
+            <button
+                type="button"
+                onClick={onToggle}
+                className="flex w-full items-center justify-between cursor-pointer bg-zinc-50 px-4 py-3 font-semibold text-zinc-900  hover:bg-zinc-100 transition-colors"
+                aria-expanded={isOpen}
+            >
                 <span>{year}</span>
-                <span className="text-zinc-500 text-lg">+</span>
-            </summary>
-            <div className="p-4 bg-white">
-                <ul className="space-y-2 text-zinc-600">
-                    {awards.map((award, index) => (
-                        <li key={index} className="flex gap-2">
-                            <span className="text-primary font-bold">•</span>
-                            <p>{award}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </details>
+                <span className="text-primary text-lg font-semibold">
+                    {isOpen ? '-' : '+'}
+                </span>
+            </button>
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="p-4 bg-white">
+                            <ul className="space-y-2 text-zinc-600">
+                                {awards.map((award, index) => (
+                                    <li key={index} className="flex gap-2">
+                                        <span className="text-primary font-bold">•</span>
+                                        <p>{award}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 }
 

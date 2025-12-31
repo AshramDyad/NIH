@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import { CheckCircle2, Mail, Star } from 'lucide-react';
+import { CheckCircle2, Mail } from 'lucide-react';
 import { FaAngleRight, FaKey, FaLock, FaStar } from "react-icons/fa";
 import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
