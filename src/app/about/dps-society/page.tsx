@@ -25,21 +25,6 @@ export default function DpsSocietyPage() {
             </FloatingSidebar>
 
             <Breadcrumb items={breadcrumbItems} />
-
-            {/* Page Header */}
-            <section className="bg-gradient-to-r from-primary to-secondary py-12 md:py-16">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-                            DPS <span className="italic">Society</span>
-                        </h1>
-                        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
-                            A non-profit educational body committed to excellence in education since 1949
-                        </p>
-                    </div>
-                </div>
-            </section>
-
             {/* Main Content */}
             <DpsSocietyContent />
         </>
