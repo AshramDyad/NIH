@@ -12,6 +12,7 @@ export const defaultLabelMap: BreadcrumbLabelMap = {
     'secretary': 'National Secretary',
     'principal-message': "Principal's Message",
     'contact': 'Contact Us',
+    'help': 'Help',
     'members': 'Members',
     'news': 'News',
     'events': 'Events',
