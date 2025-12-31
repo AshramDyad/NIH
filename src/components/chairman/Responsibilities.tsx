@@ -31,7 +31,7 @@ export default function Responsibilities() {
                                 <CheckCircle2 className="w-4 h-4 text-primary" />
                             </div>
 
-                            <p className="text-lg font-bold text-slate-800 leading-snug">
+                            <p className="text-lg text-zinc-600 font-semibold leading-relaxed">
                                 {text}
                             </p>
                         </div>

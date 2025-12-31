@@ -4,11 +4,11 @@
 
 import type { SidebarConfig } from '@/types/sidebar';
 
-export const aboutDSPConfig: SidebarConfig = {
+export const aboutDPSConfig: SidebarConfig = {
     sections: [
         {
             type: 'links',
-            title: 'About DSP',
+            title: 'About DPS',
             items: [
                 { name: 'About The School', href: '/about/about-the-school', icon: 'Info' },
                 { name: 'School Profile', href: '/about/school-profile', icon: 'Activity' },

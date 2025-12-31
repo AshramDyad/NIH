@@ -145,10 +145,10 @@ export default function AimsContent() {
                                         <aim.icon className="w-8 h-8" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h3 className="text-xl font-semibold text-zinc-900">
+                                        <h3 className="sm:text-2xl text-xl font-semibold text-zinc-900">
                                             {aim.title}
                                         </h3>
-                                        <p className="text-zinc-600 leading-relaxed">
+                                        <p className="text-lg text-zinc-600 leading-relaxed">
                                             {aim.description}
                                         </p>
                                     </div>
@@ -174,10 +174,10 @@ export default function AimsContent() {
                                 key={index}
                                 className="space-y-2"
                             >
-                                <h3 className="text-2xl font-semibold text-zinc-900">
+                                <h3 className="sm:text-2xl text-xl font-semibold text-zinc-900">
                                     {b.title}
                                 </h3>
-                                <p className="text-zinc-600 text-lg leading-relaxed">
+                                <p className="text-lg text-zinc-600 leading-relaxed">
                                     {b.description}
                                 </p>
                             </div>
@@ -186,7 +186,7 @@ export default function AimsContent() {
 
                     <div className="mt-10 max-w-4xl mx-auto text-center">
                         <div className="sm:p-6 p-4 rounded-2xl border-l-4 border-primary bg-white">
-                            <p className="text-lg md:text-xl text-zinc-800 leading-relaxed italic">
+                            <p className="text-lg sm:text-xl text-zinc-800 leading-relaxed italic">
                                 &quot;By focusing on the whole person and promoting a comprehensive approach to health,
                                 Holistic Health Systems aim to improve overall health and well-being.&quot;
                             </p>
@@ -218,10 +218,10 @@ export default function AimsContent() {
                                     <div className={`w-14 h-14 rounded-2xl ${obj.accent} flex items-center justify-center`}>
                                         <obj.icon className="w-7 h-7" />
                                     </div>
-                                    <h3 className="text-xl font-semibold text-zinc-900">
+                                    <h3 className="sm:text-2xl text-xl font-semibold text-zinc-900">
                                         {obj.title}
                                     </h3>
-                                    <p className="text-zinc-600 leading-relaxed">
+                                    <p className="text-lg text-zinc-600 leading-relaxed">
                                         {obj.description}
                                     </p>
                                 </div>
@@ -252,10 +252,10 @@ export default function AimsContent() {
                                     </span>
                                 </div>
                                 <div className="space-y-3">
-                                    <h3 className="text-xl font-semibold text-zinc-900">
+                                    <h3 className="sm:text-2xl text-xl font-semibold text-zinc-900">
                                         {p.title}
                                     </h3>
-                                    <p className="text-zinc-600 leading-relaxed">
+                                    <p className="text-lg text-zinc-600 leading-relaxed">
                                         {p.description}
                                     </p>
                                 </div>

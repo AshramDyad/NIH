@@ -43,12 +43,12 @@ export default function AboutNIH() {
                         <div
                             className="lg:col-span-7 space-y-6"
                         >
-                            <p className="text-lg md:text-xl text-zinc-600 leading-relaxed">
+                            <p className="text-lg text-zinc-600 leading-relaxed">
                                 Health is the biggest necessity in today&apos;s life. We have to correct our diet, our thoughts and our behavior to keep our health constant,
                                 <span className="text-zinc-900"> only then we can remain physically, mentally and spiritually healthy and this is also the right definition of health.</span>
                             </p>
 
-                            <p className="text-lg md:text-xl text-zinc-600 leading-relaxed">
+                            <p className="text-lg text-zinc-600 leading-relaxed">
                                 The National Institute of Holistic Health (NIH) has been working continuously for the last 4 years to make the common people aware of health globally, in which many programs for health awareness, health education, health awareness camps, seminars, conferences etc are being run and these works will be useful in making the whole world healthy.
                             </p>
                         </div>
@@ -61,7 +61,7 @@ export default function AboutNIH() {
                                 <div className="relative bg-white/70 backdrop-blur-xl border border-white sm:p-6 p-4 rounded-2xl shadow-sm overflow-hidden">
 
                                     <div className="relative z-10 space-y-6">
-                                        <p className="sm:text-2xl text-xl font-serif italic text-zinc-800 leading-snug">
+                                        <p className="text-lg sm:text-xl font-serif italic text-zinc-800 leading-snug">
                                             According to mythological beliefs, man&apos;s age was considered to be around 300 years. But in today&apos;s environment, we can keep our body perfectly healthy for 100 years and for this, we have to keep our diet, behavior and thoughts completely sattvic.
                                         </p>
 

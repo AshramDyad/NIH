@@ -16,7 +16,7 @@ export default function AimsHero() {
                         The <span className="text-primary italic">Aims</span> and <span className="text-secondary italic">Objectives</span> of Holistic Health System are:
                     </h1>
 
-                    <p className="text-lg md:text-xl text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">
+                    <p className="text-lg text-zinc-600 leading-relaxed font-medium max-w-3xl mx-auto">
                         We are committed to fostering a world where holistic health is the standard,
                         guided by clear goals and a steadfast mission to empower every individual.
                     </p>

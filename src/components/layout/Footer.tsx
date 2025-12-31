@@ -12,7 +12,7 @@ import {
     Phone,
     Mail,
 } from "lucide-react";
-import type { FooterConfig, FooterLink } from "@/types/footer";
+import type { FooterLink } from "@/types/footer";
 import { useFooterConfig } from "./FooterProvider";
 
 /**

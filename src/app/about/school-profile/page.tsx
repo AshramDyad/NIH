@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
-import { aboutDSPConfig } from '@/config/sidebar/aboutDSPConfig';
+import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
 import SchoolProfileContent from '@/components/about/school-profile/SchoolProfileContent';
 
@@ -20,24 +20,10 @@ export default function SchoolProfilePage() {
     return (
         <>
             <FloatingSidebar>
-                <SidebarContent sections={aboutDSPConfig.sections} />
+                <SidebarContent sections={aboutDPSConfig.sections} />
             </FloatingSidebar>
 
             <Breadcrumb items={breadcrumbItems} />
-
-            {/* Page Header */}
-            <section className="bg-gradient-to-r from-primary to-secondary py-12 md:py-16">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-                            NIH <span className="italic">Profile</span>
-                        </h1>
-                        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
-                            Comprehensive overview of the National Institute of Holistic Health
-                        </p>
-                    </div>
-                </div>
-            </section>
 
             {/* Main Content */}
             <SchoolProfileContent />

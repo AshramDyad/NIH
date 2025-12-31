@@ -31,7 +31,7 @@ export default function ChairmanContributions() {
                             <div className="flex-shrink-0 mt-0.5">
                                 <ArrowRightCircle className="w-6 h-6 text-primary" />
                             </div>
-                            <p className="text-zinc-600 font-medium leading-relaxed">
+                            <p className="text-lg text-zinc-600 font-semibold leading-relaxed">
                                 {text}
                             </p>
                         </div>
