@@ -51,7 +51,7 @@ const aboutSectionFooter: FooterConfig = {
  */
 const pageFooterConfigs: Record<string, FooterConfig> = {
     // Reuse aboutSectionFooter for multiple routes
-    '/about/principal-message': aboutSectionFooter,
+    '/about/*principal-message': aboutSectionFooter,
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 
