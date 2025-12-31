@@ -53,6 +53,7 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     // Reuse aboutSectionFooter for multiple routes
     '/about/principal-message': aboutSectionFooter,
     '/about/about-the-school': aboutSectionFooter,
+    '/about/school-profile': aboutSectionFooter,
     '/about/dps-society': aboutSectionFooter,
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,

@@ -4,15 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { User, FileText, Calendar, Menu, X, ChevronRight, ChevronLeft, UserPlus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Types for mobile menu items
-type MobileMenuItem = {
-  id: string;
-  name: string;
-  href?: string;
-  hasChildren?: true;
-  children?: readonly { name: string; href: string }[];
-};
+import { useHeaderConfig } from "./HeaderProvider";
+import type { MobileMenuItem } from "@/types/header";
 
 // Animation variants for premium mobile menu
 const overlayVariants = {
@@ -60,7 +53,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const [activeNestedSubMenu, setActiveNestedSubMenu] = useState<string | null>(null);
   const [hoveredBtn, setHoveredBtn] = useState<string | null>(null);
+
+  // Get dynamic header configuration
+  const headerConfig = useHeaderConfig();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,14 +77,14 @@ const Header = () => {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isMenuOpen]);
 
-  const navLinks = [
+  const navLinks = headerConfig?.navLinks || [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Activities", href: "/activities" },
     { name: "Careers", href: "/careers" },
     { name: "News", href: "/news" },
   ];
-  const ctaButtons = [
+  const ctaButtons = headerConfig?.ctaButtons || [
     {
       name: "Membership",
       href: "/membership",
@@ -121,7 +118,7 @@ const Header = () => {
   ];
 
   // Mobile menu items structure matching the video design
-  const mobileMenuItems: readonly MobileMenuItem[] = [
+  const mobileMenuItems: readonly MobileMenuItem[] = headerConfig?.mobileMenuItems || [
     { id: "home", name: "HOME", href: "/" },
     {
       id: "about-us",
@@ -318,7 +315,7 @@ const Header = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); }}
+              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
               className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm"
               aria-hidden="true"
             />
@@ -330,7 +327,7 @@ const Header = () => {
               animate="open"
               exit="closed"
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-full sm:max-w-[320px] bg-secondary/95 backdrop-blur-xl z-60 shadow-2xl overflow-hidden flex flex-col"
+              className="fixed right-0 top-0 bottom-0 w-full sm:max-w-[350px] bg-secondary/95 backdrop-blur-xl z-60 shadow-2xl overflow-hidden flex flex-col"
             >
               {/* Animated Background Element */}
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
@@ -346,7 +343,7 @@ const Header = () => {
                   className="h-10 w-auto"
                 />
                 <button
-                  onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); }}
+                  onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
                   className="text-secondary hover:text-primary transition-colors p-2 rounded-full hover:bg-gray-100 group"
                   aria-label="Close menu"
                 >
@@ -368,14 +365,14 @@ const Header = () => {
                       variants={itemVariants}
                       whileHover={{ x: 5 }}
                       whileTap={{ scale: 0.98 }}
-                      className="px-4"
+                      className="px-6"
                     >
                       {item.href ? (
                         <Link
                           href={item.href}
                           target={(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? "_blank" : undefined}
                           rel={(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
-                          onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); }}
+                          onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
                           className="flex items-center group py-4 border-b border-white/5"
                         >
                           <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
@@ -456,19 +453,95 @@ const Header = () => {
                             whileHover={{ x: 5 }}
                             whileTap={{ scale: 0.98 }}
                           >
-                            <Link
-                              href={subItem.href}
-                              target={(subItem.href.startsWith("http") || subItem.href.endsWith(".pdf")) ? "_blank" : undefined}
-                              rel={(subItem.href.startsWith("http") || subItem.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
-                              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); }}
-                              className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
-                            >
-                              <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                {subItem.name}
-                              </span>
-                            </Link>
+                            {subItem.hasChildren ? (
+                              <button
+                                onClick={() => setActiveNestedSubMenu(subItem.name)}
+                                className="w-full group flex items-center justify-between py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                              >
+                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                  {subItem.name}
+                                </span>
+                                <ChevronRight size={18} className="text-white/40 group-hover:text-primary" />
+                              </button>
+                            ) : (
+                              <Link
+                                href={subItem.href || "#"}
+                                target={(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? "_blank" : undefined}
+                                rel={(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
+                                onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                                className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                              >
+                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                  {subItem.name}
+                                </span>
+                              </Link>
+                            )}
                           </motion.div>
                         ))}
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Nested Sub-Menu Panel (Third Level) - Sliding from right */}
+              <AnimatePresence>
+                {activeNestedSubMenu && activeSubMenu && (
+                  <motion.div
+                    variants={subMenuVariants}
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                    transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                    className="absolute inset-0 bg-secondary z-30 flex flex-col"
+                  >
+                    {/* Nested sub-menu Header */}
+                    <div className="flex items-center gap-4 px-4 py-6 border-b border-white/10 bg-white/5 backdrop-blur-md">
+                      <button
+                        onClick={() => setActiveNestedSubMenu(null)}
+                        className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <div className="flex flex-col">
+                        <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">Explore</span>
+                        <span className="text-white font-bold text-lg tracking-tight leading-none">
+                          {activeNestedSubMenu}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Nested sub-menu Items */}
+                    <div className="flex-1 overflow-y-auto py-6 no-scrollbar">
+                      <motion.div
+                        variants={containerVariants}
+                        initial="closed"
+                        animate="open"
+                        className="space-y-2 px-4"
+                      >
+                        {mobileMenuItems
+                          .find(i => i.id === activeSubMenu)
+                          ?.children?.find(c => c.name === activeNestedSubMenu)
+                          ?.children?.map((nestedItem) => (
+                            <motion.div
+                              key={nestedItem.name}
+                              variants={itemVariants}
+                              whileHover={{ x: 5 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <Link
+                                href={nestedItem.href}
+                                target={(nestedItem.href.startsWith("http") || nestedItem.href.endsWith(".pdf")) ? "_blank" : undefined}
+                                rel={(nestedItem.href.startsWith("http") || nestedItem.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
+                                onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                                className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                              >
+                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                  {nestedItem.name}
+                                </span>
+                              </Link>
+                            </motion.div>
+                          ))}
                       </motion.div>
                     </div>
                   </motion.div>
