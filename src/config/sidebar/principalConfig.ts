@@ -10,7 +10,7 @@ export const principalConfig: SidebarConfig = {
             type: 'links',
             title: 'About DSP',
             items: [
-                { name: 'About The School', href: '/', icon: 'Info' },
+                { name: 'About The School', href: '/about/about-the-school', icon: 'Info' },
                 { name: 'School Profile', href: '/about#', icon: 'Activity' },
                 {
                     name: 'DPS Family',
