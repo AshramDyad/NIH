@@ -27,7 +27,7 @@ export default function GeneralInformationPage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              School <span className="text-primary italic">Information</span>
+              General <span className="text-primary italic">Information</span>
             </h1>
           </div>
         </div>

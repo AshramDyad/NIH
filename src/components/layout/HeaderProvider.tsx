@@ -279,6 +279,15 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   // Principal Message page gets custom header
   '/about/principal-message': principalMessageHeader,
 
+  // General Information page gets custom header
+  '/general-information': principalMessageHeader,
+  '/general-information/school-rules': principalMessageHeader,
+  '/general-information/recommendations': principalMessageHeader,
+  '/general-information/withdrawls': principalMessageHeader,
+  '/general-information/bus-information': principalMessageHeader,
+  '/general-information/school-bus-rules': principalMessageHeader,
+  '/general-information/elected-parents': principalMessageHeader,
+
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
   // '/about/secretary': aboutSectionHeader,
