@@ -3,19 +3,19 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { infrastructureConfig } from '@/config/sidebar/infrastructureConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import ScienceLabsContent from '@/components/infrastructure/laboratories/science-labs/ScienceLabsContent';
+import FashionTechnologyLabContent from '@/components/infrastructure/laboratories/fashion-technology-lab/FashionTechnologyLabContent';
 
 export const metadata: Metadata = {
-  title: 'Science Labs | NIH Health - DPS Gurgaon Infrastructure',
-  description: 'Discover the Science Labs at DPS Gurgaon - Physics, Chemistry, Biology, and General Science Labs with modern equipment and hands-on learning experiences for students.',
+  title: 'Fashion Technology Lab | NIH Health - DPS Gurgaon Infrastructure',
+  description: 'Discover the Fashion Technology Lab at DPS Gurgaon - featuring dress forms, specialized equipment, sewing machines, and comprehensive training in fashion design and presentation.',
 };
 
-export default function ScienceLabsPage() {
+export default function FashionTechnologyLabPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '#' },
-    { label: 'Science Labs', href: undefined },
+    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
+    { label: 'Fashion Technology Lab', href: undefined },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function ScienceLabsPage() {
       </FloatingSidebar>
 
       <Breadcrumb items={breadcrumbItems} />
-      <ScienceLabsContent />
+      <FashionTechnologyLabContent />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import BulletList from '@/components/shared/BulletList';
 
 export default function ArtMusicDepartmentContent() {
   return (
@@ -25,23 +26,15 @@ export default function ArtMusicDepartmentContent() {
                   The various fields in which students are trained here are:
                 </p>
 
-                <ul className="list-disc list-inside space-y-2 ml-4 marker:text-primary">
-                  <li>
-                    Sketching, Colouring and Painting.
-                  </li>
-                  <li>
-                    Paper Craft
-                  </li>
-                  <li>
-                    Clay Modeling
-                  </li>
-                  <li>
-                    Pottery
-                  </li>
-                  <li>
-                    Sculpture
-                  </li>
-                </ul>
+                <BulletList
+                  items={[
+                    "Sketching, Colouring and Painting.",
+                    "Paper Craft",
+                    "Clay Modeling",
+                    "Pottery",
+                    "Sculpture",
+                  ]}
+                />
               </div>
 
               {/* Image */}
@@ -74,29 +67,17 @@ export default function ArtMusicDepartmentContent() {
                 <p className="font-semibold text-zinc-900">
                   The different streams where training is imparted are:
                 </p>
-                <ul className="list-disc list-inside space-y-2 ml-4 marker:text-primary">
-                  <li>
-                    Indian Classical
-                  </li>
-                  <li>
-                    Semi-Classical
-                  </li>
-                  <li>
-                    Western Vocal
-                  </li>
-                  <li>
-                    Kathak
-                  </li>
-                  <li>
-                    Bharatnatyam
-                  </li>
-                  <li>
-                    Light Music and Dance
-                  </li>
-                  <li>
-                    Instrumental Music
-                  </li>
-                </ul>
+                <BulletList
+                  items={[
+                    "Indian Classical",
+                    "Semi-Classical",
+                    "Western Vocal",
+                    "Kathak",
+                    "Bharatnatyam",
+                    "Light Music and Dance",
+                    "Instrumental Music",
+                  ]}
+                />
               </div>
               {/* Image */}
               <div className="flex justify-center">
@@ -120,26 +101,16 @@ export default function ArtMusicDepartmentContent() {
             <p className="font-semibold text-zinc-900">
               Students get trained in:
             </p>
-            <ul className="list-disc list-inside space-y-2 ml-4 marker:text-primary">
-              <li>
-                Keyboard
-              </li>
-              <li>
-                Drum
-              </li>
-              <li>
-                Guitar
-              </li>
-              <li>
-                Bongo
-              </li>
-              <li>
-                Tabla
-              </li>
-              <li>
-                Flute
-              </li>
-            </ul>
+            <BulletList
+              items={[
+                "Keyboard",
+                "Drum",
+                "Guitar",
+                "Bongo",
+                "Tabla",
+                "Flute",
+              ]}
+            />
             <p>Our young music experts also form the &apos;School Orchestra&apos; can be seen them mesmerizing the audience during school programmes.</p>
             <p>At Infant wing and Primary wing, we have music and dance rooms. One can see the spirits of the little students liven up as they shed all their inhibitions and get into the real thing!</p>
           </div>

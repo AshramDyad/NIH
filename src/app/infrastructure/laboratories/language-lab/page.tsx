@@ -3,19 +3,19 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { infrastructureConfig } from '@/config/sidebar/infrastructureConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import ScienceLabsContent from '@/components/infrastructure/laboratories/science-labs/ScienceLabsContent';
+import LanguageLabContent from '@/components/infrastructure/laboratories/language-lab/LanguageLabContent';
 
 export const metadata: Metadata = {
-  title: 'Science Labs | NIH Health - DPS Gurgaon Infrastructure',
-  description: 'Discover the Science Labs at DPS Gurgaon - Physics, Chemistry, Biology, and General Science Labs with modern equipment and hands-on learning experiences for students.',
+  title: 'Language Lab | NIH Health - DPS Gurgaon Infrastructure',
+  description: 'Discover the Language Lab at DPS Gurgaon with Language Avenue and Words A-Maze in Primary Wing, plus Drama and Movement Room in Infant Wing for foreign language training.',
 };
 
-export default function ScienceLabsPage() {
+export default function LanguageLabPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '#' },
-    { label: 'Science Labs', href: undefined },
+    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
+    { label: 'Language Lab', href: undefined },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function ScienceLabsPage() {
       </FloatingSidebar>
 
       <Breadcrumb items={breadcrumbItems} />
-      <ScienceLabsContent />
+      <LanguageLabContent />
     </>
   );
 }

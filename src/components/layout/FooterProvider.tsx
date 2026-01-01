@@ -77,6 +77,13 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/infrastructure/school-library': aboutSectionFooter,
     '/infrastructure/art-music-department': aboutSectionFooter,
     '/infrastructure/laboratories/science-labs': aboutSectionFooter,
+    '/infrastructure/laboratories/psychology-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/fashion-technology-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/language-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/it-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/math-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/fine-art-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/discovery-lab': aboutSectionFooter,
 
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,

@@ -10,7 +10,7 @@ export default function ScienceLabsContent() {
         {/* Page Header */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-            Science <span className="text-secondary italic">Labs</span>
+            <span className="text-secondary italic">Science </span>Labs
           </h1>
         </div>
 

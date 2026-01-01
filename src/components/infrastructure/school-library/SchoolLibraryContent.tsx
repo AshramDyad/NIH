@@ -1,5 +1,7 @@
 "use client"
 
+import BulletList from '@/components/shared/BulletList';
+
 export default function SchoolLibraryContent() {
   return (
     <section className="sm:py-16 py-12">
@@ -16,18 +18,20 @@ export default function SchoolLibraryContent() {
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6">
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
-              'Reading adds newer dimensions to the body of knowledge. We at DPS Gurgaon, believe in inculcating a reading culture that enhances and compliments the education system. Books that capture the imagination of students, reconfirm their facts and open newer doors of intellect are carefully chosen and made available to the students. We have some avid readers here who have even become a part of the BookClub, that&apos;s an offshoot of healthy reading.
+              &apos;Reading adds newer dimensions to the body of knowledge. We at DPS Gurgaon, believe in inculcating a reading culture that enhances and compliments the education system. Books that capture the imagination of students, reconfirm their facts and open newer doors of intellect are carefully chosen and made available to the students. We have some avid readers here who have even become a part of the BookClub, that&apos;s an offshoot of healthy reading.
             </p>
 
             <p className="font-semibold text-zinc-900">
               We have four libraries in school:
             </p>
 
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>Junior School Library - Sector 47 and Sector 45</li>
-              <li>Middle School library</li>
-              <li>Senior School Library</li>
-            </ul>
+            <BulletList
+              items={[
+                "Junior School Library - Sector 47 and Sector 45",
+                "Middle School library",
+                "Senior School Library",
+              ]}
+            />
 
             <p>
               Books on varied subjects are available here.

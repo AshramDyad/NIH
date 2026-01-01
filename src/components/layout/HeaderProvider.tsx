@@ -301,6 +301,13 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/infrastructure/school-library': principalMessageHeader,
   '/infrastructure/art-music-department': principalMessageHeader,
   '/infrastructure/laboratories/science-labs': principalMessageHeader,
+  '/infrastructure/laboratories/psychology-lab': principalMessageHeader,
+  '/infrastructure/laboratories/fashion-technology-lab': principalMessageHeader,
+  '/infrastructure/laboratories/language-lab': principalMessageHeader,
+  '/infrastructure/laboratories/it-lab': principalMessageHeader,
+  '/infrastructure/laboratories/math-lab': principalMessageHeader,
+  '/infrastructure/laboratories/fine-art-lab': principalMessageHeader,
+  '/infrastructure/laboratories/discovery-lab': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,

@@ -1,3 +1,5 @@
+import BulletList from '@/components/shared/BulletList';
+
 export default function SmartClassContent() {
   return (
     <section className="sm:py-16 py-12">
@@ -19,20 +21,13 @@ export default function SmartClassContent() {
             <p>
               <strong>Smart Classes add to the quality of teaching in the following ways :-</strong>
             </p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 mt-1.5 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                <p>These classes help in bringing abstract and difficult curriculum concepts to life.</p>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 mt-1.5 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                <p>Enable multi-sensory learning in classrooms</p>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="flex-shrink-0 mt-1.5 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                <p>Enable instant formative assessment of learning outcome in class</p>
-              </li>
-            </ul>
+            <BulletList
+              items={[
+                "These classes help in bringing abstract and difficult curriculum concepts to life.",
+                "Enable multi-sensory learning in classrooms",
+                "Enable instant formative assessment of learning outcome in class",
+              ]}
+            />
             <p>Over all they make learning fun and improve academic performance.</p>
           </div>
         </article>
