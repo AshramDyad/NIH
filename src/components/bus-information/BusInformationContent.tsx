@@ -9,31 +9,31 @@ export function BusInformationContent() {
   const busRoutes = [
     {
       section: "Infant Wing, Sec-40",
-      routes: "I1 to I15"
+      routes: "I1 to I15",
     },
     {
       section: "Primary Wing, Sec-47",
-      routes: "J1 to J35"
+      routes: "J1 to J35",
     },
     {
       section: "Senior",
-      routes: "S1 to S70"
-    }
+      routes: "S1 to S70",
+    },
   ];
 
   const transportDocuments = [
     {
       name: "Sec 40 Bus Routes",
-      pdf: "NEW-INFANT.pdf"
+      pdf: "NEW-INFANT.pdf",
     },
     {
       name: "Sec 45 Bus Routes",
-      pdf: "SUMMER-TIME-45.pdf"
+      pdf: "SUMMER-TIME-45.pdf",
     },
     {
       name: "Sec 47 Bus Routes",
-      pdf: "SUMMER-TIME-47.pdf"
-    }
+      pdf: "SUMMER-TIME-47.pdf",
+    },
   ];
 
   return (
@@ -52,11 +52,11 @@ export function BusInformationContent() {
             {mainContent.map((paragraph, index) => (
               <li
                 key={index}
-                className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none"
+                className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none w-full overflow-hidden"
               >
-                <div className="flex items-start gap-4">
-                  <div className="mt-3 w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                  <p className="text-lg text-zinc-600 leading-relaxed flex-1">
+                <div className="flex items-start gap-4 w-full min-w-0">
+                  <div className="mt-3 w-2 h-2 flex-shrink-0 rounded-full bg-primary" />
+                  <p className="text-lg text-zinc-600 leading-relaxed break-words flex-1 min-w-0">
                     {paragraph}
                   </p>
                 </div>
@@ -73,15 +73,15 @@ export function BusInformationContent() {
               {busRoutes.map((route, index) => (
                 <li
                   key={index}
-                  className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none"
+                  className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none w-full overflow-hidden"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="mt-3 w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-lg font-bold text-zinc-900 mb-1">
+                  <div className="flex items-start gap-4 w-full min-w-0">
+                    <div className="mt-3 w-2 h-2 flex-shrink-0 rounded-full bg-primary" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-lg font-bold text-zinc-900 mb-1 break-words">
                         {route.section}:
                       </p>
-                      <p className="text-lg text-zinc-600 leading-relaxed">
+                      <p className="text-lg text-zinc-600 leading-relaxed break-words">
                         {route.routes}
                       </p>
                     </div>
@@ -110,7 +110,10 @@ export function BusInformationContent() {
                 </thead>
                 <tbody>
                   {transportDocuments.map((doc, index) => (
-                    <tr key={index} className="hover:bg-zinc-50 transition-colors">
+                    <tr
+                      key={index}
+                      className="hover:bg-zinc-50 transition-colors"
+                    >
                       <td className="py-3 px-4 text-lg text-zinc-700 border-b border-zinc-200">
                         {doc.name}
                       </td>
