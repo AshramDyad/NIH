@@ -1,3 +1,5 @@
+import React from "react";
+
 interface ClassRepresentative {
   class: string;
   representatives: string[];
@@ -47,7 +49,7 @@ export default function ClassRepresentativesContent() {
                 </thead>
                 <tbody>
                   {classRepresentatives.map((item) => (
-                    <>
+                    <React.Fragment key={item.class}>
                       {item.representatives.map((representative, repIndex) => (
                         <tr
                           key={`${item.class}-${repIndex}`}
@@ -66,7 +68,7 @@ export default function ClassRepresentativesContent() {
                           </td>
                         </tr>
                       ))}
-                    </>
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>
