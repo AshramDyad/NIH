@@ -15,7 +15,7 @@ const FooterContext = createContext<FooterConfig | null>(null);
 const aboutSectionFooter: FooterConfig = {
     quickLinks: {
         links: [
-            { href: '#', label: 'About DSP' },
+            { href: '/about-dps/about-the-school', label: 'About DPS' },
             { href: '#', label: 'Photo Gallery' },
             { href: '#', label: 'Alumni' },
             { href: '#', label: 'News' },
@@ -51,10 +51,11 @@ const aboutSectionFooter: FooterConfig = {
  */
 const pageFooterConfigs: Record<string, FooterConfig> = {
     // Reuse aboutSectionFooter for multiple routes
-    '/about/principal-message': aboutSectionFooter,
-    '/about/about-the-school': aboutSectionFooter,
-    '/about/school-profile': aboutSectionFooter,
-    '/about/dps-society': aboutSectionFooter,
+    '/about-dps/principal-message': aboutSectionFooter,
+    '/about-dps/about-the-school': aboutSectionFooter,
+    '/about-dps/school-profile': aboutSectionFooter,
+    '/about-dps/dps-family/dps-society': aboutSectionFooter,
+    '/about-dps/dps-family/managing-committee': aboutSectionFooter,
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 

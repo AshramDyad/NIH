@@ -10,15 +10,15 @@ export const aboutDPSConfig: SidebarConfig = {
             type: 'links',
             title: 'About DPS',
             items: [
-                { name: 'About The School', href: '/about/about-the-school', icon: 'Info' },
-                { name: 'School Profile', href: '/about/school-profile', icon: 'Activity' },
+                { name: 'About The School', href: '/about-dps/about-the-school', icon: 'Info' },
+                { name: 'School Profile', href: '/about-dps/school-profile', icon: 'Activity' },
                 {
                     name: 'DPS Family',
                     href: '#',
                     icon: 'Users',
                     children: [
-                        { name: 'DPS Society', href: '/about/dps-society' },
-                        { name: 'Managing Committee', href: '/about/managing-committee' }
+                        { name: 'DPS Society', href: '/about-dps/dps-family/dps-society' },
+                        { name: 'Managing Committee', href: '/about-dps/dps-family/managing-committee' }
                     ]
                 },
                 { name: 'Shiksha Kendra - A School For Non-formal Education', href: '/', icon: 'Newspaper' },
