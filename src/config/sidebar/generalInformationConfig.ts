@@ -24,21 +24,21 @@ export const generalInformationConfig: SidebarConfig = {
             items: [
                 {
                     name: 'Upcoming Events',
-                    href: '#',
+                    href: 'events',
                     icon: 'Calendar',
                     bgColor: 'bg-blue-50',
                     iconColor: 'text-blue-600',
                 },
                 {
                     name: 'School Video',
-                    href: '#',
+                    href: 'videos',
                     icon: 'Video',
                     bgColor: 'bg-teal-50',
                     iconColor: 'text-teal-600',
                 },
                 {
                     name: 'Press Release',
-                    href: '#',
+                    href: 'press-releases',
                     icon: 'Newspaper',
                     bgColor: 'bg-emerald-50',
                     iconColor: 'text-emerald-600',

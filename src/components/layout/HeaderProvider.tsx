@@ -293,7 +293,7 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/general-information/withdrawls': principalMessageHeader,
   '/general-information/bus-information': principalMessageHeader,
   '/general-information/school-bus-rules': principalMessageHeader,
-  '/general-information/elected-parents': principalMessageHeader,
+  '/general-information/elected-parents-representatives': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,

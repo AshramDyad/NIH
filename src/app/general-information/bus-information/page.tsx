@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { BusInformationContent } from "@/components/bus-information";
+import BusInformationContent from "@/components/bus-information/BusInformationContent";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { generalInformationConfig } from "@/config/sidebar/generalInformationConfig";

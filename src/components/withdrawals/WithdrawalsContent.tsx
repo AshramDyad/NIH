@@ -1,4 +1,4 @@
-export function WithdrawalsContent() {
+export default function WithdrawalsContent() {
   const withdrawalPoints = [
     "One year calendar month's notice in writing or a month's fees in lieu of such notice must be given before a student can be withdrawn.",
     "Those who leave the school in May must in all cases pay the fees for the month of June.",

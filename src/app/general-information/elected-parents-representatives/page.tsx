@@ -3,7 +3,7 @@ import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { generalInformationConfig } from "@/config/sidebar/generalInformationConfig";
 import Breadcrumb from "@/components/shared/Breadcrumb";
-import { ElectedParentsRepresentativesContent } from "@/components/elected-parents-representatives";
+import ElectedParentsRepresentativesContent from "@/components/elected-parents-representatives/ElectedParentsRepresentativesContent";
 
 export const metadata: Metadata = {
   title: "Elected Parents Representatives | NIH Health - National Institute of Holistic Health",

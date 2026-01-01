@@ -1,4 +1,4 @@
-export function RecommendationsContent() {
+export default function RecommendationsContent() {
   const recommendations = [
     "Check your ward's almanac daily. Do sign the remarks if any, and take necessary action.",
     "Ensure that your ward carries books/exercise books according to the Time Table for that day. No extra books will be allowed.",

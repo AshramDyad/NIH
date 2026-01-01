@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { WithdrawalsContent } from "@/components/withdrawals";
+import WithdrawalsContent from "@/components/withdrawals/WithdrawalsContent";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { generalInformationConfig } from "@/config/sidebar/generalInformationConfig";

@@ -3,7 +3,7 @@ import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { generalInformationConfig } from "@/config/sidebar/generalInformationConfig";
 import Breadcrumb from "@/components/shared/Breadcrumb";
-import { RecommendationsContent } from "@/components/recommendations";
+import RecommendationsContent from "@/components/recommendations/RecommendationsContent";
 
 export const metadata: Metadata = {
   title:
