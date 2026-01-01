@@ -77,7 +77,7 @@ const HolisticImpact = () => {
                                 </div>
                             </div>
                             <div className="mt-8 flex items-center justify-between pt-6 border-t border-gray-100">
-                                <Link href="/about/principal-message" className="text-gray-900 font-sans font-bold text-sm hover:text-primary transition-colors flex items-center gap-1 group/link">
+                                <Link href="/about-dps/principal-message" className="text-gray-900 font-sans font-bold text-sm hover:text-primary transition-colors flex items-center gap-1 group/link">
                                     Read Full Story <span className="transform group-hover/link:translate-x-1 transition-transform">→</span>
                                 </Link>
                                 <button

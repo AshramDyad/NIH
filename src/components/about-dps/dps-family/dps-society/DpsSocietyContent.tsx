@@ -17,7 +17,7 @@ export default function DpsSocietyContent() {
 
                 <div className="mt-8 space-y-8">
                     {/* DPS Society Introduction */}
-                    <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-8 space-y-4">
+                    <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 space-y-4">
                         <p className="text-lg text-zinc-600 leading-relaxed">
                             <strong className="text-zinc-900">The DPS Society (DPSS)</strong> is a non-profit, non-proprietary educational body widely recognized for its selfless and unstinting committed to excellence in education.
                         </p>
@@ -37,7 +37,7 @@ export default function DpsSocietyContent() {
 
                     {/* Mr. B. K. Chaturvedi Profile */}
                     <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-                        <div className="flex flex-col md:flex-row p-4 md:p-8 gap-6">
+                        <div className="flex flex-col md:flex-row p-4 md:p-6 gap-6">
                             <div className="w-full md:w-64 flex-shrink-0">
                                 <Image
                                     src="/images/bk-chaturvedi.jpg"
@@ -83,7 +83,7 @@ export default function DpsSocietyContent() {
 
                     {/* Mr. V. K. Shunglu Profile */}
                     <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-                        <div className="flex flex-col md:flex-row p-4 md:p-8 gap-6">
+                        <div className="flex flex-col md:flex-row p-4 md:p-6 gap-6">
                             <div className="w-full md:w-64 flex-shrink-0">
                                 <Image
                                     src="/images/vk-shunglu.jpg"
@@ -127,7 +127,7 @@ export default function DpsSocietyContent() {
                     </div>
 
                     {/* School Philosophy Section */}
-                    <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-8">
+                    <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6">
                         <h3 className="text-2xl md:text-3xl font-black text-zinc-900 mb-6">
                             School Philosophy
                         </h3>
