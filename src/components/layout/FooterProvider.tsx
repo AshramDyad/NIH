@@ -62,6 +62,17 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 
+    // General Information page gets custom footer
+    '/general-information': aboutSectionFooter,
+    '/general-information/school-rules': aboutSectionFooter,
+    '/general-information/recommendations': aboutSectionFooter,
+    '/general-information/withdrawls': aboutSectionFooter,
+    '/general-information/bus-information': aboutSectionFooter,
+    '/general-information/school-bus-rules': aboutSectionFooter,
+    '/general-information/elected-parents': aboutSectionFooter,
+    '/general-information/school-video': aboutSectionFooter,
+    '/general-information/press-release': aboutSectionFooter,
+
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,
     // '/courses': coursesSectionFooter,

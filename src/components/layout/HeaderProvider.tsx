@@ -78,10 +78,10 @@ const principalMessageHeader: HeaderConfig = {
       children: [
         { name: "School Rules", href: "/general-information/school-rules" },
         { name: "Recommendations", href: "/general-information/recommendations" },
-        { name: "Withdrawls", href: "/general-information/withdrawls" },
+        { name: "Withdrawls", href: "/general-information/withdrawals" },
         { name: "Bus Information", href: "/general-information/bus-information" },
         { name: "School Bus Rules", href: "/general-information/school-bus-rules" },
-        { name: "Elected Parents Representatives", href: "/general-information/elected-parents" },
+        { name: "Elected Parents Representatives", href: "/general-information/elected-parents-representatives" },
       ]
     },
     {
@@ -285,6 +285,15 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/about-dps/shiksha-kendra': principalMessageHeader,
   '/about-dps/pravah': principalMessageHeader,
   '/about-dps/muskaan': principalMessageHeader,
+
+  // General Information page gets custom header
+  '/general-information': principalMessageHeader,
+  '/general-information/school-rules': principalMessageHeader,
+  '/general-information/recommendations': principalMessageHeader,
+  '/general-information/withdrawls': principalMessageHeader,
+  '/general-information/bus-information': principalMessageHeader,
+  '/general-information/school-bus-rules': principalMessageHeader,
+  '/general-information/elected-parents-representatives': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,

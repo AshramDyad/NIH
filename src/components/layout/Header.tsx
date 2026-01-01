@@ -199,7 +199,7 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
                   src="/logo.png"
@@ -249,9 +249,9 @@ const Header = () => {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[60]"
+                            className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-60"
                           >
-                            <div className="bg-white rounded-2xl p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] min-w-[240px] border border-secondary/10">
+                            <div className="bg-white rounded-2xl p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] min-w-60 border border-secondary/10">
                               <div className="flex flex-col gap-1">
                                 {btn.dropdownItems?.map((item) => (
                                   <div key={item.name}>
@@ -327,7 +327,7 @@ const Header = () => {
               animate="open"
               exit="closed"
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-full sm:max-w-[350px] bg-secondary/95 backdrop-blur-xl z-60 shadow-2xl overflow-hidden flex flex-col"
+              className="fixed right-0 top-0 bottom-0 w-full sm:max-w-87.5 bg-secondary/95 backdrop-blur-xl z-60 shadow-2xl overflow-hidden flex flex-col"
             >
               {/* Animated Background Element */}
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
