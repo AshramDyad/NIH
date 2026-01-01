@@ -78,10 +78,10 @@ const principalMessageHeader: HeaderConfig = {
       children: [
         { name: "School Rules", href: "/general-information/school-rules" },
         { name: "Recommendations", href: "/general-information/recommendations" },
-        { name: "Withdrawls", href: "/general-information/withdrawls" },
+        { name: "Withdrawls", href: "/general-information/withdrawals" },
         { name: "Bus Information", href: "/general-information/bus-information" },
         { name: "School Bus Rules", href: "/general-information/school-bus-rules" },
-        { name: "Elected Parents Representatives", href: "/general-information/elected-parents" },
+        { name: "Elected Parents Representatives", href: "/general-information/elected-parents-representatives" },
       ]
     },
     {

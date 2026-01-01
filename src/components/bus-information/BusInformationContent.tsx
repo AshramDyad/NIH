@@ -54,8 +54,8 @@ export default function BusInformationContent() {
               className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none w-full overflow-hidden"
             >
               <div className="flex items-start gap-4 w-full min-w-0">
-                <div className="mt-3 w-2 h-2 flex-shrink-0 rounded-full bg-primary" />
-                <p className="text-lg text-zinc-600 leading-relaxed break-words flex-1 min-w-0">
+                <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
+                <p className="text-lg text-zinc-600 leading-relaxed wrap-break-word flex-1 min-w-0">
                   {paragraph}
                 </p>
               </div>
@@ -75,12 +75,12 @@ export default function BusInformationContent() {
                 className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 list-none w-full overflow-hidden"
               >
                 <div className="flex items-start gap-4 w-full min-w-0">
-                  <div className="mt-3 w-2 h-2 flex-shrink-0 rounded-full bg-primary" />
+                  <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-lg font-bold text-zinc-900 mb-1 break-words">
+                    <p className="text-lg font-bold text-zinc-900 mb-1 wrap-break-word">
                       {route.section}:
                     </p>
-                    <p className="text-lg text-zinc-600 leading-relaxed break-words">
+                    <p className="text-lg text-zinc-600 leading-relaxed wrap-break-word">
                       {route.routes}
                     </p>
                   </div>
