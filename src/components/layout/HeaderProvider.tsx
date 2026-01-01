@@ -68,7 +68,7 @@ const principalMessageHeader: HeaderConfig = {
             { name: "Board of Management", href: "/about-dps/dps-family/managing-committee" },
           ]
         },
-        { name: "Shiksha Kendra - A School For Nonformal Education", href: "/about/shiksha-kendra" },
+        { name: "Shiksha Kendra - A School For Nonformal Education", href: "/about-dps/shiksha-kendra" },
       ]
     },
     {
@@ -282,6 +282,7 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/about-dps/school-profile': principalMessageHeader,
   '/about-dps/dps-family/dps-society': principalMessageHeader,
   '/about-dps/dps-family/managing-committee': principalMessageHeader,
+  '/about-dps/shiksha-kendra': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
