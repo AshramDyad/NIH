@@ -58,14 +58,14 @@ const principalMessageHeader: HeaderConfig = {
       name: "ABOUT DPS",
       hasChildren: true,
       children: [
-        { name: "About The School", href: "/about/school" },
-        { name: "School Profile", href: "/about/profile" },
+        { name: "About The School", href: "/about/about-the-school" },
+        { name: "School Profile", href: "/about/school-profile" },
         {
           name: "DPS Family",
           hasChildren: true,
           children: [
-            { name: "DPS Society", href: "/about/dps-family/dps-society" },
-            { name: "Board of Management", href: "/about/dps-family/board-of-management" },
+            { name: "DPS Society", href: "/about/dps-society" },
+            { name: "Board of Management", href: "/about/managing-committee" },
           ]
         },
         { name: "Shiksha Kendra - A School For Nonformal Education", href: "/about/shiksha-kendra" },
@@ -278,6 +278,10 @@ const principalMessageHeader: HeaderConfig = {
 const pageHeaderConfigs: Record<string, HeaderConfig> = {
   // Principal Message page gets custom header
   '/about/principal-message': principalMessageHeader,
+  '/about/about-the-school': principalMessageHeader,
+  '/about/school-profile': principalMessageHeader,
+  '/about/dps-society': principalMessageHeader,
+  '/about/managing-committee': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,

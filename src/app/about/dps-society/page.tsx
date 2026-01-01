@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function DpsSocietyPage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About NIH', href: '/about' },
-        { label: 'NIH Members', href: '/about' },
+        { label: 'About DPS', href: '/about/principal-message' },
+        { label: 'DPS Family', href: '#' },
         { label: 'DPS Society', href: undefined },
     ];
 

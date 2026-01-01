@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutTheSchoolPage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About NIH', href: '/about' },
+        { label: 'About DPS', href: '/about/principal-message' },
         { label: 'About The School', href: undefined },
     ];
 

@@ -3,18 +3,19 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import SchoolProfileContent from '@/components/about/school-profile/SchoolProfileContent';
+import ManagingCommitteeContent from '@/components/about/managing-committee/ManagingCommitteeContent';
 
 export const metadata: Metadata = {
-    title: 'NIH Profile | NIH Health - National Institute of Holistic Health',
-    description: 'View the complete NIH School Profile document. Access comprehensive information about the National Institute of Holistic Health.',
+    title: 'Managing Committee | NIH Health - National Institute of Holistic Health',
+    description: 'Meet the Board of Management members at DPS Gurgaon. View our managing committee including Chairman, Vice Chairperson, members, and representatives.',
 };
 
-export default function SchoolProfilePage() {
+export default function ManagingCommitteePage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
         { label: 'About DPS', href: '/about/principal-message' },
-        { label: 'NIH Profile', href: undefined },
+        { label: 'DPS Family', href: '#' },
+        { label: 'Managing Committee', href: undefined },
     ];
 
     return (
@@ -25,8 +26,9 @@ export default function SchoolProfilePage() {
 
             <Breadcrumb items={breadcrumbItems} />
 
-            {/* Main Content */}
-            <SchoolProfileContent />
+            <main>
+                <ManagingCommitteeContent />
+            </main>
         </>
     );
 }

@@ -15,7 +15,7 @@ const FooterContext = createContext<FooterConfig | null>(null);
 const aboutSectionFooter: FooterConfig = {
     quickLinks: {
         links: [
-            { href: '#', label: 'About DSP' },
+            { href: '/about/about-the-school', label: 'About DPS' },
             { href: '#', label: 'Photo Gallery' },
             { href: '#', label: 'Alumni' },
             { href: '#', label: 'News' },
