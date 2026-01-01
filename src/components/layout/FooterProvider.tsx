@@ -59,6 +59,12 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/about-dps/shiksha-kendra': aboutSectionFooter,
     '/about-dps/pravah': aboutSectionFooter,
     '/about-dps/muskaan': aboutSectionFooter,
+
+    '/infrastructure/school-building': aboutSectionFooter,
+    '/infrastructure/smart-class': aboutSectionFooter,
+    '/infrastructure/school-library': aboutSectionFooter,
+    '/infrastructure/art-music-department': aboutSectionFooter,
+    '/infrastructure/laboratories/science-labs': aboutSectionFooter,
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 

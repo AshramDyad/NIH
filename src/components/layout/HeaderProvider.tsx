@@ -286,6 +286,11 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/about-dps/pravah': principalMessageHeader,
   '/about-dps/muskaan': principalMessageHeader,
 
+  '/infrastructure/school-building': principalMessageHeader,
+  '/infrastructure/smart-class': principalMessageHeader,
+  '/infrastructure/school-library': principalMessageHeader,
+  '/infrastructure/art-music-department': principalMessageHeader,
+  '/infrastructure/laboratories/science-labs': principalMessageHeader,
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
   // '/about/secretary': aboutSectionHeader,
