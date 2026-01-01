@@ -1,0 +1,1 @@
+export { BusInformationContent } from './BusInformationContent';

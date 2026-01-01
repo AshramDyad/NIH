@@ -13,7 +13,7 @@ export const generalInformationConfig: SidebarConfig = {
                 { name: 'School Rules', href: '/general-information/school-rules', icon: '' },
                 { name: 'Recommendations', href: '/general-information/recommendations', icon: '' },
                 { name: 'Withdrawals', href: '/general-information/withdrawals', icon: '' },
-                { name: 'Bus Information', href: '#', icon: '' },
+                { name: 'Bus Information', href: '/general-information/bus-information', icon: '' },
                 { name: 'School Bus Rules', href: '#', icon: '' },
                 { name: 'Elected Parents Representatives', href: '#', icon: '' },
             ],
