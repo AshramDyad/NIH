@@ -17,6 +17,7 @@ import {
     ChevronDown,
     User,
     Target,
+    Video,
 } from 'lucide-react';
 import type { SidebarSection } from '@/types/sidebar';
 
@@ -38,6 +39,7 @@ const iconMap: Record<string, React.ElementType> = {
     Users,
     User,
     Target,
+    Video,
 };
 
 export default function SidebarContent({ sections }: SidebarContentProps) {

@@ -60,11 +60,24 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/about-dps/pravah': aboutSectionFooter,
     '/about-dps/muskaan': aboutSectionFooter,
 
+    // General Information page gets custom footer
+    '/general-information': aboutSectionFooter,
+    '/general-information/school-rules': aboutSectionFooter,
+    '/general-information/recommendations': aboutSectionFooter,
+    '/general-information/withdrawls': aboutSectionFooter,
+    '/general-information/bus-information': aboutSectionFooter,
+    '/general-information/school-bus-rules': aboutSectionFooter,
+    '/general-information/elected-parents': aboutSectionFooter,
+    '/general-information/school-video': aboutSectionFooter,
+    '/general-information/press-release': aboutSectionFooter,
+    
+    // Infrastructure page gets custom footer
     '/infrastructure/school-building': aboutSectionFooter,
     '/infrastructure/smart-class': aboutSectionFooter,
     '/infrastructure/school-library': aboutSectionFooter,
     '/infrastructure/art-music-department': aboutSectionFooter,
     '/infrastructure/laboratories/science-labs': aboutSectionFooter,
+
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 
