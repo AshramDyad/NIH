@@ -73,6 +73,9 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/general-information/school-video': aboutSectionFooter,
     '/general-information/press-release': aboutSectionFooter,
 
+    '/academics': aboutSectionFooter,
+    '/academics/leadership-team': aboutSectionFooter,
+
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,
     // '/courses': coursesSectionFooter,
