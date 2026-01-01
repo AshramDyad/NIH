@@ -4,6 +4,7 @@ import SidebarContent from "@/components/shared/SidebarContent";
 import { generalInformationConfig } from "@/config/sidebar/generalInformationConfig";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import Link from "next/link";
+import { FaClipboardList, FaLightbulb, FaFileExport, FaBus, FaShieldAlt, FaUserFriends } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title:
@@ -38,31 +39,13 @@ export default function GeneralInformationPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* School Rules Card */}
             <Link href="/general-information/school-rules" className="group">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-primary/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-                    <svg
-                      className="w-8 h-8 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2v12a2 2 0 01-2 2h-2"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 21l14-14"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaClipboardList className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     School Rules
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
@@ -75,31 +58,13 @@ export default function GeneralInformationPage() {
 
             {/* Recommendations Card */}
             <Link href="/general-information/recommendations" className="group">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-secondary/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
-                    <svg
-                      className="w-8 h-8 text-secondary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944c0 5.251-2.836 9.258-6.811 10.558C5.421 20.601 2.878 18.918 2.649 15.878c-.085-1.518.492-3.02 1.476-3.824.986.987-1.554 2.758-3.352 4.613-4.491l-.506-.506"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 4.477 2 10 4.477 10-10S17.523 2 12 2z"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaLightbulb className="w-8 h-8 text-secondary" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     Recommendations
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
@@ -112,37 +77,13 @@ export default function GeneralInformationPage() {
 
             {/* Withdrawals Card */}
             <Link href="/general-information/withdrawals" className="group">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-rose/10 rounded-full blur-2xl group-hover:bg-rose/20 transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-rose/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-rose/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rose/20 transition-all duration-300">
-                    <svg
-                      className="w-8 h-8 text-rose-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 16l4-4m0 0l-4 4m4-4v12"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11.05 3.25a7.5 7.5 0 11-6.42 1.48 7.5 7.5 0 11-7.06 2.47"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 21v-7"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaFileExport className="w-8 h-8 text-pink-600" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     Withdrawals
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
@@ -155,25 +96,13 @@ export default function GeneralInformationPage() {
 
             {/* Bus Information Card */}
             <Link href="/general-information/bus-information" className="group">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-emerald/10 rounded-full blur-2xl group-hover:bg-emerald/20 transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-emerald/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-emerald/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald/20 transition-all duration-300">
-                    <svg
-                      className="w-8 h-8 text-emerald-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7h12m0 0l-4-4m4 4l-4-4m0 6h.01M12 21l-8.5-8.5M18.5 12.5L12 21l-6.5-6.5"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaBus className="w-8 h-8 text-teal-600" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     Bus Information
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
@@ -185,31 +114,13 @@ export default function GeneralInformationPage() {
 
             {/* School Bus Rules Card */}
             <Link href="/general-information/school-bus-rules" className="group">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-violet/10 rounded-full blur-2xl group-hover:bg-violet/20 transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-violet/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet/20 transition-all duration-300">
-                    <svg
-                      className="w-8 h-8 text-violet-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2l-4-4m-4 4l2 2m-6-4l-2 2"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 2L2 7l10 5 10-5-1m0 10l-2-2m-8.5-8.5L12 2l8.5 8.5"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaShieldAlt className="w-8 h-8 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     School Bus Rules
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
@@ -221,44 +132,23 @@ export default function GeneralInformationPage() {
             </Link>
 
             {/* Parents Representatives Card */}
-            <div className="group opacity-60 cursor-not-allowed">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-amber/10 rounded-full blur-2xl" />
+            <Link href="/general-information/elected-parents-representatives" className="group">
+              <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-amber/10 rounded-full blur-2xl transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-amber/10 rounded-2xl flex items-center justify-center mb-6">
-                    <svg
-                      className="w-8 h-8 text-amber-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 20h5v-2a3 3 0 00-5.356-1.857 17 17V4H4v12a17 17 0 0017 17h.004"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 10a2 2 0 114 4m-4-8a2 2 0 114 4"
-                      />
-                    </svg>
+                  <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+                    <FaUserFriends className="w-8 h-8 text-yellow-600" />
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 transition-colors duration-300">
                     Elected Parents Representatives
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
                     Information about parent-teacher representatives and contact
                     details.
                   </p>
-                  <div className="mt-4 inline-flex items-center px-3 py-1 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-                    Coming Soon
-                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

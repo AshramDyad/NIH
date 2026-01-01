@@ -15,7 +15,7 @@ export const generalInformationConfig: SidebarConfig = {
                 { name: 'Withdrawals', href: '/general-information/withdrawals', icon: '' },
                 { name: 'Bus Information', href: '/general-information/bus-information', icon: '' },
                 { name: 'School Bus Rules', href: '/general-information/school-bus-rules', icon: '' },
-                { name: 'Elected Parents Representatives', href: '#', icon: '' },
+                { name: 'Elected Parents Representatives', href: '/general-information/elected-parents-representatives', icon: '' },
             ],
         },
         {
