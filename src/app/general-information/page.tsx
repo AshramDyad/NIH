@@ -22,21 +22,20 @@ export default function GeneralInformationPage() {
 
       <Breadcrumb />
 
-      {/* Hero Section */}
-      <section className="relative sm:py-16 py-12">
-        <div className="container mx-auto px-4 relative z-10">
+
+
+      {/* Info Cards Grid */}
+      <section className="sm:py-16 py-12 bg-white">
+        <div className="container mx-auto px-4">
+
+          {/* Hero Section */}
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
               General <span className="text-primary italic">Information</span>
             </h1>
           </div>
-        </div>
-      </section>
 
-      {/* Info Cards Grid */}
-      <section className="sm:py-16 py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mt-8">
             {/* School Rules Card */}
             <Link href="/general-information/school-rules" className="group">
               <div className="relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">

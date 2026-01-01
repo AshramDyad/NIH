@@ -13,32 +13,30 @@ export function RecommendationsContent() {
   return (
     <section className="relative sm:py-16 py-12 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="container mx-auto">
-          {/* Header Section */}
-          <div className="space-y-4 mb-8 md:mb-12 text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              Recommendations for <span className="text-secondary italic">Parents</span>
-            </h1>
-          </div>
+        {/* Header Section */}
+        <div className="text-center">
+          <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
+            Recommendations for <span className="text-secondary italic">Parents</span>
+          </h1>
+        </div>
 
-          {/* Recommendations List */}
-          <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
-            <ul className="space-y-5 md:space-y-6">
-              {recommendations.map((recommendation, index) => (
-                <li
-                  key={index}
-                  className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
-                    <p className="text-lg text-zinc-600 leading-relaxed flex-1">
-                      {recommendation}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Recommendations List */}
+        <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto mt-8">
+          <ul className="space-y-5 md:space-y-6">
+            {recommendations.map((recommendation, index) => (
+              <li
+                key={index}
+                className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
+                  <p className="text-lg text-zinc-600 leading-relaxed flex-1">
+                    {recommendation}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

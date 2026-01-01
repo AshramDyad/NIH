@@ -32,59 +32,57 @@ export default function ElectedParentsRepresentativesContent() {
   return (
     <section className="relative sm:py-16 py-12 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="container mx-auto">
-          {/* Header Section */}
-          <div className="space-y-4 mb-8 md:mb-12 text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              Elected <span className="text-secondary italic">Parent</span>
-            </h1>
-            <p className="text-xl md:text-2xl font-semibold text-zinc-600">
-              Representatives 2025-2026
-            </p>
-          </div>
+        {/* Header Section */}
+        <div className="text-center sm:space-y-2">
+          <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
+            Elected <span className="text-secondary italic">Parent</span>
+          </h1>
+          <p className="text-xl md:text-2xl font-semibold text-zinc-600">
+            Representatives 2025-2026
+          </p>
+        </div>
 
-          {/* Parent Representatives Table */}
-          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-primary/5 border-b-2 border-primary/20">
-                    <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
-                      Class
-                    </th>
-                    <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
-                      Name of Parent Rep
-                    </th>
-                    <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
-                      Email Id
-                    </th>
+        {/* Parent Representatives Table */}
+        <div className="max-w-6xl mx-auto bg-white mt-8 rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-primary/5 border-b-2 border-primary/20">
+                  <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
+                    Class
+                  </th>
+                  <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
+                    Name of Parent Rep
+                  </th>
+                  <th className="px-6 py-4 text-left text-lg font-bold text-zinc-900">
+                    Email Id
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-100">
+                {parentRepresentatives.map((representative, index) => (
+                  <tr
+                    key={index}
+                    className="group hover:bg-primary/5 transition-colors duration-200"
+                  >
+                    <td className="px-6 py-4 text-lg font-semibold text-zinc-700 whitespace-nowrap">
+                      {representative.className}
+                    </td>
+                    <td className="px-6 py-4 text-lg text-zinc-600 whitespace-nowrap">
+                      {representative.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <a
+                        href={`mailto:${representative.email}`}
+                        className="text-lg text-primary hover:text-primary/80 transition-colors duration-200 font-medium"
+                      >
+                        {representative.email}
+                      </a>
+                    </td>
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-zinc-100">
-                  {parentRepresentatives.map((representative, index) => (
-                    <tr
-                      key={index}
-                      className="group hover:bg-primary/5 transition-colors duration-200"
-                    >
-                      <td className="px-6 py-4 text-lg font-semibold text-zinc-700 whitespace-nowrap">
-                        {representative.className}
-                      </td>
-                      <td className="px-6 py-4 text-lg text-zinc-600 whitespace-nowrap">
-                        {representative.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <a
-                          href={`mailto:${representative.email}`}
-                          className="text-lg text-primary hover:text-primary/80 transition-colors duration-200 font-medium"
-                        >
-                          {representative.email}
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

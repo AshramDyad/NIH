@@ -22,16 +22,15 @@ export default function SchoolBusRulesContent() {
   return (
     <section className="relative sm:py-16 py-12 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="container mx-auto">
           {/* Header Section */}
-          <div className="space-y-4 mb-8 md:mb-12 text-center">
+          <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
               School Bus <span className="text-primary italic">Rules</span>
             </h1>
           </div>
 
           {/* Bus Rules List */}
-          <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto mt-8">
             <ul className="space-y-5 md:space-y-6">
               {busRules.map((rule, index) => (
                 <li
@@ -48,7 +47,6 @@ export default function SchoolBusRulesContent() {
               ))}
             </ul>
           </div>
-        </div>
       </div>
     </section>
   );

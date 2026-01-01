@@ -16,60 +16,58 @@ export function WithdrawalsContent() {
   return (
     <section className="relative sm:py-16 py-12 bg-zinc-50 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="container mx-auto">
-          {/* Header Section */}
-          <div className="space-y-4 mb-8 md:mb-12 text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              <span className="text-primary italic">Withdrawals</span> Information
-            </h1>
-          </div>
+        {/* Header Section */}
+        <div className="text-center">
+          <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
+            <span className="text-primary italic">Withdrawals</span> Information
+          </h1>
+        </div>
 
-          {/* Withdrawals Content */}
-          <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
-            <ul className="space-y-5 md:space-y-6">
-              {withdrawalPoints.map((point, index) => (
-                <li
-                  key={index}
-                  className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
-                    <p className="text-lg text-zinc-600 leading-relaxed flex-1">
-                      {point}
-                    </p>
-                  </div>
-                </li>
-              ))}
-
-              {/* Grounds for Dismissal */}
-              <li className="group relative bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <div className="space-y-4">
-                  <p className="text-lg font-bold text-zinc-900 mb-2">
-                    Students can be asked to leave the school on the following grounds:
-                  </p>
-                  <ol className="space-y-4 ml-6 list-decimal">
-                    {dismissalGrounds.map((ground, index) => (
-                      <li key={index}>
-                        <p className="text-lg text-zinc-600 leading-relaxed">
-                          {ground}
-                        </p>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </li>
-
-              {/* Refund Policy */}
-              <li className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+        {/* Withdrawals Content */}
+        <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto mt-8">
+          <ul className="space-y-5 md:space-y-6">
+            {withdrawalPoints.map((point, index) => (
+              <li
+                key={index}
+                className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300"
+              >
                 <div className="flex items-start gap-4">
                   <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
                   <p className="text-lg text-zinc-600 leading-relaxed flex-1">
-                    A student who is admitted to the school and all admission formalities are complete is only refunded the caution fee if he/she wants to withdraw from the school.
+                    {point}
                   </p>
                 </div>
               </li>
-            </ul>
-          </div>
+            ))}
+
+            {/* Grounds for Dismissal */}
+            <li className="group relative bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+              <div className="space-y-4">
+                <p className="text-lg font-bold text-zinc-900 mb-2">
+                  Students can be asked to leave the school on the following grounds:
+                </p>
+                <ol className="space-y-4 ml-6 list-decimal">
+                  {dismissalGrounds.map((ground, index) => (
+                    <li key={index}>
+                      <p className="text-lg text-zinc-600 leading-relaxed">
+                        {ground}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </li>
+
+            {/* Refund Policy */}
+            <li className="group relative bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="mt-3 w-2 h-2 rounded-full bg-primary" />
+                <p className="text-lg text-zinc-600 leading-relaxed flex-1">
+                  A student who is admitted to the school and all admission formalities are complete is only refunded the caution fee if he/she wants to withdraw from the school.
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
