@@ -1,4 +1,4 @@
-import PrincipalMessageContent from "@/components/about/PrincipalMessageContent";
+import PrincipalMessageContent from "@/components/about-dps/PrincipalMessageContent";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { aboutDPSConfig } from "@/config/sidebar/aboutDSPConfig";
@@ -11,13 +11,18 @@ export const metadata: Metadata = {
 };
 
 export default function PrincipalMessagePage() {
+    const breadcrumbItems = [
+        { label: 'Home', href: '/' },
+        { label: 'About DPS', href: '/about/principal-message' },
+        { label: 'Principal Message', href: undefined },
+    ];
     return (
         <>
             <FloatingSidebar>
                 <SidebarContent sections={aboutDPSConfig.sections} />
             </FloatingSidebar>
 
-            <Breadcrumb />
+            <Breadcrumb items={breadcrumbItems} />
 
             <PrincipalMessageContent />
         </>

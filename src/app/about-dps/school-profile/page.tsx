@@ -3,7 +3,7 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import SchoolProfileContent from '@/components/about/school-profile/SchoolProfileContent';
+import SchoolProfileContent from '@/components/about-dps/school-profile/SchoolProfileContent';
 
 export const metadata: Metadata = {
     title: 'NIH Profile | NIH Health - National Institute of Holistic Health',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SchoolProfilePage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About NIH', href: '/about' },
+        { label: 'About DPS', href: '/about-dps/principal-message' },
         { label: 'NIH Profile', href: undefined },
     ];
 

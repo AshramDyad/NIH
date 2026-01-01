@@ -3,7 +3,7 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import DpsSocietyContent from '@/components/about/dps-society/DpsSocietyContent';
+import DpsSocietyContent from '@/components/about-dps/dps-family/dps-society/DpsSocietyContent';
 
 export const metadata: Metadata = {
     title: 'DPS Society | NIH Health - National Institute of Holistic Health',
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function DpsSocietyPage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About NIH', href: '/about' },
-        { label: 'NIH Members', href: '/about' },
+        { label: 'About DPS', href: '/about-dps/principal-message' },
+        { label: 'DPS Family', href: '#' },
         { label: 'DPS Society', href: undefined },
     ];
 
