@@ -11,7 +11,7 @@ export const generalInformationConfig: SidebarConfig = {
             title: 'General Information',
             items: [
                 { name: 'School Rules', href: '/general-information/school-rules', icon: '' },
-                { name: 'Recommendations', href: '#', icon: '' },
+                { name: 'Recommendations', href: '/general-information/recommendations', icon: '' },
                 { name: 'Withdrawals', href: '#', icon: '' },
                 { name: 'Bus Information', href: '#', icon: '' },
                 { name: 'School Bus Rules', href: '#', icon: '' },

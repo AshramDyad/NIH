@@ -74,11 +74,11 @@ export default function GeneralInformationPage() {
             </Link>
 
             {/* Recommendations Card */}
-            <div className="group opacity-60 cursor-not-allowed">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-secondary/10 rounded-full blur-2xl" />
+            <Link href="/general-information/recommendations" className="group">
+              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-all duration-300">
                     <svg
                       className="w-8 h-8 text-secondary"
                       fill="none"
@@ -99,19 +99,16 @@ export default function GeneralInformationPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
                     Recommendations
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
                     Guidelines and best practices for students and parents to
                     follow.
                   </p>
-                  <div className="mt-4 inline-flex items-center px-3 py-1 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-                    Coming Soon
-                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Withdrawals Card */}
             <div className="group opacity-60 cursor-not-allowed">
