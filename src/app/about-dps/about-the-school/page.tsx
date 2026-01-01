@@ -3,7 +3,7 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import AboutTheSchoolContent from '@/components/about/about-the-school/AboutTheSchoolContent';
+import AboutTheSchoolContent from '@/components/about-dps/about-the-school/AboutTheSchoolContent';
 
 export const metadata: Metadata = {
     title: 'About the School | NIH Health - National Institute of Holistic Health',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function AboutTheSchoolPage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About DPS', href: '/about/principal-message' },
+        { label: 'About DPS', href: '/about-dps/principal-message' },
         { label: 'About The School', href: undefined },
     ];
 

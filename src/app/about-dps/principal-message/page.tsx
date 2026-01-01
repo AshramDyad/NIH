@@ -1,4 +1,4 @@
-import PrincipalMessageContent from "@/components/about/PrincipalMessageContent";
+import PrincipalMessageContent from "@/components/about-dps/PrincipalMessageContent";
 import FloatingSidebar from "@/components/shared/FloatingSidebar";
 import SidebarContent from "@/components/shared/SidebarContent";
 import { aboutDPSConfig } from "@/config/sidebar/aboutDSPConfig";

@@ -3,19 +3,19 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { aboutDPSConfig } from '@/config/sidebar/aboutDSPConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import DpsSocietyContent from '@/components/about/dps-society/DpsSocietyContent';
+import ManagingCommitteeContent from '@/components/about-dps/dps-family/managing-committee/ManagingCommitteeContent';
 
 export const metadata: Metadata = {
-    title: 'DPS Society | NIH Health - National Institute of Holistic Health',
-    description: 'Learn about the DPS Society (DPSS), a non-profit educational body committed to excellence in education. Meet our Chairman and Vice Chairman.',
+    title: 'Managing Committee | NIH Health - National Institute of Holistic Health',
+    description: 'Meet the Board of Management members at DPS Gurgaon. View our managing committee including Chairman, Vice Chairperson, members, and representatives.',
 };
 
-export default function DpsSocietyPage() {
+export default function ManagingCommitteePage() {
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'About DPS', href: '/about/principal-message' },
+        { label: 'About DPS', href: '/about-dps/principal-message' },
         { label: 'DPS Family', href: '#' },
-        { label: 'DPS Society', href: undefined },
+        { label: 'Managing Committee', href: undefined },
     ];
 
     return (
@@ -25,8 +25,10 @@ export default function DpsSocietyPage() {
             </FloatingSidebar>
 
             <Breadcrumb items={breadcrumbItems} />
-            {/* Main Content */}
-            <DpsSocietyContent />
+
+            <main>
+                <ManagingCommitteeContent />
+            </main>
         </>
     );
 }

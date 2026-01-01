@@ -27,7 +27,7 @@ export default function ManagingCommitteeContent() {
         <section className="sm:py-16 py-12" aria-label="Board of Management">
             <div className="container mx-auto px-4">
                 {/* Page Title */}
-                <div className="text-center mb-12">
+                <div className="text-center">
                     <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
                         Board of <span className="text-secondary italic">Management</span>
                     </h1>
@@ -35,20 +35,21 @@ export default function ManagingCommitteeContent() {
 
                 {/* Committee Members Grid */}
                 <ul
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
                     role="list"
                     aria-label="Committee members list"
                 >
                     {committeeMembers.map((member, index) => (
                         <li key={index} role="listitem">
-                            <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-6 hover:shadow-md transition-shadow duration-300 h-full">
+                            <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 sm:p-6 p-4 hover:shadow-md transition-shadow duration-300 h-full">
                                 <div className="space-y-2">
                                     {/* Member Name */}
-                                    <h2 className="font-bold text-zinc-900 text-lg md:text-xl">
+                                    <h2 className="sm:text-xl text-lg font-semibold text-zinc-900">
                                         {member.name}
                                     </h2>
                                     {/* Member Role */}
-                                    <p className="text-zinc-600 text-base md:text-lg">
+                                    <p className={`text-lg leading-relaxed ${index % 2 === 0 ? "text-primary" : "text-secondary"
+                                        }`}>
                                         {member.role}
                                     </p>
                                 </div>
