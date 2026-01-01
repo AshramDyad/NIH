@@ -1,0 +1,1 @@
+export { WithdrawalsContent } from './WithdrawalsContent';
