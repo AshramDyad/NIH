@@ -184,11 +184,11 @@ export default function GeneralInformationPage() {
             </Link>
 
             {/* School Bus Rules Card */}
-            <div className="group opacity-60 cursor-not-allowed">
-              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 h-full">
-                <div className="absolute -top-3 -right-3 w-16 h-16 bg-violet/10 rounded-full blur-2xl" />
+            <Link href="/general-information/school-bus-rules" className="group">
+              <div className="relative bg-white rounded-2xl p-8 shadow-sm border border-zinc-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300 h-full">
+                <div className="absolute -top-3 -right-3 w-16 h-16 bg-violet/10 rounded-full blur-2xl group-hover:bg-violet/20 transition-all duration-300" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-violet/10 rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-violet/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet/20 transition-all duration-300">
                     <svg
                       className="w-8 h-8 text-violet-600"
                       fill="none"
@@ -209,19 +209,16 @@ export default function GeneralInformationPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-black text-zinc-900 mb-2">
+                  <h3 className="text-xl font-black text-zinc-900 mb-2 group-hover:text-primary transition-colors duration-300">
                     School Bus Rules
                   </h3>
                   <p className="text-zinc-600 leading-relaxed">
                     Transportation rules and student conduct expectations on
                     school buses.
                   </p>
-                  <div className="mt-4 inline-flex items-center px-3 py-1 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-                    Coming Soon
-                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Parents Representatives Card */}
             <div className="group opacity-60 cursor-not-allowed">
