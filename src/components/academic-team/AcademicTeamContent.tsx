@@ -245,7 +245,7 @@ export default function AcademicTeamContent() {
                   {departments.map((department, deptIndex) => (
                     <tr
                       key={department.name}
-                      className={`transition-colors ${deptIndex !== departments.length - 1 ? "border-b-2 border-zinc-300" : ""}`}
+                      className={`transition-colors ${deptIndex !== departments.length - 1 ? "border-b border-zinc-300" : ""}`}
                     >
                       <td className="px-6 py-4 text-base font-bold border-r border-zinc-200 text-zinc-900 bg-gray-50 w-1/4">
                         {department.name}
@@ -259,7 +259,7 @@ export default function AcademicTeamContent() {
                               {department.members.map((member, memberIndex) => (
                                 <tr
                                   key={memberIndex}
-                                  className={memberIndex !== department.members.length - 1 ? "border-b-2 border-zinc-300" : ""}
+                                  className={memberIndex !== department.members.length - 1 ? "border-b border-zinc-300" : ""}
                                 >
                                   <td className="px-4 py-4 text-base text-zinc-700 font-medium w-1/3">
                                     {member.role}

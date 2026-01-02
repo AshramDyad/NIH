@@ -62,8 +62,7 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 
-    // General Information page gets custom footer
-    '/general-information': aboutSectionFooter,
+    // General Information pages get custom footer
     '/general-information/school-rules': aboutSectionFooter,
     '/general-information/recommendations': aboutSectionFooter,
     '/general-information/withdrawls': aboutSectionFooter,
@@ -73,8 +72,14 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/general-information/school-video': aboutSectionFooter,
     '/general-information/press-release': aboutSectionFooter,
 
-    '/academics': aboutSectionFooter,
+    // Academics pages get custom footer
     '/academics/leadership-team': aboutSectionFooter,
+    '/academics/academic-team': aboutSectionFooter,
+    '/academics/class-representatives': aboutSectionFooter,
+    '/academics/co-ordinators': aboutSectionFooter,
+    '/academics/extra-duty-list': aboutSectionFooter,
+    '/academics/hall-of-fame': aboutSectionFooter,
+    '/academics/inclusion-programme': aboutSectionFooter,
 
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,

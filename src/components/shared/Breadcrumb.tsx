@@ -5,6 +5,12 @@ import type { BreadcrumbProps } from '@/types/breadcrumb';
 import { useBreadcrumbItems } from '@/utils/breadcrumb';
 
 /**
+ * Paths that should not be clickable in breadcrumbs
+ * These are parent pages that have been removed but still appear in navigation hierarchy
+ */
+const DISABLED_PATHS = ['/academics', '/general-information'];
+
+/**
  * Reusable breadcrumb component for Next.js App Router
  * Automatically detects current page and generates navigation path
  */
@@ -23,10 +29,11 @@ export default function Breadcrumb({
                 <nav className="flex flex-wrap items-center gap-2 text-gray-700 text-sm md:text-base" aria-label="Breadcrumb">
                     {breadcrumbItems.map((item, index) => {
                         const isLast = index === breadcrumbItems.length - 1;
+                        const isDisabled = item.href && DISABLED_PATHS.includes(item.href);
 
                         return (
                             <li key={index} className="flex items-center gap-2">
-                                {item.href ? (
+                                {item.href && !isDisabled ? (
                                     <Link
                                         href={item.href}
                                         className="hover:text-primary transition-colors font-medium whitespace-nowrap"
@@ -34,7 +41,10 @@ export default function Breadcrumb({
                                         {item.label}
                                     </Link>
                                 ) : (
-                                    <span className="font-medium text-primary whitespace-nowrap" aria-current="page">
+                                    <span
+                                        className={`font-medium whitespace-nowrap ${isLast ? 'text-primary' : 'text-gray-700 cursor-default'}`}
+                                        {...(isLast && { 'aria-current': 'page' })}
+                                    >
                                         {item.label}
                                     </span>
                                 )}
