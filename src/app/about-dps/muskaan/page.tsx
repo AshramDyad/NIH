@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function MuskaanPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About DPS', href: '/about-dps/about-the-school' },
-    { label: 'Muskaan', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={aboutDPSConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <MuskaanContent />
     </>
   );

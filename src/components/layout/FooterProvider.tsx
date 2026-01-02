@@ -59,8 +59,6 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/about-dps/shiksha-kendra': aboutSectionFooter,
     '/about-dps/pravah': aboutSectionFooter,
     '/about-dps/muskaan': aboutSectionFooter,
-    // Add more mappings here as needed
-    // '/about/aims': aboutSectionFooter,
 
     // General Information page gets custom footer
     '/general-information': aboutSectionFooter,
@@ -72,6 +70,27 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/general-information/elected-parents': aboutSectionFooter,
     '/general-information/school-video': aboutSectionFooter,
     '/general-information/press-release': aboutSectionFooter,
+    
+    // Infrastructure page gets custom footer
+    '/infrastructure/school-building': aboutSectionFooter,
+    '/infrastructure/smart-class': aboutSectionFooter,
+    '/infrastructure/school-library': aboutSectionFooter,
+    '/infrastructure/art-music-department': aboutSectionFooter,
+    '/infrastructure/laboratories/science-labs': aboutSectionFooter,
+    '/infrastructure/laboratories/psychology-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/fashion-technology-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/language-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/it-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/math-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/fine-art-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/discovery-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/atal-tinkering-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/scrap-lab': aboutSectionFooter,
+    '/infrastructure/laboratories/lab-incharges': aboutSectionFooter,
+    '/infrastructure/facilities': aboutSectionFooter,
+
+    // Add more mappings here as needed
+    // '/about/aims': aboutSectionFooter,
 
     '/academics': aboutSectionFooter,
     '/academics/leadership-team': aboutSectionFooter,

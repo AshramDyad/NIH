@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function PrincipalMessagePage() {
-    const breadcrumbItems = [
-        { label: 'Home', href: '/' },
-        { label: 'About DPS', href: '/about/principal-message' },
-        { label: 'Principal Message', href: undefined },
-    ];
     return (
         <>
             <FloatingSidebar>
                 <SidebarContent sections={aboutDPSConfig.sections} />
             </FloatingSidebar>
 
-            <Breadcrumb items={breadcrumbItems} />
-
+            <Breadcrumb />
             <PrincipalMessageContent />
         </>
     );

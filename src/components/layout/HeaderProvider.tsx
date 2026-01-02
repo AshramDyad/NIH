@@ -295,6 +295,24 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/general-information/school-bus-rules': principalMessageHeader,
   '/general-information/elected-parents-representatives': principalMessageHeader,
 
+  // Infrastructure page gets custom header
+  '/infrastructure/school-building': principalMessageHeader,
+  '/infrastructure/smart-class': principalMessageHeader,
+  '/infrastructure/school-library': principalMessageHeader,
+  '/infrastructure/art-music-department': principalMessageHeader,
+  '/infrastructure/laboratories/science-labs': principalMessageHeader,
+  '/infrastructure/laboratories/psychology-lab': principalMessageHeader,
+  '/infrastructure/laboratories/fashion-technology-lab': principalMessageHeader,
+  '/infrastructure/laboratories/language-lab': principalMessageHeader,
+  '/infrastructure/laboratories/it-lab': principalMessageHeader,
+  '/infrastructure/laboratories/math-lab': principalMessageHeader,
+  '/infrastructure/laboratories/fine-art-lab': principalMessageHeader,
+  '/infrastructure/laboratories/discovery-lab': principalMessageHeader,
+  '/infrastructure/laboratories/atal-tinkering-lab': principalMessageHeader,
+  '/infrastructure/laboratories/scrap-lab': principalMessageHeader,
+  '/infrastructure/laboratories/lab-incharges': principalMessageHeader,
+  '/infrastructure/facilities': principalMessageHeader,
+  
   // Academics page gets custom header
   '/academics': principalMessageHeader,
   '/academics/leadership-team': principalMessageHeader,
