@@ -38,14 +38,14 @@ export default function CoordinatorsContent() {
     <section className="sm:py-16 py-12" aria-label="Co-ordinators">
       <div className="container mx-auto px-4">
         {/* Page Title */}
-        <div className="text-center mb-12">
+        <div className="text-center">
           <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
             Co-ordinators <span className="text-secondary italic">2024-25</span>
           </h1>
         </div>
 
         {/* Coordinators (Junior) Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">
             Coordinators (Junior)
           </h2>
@@ -54,10 +54,10 @@ export default function CoordinatorsContent() {
               <table className="w-full border-collapse" role="table">
                 <thead>
                   <tr className="bg-primary">
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[40%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Role
                     </th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[60%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Coordinators
                     </th>
                   </tr>
@@ -65,12 +65,12 @@ export default function CoordinatorsContent() {
                 <tbody>
                   {/* Floor Coordinator */}
                   <tr className="bg-zinc-50 transition-colors">
-                    <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                    <td className="w-[40%] px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium align-top">
                       {floorCoordinator.role}
                     </td>
-                    <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                    <td className="w-[60%] px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold align-top">
                       {floorCoordinator.coordinators.map((name, index) => (
-                        <p key={index} className="mb-1">
+                        <p key={index} className="mb-2">
                           {name}
                         </p>
                       ))}
@@ -78,12 +78,12 @@ export default function CoordinatorsContent() {
                   </tr>
                   {/* Functions/Activities */}
                   <tr className="bg-white transition-colors">
-                    <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                    <td className="w-[40%] px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium align-top">
                       {coordinatorsJunior.role}
                     </td>
-                    <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                    <td className="w-[60%] px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold align-top">
                       {coordinatorsJunior.coordinators.slice(0, -1).map((name, index) => (
-                        <p key={index} className="mb-1">
+                        <p key={index} className="mb-2">
                           {name}
                         </p>
                       ))}
@@ -96,7 +96,7 @@ export default function CoordinatorsContent() {
         </div>
 
         {/* Coordinators (Senior/Middle) Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">
             Coordinators (Senior/Middle)
           </h2>
@@ -105,22 +105,22 @@ export default function CoordinatorsContent() {
               <table className="w-full border-collapse" role="table">
                 <thead>
                   <tr className="bg-primary">
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[40%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Role
                     </th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[60%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Coordinators
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="bg-zinc-50 transition-colors">
-                    <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                    <td className="w-[40%] px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium align-top">
                       {coordinatorsSeniorMiddle.role}
                     </td>
-                    <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                    <td className="w-[60%] px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold align-top">
                       {coordinatorsSeniorMiddle.coordinators.map((name, index) => (
-                        <p key={index} className="mb-1">
+                        <p key={index} className="mb-2">
                           {name}
                         </p>
                       ))}
@@ -133,7 +133,7 @@ export default function CoordinatorsContent() {
         </div>
 
         {/* Subject Coordinators Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">
             Subject Coordinators
           </h2>
@@ -143,10 +143,10 @@ export default function CoordinatorsContent() {
               <table className="w-full border-collapse" role="table">
                 <thead>
                   <tr className="bg-primary">
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[40%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Subject
                     </th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[60%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Coordinator
                     </th>
                   </tr>
@@ -157,10 +157,10 @@ export default function CoordinatorsContent() {
                       key={item.subject}
                       className={`transition-colors ${index % 2 === 0 ? "bg-zinc-50" : "bg-white"}`}
                     >
-                      <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                      <td className="w-[40%] px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium align-top">
                         {item.subject}
                       </td>
-                      <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                      <td className="w-[60%] px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold align-top">
                         {item.coordinator}
                       </td>
                     </tr>
@@ -172,7 +172,7 @@ export default function CoordinatorsContent() {
         </div>
 
         {/* Dispersal Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">
             Dispersal
           </h2>
@@ -181,10 +181,10 @@ export default function CoordinatorsContent() {
               <table className="w-full border-collapse" role="table">
                 <thead>
                   <tr className="bg-primary">
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[40%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Level
                     </th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="w-[60%] px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Coordinator
                     </th>
                   </tr>
@@ -195,10 +195,10 @@ export default function CoordinatorsContent() {
                       key={`${item.level}-${index}`}
                       className={`transition-colors ${index % 2 === 0 ? "bg-zinc-50" : "bg-white"}`}
                     >
-                      <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                      <td className="w-[40%] px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium align-top">
                         {item.level}
                       </td>
-                      <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                      <td className="w-[60%] px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold align-top">
                         {item.coordinator}
                       </td>
                     </tr>

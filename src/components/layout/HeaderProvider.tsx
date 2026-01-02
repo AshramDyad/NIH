@@ -286,15 +286,15 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/about-dps/pravah': principalMessageHeader,
   '/about-dps/muskaan': principalMessageHeader,
 
-  // General Information page gets custom header
-  '/general-information': principalMessageHeader,
+  // General Information pages get custom header
   '/general-information/school-rules': principalMessageHeader,
   '/general-information/recommendations': principalMessageHeader,
-  '/general-information/withdrawls': principalMessageHeader,
+  '/general-information/withdrawals': principalMessageHeader,
   '/general-information/bus-information': principalMessageHeader,
   '/general-information/school-bus-rules': principalMessageHeader,
   '/general-information/elected-parents-representatives': principalMessageHeader,
 
+  // Academics pages get custom header
   // Infrastructure page gets custom header
   '/infrastructure/school-building': principalMessageHeader,
   '/infrastructure/smart-class': principalMessageHeader,
