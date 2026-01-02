@@ -91,6 +91,9 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
 
+    '/academics': aboutSectionFooter,
+    '/academics/leadership-team': aboutSectionFooter,
+
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,
     // '/courses': coursesSectionFooter,

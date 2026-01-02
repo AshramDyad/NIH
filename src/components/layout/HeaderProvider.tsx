@@ -311,6 +311,16 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/infrastructure/laboratories/atal-tinkering-lab': principalMessageHeader,
   '/infrastructure/laboratories/scrap-lab': principalMessageHeader,
   '/infrastructure/laboratories/lab-incharges': principalMessageHeader,
+  
+  // Academics page gets custom header
+  '/academics': principalMessageHeader,
+  '/academics/leadership-team': principalMessageHeader,
+  '/academics/academic-team': principalMessageHeader,
+  '/academics/class-representatives': principalMessageHeader,
+  '/academics/co-ordinators': principalMessageHeader,
+  '/academics/extra-duty-list': principalMessageHeader,
+  '/academics/hall-of-fame': principalMessageHeader,
+  '/academics/inclusion-programme': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
