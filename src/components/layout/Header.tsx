@@ -287,7 +287,7 @@ const Header = () => {
               ))}
             </div>
             {/* Mobile menu button */}
-            <div className="xl:hidden">
+            <div>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"
