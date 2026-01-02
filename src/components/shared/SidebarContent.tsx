@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Phone,
@@ -44,6 +45,32 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function SidebarContent({ sections }: SidebarContentProps) {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const pathname = usePathname();
+
+    // Helper function to check if a link is active
+    const isLinkActive = useCallback((href: string): boolean => {
+        if (!href || href === '#') return false;
+        return pathname === href;
+    }, [pathname]);
+
+    // Helper function to check if any child link is active
+    const isParentActive = useCallback((children?: { href: string }[]): boolean => {
+        if (!children) return false;
+        return children.some(child => isLinkActive(child.href));
+    }, [isLinkActive]);
+
+    // Auto-open dropdown when any child link is active
+    useEffect(() => {
+        sections.forEach(section => {
+            if (section.type === 'links') {
+                section.items.forEach(link => {
+                    if (link.children && isParentActive(link.children)) {
+                        setOpenDropdown(link.name);
+                    }
+                });
+            }
+        });
+    }, [pathname, sections, isParentActive]);
 
     return (
         <div className="space-y-8">
@@ -52,8 +79,8 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                 if (section.type === 'links') {
                     return (
                         <div key={sectionIndex} className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-                            <div className="bg-primary px-6 py-4 relative overflow-hidden">
-                                <h3 className="text-white font-bold text-lg relative z-10">{section.title}</h3>
+                            <div className="bg-zinc-200 px-6 py-3 relative overflow-hidden">
+                                <h3 className="text-primary font-bold text-lg relative z-10">{section.title}</h3>
                             </div>
                             <div>
                                 <nav className="flex flex-col">
@@ -64,23 +91,24 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
 
                                         // Render dropdown if link has children
                                         if (hasChildren) {
+                                            const isDropdownActive = isParentActive(link.children);
                                             return (
-                                                <div key={index} className={`border-b border-zinc-100 last:border-b-0`}>
+                                                <div key={index} className={`border-b border-zinc-200 last:border-b-0`}>
                                                     <button
                                                         type="button"
                                                         onClick={() => setOpenDropdown(isOpen ? null : link.name)}
-                                                        className="group flex w-full items-center cursor-pointer justify-between p-5 text-left text-zinc-700 hover:text-primary hover:bg-zinc-50 transition-all duration-300"
+                                                        className={`group flex w-full items-center cursor-pointer justify-between p-3 transition-all duration-300 ${isDropdownActive ? 'bg-primary text-white' : 'text-zinc-700 hover:text-primary hover:bg-zinc-50'}`}
                                                         aria-expanded={isOpen}
                                                     >
                                                         <span className="flex items-center gap-4">
-                                                            {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors" />}
+                                                            {Icon && <Icon className={`w-5 h-5 transition-colors ${isDropdownActive ? 'text-white' : 'text-zinc-700 group-hover:text-primary'}`} />}
                                                             <span className="font-semibold">{link.name}</span>
                                                         </span>
                                                         <motion.span
                                                             initial={false}
                                                             animate={{ rotate: isOpen ? 180 : 0 }}
                                                             transition={{ duration: 0.3 }}
-                                                            className="text-zinc-400 group-hover:text-primary"
+                                                            className={isDropdownActive ? 'text-white' : 'text-zinc-400 group-hover:text-primary'}
                                                         >
                                                             <ChevronDown className="size-6" />
                                                         </motion.span>
@@ -93,19 +121,23 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                                                 animate={{ height: 'auto', opacity: 1 }}
                                                                 exit={{ height: 0, opacity: 0 }}
                                                                 transition={{ duration: 0.25 }}
-                                                                className="bg-zinc-50 border-t border-zinc-100"
+                                                                className="bg-zinc-50 border-t border-zinc-200"
                                                             >
                                                                 <div className="flex flex-col p-2 space-y-2">
-                                                                    {link.children!.map((child, childIndex) => (
-                                                                        <Link
-                                                                            key={childIndex}
-                                                                            href={child.href}
-                                                                            onClick={() => setOpenDropdown(null)}
-                                                                            className="flex items-center justify-between rounded-lg px-12 py-3 font-semibold text-zinc-700 hover:text-primary hover:bg-primary/10 transition-colors"
-                                                                        >
-                                                                            <span>{child.name}</span>
-                                                                        </Link>
-                                                                    ))}
+                                                                    {link.children!.map((child, childIndex) => {
+                                                                        const isChildActive = isLinkActive(child.href);
+                                                                        return (
+                                                                            <Link
+                                                                                key={childIndex}
+                                                                                href={child.href}
+                                                                                onClick={() => setOpenDropdown(null)}
+                                                                                className={`flex items-center justify-between rounded-lg px-6 py-3 font-semibold transition-colors ${isChildActive ? 'bg-primary text-white' : 'text-zinc-700 hover:text-primary hover:bg-primary/10'}`}
+                                                                                aria-current={isChildActive ? 'page' : undefined}
+                                                                            >
+                                                                                <span>{child.name}</span>
+                                                                            </Link>
+                                                                        );
+                                                                    })}
                                                                 </div>
                                                             </motion.div>
                                                         )}
@@ -115,15 +147,16 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                                         }
 
                                         // Render regular link if no children
+                                        const isRegularActive = isLinkActive(link.href);
                                         return (
                                             <Link
                                                 key={index}
                                                 href={link.href}
-                                                className={`group flex items-center justify-between p-5 text-zinc-700 hover:text-primary hover:bg-zinc-50 transition-all duration-300 ${index !== section.items.length - 1 ? 'border-b border-zinc-100' : ''
-                                                    }`}
+                                                className={`group flex items-center justify-between p-3 transition-all duration-300 ${index !== section.items.length - 1 ? 'border-b border-zinc-200' : ''} ${isRegularActive ? 'bg-primary text-white' : 'text-zinc-700 hover:text-primary hover:bg-zinc-50'}`}
+                                                aria-current={isRegularActive ? 'page' : undefined}
                                             >
                                                 <span className="flex items-center gap-4">
-                                                    {Icon && <Icon className="w-5 h-5 text-zinc-700 group-hover:text-primary transition-colors shrink-0" />}
+                                                    {Icon && <Icon className={`w-5 h-5 transition-colors shrink-0 ${isRegularActive ? 'text-white' : 'text-zinc-700 group-hover:text-primary'}`} />}
                                                     <span className="font-semibold">{link.name}</span>
                                                 </span>
                                             </Link>
@@ -139,7 +172,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                 if (section.type === 'quickLinksList') {
                     return (
                         <div key={sectionIndex} className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-                            <div className="bg-secondary px-6 py-4 relative overflow-hidden">
+                            <div className="bg-secondary px-6 py-3 relative overflow-hidden">
                                 <h3 className="text-white font-bold text-lg relative z-10">{section.title}</h3>
                             </div>
 
@@ -174,7 +207,7 @@ export default function SidebarContent({ sections }: SidebarContentProps) {
                 if (section.type === 'activitiesList') {
                     return (
                         <div key={sectionIndex} className="bg-white rounded-2xl shadow-sm border border-zinc-100 overflow-hidden">
-                            <div className="bg-zinc-800 px-6 py-4 relative overflow-hidden">
+                            <div className="bg-zinc-800 px-6 py-3 relative overflow-hidden">
                                 <h3 className="text-white font-bold text-lg relative z-10">{section.title}</h3>
                             </div>
                             <div className="p-4 space-y-3">

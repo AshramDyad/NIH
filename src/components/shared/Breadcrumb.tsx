@@ -8,7 +8,7 @@ import { useBreadcrumbItems } from '@/utils/breadcrumb';
     * Paths that should not be clickable in breadcrumbs
     * These are parent pages that have been removed but still appear in navigation hierarchy
     */
-    const DISABLED_PATHS = ['/about-dps', '/about-dps/dps-family', '/infrastructure', '/infrastructure/laboratories', '/academics', '/general-information'];
+    const DISABLED_PATHS = ['/about-dps', '/about-dps/dps-family', '/infrastructure', '/infrastructure/laboratories', '/academics', '/general-information', '/activities'];
     
     /**
     * Reusable breadcrumb component for Next.js App Router
