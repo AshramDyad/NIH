@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function FacilitiesPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '#' },
-    { label: 'Facilities', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <FacilitiesContent />
     </>
   );

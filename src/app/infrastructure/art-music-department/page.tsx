@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function ArtMusicDepartmentPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '#' },
-    { label: 'Art & Music Department', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <ArtMusicDepartmentContent />
     </>
   );

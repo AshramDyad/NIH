@@ -11,20 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function FashionTechnologyLabPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
-    { label: 'Fashion Technology Lab', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <FashionTechnologyLabContent />
     </>
   );

@@ -11,24 +11,14 @@ export const metadata: Metadata = {
 };
 
 export default function ManagingCommitteePage() {
-    const breadcrumbItems = [
-        { label: 'Home', href: '/' },
-        { label: 'About DPS', href: '/about-dps/principal-message' },
-        { label: 'DPS Family', href: '#' },
-        { label: 'Managing Committee', href: undefined },
-    ];
-
     return (
         <>
             <FloatingSidebar>
                 <SidebarContent sections={aboutDPSConfig.sections} />
             </FloatingSidebar>
 
-            <Breadcrumb items={breadcrumbItems} />
-
-            <main>
-                <ManagingCommitteeContent />
-            </main>
+            <Breadcrumb />
+            <ManagingCommitteeContent />
         </>
     );
 }

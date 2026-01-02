@@ -16,14 +16,7 @@ export default function AtalTinkeringLabPage() {
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
       
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Infrastructure', href: '/infrastructure' },
-          { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
-          { label: 'Atal Tinkering Lab', href: undefined },
-        ]}
-      />
+      <Breadcrumb />
       <AtalTinkeringLabContent />
     </>
   );

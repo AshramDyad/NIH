@@ -15,14 +15,8 @@ export default function LabInchargesPage() {
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Infrastructure', href: '/infrastructure' },
-          { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
-          { label: 'Lab Incharges', href: '/infrastructure/laboratories/lab-incharges' },
-        ]}
-      />
+      
+      <Breadcrumb />
       <LabInchargesContent />
     </>
   );

@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function SchoolBuildingPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '#' },
-    { label: 'School Building', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <SchoolBuildingContent />
     </>
   );

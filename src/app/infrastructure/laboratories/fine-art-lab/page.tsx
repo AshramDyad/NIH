@@ -11,20 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function FineArtLabPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
-    { label: 'Fine Art Lab', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <FineArtLabContent />
     </>
   );

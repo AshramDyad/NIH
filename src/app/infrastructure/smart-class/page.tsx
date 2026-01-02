@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function SmartClassPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '#' },
-    { label: 'Smart Class', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <SmartClassContent />
     </>
   );

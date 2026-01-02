@@ -16,14 +16,7 @@ export default function ScrapLabPage() {
         <SidebarContent sections={infrastructureConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Infrastructure', href: '/infrastructure' },
-          { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
-          { label: 'Scrap Lab', href: undefined },
-        ]}
-      />
+      <Breadcrumb />
       <ScrapLabContent />
     </>
   );

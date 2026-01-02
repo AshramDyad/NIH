@@ -311,6 +311,7 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/infrastructure/laboratories/atal-tinkering-lab': principalMessageHeader,
   '/infrastructure/laboratories/scrap-lab': principalMessageHeader,
   '/infrastructure/laboratories/lab-incharges': principalMessageHeader,
+  '/infrastructure/facilities': principalMessageHeader,
   
   // Academics page gets custom header
   '/academics': principalMessageHeader,

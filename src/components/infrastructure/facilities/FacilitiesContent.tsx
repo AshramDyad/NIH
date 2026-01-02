@@ -15,7 +15,7 @@ export default function FacilitiesContent() {
 
         {/* Tuckshop Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Tuckshop</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Tuckshop</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               The School has a tuckshop within the campus. Course books (for all classes), stationery items and the school uniform can be purchased from here. For the convenience of parents and students the bookshop remains open on all weekdays up to 2 o&apos;clock.
@@ -25,7 +25,7 @@ export default function FacilitiesContent() {
 
         {/* Cafeteria Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Cafeteria</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Cafeteria</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               With all the academia and extracurricular that keeps every one on the toes, the cafeteria comes as one big reason to chill. The cafeteria is professionally managed and the variety of &apos;quick bites&apos; it offers is sure to tempt you in. From vadas to brownies, and quick snacks to complete meals, everything is served here with as much attention to taste as to hygiene.
@@ -35,7 +35,7 @@ export default function FacilitiesContent() {
 
         {/* Toy Room Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Toy Room</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Toy Room</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               We have one Toy Room each at Infant wing and Primary Wing where different group activities are done. It&apos;s an area where they learn to get along with their peer group and develop sharing and caring skills. Such activities promote independence, self-control and a positive attitude. Children are taught about group participation, team spirit, team leadership as well as why and how to follow instructions.
@@ -45,7 +45,7 @@ export default function FacilitiesContent() {
 
         {/* Playground Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Playground</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Playground</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               Play ground is a different tool of education altogether. Besides the game it teaches team spirit, determination, focus and management. Above all it imparts the winning spirit. For all these reasons and more-All work along with lots of play, is the school mantra as far as sports go.
@@ -83,7 +83,7 @@ export default function FacilitiesContent() {
 
         {/* Gymnasium Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Gymnasium</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Gymnasium</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               The students also have access to the school gym. Equipments as per the age and requirements have been installed with fitness being the key motive.
@@ -102,7 +102,7 @@ export default function FacilitiesContent() {
 
         {/* Staff Room Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Staff Room</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Staff Room</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p className="font-semibold text-zinc-900">
               We have five staff rooms in the campus.
@@ -140,7 +140,7 @@ export default function FacilitiesContent() {
 
         {/* Auditorium Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 mb-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Auditorium</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Auditorium</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               In the ground floor we have an auditorium with the seating capacity of 600 people. Round the year, the students and sometimes even teachers get the opportunity to show- case their stage talents on different occasions. The auditorium is technically equipped for light and sound shows.
@@ -150,19 +150,19 @@ export default function FacilitiesContent() {
 
         {/* Medical Room / Comfort Zone Section */}
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6">
-          <h2 className="mb-3 text-2xl font-bold text-zinc-900">Medical Room / Comfort Zone</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-900">Medical Room / Comfort Zone</h2>
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
               DPS 45, its primary wing at sector 47and its infant wing at sector 40, have well equipped medical rooms. Incase of sickness or untoward happening students come into the care of qualified doctor and nurse here.
             </p>
-            <div className="grid grid-cols-1 gap-4 mt-6">
+            <div>
               <Image
                 src="/images/infrastructure/facilities-3.jpg"
                 alt="Medical Room"
-                width={800}
+                width={600}
                 height={600}
                 loading="lazy"
-                className="rounded-lg shadow-sm w-full h-auto"
+                className="rounded-lg shadow-sm md:w-auto w-full h-auto"
               />
             </div>
           </div>

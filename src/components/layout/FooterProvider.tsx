@@ -87,6 +87,7 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/infrastructure/laboratories/atal-tinkering-lab': aboutSectionFooter,
     '/infrastructure/laboratories/scrap-lab': aboutSectionFooter,
     '/infrastructure/laboratories/lab-incharges': aboutSectionFooter,
+    '/infrastructure/facilities': aboutSectionFooter,
 
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
