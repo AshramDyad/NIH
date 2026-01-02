@@ -44,7 +44,7 @@ export default function FloatingSidebar({ children }: FloatingSidebarProps) {
                         >
                             {/* Sticky Header */}
                             <div className="flex items-center justify-between p-4 border-b shadow">
-                                <h2 className="text-xl font-black text-zinc-900">Navigation</h2>
+                                <h2 className="text-xl font-bold text-zinc-900">Navigation</h2>
                                 <button
                                     onClick={() => setIsOpen(false)}
                                     className="p-2 hover:bg-zinc-100 rounded-full transition-colors text-zinc-500 hover:text-zinc-800 cursor-pointer"
