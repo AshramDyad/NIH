@@ -3,18 +3,18 @@ import FloatingSidebar from '@/components/shared/FloatingSidebar';
 import SidebarContent from '@/components/shared/SidebarContent';
 import { infrastructureConfig } from '@/config/sidebar/infrastructureConfig';
 import Breadcrumb from '@/components/shared/Breadcrumb';
-import SchoolLibraryContent from '@/components/infrastructure/school-library/SchoolLibraryContent';
+import FacilitiesContent from '@/components/infrastructure/facilities/FacilitiesContent';
 
 export const metadata: Metadata = {
-  title: 'School Library | NIH Health - DPS Gurgaon Infrastructure',
-  description: 'Discover the School Library at DPS Gurgaon - promoting reading culture with four libraries for Junior, Middle, and Senior School, featuring diverse books and reference materials.',
+  title: 'Facilities | NIH Health - DPS Gurgaon Infrastructure',
+  description: 'Discover the facilities at DPS Gurgaon including Tuckshop, Cafeteria, Toy Room, Playground, Gymnasium, Staff Room, Auditorium, and Medical Room.',
 };
 
-export default function SchoolLibraryPage() {
+export default function FacilitiesPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '#' },
-    { label: 'School Library', href: undefined },
+    { label: 'Facilities', href: undefined },
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function SchoolLibraryPage() {
       </FloatingSidebar>
 
       <Breadcrumb items={breadcrumbItems} />
-      <SchoolLibraryContent />
+      <FacilitiesContent />
     </>
   );
 }

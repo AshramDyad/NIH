@@ -19,7 +19,7 @@ export default function ItLabContent() {
         <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6">
           <div className="space-y-4 text-lg text-zinc-600 leading-relaxed">
             <p>
-              In this tech savvy world, we realize's role of school in making our students proficient from day one. No profession can run in isolation as almost everything is interwoven with Information Technology. Our enthusiastic young students will be budding professionals tomorrow, so, IT training is given keeping in mind today's needs and tomorrow's vision.
+              In this tech savvy world, we realize&apos;s role of school in making our students proficient from day one. No profession can run in isolation as almost everything is interwoven with Information Technology. Our enthusiastic young students will be budding professionals tomorrow, so, IT training is given keeping in mind today&apos;s needs and tomorrow&apos;s vision.
             </p>
 
             <p className="font-semibold text-zinc-900">

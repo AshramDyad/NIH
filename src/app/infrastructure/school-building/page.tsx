@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SchoolBuildingPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '/infrastructure/school-building' },
+    { label: 'Infrastructure', href: '#' },
     { label: 'School Building', href: undefined },
   ];
 

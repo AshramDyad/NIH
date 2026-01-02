@@ -27,12 +27,12 @@ export const infrastructureConfig: SidebarConfig = {
                         { name: 'Math Lab', href: '/infrastructure/laboratories/math-lab' },
                         { name: 'Fine Art Lab', href: '/infrastructure/laboratories/fine-art-lab' },
                         { name: 'Discovery Lab', href: '/infrastructure/laboratories/discovery-lab' },
-                        { name: 'Atal Tinkering Lab', href: '#' },
-                        { name: 'Scrap Lab', href: '#' },
-                        { name: 'Lab Incharges', href: '#' }
+                        { name: 'Atal Tinkering Lab', href: '/infrastructure/laboratories/atal-tinkering-lab' },
+                        { name: 'Scrap Lab', href: '/infrastructure/laboratories/scrap-lab' },
+                        { name: 'Lab Incharges', href: '/infrastructure/laboratories/lab-incharges' }
                     ]
                 },
-                { name: 'Facilities', href: '#', icon: '' },
+                { name: 'Facilities', href: '/infrastructure/facilities', icon: '' },
             ],
         },
         {

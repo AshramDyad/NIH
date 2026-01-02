@@ -14,7 +14,7 @@ export default function DiscoveryLabPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '#' },
+    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
     { label: 'Discovery Lab', href: undefined },
   ];
 

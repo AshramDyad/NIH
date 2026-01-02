@@ -14,7 +14,7 @@ export default function FineArtLabPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '#' },
+    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
     { label: 'Fine Art Lab', href: undefined },
   ];
 

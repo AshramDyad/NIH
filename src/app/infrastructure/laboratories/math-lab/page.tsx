@@ -14,7 +14,7 @@ export default function MathLabPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Infrastructure', href: '/infrastructure/school-building' },
-    { label: 'Laboratories', href: '#' },
+    { label: 'Laboratories', href: '/infrastructure/laboratories/science-labs' },
     { label: 'Math Lab', href: undefined },
   ];
 

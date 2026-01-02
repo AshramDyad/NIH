@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SmartClassPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '/infrastructure/smart-class' },
+    { label: 'Infrastructure', href: '#' },
     { label: 'Smart Class', href: undefined },
   ];
 

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ArtMusicDepartmentPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Infrastructure', href: '/infrastructure/art-music-department' },
+    { label: 'Infrastructure', href: '#' },
     { label: 'Art & Music Department', href: undefined },
   ];
 

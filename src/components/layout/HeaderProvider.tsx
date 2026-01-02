@@ -308,6 +308,9 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/infrastructure/laboratories/math-lab': principalMessageHeader,
   '/infrastructure/laboratories/fine-art-lab': principalMessageHeader,
   '/infrastructure/laboratories/discovery-lab': principalMessageHeader,
+  '/infrastructure/laboratories/atal-tinkering-lab': principalMessageHeader,
+  '/infrastructure/laboratories/scrap-lab': principalMessageHeader,
+  '/infrastructure/laboratories/lab-incharges': principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
