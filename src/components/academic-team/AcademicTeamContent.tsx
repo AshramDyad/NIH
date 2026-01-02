@@ -174,7 +174,7 @@ export default function AcademicTeamContent() {
         </div>
 
         {/* Senior Leadership Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">Senior Leadership</h2>
           <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
@@ -200,17 +200,17 @@ export default function AcademicTeamContent() {
         </div>
 
         {/* Academic Coordinators Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">Academic Coordinators</h2>
           <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse" role="table">
                 <thead>
                   <tr className="bg-primary">
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="px-6 w-[35%] py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Name
                     </th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
+                    <th scope="col" className="px-6 w-[65%] py-4 text-sm font-bold tracking-wide uppercase text-white text-left border border-primary">
                       Classes
                     </th>
                   </tr>
@@ -221,10 +221,10 @@ export default function AcademicTeamContent() {
                       key={index}
                       className={` transition-colors ${index % 2 === 0 ? "bg-zinc-50" : "bg-white"}`}
                     >
-                      <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
+                      <td className="px-6 py-4 w-[35%] text-base text-zinc-900 border border-zinc-200 font-semibold">
                         {coordinator.name}
                       </td>
-                      <td className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium">
+                      <td className="px-6 py-4 w-[65%] text-base text-zinc-700 border border-zinc-200 font-medium">
                         {coordinator.classes}
                       </td>
                     </tr>
@@ -236,7 +236,7 @@ export default function AcademicTeamContent() {
         </div>
 
         {/* Heads of Departments Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">Heads of Departments</h2>
           <div className="w-full bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
@@ -245,7 +245,7 @@ export default function AcademicTeamContent() {
                   {departments.map((department, deptIndex) => (
                     <tr
                       key={department.name}
-                      className={`transition-colors ${deptIndex !== departments.length - 1 ? "border-b-2 border-zinc-300" : ""}`}
+                      className={`transition-colors ${deptIndex !== departments.length - 1 ? "border-b border-zinc-300" : ""}`}
                     >
                       <td className="px-6 py-4 text-base font-bold border-r border-zinc-200 text-zinc-900 bg-gray-50 w-1/4">
                         {department.name}
@@ -259,7 +259,7 @@ export default function AcademicTeamContent() {
                               {department.members.map((member, memberIndex) => (
                                 <tr
                                   key={memberIndex}
-                                  className={memberIndex !== department.members.length - 1 ? "border-b-2 border-zinc-300" : ""}
+                                  className={memberIndex !== department.members.length - 1 ? "border-b border-zinc-300" : ""}
                                 >
                                   <td className="px-4 py-4 text-base text-zinc-700 font-medium w-1/3">
                                     {member.role}
@@ -282,7 +282,7 @@ export default function AcademicTeamContent() {
         </div>
 
         {/* CBSE Section Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold text-zinc-900 mb-4">CBSE</h2>
           <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="overflow-x-auto">

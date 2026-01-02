@@ -95,14 +95,14 @@ export default function ExtraDutyListContent() {
     <section className="sm:py-16 py-12" aria-label="Extra Duty List">
       <div className="container mx-auto px-4">
         {/* Page Title */}
-        <div className="text-center mb-12">
+        <div className="text-center">
           <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
             Extra Duty <span className="text-primary italic">List</span>
           </h1>
         </div>
 
         {/* Single Unified Table */}
-        <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden mt-8">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse" role="table">
               <thead>
@@ -126,7 +126,7 @@ export default function ExtraDutyListContent() {
                     </td>
                     <td className="px-6 py-4 text-base text-zinc-900 border border-zinc-200 font-semibold">
                       {item.names.map((name, nameIndex) => (
-                        <p key={nameIndex} className="mb-1 last:mb-0">
+                        <p key={nameIndex} className="mb-2 last:mb-0">
                           {name}
                         </p>
                       ))}

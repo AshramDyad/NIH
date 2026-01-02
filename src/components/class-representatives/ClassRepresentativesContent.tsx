@@ -33,7 +33,7 @@ export default function ClassRepresentativesContent() {
           </h1>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-8">
           <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse" role="table">

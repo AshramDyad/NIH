@@ -5,19 +5,19 @@ import type { BreadcrumbProps } from '@/types/breadcrumb';
 import { useBreadcrumbItems } from '@/utils/breadcrumb';
 
 /**
-    * Paths that should not be clickable in breadcrumbs
-    * These are parent pages that have been removed but still appear in navigation hierarchy
-    */
-    const DISABLED_PATHS = ['/about-dps', '/about-dps/dps-family', '/infrastructure', '/infrastructure/laboratories', '/academics', '/general-information'];
-    
-    /**
-    * Reusable breadcrumb component for Next.js App Router
-    * Automatically detects current page and generates navigation path
-    */
-    export default function Breadcrumb({
-        items,
-        separator = '>',
-    }: BreadcrumbProps) {
+ * Paths that should not be clickable in breadcrumbs
+ * These are parent pages that have been removed but still appear in navigation hierarchy
+ */
+const DISABLED_PATHS = ['/academics', '/general-information', '/about-dps', '/about-dps/dps-family', '/infrastructure', '/infrastructure/laboratories'];
+
+/**
+ * Reusable breadcrumb component for Next.js App Router
+ * Automatically detects current page and generates navigation path
+ */
+export default function Breadcrumb({
+    items,
+    separator = '>',
+}: BreadcrumbProps) {
     // Always call the hook first (React Hooks rules)
     const generatedItems = useBreadcrumbItems();
     // Use custom items if provided, otherwise use generated items

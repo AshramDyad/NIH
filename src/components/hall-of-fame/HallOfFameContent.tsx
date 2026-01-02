@@ -130,7 +130,7 @@ export default function HallOfFameContent() {
         </div>
 
         {/* Hall of Fame Table */}
-        <div className="mt-12">
+        <div className="mt-8">
           <div className="w-full bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse" role="table">
@@ -166,9 +166,8 @@ export default function HallOfFameContent() {
                   {hallOfFameData.map((entry, index) => (
                     <tr
                       key={index}
-                      className={`transition-colors ${
-                        index % 2 === 0 ? "bg-zinc-50" : "bg-white"
-                      }`}
+                      className={`transition-colors ${index % 2 === 0 ? "bg-zinc-50" : "bg-white"
+                        }`}
                     >
                       <td
                         className="px-6 py-4 text-base text-zinc-700 border border-zinc-200 font-medium whitespace-normal"
