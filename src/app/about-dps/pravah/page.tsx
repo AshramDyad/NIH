@@ -11,19 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function PravahPage() {
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About DPS', href: '/about-dps/about-the-school' },
-    { label: 'Pravah', href: undefined },
-  ];
-
   return (
     <>
       <FloatingSidebar>
         <SidebarContent sections={aboutDPSConfig.sections} />
       </FloatingSidebar>
 
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb />
       <PravahContent />
     </>
   );

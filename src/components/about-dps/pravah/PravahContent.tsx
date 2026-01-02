@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image';
 import ImageGallery from './ImageGallery';
 
 const galleryImages = [
@@ -33,7 +32,7 @@ export default function PravahContent() {
           <article className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6">
             <div className="text-lg text-zinc-600 leading-relaxed">
               <p>
-                'Pravah' aims at skill development and empowering the youth towards economic sustainability. The centre is providing employment opportunities to the underprivileged who are being trained at Pravah .Till date more than 1000 have been trained and more than 40% have been suitably employed. Pravah is our endeavour to provide a structured, sustainable and scalable framework to the unemployed youth from marginalized families adding to the workforce of the nation which is an emerging power.
+                &apos;Pravah&apos; aims at skill development and empowering the youth towards economic sustainability. The centre is providing employment opportunities to the underprivileged who are being trained at Pravah .Till date more than 1000 have been trained and more than 40% have been suitably employed. Pravah is our endeavour to provide a structured, sustainable and scalable framework to the unemployed youth from marginalized families adding to the workforce of the nation which is an emerging power.
               </p>
             </div>
           </article>

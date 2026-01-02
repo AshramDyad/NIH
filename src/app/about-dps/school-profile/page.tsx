@@ -11,21 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function SchoolProfilePage() {
-    const breadcrumbItems = [
-        { label: 'Home', href: '/' },
-        { label: 'About DPS', href: '/about-dps/principal-message' },
-        { label: 'NIH Profile', href: undefined },
-    ];
-
     return (
         <>
             <FloatingSidebar>
                 <SidebarContent sections={aboutDPSConfig.sections} />
             </FloatingSidebar>
 
-            <Breadcrumb items={breadcrumbItems} />
-
-            {/* Main Content */}
+            <Breadcrumb />
             <SchoolProfileContent />
         </>
     );
