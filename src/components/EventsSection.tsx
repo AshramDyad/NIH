@@ -1,95 +1,52 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 
 interface Event {
     id: number;
     day: string;
     month: string;
     year: string;
-    time: string;
     title: string;
-    location: string;
     category: string;
 }
 
 const events: Event[] = [
     {
         id: 1,
-        day: "18",
-        month: "Nov",
-        year: "2025",
-        time: "10:00 AM - 04:00 PM",
-        title: "8th Naturopathy Day Celebration",
-        location: "NIH Campus, Delhi",
-        category: "Ceremony"
-    },
-    {
-        id: 2,
-        day: "07",
+        day: "07-08",
         month: "Feb",
         year: "2026",
-        time: "09:00 AM - 06:00 PM",
-        title: "International Wellness & Yoga Conference",
-        location: "Ganga Resort, Rishikesh",
+        title: "International Conference on Yoga & Holistic Health",
         category: "Conference"
-    },
-    {
-        id: 3,
-        day: "22",
-        month: "Dec",
-        year: "2025",
-        time: "05:00 PM - 07:00 PM",
-        title: "Clinical Medical Yoga Webinar",
-        location: "Online (Zoom)",
-        category: "Education"
     }
 ];
 
 const EventCard = ({ event }: { event: Event }) => {
     return (
-        <div className="group bg-white rounded-2xl border border-gray-100 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-100 hover:border-gray-100 flex flex-col h-full">
-            {/* Category Tag */}
-            <div className="mb-6">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/5 px-3 py-1 rounded-full border border-secondary/10">
-                    {event.category}
-                </span>
-            </div>
-
+        <div className="group bg-white rounded-xl border border-gray-200 md:p-6 p-4 shadow-sm transition-all duration-200 hover:shadow-md flex flex-col h-full">
             {/* Date and Title Section */}
-            <div className="flex gap-5 mb-6">
-                <div className="flex flex-col items-center justify-center min-w-[70px] h-[70px] bg-secondary rounded-xl text-white transition-colors duration-300">
-                    <span className="text-2xl font-black leading-none">{event.day}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider mt-1 opacity-80">{event.month}</span>
+            <div className="flex gap-4 mb-6">
+                <div className="flex flex-col items-center justify-center min-w-[60px] h-[60px] bg-secondary rounded-lg text-white">
+                    <span className="text-lg font-semibold leading-none">{event.day}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wide mt-1">{event.month}</span>
                 </div>
-                <div>
-                    <h3 className="text-xl font-bold text-secondary group-hover:text-secondary transition-colors duration-300 leading-tight">
+                <div className="flex-1 flex items-center">
+                    <h3 className="text-lg font-semibold text-zinc-800 group-hover:text-primary transition-colors duration-200 leading-[1.4]">
                         {event.title}
                     </h3>
                 </div>
             </div>
 
-            {/* Details Section */}
-            <div className="space-y-3 mb-8 flex-1">
-                <div className="flex items-center gap-2 text-zinc-500 text-sm">
-                    <Clock className="w-4 h-4 text-secondary" />
-                    <span>{event.time}</span>
-                </div>
-                <div className="flex items-center gap-2 text-zinc-500 text-sm">
-                    <MapPin className="w-4 h-4 text-secondary" />
-                    <span className="line-clamp-1">{event.location}</span>
-                </div>
-            </div>
-
             {/* Action Section */}
-            <div className="pt-6 border-t border-gray-50 mt-auto">
+            <div className="pt-4 border-t border-gray-200 mt-auto">
                 <Link
                     href={`/events/${event.id}`}
-                    className="flex items-center justify-between text-secondary font-bold text-sm transition-colors"
+                    className="flex items-center justify-between text-secondary font-semibold text-sm transition-colors hover:underline"
                 >
                     Register Now
-                    <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-white transition-all duration-300">
+                    <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-white transition-all duration-200 group-hover:scale-105">
                         <ArrowRight className="w-4 h-4" />
                     </div>
                 </Link>
@@ -101,24 +58,21 @@ const EventCard = ({ event }: { event: Event }) => {
 const EventsSection = () => {
     return (
         <section className="bg-white py-12 sm:py-16">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="container mx-auto px-6">
                 {/* Simplified Premium Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-8">
                     <div className="max-w-2xl">
-                        {/* <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 leading-tight">
+                        <h2 className="text-4xl md:text-5xl font-black text-zinc-900 mb-6">
                             Upcoming <span className="text-primary">Events</span>
-                        </h2> */}
-                        <h3 className="text-4xl md:text-5xl font-black text-zinc-900 mb-6">
-                            Upcoming <span className="text-primary">Events</span>
-                        </h3>
+                        </h2>
                     </div>
                     <div>
                         <Link
                             href="/events"
-                            className="inline-flex items-center gap-2 text-zinc-900 font-bold hover:text-secondary transition-colors group"
+                            className="inline-flex items-center gap-2 text-zinc-900 font-semibold hover:text-secondary transition-colors"
                         >
                             View All Events
-                            <Calendar className="w-5 h-5 text-primary group-hover:rotate-12 transition-transform" />
+                            <Calendar className="w-5 h-5 text-primary transition-transform" />
                         </Link>
                     </div>
                 </div>

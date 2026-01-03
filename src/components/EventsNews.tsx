@@ -12,11 +12,15 @@ const recentEvents = [
 ];
 
 const latestNews = [
-    { date: "2026-02-07", title: "International Conference (Rishikesh)" },
-    { date: "2025-11-18", title: "8th Naturopathy Day" },
-    { date: "2025-03-24", title: "Coming Soon" },
-    { date: "2025-09-15", title: "Wellness Centre Launch" },
-    { date: "2025-12-01", title: "Membership Drive" }
+    { date: "2026-02-07", title: "International Conference on Yoga & Holistic Health 2026", link: "https://forms.gle/bMJaf6cUczn1ehLF7" },
+    { date: "2025-11-18", title: "8th Naturopathy Day Celebration", link: "https://forms.gle/DEajoyPQMDhhh1tC9" },
+    { date: "2025-09-14", title: "PM launches 'Swasth Nari, Sashakt Parivar Abhiyaan'", link: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2166534" },
+    { date: "2025-09-28", title: "India celebrates 10th Ayurveda Day 2025", link: "https://ddnews.gov.in/en/india-celebrates-10th-ayurveda-day-with-theme-ayurve" },
+    { date: "2025-06-13", title: "Yoga Connect 2025 Global Summit announced", link: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2136137" },
+    { date: "2025-06-14", title: "Yoga Connect 2025: One Earth, One Health", link: "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2136380" },
+    { date: "2025-12-16", title: "2nd WHO Global Summit on Traditional Medicine 2025", link: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2204479" },
+    { date: "2025-09-12", title: "Mindfulness reduces pain more than placebo", link: "https://www.nccih.nih.gov/research/research-results/mindfulness-meditation-and-placebo-modulate-different-brain-patterns-to-reduce-pain" },
+    { date: "2025-05-14", title: "Telehealth mindfulness helps veterans with chronic pain", link: "https://www.nccih.nih.gov/research/research-results/telehealth-mindfulness-based-interventions-were-helpful-for-veterans-with-chronic-pain-in-a-large-real-world-study" },
 ];
 
 export default function EventsNews() {

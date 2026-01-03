@@ -7,7 +7,7 @@ import {
     Phone,
     Mail,
 } from "lucide-react";
-import { FaYoutube ,FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { FaYoutube, FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
 import type { FooterLink } from "@/types/footer";
 import { useFooterConfig } from "./FooterProvider";
 
@@ -136,18 +136,24 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-4 mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary/70 font-medium">
-                    <p>© Copyright {currentYear}, All Rights Reserved with NIH | India</p>
-                    <div className="flex items-center gap-6">
-                        {/* <Link href="/privacy" className="hover:text-primary transition-colors">
-                            Privacy Policy
+                <div className="border-t border-gray-200 pt-4 mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-secondary font-medium sm:text-left text-center">© Copyright {currentYear}, All Rights Reserved with NIH | India</p>
+                    <div className="flex items-center gap-2">
+                        <span className="text-secondary font-medium">
+                            Managed by</span>
+                        <Link
+                            href="https://apexture.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Image
+                                src="/apexture-logo.svg"
+                                alt="Apexture"
+                                width={134}
+                                height={26}
+                                className="h-8 w-auto"
+                            />
                         </Link>
-                        <Link href="/terms" className="hover:text-primary transition-colors">
-                            Terms of Service
-                        </Link> */}
-                        <span>
-                            Designed & Developed By : <span className="text-primary font-bold">Apexture Pvt. Ltd.</span>
-                        </span>
                     </div>
                 </div>
             </div>

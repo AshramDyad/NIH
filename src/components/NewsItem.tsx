@@ -1,15 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronRight } from 'lucide-react';
+import type { NewsItem } from '@/types/news';
 
-interface NewsItemProps {
-    date: string;
-    title: string;
+interface NewsItemProps extends Omit<NewsItem, 'link'> {
+    link?: string;
 }
 
-export default function NewsItem({ date, title }: NewsItemProps) {
-    return (
-        <div className="py-4 border-b border-white/10 last:border-0 cursor-pointer transition-colors">
+export default function NewsItem({ date, title, link }: NewsItemProps) {
+    const content = (
+        <>
             <div className="flex items-center justify-between gap-6">
                 <div className="flex flex-col gap-1 flex-1">
                     <span className="text-white text-xs font-mono tracking-widest uppercase">
@@ -25,6 +26,18 @@ export default function NewsItem({ date, title }: NewsItemProps) {
                     <ChevronRight className="w-4 h-4" />
                 </div>
             </div>
+        </>
+    );
+
+    return (
+        <div className="py-4 border-b border-white/10 last:border-0 cursor-pointer transition-colors">
+            {link ? (
+                <Link href={link} target="_blank" rel="noopener noreferrer" className="block">
+                    {content}
+                </Link>
+            ) : (
+                content
+            )}
         </div>
     );
 }
