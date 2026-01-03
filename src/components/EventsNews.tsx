@@ -4,12 +4,11 @@ import EventCard from './EventCard';
 import NewsItem from './NewsItem';
 import { ChevronRight } from 'lucide-react';
 
-const upcomingEvents = [
-    { date: "18 November 2025", title: "International Seminar on Yoga & Wellness 2025", link: "https://forms.gle/bMJaf6cUczn1ehLF7" },
-    { date: "10 April 2026", title: "Upcoming Events" },
-    { date: "07 Feb 2026", title: "International Conference on Yoga & Holistic Health-2026" },
-    { date: "15 January 2026", title: "Bharat Yatra" },
-    { date: "20 March 2026", title: "Monthly Webinar" }
+const recentEvents = [
+    { date: "1 January 2026", title: "Swasth Bharat Yatra" },
+    { date: "17 November 2025", title: "Holistic Health Ride from Major Dhyan Chand Stadium, India Gate to Rajghat, Delhi" },
+    { date: "8–9 February 2025", title: "International Conference on Yoga & Holistic Health" },
+    { date: "12 November 2022", title: "Health Awareness Bike Ride from Akshardham Mandir, Delhi to Swaminarayan Ashram Rishikesh" }
 ];
 
 const latestNews = [
@@ -28,14 +27,14 @@ export default function EventsNews() {
 
                     {/* LEFT COLUMN - Upcoming Events */}
                     <div>
-                        <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-xl font-black text-zinc-900 tracking-widest uppercase border-l-4 border-primary pl-4">
-                                Upcoming <span className="text-primary">Events</span>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl md:text-2xl font-bold text-zinc-900">
+                                Recent <span className="text-primary italic">Events</span>
                             </h2>
                         </div>
 
                         <div className="flex flex-col gap-4">
-                            {upcomingEvents.map((event, index) => (
+                            {recentEvents.map((event, index) => (
                                 <EventCard key={index} {...event} />
                             ))}
                         </div>
@@ -43,9 +42,9 @@ export default function EventsNews() {
 
                     {/* RIGHT COLUMN - Latest News */}
                     <div className="flex flex-col">
-                        <div className="mb-6">
-                            <h2 className="text-xl font-black text-zinc-900 tracking-widest uppercase border-l-4 border-secondary pl-4">
-                                Latest <span className="text-secondary">News</span>
+                        <div className="mb-4">
+                            <h2 className="text-xl md:text-2xl font-bold text-zinc-900">
+                                Latest <span className="text-secondary italic">News</span>
                             </h2>
                         </div>
 

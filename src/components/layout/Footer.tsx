@@ -3,15 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-    Facebook,
-    Instagram,
-    Twitter,
-    Linkedin,
-    Youtube,
     MapPin,
     Phone,
     Mail,
 } from "lucide-react";
+import { FaYoutube ,FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
 import type { FooterLink } from "@/types/footer";
 import { useFooterConfig } from "./FooterProvider";
 
@@ -26,9 +22,9 @@ const defaultQuickLinks: FooterLink[] = [
     { href: "/news", label: "News" },
     { href: "/contact", label: "Contact Us" },
     { href: "/projects", label: "Projects" },
-    { href: "https://forms.gle/gyXBhDGFnFX9vkmS7", label: "Membership" },
+    { href: "https://forms.gle/gyXBhDGFnFX9vkmS7", label: "Membership", target: "_blank" },
     { href: "/internship", label: "Internship" },
-    { href: "/franchise", label: "Franchise" },
+    { href: "https://forms.gle/469FAG4UTLDvVaTy6", label: "Affiliation ", target: "_blank" },
 ];
 
 const defaultAdmissions: FooterLink[] = [
@@ -78,11 +74,11 @@ export default function Footer() {
                             Empowering lives through holistic health education and wellness practices since 2025.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <SocialLink href="#" icon={<Facebook size={18} />} label="Facebook" />
-                            <SocialLink href="#" icon={<Instagram size={18} />} label="Instagram" />
-                            <SocialLink href="#" icon={<Twitter size={18} />} label="Twitter" />
-                            <SocialLink href="#" icon={<Linkedin size={18} />} label="LinkedIn" />
-                            <SocialLink href="#" icon={<Youtube size={18} />} label="YouTube" />
+                            <SocialLink href="https://www.facebook.com/profile.php?id=61568351847847" icon={<FaFacebookF size={18} />} label="Facebook" />
+                            <SocialLink href="https://www.instagram.com/nih_delhi/" icon={<FaInstagram size={18} />} label="Instagram" />
+                            <SocialLink href="#" icon={<FaXTwitter size={18} />} label="Twitter" />
+                            <SocialLink href="#" icon={<FaLinkedin size={18} />} label="LinkedIn" />
+                            <SocialLink href="#" icon={<FaYoutube size={18} />} label="YouTube" />
                         </div>
                     </div>
 
@@ -93,7 +89,7 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
-                                <FooterLinkItem key={link.label} href={link.href} label={link.label} />
+                                <FooterLinkItem key={link.label} href={link.href} label={link.label} target={link.target} />
                             ))}
                         </ul>
                     </div>
@@ -173,12 +169,14 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
     );
 }
 
-function FooterLinkItem({ href, label }: { href?: string; label: string }) {
+function FooterLinkItem({ href, label, target }: { href?: string; label: string; target?: string }) {
     return (
         <li>
             {href ? (
                 <Link
                     href={href}
+                    target={target}
+                    rel={target === "_blank" ? "noopener noreferrer" : undefined}
                     className="text-secondary/80 hover:text-primary hover:translate-x-1 transition-all duration-300 flex items-center gap-2 font-medium"
                 >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary hover:opacity-100 transition-opacity" />
