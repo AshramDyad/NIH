@@ -323,6 +323,8 @@ const pageHeaderConfigs: Record<string, HeaderConfig> = {
   '/academics/hall-of-fame': principalMessageHeader,
   '/academics/inclusion-programme': principalMessageHeader,
 
+  "/global-links/danish-immersive-exchange-programme-2024": principalMessageHeader,
+
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
   // '/about/secretary': aboutSectionHeader,

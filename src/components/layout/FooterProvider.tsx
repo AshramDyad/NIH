@@ -100,6 +100,8 @@ const pageFooterConfigs: Record<string, FooterConfig> = {
     '/academics/hall-of-fame': aboutSectionFooter,
     '/academics/inclusion-programme': aboutSectionFooter,
 
+    '/global-links/danish-immersive-exchange-programme-2024': aboutSectionFooter,
+
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,
     // '/courses': coursesSectionFooter,
