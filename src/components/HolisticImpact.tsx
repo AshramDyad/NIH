@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 /**
  * HolisticImpact Component
  * A "Simple & Premium" redesign of the NIH section.
@@ -77,7 +78,7 @@ const HolisticImpact = () => {
                                 </div>
                             </div>
                             <div className="mt-8 flex items-center justify-between pt-6 border-t border-gray-100">
-                                <Link href="/about-dps/principal-message" className="text-gray-900 font-sans font-bold text-sm hover:text-primary transition-colors flex items-center gap-1 group/link">
+                                <Link href="/about/chairman" className="text-gray-900 font-sans font-bold text-sm hover:text-primary transition-colors flex items-center gap-1 group/link">
                                     Read Full Story <span className="transform group-hover/link:translate-x-1 transition-transform">→</span>
                                 </Link>
                                 <button
@@ -132,21 +133,21 @@ const HolisticImpact = () => {
                             <h3 className="text-[#155b2e] font-sans font-bold text-xl tracking-tight mb-8">Quick Links</h3>
                             <div className="grid grid-cols-1 gap-4 flex-grow">
                                 {[
-                                    { title: 'Membership', color: 'hover:bg-[#EEB9BB]', href: 'https://forms.gle/gyXBhDGFnFX9vkmS7' },
-                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '#' },
-                                    { title: 'Health Checkup Camps', color: 'hover:bg-[#D3B6F0]', href: '#' },
-                                    { title: 'Health Retreat', color: 'hover:bg-[#B2D1F2]', href: '#' }
+                                    { title: 'Membership', color: 'hover:bg-[#EEB9BB]', href: 'https://forms.gle/gyXBhDGFnFX9vkmS7', isExternal: true },
+                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '/international-conference-2026', isExternal: false },
+                                    { title: 'Affiliation', color: 'hover:bg-[#D3B6F0]', href: 'https://forms.gle/469FAG4UTLDvVaTy6', isExternal: true },
+                                    { title: 'Certificate Course in Holistic Health', color: 'hover:bg-[#B2D1F2]', href: 'https://forms.gle/X1vFV8VqQSRfTics7', isExternal: true }
                                 ].map((activity, idx) => (
                                     <Link
                                         key={idx}
                                         href={activity.href}
+                                        target={activity.isExternal ? '_blank' : undefined}
+                                        rel={activity.isExternal ? 'noopener noreferrer' : undefined}
                                         className={`group/item flex items-center justify-between p-5 rounded-xl border border-gray-100 transition-all duration-300 hover:border-transparent ${activity.color} hover:scale-[1.03] shadow-sm hover:shadow-md`}
                                     >
-                                        <span className="text-[#155b2e] font-sans font-bold tracking-wide uppercase text-xs">{activity.title}</span>
-                                        <div className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center border border-white transition-colors group-hover/item:bg-white shadow-sm">
-                                            <svg className="w-4 h-4 text-[#155b2e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                            </svg>
+                                        <span className="text-secondary font-bold text-sm">{activity.title}</span>
+                                        <div className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center border border-white transition-colors group-hover/item:bg-white shadow-sm shrink-0">
+                                            <ChevronRight size={18} className="text-secondary" />
                                         </div>
                                     </Link>
                                 ))}

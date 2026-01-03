@@ -100,7 +100,7 @@ const Header = () => {
     },
     {
       name: "Course Brochure",
-      href: "/brochure in sequence 2025.pdf",
+      href: "/pdfs/brochure-in-sequence-2025.pdf",
       icon: <FileText size={18} />,
       isExternal: true
     },
@@ -130,7 +130,7 @@ const Header = () => {
         { name: "Chairman's Message", href: "/about/chairman" },
         { name: "Central Council Board", href: "/about/central-council-board" },
         { name: "Aims and Objectives", href: "/about/aims" },
-        { name: "Course Brochure", href: "/brochure in sequence 2025.pdf" },
+        { name: "Course Brochure", href: "/pdfs/brochure-in-sequence-2025.pdf" },
         { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "/about/magazine" },
         { name: "Secretary Column", href: "/about/secretary" },
       ]
@@ -287,7 +287,7 @@ const Header = () => {
               ))}
             </div>
             {/* Mobile menu button */}
-            <div className="xl:hidden">
+            <div>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"

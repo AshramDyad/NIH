@@ -183,7 +183,7 @@ const NewMembers = () => {
                                     NIH Guidance
                                 </h3>
                                 <Link
-                                    href="/guidance"
+                                    href="#"
                                     className="flex items-center gap-2 rounded-full px-8 py-3 text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg active:scale-95 bg-transparent"
                                 >
                                     Know More
@@ -199,7 +199,7 @@ const NewMembers = () => {
                                     Success Stories
                                 </h3>
                                 <Link
-                                    href="/success-stories"
+                                    href="#"
                                     className="flex items-center gap-2 rounded-full px-8 py-3 text-lg font-bold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg active:scale-95 bg-transparent"
                                 >
                                     Know More

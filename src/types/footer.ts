@@ -6,6 +6,7 @@
 export interface FooterLink {
   href?: string;
   label: string;
+  target?: string;
 }
 
 export interface FooterSection {

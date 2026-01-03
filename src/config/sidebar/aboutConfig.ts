@@ -10,19 +10,18 @@ export const aboutConfig: SidebarConfig = {
             type: 'links',
             title: 'About NIH',
             items: [
-                { name: 'About Us', href: '/about', icon: 'Info' },
-                { name: 'NIH Profile', href: '/about/school-profile', icon: 'Activity' },
-                { name: 'General Information', href: '/general-information', icon: 'Target' },
+                { name: 'About Us', href: '/about', icon: '' },
+                { name: 'NIH Profile', href: '#', icon: '' },
                 {
                     name: 'NIH Members',
                     href: '#',
-                    icon: 'Users',
+                    icon: '',
                     children: [
                         { name: 'Active Members', href: '#' },
                         { name: 'Central Council Board', href: '/about/central-council-board' }
                     ]
                 },
-                { name: 'Latest News', href: '#', icon: 'Newspaper' },
+                { name: 'Latest News', href: '#', icon: '' },
             ],
         },
         {
