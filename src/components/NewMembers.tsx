@@ -29,32 +29,25 @@ const members: Member[] = [
     },
     {
         id: 2,
-        name: "Dr. Vikas Upadhyay",
-        role: "Lifetime Member",
-        location: "Aligarh, UP",
-        image: "/images/vikasupadhyay.jpg"
-    },
-    {
-        id: 3,
         name: "Seema Pathak",
         role: "Executive Member",
         location: "Aligarh, UP",
         image: "/images/anonymous.jpg"
     },
     {
-        id: 4,
-        name: "Dhaval Dholakia",
-        role: "Lifetime Member",
-        location: "Ahmedabad, Gujarat",
-        image: "/images/dhavaldholakia.jpg"
-    },
-    {
-        id: 5,
+        id: 3,
         name: "Meena Dhaval",
         role: "Executive Member",
         location: "Ahmedabad, Gujarat",
         image: "/images/meenadhavaldholakia.jpg"
-    }
+    },
+    {
+        id: 4,
+        name: "Bilkis H.kajliwala",
+        role: "Executive Member",
+        location: "Godhra, Gujarat",
+        image: "/images/Bilkis.png"
+    },
 ];
 
 const MemberCard = ({ member }: { member: Member }) => (
@@ -102,7 +95,7 @@ const NewMembers = () => {
     }, []);
 
     return (
-        <section className="bg-white sm:py-16 py-12 relative overflow-hidden border-t border-gray-100">
+        <section className="bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4">
                 {/* Header Section */}
                 <div className="text-center mb-16">
@@ -121,7 +114,7 @@ const NewMembers = () => {
 
                 {/* Swiper Slider with Placeholder */}
                 <div className="relative group min-h-[480px] px-4">
-                    <div className="pb-16">
+                    <div>
                         {!isMounted ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 {members.slice(0, 4).map((member, idx) => (

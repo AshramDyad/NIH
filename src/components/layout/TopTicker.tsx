@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
+
 const TopTicker = () => {
   const newsItems = [
-    "Join us Now - Admission Open for 2025-26 Session!",
-    "Important: Monthly E-Magazine for January 2026 is now available.",
-    "Central Control Board meeting scheduled for next week.",
-    "New Course: Advanced Health Management starting soon.",
+    "Registered with Ministry of Micro, Small & Medium Enterprises(MSME) and NITI Aayog, Government of India",
+    "International Conference on YOGA & Holistic Health-2026",
+    "Join us Now - Admission Open for Certificate in Holistic Health(CCH)",
   ];
   return (
     <div className="bg-secondary overflow-hidden py-2 text-white">
