@@ -12,8 +12,10 @@
   --font-mono: var(--font-geist-mono);
 
   /* Primary Colors */
-  --color-primary: #f3972a;      /* Orange */
-  --color-secondary: #155b2e;    /* Green */
+  --color-primary: #f3972a;
+  /* Orange */
+  --color-secondary: #155b2e;
+  /* Green */
 
   @keyframes marquee {
     0% {
@@ -35,7 +37,7 @@
     }
   }
 
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
   --animate-scroll-vertical: scroll-vertical 25s linear infinite;
 }
 

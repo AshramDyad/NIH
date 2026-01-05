@@ -24,7 +24,7 @@ export default function EventBannerPopup() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsOpen(true);
-        }, 300);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -92,7 +92,7 @@ export default function EventBannerPopup() {
                             {/* Close Button - positioned at top-right corner of image */}
                             <button
                                 onClick={handleClose}
-                                className="absolute sm:-top-3.5 -top-2 sm:-right-4 -right-2 z-10 rounded-full flex items-center justify-center p-1.5 bg-primary transition-all duration-200 cursor-pointer"
+                                className="absolute -top-3 -right-3 z-10 rounded-full flex items-center justify-center p-1.5 bg-primary transition-all duration-200 cursor-pointer"
                                 aria-label="Close event banner"
                             >
                                 <X className="size-4 text-white" />
@@ -103,7 +103,7 @@ export default function EventBannerPopup() {
                                 alt="International Conference on YOGA & Holistic Health 2026 - 7th & 8th February 2026 at Shri Swaminarayan Ashram, Rishikesh"
                                 width={800}
                                 height={1200}
-                                className="w-full h-auto max-h-[80vh] object-contain"
+                                className="w-full h-auto max-h-[85vh] object-contain"
                                 priority
                             />
                         </div>
