@@ -126,13 +126,12 @@ const Header = () => {
       hasChildren: true,
       children: [
         { name: "About NIH", href: "/about" },
-
         { name: "Chairman's Message", href: "/about/chairman" },
+        { name: "Secretary Column", href: "/about/secretary" },
         { name: "Central Council Board", href: "/about/central-council-board" },
         { name: "Aims and Objectives", href: "/about/aims" },
         { name: "Course Brochure", href: "/pdfs/brochure-in-sequence-2025.pdf" },
         { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "/about/magazine" },
-        { name: "Secretary Column", href: "/about/secretary" },
       ]
     },
     {
