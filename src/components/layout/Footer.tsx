@@ -17,11 +17,11 @@ import { useFooterConfig } from "./FooterProvider";
  */
 const defaultQuickLinks: FooterLink[] = [
     { href: "/about", label: "About NIH" },
-    { href: "/gallery", label: "Photo/Video Gallery" },
-    { href: "/magazine", label: "E-magazine" },
-    { href: "/news", label: "News" },
+    // { href: "/gallery", label: "Photo/Video Gallery" },
+    { href: "/magazine", label: "New E-magazine" },
+    // { href: "/news", label: "News" },
     { href: "/contact", label: "Contact Us" },
-    { href: "/projects", label: "Projects" },
+    // { href: "/projects", label: "Projects" },
     { href: "https://forms.gle/gyXBhDGFnFX9vkmS7", label: "Membership", target: "_blank" },
     { href: "/internship", label: "Internship" },
     { href: "https://forms.gle/469FAG4UTLDvVaTy6", label: "Affiliation ", target: "_blank" },
