@@ -82,7 +82,6 @@ const Header = () => {
     { name: "About", href: "/about" },
     { name: "Activities", href: "/activities" },
     { name: "Careers", href: "/careers" },
-    { name: "News", href: "/news" },
   ];
   const ctaButtons = headerConfig?.ctaButtons || [
     {
@@ -290,7 +289,7 @@ const Header = () => {
             <div>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"
+                className="inline-flex items-center justify-center cursor-pointer rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"
                 aria-expanded={isMenuOpen}
               >
                 <span className="sr-only">Open main menu</span>
