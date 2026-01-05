@@ -8,6 +8,7 @@ export interface NavLink {
 export interface DropdownItem {
   name: string;
   href: string;
+  isExternal?: boolean;
 }
 
 // CTA Button with optional dropdown
