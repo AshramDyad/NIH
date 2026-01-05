@@ -277,53 +277,6 @@ const principalMessageHeader: HeaderConfig = {
  */
 const pageHeaderConfigs: Record<string, HeaderConfig> = {
   // Principal Message page gets custom header
-  '/about-dps/principal-message': principalMessageHeader,
-  '/about-dps/about-the-school': principalMessageHeader,
-  '/about-dps/school-profile': principalMessageHeader,
-  '/about-dps/dps-family/dps-society': principalMessageHeader,
-  '/about-dps/dps-family/managing-committee': principalMessageHeader,
-  '/about-dps/shiksha-kendra': principalMessageHeader,
-  '/about-dps/pravah': principalMessageHeader,
-  '/about-dps/muskaan': principalMessageHeader,
-
-  // General Information pages get custom header
-  '/general-information/school-rules': principalMessageHeader,
-  '/general-information/recommendations': principalMessageHeader,
-  '/general-information/withdrawals': principalMessageHeader,
-  '/general-information/bus-information': principalMessageHeader,
-  '/general-information/school-bus-rules': principalMessageHeader,
-  '/general-information/elected-parents-representatives': principalMessageHeader,
-
-  // Academics pages get custom header
-  // Infrastructure page gets custom header
-  '/infrastructure/school-building': principalMessageHeader,
-  '/infrastructure/smart-class': principalMessageHeader,
-  '/infrastructure/school-library': principalMessageHeader,
-  '/infrastructure/art-music-department': principalMessageHeader,
-  '/infrastructure/laboratories/science-labs': principalMessageHeader,
-  '/infrastructure/laboratories/psychology-lab': principalMessageHeader,
-  '/infrastructure/laboratories/fashion-technology-lab': principalMessageHeader,
-  '/infrastructure/laboratories/language-lab': principalMessageHeader,
-  '/infrastructure/laboratories/it-lab': principalMessageHeader,
-  '/infrastructure/laboratories/math-lab': principalMessageHeader,
-  '/infrastructure/laboratories/fine-art-lab': principalMessageHeader,
-  '/infrastructure/laboratories/discovery-lab': principalMessageHeader,
-  '/infrastructure/laboratories/atal-tinkering-lab': principalMessageHeader,
-  '/infrastructure/laboratories/scrap-lab': principalMessageHeader,
-  '/infrastructure/laboratories/lab-incharges': principalMessageHeader,
-  '/infrastructure/facilities': principalMessageHeader,
-  
-  // Academics page gets custom header
-  '/academics': principalMessageHeader,
-  '/academics/leadership-team': principalMessageHeader,
-  '/academics/academic-team': principalMessageHeader,
-  '/academics/class-representatives': principalMessageHeader,
-  '/academics/co-ordinators': principalMessageHeader,
-  '/academics/extra-duty-list': principalMessageHeader,
-  '/academics/hall-of-fame': principalMessageHeader,
-  '/academics/inclusion-programme': principalMessageHeader,
-
-  "/global-links/danish-immersive-exchange-programme-2024": principalMessageHeader,
 
   // Add more mappings here as needed
   // '/about/chairman': aboutSectionHeader,
