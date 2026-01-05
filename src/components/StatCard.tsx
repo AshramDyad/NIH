@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
+import { useMotionValue, useSpring, useInView } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 
 interface StatCardProps {
     icon: LucideIcon;
     number: number;
     label: string;
-    delay?: number;
     suffix?: string;
 }
 
-export default function StatCard({ icon: Icon, number, label, delay = 0, suffix = "" }: StatCardProps) {
+export default function StatCard({ icon: Icon, number, label, suffix = "" }: StatCardProps) {
     const motionValue = useMotionValue(0);
     const springValue = useSpring(motionValue, {
         damping: 30,
@@ -38,10 +37,7 @@ export default function StatCard({ icon: Icon, number, label, delay = 0, suffix 
     }, [springValue]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: delay }}
+        <div
             className="group relative flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-zinc-100 shadow-sm"
         >
             {/* Background Glow */}
@@ -65,6 +61,6 @@ export default function StatCard({ icon: Icon, number, label, delay = 0, suffix 
 
             {/* Bottom Accent */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary rounded-full" />
-        </motion.div>
+        </div>
     );
 }
