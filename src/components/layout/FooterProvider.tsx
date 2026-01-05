@@ -51,56 +51,9 @@ const aboutSectionFooter: FooterConfig = {
  */
 const pageFooterConfigs: Record<string, FooterConfig> = {
     // Reuse aboutSectionFooter for multiple routes
-    '/about-dps/principal-message': aboutSectionFooter,
-    '/about-dps/about-the-school': aboutSectionFooter,
-    '/about-dps/school-profile': aboutSectionFooter,
-    '/about-dps/dps-family/dps-society': aboutSectionFooter,
-    '/about-dps/dps-family/managing-committee': aboutSectionFooter,
-    '/about-dps/shiksha-kendra': aboutSectionFooter,
-    '/about-dps/pravah': aboutSectionFooter,
-    '/about-dps/muskaan': aboutSectionFooter,
-
-    // General Information pages get custom footer
-    '/general-information/school-rules': aboutSectionFooter,
-    '/general-information/recommendations': aboutSectionFooter,
-    '/general-information/withdrawls': aboutSectionFooter,
-    '/general-information/bus-information': aboutSectionFooter,
-    '/general-information/school-bus-rules': aboutSectionFooter,
-    '/general-information/elected-parents': aboutSectionFooter,
-    '/general-information/school-video': aboutSectionFooter,
-    '/general-information/press-release': aboutSectionFooter,
-    
-    // Infrastructure page gets custom footer
-    '/infrastructure/school-building': aboutSectionFooter,
-    '/infrastructure/smart-class': aboutSectionFooter,
-    '/infrastructure/school-library': aboutSectionFooter,
-    '/infrastructure/art-music-department': aboutSectionFooter,
-    '/infrastructure/laboratories/science-labs': aboutSectionFooter,
-    '/infrastructure/laboratories/psychology-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/fashion-technology-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/language-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/it-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/math-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/fine-art-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/discovery-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/atal-tinkering-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/scrap-lab': aboutSectionFooter,
-    '/infrastructure/laboratories/lab-incharges': aboutSectionFooter,
-    '/infrastructure/facilities': aboutSectionFooter,
 
     // Add more mappings here as needed
     // '/about/aims': aboutSectionFooter,
-
-    // Academics pages get custom footer
-    '/academics/leadership-team': aboutSectionFooter,
-    '/academics/academic-team': aboutSectionFooter,
-    '/academics/class-representatives': aboutSectionFooter,
-    '/academics/co-ordinators': aboutSectionFooter,
-    '/academics/extra-duty-list': aboutSectionFooter,
-    '/academics/hall-of-fame': aboutSectionFooter,
-    '/academics/inclusion-programme': aboutSectionFooter,
-
-    '/global-links/danish-immersive-exchange-programme-2024': aboutSectionFooter,
 
     // Add more mappings here as needed
     // '/contact': contactSectionFooter,

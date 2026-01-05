@@ -91,11 +91,11 @@ const Header = () => {
       icon: <User size={18} />,
       hasDropdown: true,
       dropdownItems: [
-        { name: "Membership form", href: "https://forms.gle/gyXBhDGFnFX9vkmS7" },
-        { name: "Active Members", href: "/membership/active" },
-        { name: "Member's Institutions", href: "/membership/institutions" },
-        { name: "Life Members", href: "/membership/life" },
-        { name: "Associate Centres", href: "/membership/associate" },
+        { name: "Membership form", href: "https://forms.gle/gyXBhDGFnFX9vkmS7", isExternal: true },
+        { name: "Active Members", href: "/members/active" },
+        { name: "Member's Institutions", href: "/members/institutions" },
+        { name: "Lifetime Members", href: "/members/lifetime" },
+        { name: "Associate Centres", href: "/members/associate" },
       ]
     },
     {
@@ -139,12 +139,12 @@ const Header = () => {
       name: "MEMBERS",
       hasChildren: true,
       children: [
-        { name: "NIH Active Members", href: "/membership/active" },
-        { name: "Lifetime Members", href: "/membership/life" },
-        { name: "Members Institutions", href: "/membership/institutions" },
-        { name: "Yoga Volunteer Members", href: "/membership/yoga-volunteer" },
-        { name: "Yoga Professional Members", href: "/membership/yoga-professional" },
-        { name: "Associate Centres", href: "/membership/associate" }
+        { name: "NIH Active Members", href: "/members/active" },
+        { name: "Lifetime Members", href: "/members/lifetime" },
+        { name: "Members Institutions", href: "/members/institutions" },
+        { name: "Yoga Volunteer Members", href: "/members/yoga-volunteer" },
+        { name: "Yoga Professional Members", href: "/members/yoga-professional" },
+        { name: "Associate Centres", href: "/members/associate" }
       ]
     },
     {
@@ -256,6 +256,8 @@ const Header = () => {
                                   <div key={item.name}>
                                     <Link
                                       href={item.href}
+                                      target={item.isExternal ? "_blank" : undefined}
+                                      rel={item.isExternal ? "noopener noreferrer" : undefined}
                                       className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-secondary hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-200"
                                     >
                                       {item.name}
