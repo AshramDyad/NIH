@@ -4,8 +4,6 @@ import "./globals.css";
 import TopTicker from "@/components/layout/TopTicker";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { FooterProvider } from "@/components/layout/FooterProvider";
-import { HeaderProvider } from "@/components/layout/HeaderProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,13 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TopTicker />
-        <HeaderProvider>
-          <Header />
-        </HeaderProvider>
+        <Header />
         <main>{children}</main>
-        <FooterProvider>
-          <Footer />
-        </FooterProvider>
+        <Footer />
       </body>
     </html>
   );
