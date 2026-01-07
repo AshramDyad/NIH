@@ -99,7 +99,7 @@ export default function EventBannerPopup() {
                             </button>
 
                             <Image
-                                src="/images/event.jpg"
+                                src="/images/event.jpeg"
                                 alt="International Conference on YOGA & Holistic Health 2026 - 7th & 8th February 2026 at Shri Swaminarayan Ashram, Rishikesh"
                                 width={800}
                                 height={1200}

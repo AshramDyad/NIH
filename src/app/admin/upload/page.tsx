@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Image as ImageIcon, FileText, Download, Trash2, Calendar, File } from 'lucide-react';
 import { FileUpload } from '@/components/shared/FileUpload';
-import type { FileType, UploadResult, UploadedFile } from '@/types/file-upload';
+import type { UploadResult, UploadedFile } from '@/types/file-upload';
 
 export default function AdminUploadPage() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
@@ -47,10 +47,6 @@ export default function AdminUploadPage() {
       minute: '2-digit',
     });
   };
-
-  // Filter files by type
-  const imageFiles = uploadedFiles.filter(file => file.fileType === 'image');
-  const pdfFiles = uploadedFiles.filter(file => file.fileType === 'pdf');
 
   return (
     <div className="min-h-screen bg-gray-50">

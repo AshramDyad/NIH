@@ -136,7 +136,7 @@ export default function InternationalConference2026Page() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
                 <Link
-                  href="/pdfs/BROCHURE ICYH 26_compressed.pdf"
+                  href="/pdfs/BROCHURE ICYH 26 copy new-1.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   download

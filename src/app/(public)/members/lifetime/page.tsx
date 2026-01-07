@@ -1,90 +1,45 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import type { LifetimeMember } from "@/types/lifetime-member";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Lifetime Members | NIH Health - National Institute of Holistic Health",
   description: "Meet our dedicated Lifetime Members who have made significant contributions to holistic health and wellness education.",
 };
 
-const lifetimeMembers: LifetimeMember[] = [
-  {
-    id: 1,
-    name: "Dr. Vikas Upadhyay",
-    memberNumber: "NIH/UP/1178",
-    dateOfBirth: "05.10.1975",
-    image: "/images/vikasupadhyay.jpg",
-  },
-  {
-    id: 2,
-    name: "Anil-Kumar",
-    memberNumber: "NIH/UP/1179",
-    dateOfBirth: "01.07.1963",
-    image: "/images/Anil-Kumar.png",
-  },
-  {
-    id: 3,
-    name: "Shashi Sharma",
-    memberNumber: "NIH/UP/1167",
-    dateOfBirth: "05.07.1977",
-    image: "/images/Shashi-Sharma.png",
-  },
-  {
-    id: 4,
-    name: "Dr. Rekha Choudhary",
-    memberNumber: "NIHDL/1162",
-    dateOfBirth: "15.09.1966",
-    image: "/images/Rekha-Choudhary.png",
-  },
-  {
-    id: 5,
-    name: "Sadhna Upadhyay",
-    memberNumber: "NIH/UP/1175",
-    dateOfBirth: "10.07.1975",
-    image: "/images/Sadhna-Upadhyay.png",
-  },
-  {
-    id: 6,
-    name: "Praveen Jain",
-    memberNumber: "NIH/DL/1150",
-    dateOfBirth: "22/11/1968",
-    image: "/images/Praveen-Jain.png",
-  },
-  {
-    id: 7,
-    name: "Dr. Sumanlata Dewangan",
-    memberNumber: "NIH/UK/1257",
-    dateOfBirth: "28/05/1987",
-    image: "/images/Sumanlata-Dewangan.png",
-  },
-  {
-    id: 8,
-    name: "Dr. Virendra Vikram Singh",
-    memberNumber: "NIH/UP/1258",
-    dateOfBirth: "02/12/1954",
-    image: "/images/Virendra-Vikram-Singh.png",
-  },
-  {
-    id: 9,
-    name: "Dr. Krantiveer Shivram Mahindrakar",
-    memberNumber: "NIH/MH/1256",
-    dateOfBirth: "01/07/1967",
-    image: "/images/Krantiveer-Shivram-Mahindrakar.png",
-  },
-];
+// Database Member Type
+interface DatabaseMember {
+  readonly id: number;
+  readonly name: string;
+  readonly member_number: string;
+  readonly date_of_birth: string;
+  readonly image_url: string;
+  readonly created_at: string;
+  readonly updated_at: string;
+}
 
 interface MemberCardProps {
-  member: LifetimeMember;
+  member: DatabaseMember;
 }
 
 function MemberCard({ member }: MemberCardProps) {
+  // Format date for display
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+  };
+
   return (
     <div className="bg-white rounded-2xl p-4 md:p-6 shadow border border-gray-200 space-y-4">
       {/* Member Image */}
       <div className="relative w-32 h-32 mx-auto">
-        <div className="relative w-full h-full rounded-full overflow-hidden ">
+        <div className="relative w-full h-full rounded-full overflow-hidden">
           <Image
-            src={member.image}
+            src={member.image_url}
             alt={`${member.name} - Lifetime Member`}
             fill
             className="object-cover"
@@ -106,21 +61,36 @@ function MemberCard({ member }: MemberCardProps) {
           <span className="text-lg font-bold text-primary">
             Member No.
           </span>
-          <span className="font-medium">{member.memberNumber}</span>
+          <span className="font-medium">{member.member_number}</span>
         </div>
 
         <div className="flex flex-col items-center text-gray-600">
           <span className="text-lg font-bold text-secondary">
             D.O.B.
           </span>
-          <span className="font-medium">{member.dateOfBirth}</span>
+          <span className="font-medium">{formatDate(member.date_of_birth)}</span>
         </div>
       </div>
     </div>
   );
 }
 
-export default function LifetimeMembersPage() {
+export default async function LifetimeMembersPage() {
+  // Fetch lifetime members from Supabase
+  const supabase = await createClient();
+
+  const { data: members, error } = await supabase
+    .from('lifetime_members')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  // Handle error state gracefully
+  if (error) {
+    console.error('Error fetching lifetime members:', error);
+  }
+
+  const lifetimeMembers = (members as DatabaseMember[]) || [];
+
   return (
     <section className="bg-white sm:py-16 py-12">
       <div className="container mx-auto px-4">
@@ -136,12 +106,19 @@ export default function LifetimeMembersPage() {
           </p>
         </div>
 
-        {/* Members Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {lifetimeMembers.map((member) => (
-            <MemberCard key={member.id} member={member} />
-          ))}
-        </div>
+        {/* Empty State */}
+        {lifetimeMembers.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-gray-600">No lifetime members found.</p>
+          </div>
+        ) : (
+          /* Members Grid */
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {lifetimeMembers.map((member) => (
+              <MemberCard key={member.id} member={member} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
