@@ -4,8 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { User, FileText, Calendar, Menu, X, ChevronRight, ChevronLeft, UserPlus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useHeaderConfig } from "./HeaderProvider";
-import type { MobileMenuItem } from "@/types/header";
+
+// Simple type definitions for mobile menu
+interface MobileMenuChild {
+  name: string;
+  href?: string;
+  hasChildren?: true;
+  children?: readonly { name: string; href: string }[];
+}
+
+interface MobileMenuItem {
+  id: string;
+  name: string;
+  href?: string;
+  hasChildren?: true;
+  children?: readonly MobileMenuChild[];
+}
 
 // Animation variants for premium mobile menu
 const overlayVariants = {
@@ -56,9 +70,6 @@ const Header = () => {
   const [activeNestedSubMenu, setActiveNestedSubMenu] = useState<string | null>(null);
   const [hoveredBtn, setHoveredBtn] = useState<string | null>(null);
 
-  // Get dynamic header configuration
-  const headerConfig = useHeaderConfig();
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -77,13 +88,14 @@ const Header = () => {
     return () => { document.body.style.overflow = 'unset'; };
   }, [isMenuOpen]);
 
-  const navLinks = headerConfig?.navLinks || [
+  const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Activities", href: "/activities" },
     { name: "Careers", href: "/careers" },
   ];
-  const ctaButtons = headerConfig?.ctaButtons || [
+
+  const ctaButtons = [
     {
       name: "Membership",
       href: "/membership",
@@ -116,8 +128,8 @@ const Header = () => {
     },
   ];
 
-  // Mobile menu items structure matching the video design
-  const mobileMenuItems: readonly MobileMenuItem[] = headerConfig?.mobileMenuItems || [
+  // Mobile menu items structure
+  const mobileMenuItems: readonly MobileMenuItem[] = [
     { id: "home", name: "HOME", href: "/" },
     {
       id: "about-us",
@@ -446,7 +458,7 @@ const Header = () => {
                         animate="open"
                         className="space-y-2 px-4"
                       >
-                        {mobileMenuItems.find(i => i.id === activeSubMenu)?.children?.map((subItem) => (
+                        {mobileMenuItems.find(i => i.id === activeSubMenu)?.children?.map((subItem: MobileMenuChild) => (
                           <motion.div
                             key={subItem.name}
                             variants={itemVariants}
@@ -520,9 +532,9 @@ const Header = () => {
                         className="space-y-2 px-4"
                       >
                         {mobileMenuItems
-                          .find(i => i.id === activeSubMenu)
-                          ?.children?.find(c => c.name === activeNestedSubMenu)
-                          ?.children?.map((nestedItem) => (
+                          .find((i: MobileMenuItem) => i.id === activeSubMenu)
+                          ?.children?.find((c: MobileMenuChild) => c.name === activeNestedSubMenu)
+                          ?.children?.map((nestedItem: { name: string; href: string }) => (
                             <motion.div
                               key={nestedItem.name}
                               variants={itemVariants}

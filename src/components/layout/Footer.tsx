@@ -8,14 +8,19 @@ import {
     Mail,
 } from "lucide-react";
 import { FaYoutube, FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
-import type { FooterLink } from "@/types/footer";
-import { useFooterConfig } from "./FooterProvider";
+
+// Simple type definitions for footer content
+interface FooterLink {
+  href?: string;
+  label: string;
+  target?: string;
+}
 
 /**
  * Default Footer Content
  * Used when no custom config is provided by the page
  */
-const defaultQuickLinks: FooterLink[] = [
+const defaultQuickLinks = [
     { href: "/about", label: "About NIH" },
     // { href: "/gallery", label: "Photo/Video Gallery" },
     { href: "/magazine", label: "New E-magazine" },
@@ -27,7 +32,7 @@ const defaultQuickLinks: FooterLink[] = [
     { href: "https://forms.gle/469FAG4UTLDvVaTy6", label: "Affiliation ", target: "_blank" },
 ];
 
-const defaultAdmissions: FooterLink[] = [
+const defaultAdmissions = [
     { label: "Certificate Course in Holistic Health (CCH)" },
     { label: "Certificate Course in Yoga Mudra" },
     { label: "Certificate Course in Meditation" },
@@ -42,15 +47,12 @@ const defaultContact = {
 /**
  * Footer Component
  * Refined with white background and primary brand colors.
- * Uses FooterContext for dynamic content per page.
  */
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const footerConfig = useFooterConfig();
-
-    const quickLinks = footerConfig?.quickLinks?.links || defaultQuickLinks;
-    const admissions = footerConfig?.admissions?.links || defaultAdmissions;
-    const contact = footerConfig?.contact || defaultContact;
+    const quickLinks = defaultQuickLinks;
+    const admissions = defaultAdmissions;
+    const contact = defaultContact;
 
     return (
         <footer className="bg-white text-secondary sm:py-16 py-12 relative border-t border-gray-100 overflow-hidden">
