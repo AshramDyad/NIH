@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useFormStatus } from 'react-dom';
 import { login } from '@/app/actions/auth';
 import { LogIn as LoginIcon } from 'lucide-react';
@@ -66,7 +67,11 @@ function LoginForm() {
 }
 
 export default function AdminLoginPage() {
-  return <LoginForm />;
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gray-50">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
 }
 
 function SubmitButton() {
