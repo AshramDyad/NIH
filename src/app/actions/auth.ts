@@ -19,7 +19,7 @@ export async function login(formData: FormData) {
   });
 
   if (!validatedFields.success) {
-    redirect('/login?error=Invalid+credentials');
+    redirect('/admin/login?error=Invalid+credentials');
   }
 
   const { email, password } = validatedFields.data;
@@ -33,7 +33,7 @@ export async function login(formData: FormData) {
   });
 
   if (error) {
-    redirect('/login?error=' + encodeURIComponent(error.message));
+    redirect('/admin/login?error=' + encodeURIComponent(error.message));
   }
 
   // Check if user has admin role
@@ -45,7 +45,7 @@ export async function login(formData: FormData) {
 
   if (roleError || !roleData || roleData.role !== 'admin') {
     await supabase.auth.signOut();
-    redirect('/login?error=Access+denied.+Admin+only.');
+    redirect('/admin/login?error=Access+denied.+Admin+only.');
   }
 
   revalidatePath('/admin');
@@ -56,5 +56,5 @@ export async function logout() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   revalidatePath('/admin');
-  redirect('/login');
+  redirect('/admin/login');
 }

@@ -66,10 +66,10 @@ export default function AdminUploadPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Image Upload Section */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <ImageIcon className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-orange-100 rounded-lg">
+                <ImageIcon className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">
@@ -88,10 +88,10 @@ export default function AdminUploadPage() {
           </div>
 
           {/* PDF Upload Section */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-red-100 rounded-lg">
-                <FileText className="w-6 h-6 text-red-600" />
+              <div className="p-3 bg-secondary/10 rounded-lg">
+                <FileText className="w-6 h-6 text-secondary" />
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">
@@ -113,9 +113,9 @@ export default function AdminUploadPage() {
         {/* Uploaded Files Section */}
         {uploadedFiles.length > 0 && (
           <div className="mt-12">
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
               {/* Section Header */}
-              <div className="px-6 py-4 border-b border-gray-200">
+              <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <h2 className="text-xl font-semibold text-gray-900">
                   Uploaded Files
                 </h2>
@@ -136,12 +136,12 @@ export default function AdminUploadPage() {
                         {/* File Icon */}
                         <div className="flex-shrink-0">
                           {file.fileType === 'image' ? (
-                            <div className="p-2 bg-blue-100 rounded-lg">
-                              <ImageIcon className="w-5 h-5 text-blue-600" />
+                            <div className="p-2 bg-orange-100 rounded-lg">
+                              <ImageIcon className="w-5 h-5 text-primary" />
                             </div>
                           ) : (
-                            <div className="p-2 bg-red-100 rounded-lg">
-                              <FileText className="w-5 h-5 text-red-600" />
+                            <div className="p-2 bg-secondary/10 rounded-lg">
+                              <FileText className="w-5 h-5 text-secondary" />
                             </div>
                           )}
                         </div>

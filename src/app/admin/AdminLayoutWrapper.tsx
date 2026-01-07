@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu } from 'lucide-react';
 import AdminHeader from '@/components/admin/AdminHeader';
 import AdminSidebar from '@/components/admin/AdminSidebar';
+import { usePathname } from 'next/navigation';
 
 interface AdminLayoutWrapperProps {
   children: React.ReactNode;
@@ -14,35 +14,34 @@ export default function AdminLayoutWrapper({
   children,
   userEmail,
 }: AdminLayoutWrapperProps) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const pathname = usePathname();
+  const isAuthRoute = pathname === '/admin/login';
+
+  if (isAuthRoute) {
+    return <div className="min-h-screen bg-gray-100">{children}</div>;
+  }
 
   return (
-    <>
-      <AdminHeader user={{ email: userEmail }} />
+    <div
+      className={`
+        grid min-h-screen bg-gray-100 transition-all duration-300
+        ${isSidebarCollapsed ? 'md:grid-cols-[64px_1fr]' : 'md:grid-cols-[256px_1fr]'}
+      `}
+    >
+      <AdminSidebar
+        isCollapsed={isSidebarCollapsed}
+        setIsCollapsed={setIsSidebarCollapsed}
+      />
 
-      <div className="flex">
-        {/* Mobile menu button - only visible on small screens */}
-        <button
-          onClick={() => setIsSidebarOpen(true)}
-          className="lg:hidden fixed bottom-6 left-6 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-colors"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-
-        <AdminSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-
-        {/* Mobile sidebar overlay */}
-        {isSidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-        )}
-
-        <main className="flex-1 p-6 lg:pl-[272px]">
-          {children}
+      <div className="flex h-screen min-w-0 flex-col bg-white">
+        <AdminHeader user={{ email: userEmail }} />
+        <main className="flex-1 overflow-y-auto">
+          <div className="p-6">
+            {children}
+          </div>
         </main>
       </div>
-    </>
+    </div>
   );
 }

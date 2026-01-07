@@ -147,7 +147,7 @@ export default function AdminLifetimeMembersPage() {
                 </div>
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
+                    className="flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
                 >
                     <Plus className="w-5 h-5" />
                     Add Member
@@ -238,7 +238,7 @@ export default function AdminLifetimeMembersPage() {
                                         <td className="px-6 py-4">
                                             <button
                                                 onClick={() => handleDeleteMember(member.id, member.name)}
-                                                className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors"
+                                                className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
                                                 title="Delete member"
                                             >
                                                 <Trash2 className="w-4 h-4" />
@@ -377,7 +377,7 @@ export default function AdminLifetimeMembersPage() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting || !formData.imageUrl}
-                                        className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                        className="flex-1 bg-primary hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                                     >
                                         {isSubmitting ? (
                                             <>

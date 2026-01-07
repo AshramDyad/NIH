@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   LayoutDashboard,
   FileText,
@@ -12,8 +13,8 @@ import {
 } from 'lucide-react';
 
 interface AdminSidebarProps {
-  isOpen?: boolean;
-  onClose?: () => void;
+  isCollapsed: boolean;
+  setIsCollapsed: (collapsed: boolean) => void;
 }
 
 const menuItems = [
@@ -25,25 +26,34 @@ const menuItems = [
   { href: '/admin/settings', icon: Settings, label: 'Settings' },
 ];
 
-export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
+export default function AdminSidebar({ isCollapsed, setIsCollapsed }: AdminSidebarProps) {
   const pathname = usePathname();
 
   return (
     <aside
       className={`
-        fixed top-16 left-0 z-40 h-full w-64 bg-white border-r border-gray-200
-        transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        hidden md:flex flex-col h-screen bg-white border-r border-gray-200
+        transition-all duration-300
+        ${isCollapsed ? 'w-16' : 'w-64'}
       `}
     >
-      <nav className="p-4 space-y-2">
+      <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
+        {!isCollapsed && <span className="font-bold text-gray-900">Menu</span>}
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="p-2 rounded hover:bg-gray-100 transition-colors"
+        >
+          {isCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+        </button>
+      </div>
+
+      <nav className="flex-1 p-4 space-y-2">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              onClick={onClose}
               className={`
                 flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
                 ${isActive
@@ -52,8 +62,8 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
                 }
               `}
             >
-              <item.icon className="w-5 h-5" />
-              <span className="font-medium">{item.label}</span>
+              <item.icon className="w-5 h-5 flex-shrink-0" />
+              {!isCollapsed && <span className="font-medium">{item.label}</span>}
             </Link>
           );
         })}

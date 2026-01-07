@@ -2,12 +2,12 @@ import { LayoutDashboard, Users, FileText, Calendar } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   return (
-    <div>
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">
+    <div className="space-y-6">
+      <h2 className="text-3xl font-bold text-gray-900">
         Dashboard Overview
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Members"
           value="1,234"
@@ -35,27 +35,27 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white shadow-sm rounded-xl p-6">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
             Recent Activity
           </h3>
-          <p className="text-gray-600">
+          <p className="text-sm text-gray-600">
             Recent uploads, user registrations, and system events will appear here.
           </p>
         </div>
 
-        <div className="bg-white shadow-sm rounded-xl p-6">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
             Quick Actions
           </h3>
           <div className="space-y-3">
-            <button className="w-full text-left px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-3 bg-orange-50 hover:bg-orange-100 text-primary rounded-lg transition-colors font-medium">
               Upload New File
             </button>
-            <button className="w-full text-left px-4 py-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-3 bg-secondary/10 hover:bg-secondary/20 text-secondary rounded-lg transition-colors font-medium">
               Add New Member
             </button>
-            <button className="w-full text-left px-4 py-3 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors font-medium">
               Create Event
             </button>
           </div>
@@ -77,13 +77,13 @@ function StatCard({
   trend: string;
 }) {
   return (
-    <div className="bg-white shadow-sm rounded-xl p-6">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-medium text-gray-600">{title}</h3>
-        <Icon className="w-5 h-5 text-blue-600" />
+        <Icon className="w-5 h-5 text-primary" />
       </div>
       <p className="text-3xl font-bold text-gray-900 mb-2">{value}</p>
-      <p className="text-sm text-green-600">{trend}</p>
+      <p className="text-sm text-secondary font-medium">{trend}</p>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { logout } from '@/app/actions/auth';
 import { LogOut, User } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 interface AdminHeaderProps {
   user: {
@@ -9,13 +10,27 @@ interface AdminHeaderProps {
   };
 }
 
+const pageTitles: Record<string, string> = {
+  '/admin': 'Dashboard',
+  '/admin/upload': 'Upload Files',
+  '/admin/lifetime-members': 'Lifetime Members',
+  '/admin/events': 'Events',
+  '/admin/analytics': 'Analytics',
+  '/admin/settings': 'Settings',
+};
+
 export default function AdminHeader({ user }: AdminHeaderProps) {
+  const pathname = usePathname();
+  const pageTitle = pageTitles[pathname] || 'Dashboard';
+
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-20">
-      <div className="flex items-center gap-4">
-        <h1 className="text-2xl font-bold text-gray-900">
-          NIH Admin
-        </h1>
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-gray-200 px-4 shadow-sm lg:h-24 lg:px-8 bg-white">
+      <div className="w-full flex-1">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-2xl font-bold text-gray-900">
+            NIH Admin - {pageTitle}
+          </h1>
+        </div>
       </div>
 
       <div className="flex items-center gap-4">
