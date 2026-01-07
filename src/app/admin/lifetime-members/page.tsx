@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useTransition } from 'react';
-import { Plus, Image as ImageIcon, Trash2, Loader2, AlertCircle, User } from 'lucide-react';
+import { Plus, Image as ImageIcon, Trash2, Loader2, AlertCircle, User, Pencil } from 'lucide-react';
 import { FileUpload } from '@/components/shared/FileUpload';
-import { getLifetimeMembers, deleteLifetimeMember, addLifetimeMember, type LifetimeMember } from '@/app/actions/lifetimeMembers';
+import { getLifetimeMembers, deleteLifetimeMember, addLifetimeMember, updateLifetimeMember, type LifetimeMember } from '@/app/actions/lifetimeMembers';
 import type { UploadResult } from '@/types/file-upload';
 
 export default function AdminLifetimeMembersPage() {
@@ -14,6 +14,7 @@ export default function AdminLifetimeMembersPage() {
 
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingMember, setEditingMember] = useState<LifetimeMember | null>(null);
     const [formData, setFormData] = useState({
         name: '',
         memberNumber: '',
@@ -28,6 +29,31 @@ export default function AdminLifetimeMembersPage() {
     useEffect(() => {
         fetchMembers();
     }, []);
+
+    // Populate form when editing member changes
+    useEffect(() => {
+        if (editingMember) {
+            setFormData({
+                name: editingMember.name,
+                memberNumber: editingMember.member_number,
+                dateOfBirth: editingMember.date_of_birth,
+                imageUrl: editingMember.image_url,
+            });
+            // Set upload result to show existing image preview
+            if (editingMember.image_url) {
+                setUploadResult({
+                    success: true,
+                    fileUrl: editingMember.image_url,
+                    fileKey: editingMember.image_url,
+                    fileName: editingMember.name,
+                    fileSize: 0,
+                    fileType: 'image',
+                    uploadedAt: editingMember.created_at,
+                });
+            }
+            setIsModalOpen(true);
+        }
+    }, [editingMember]);
 
     const fetchMembers = async () => {
         setIsLoading(true);
@@ -65,6 +91,10 @@ export default function AdminLifetimeMembersPage() {
         }
     };
 
+    const handleEditMember = (member: LifetimeMember) => {
+        setEditingMember(member);
+    };
+
     const handleUploadSuccess = (result: UploadResult) => {
         setUploadResult(result);
         setFormData((prev) => ({ ...prev, imageUrl: result.fileUrl }));
@@ -87,11 +117,19 @@ export default function AdminLifetimeMembersPage() {
         formDataObj.append('imageUrl', formData.imageUrl);
 
         try {
-            const result = await addLifetimeMember(formDataObj);
+            let result;
+            if (editingMember) {
+                // Update existing member
+                result = await updateLifetimeMember(editingMember.id.toString(), formDataObj);
+            } else {
+                // Add new member
+                result = await addLifetimeMember(formDataObj);
+            }
 
             if (result.success) {
                 setSubmitMessage({ type: 'success', text: result.message });
                 setIsModalOpen(false);
+                setEditingMember(null);
                 // Reset form
                 setFormData({
                     name: '',
@@ -108,8 +146,8 @@ export default function AdminLifetimeMembersPage() {
                 setSubmitMessage({ type: 'error', text: result.message });
             }
         } catch (err) {
-            console.error('Error adding member:', err);
-            setSubmitMessage({ type: 'error', text: 'Failed to add member. Please try again.' });
+            console.error('Error saving member:', err);
+            setSubmitMessage({ type: 'error', text: 'Failed to save member. Please try again.' });
         } finally {
             setIsSubmitting(false);
         }
@@ -117,6 +155,7 @@ export default function AdminLifetimeMembersPage() {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
+        setEditingMember(null);
         setFormData({
             name: '',
             memberNumber: '',
@@ -236,14 +275,24 @@ export default function AdminLifetimeMembersPage() {
 
                                         {/* Actions */}
                                         <td className="px-6 py-4">
-                                            <button
-                                                onClick={() => handleDeleteMember(member.id, member.name)}
-                                                className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
-                                                title="Delete member"
-                                            >
-                                                <Trash2 className="w-4 h-4" />
-                                                Delete
-                                            </button>
+                                            <div className="flex items-center gap-2">
+                                                <button
+                                                    onClick={() => handleEditMember(member)}
+                                                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors font-medium"
+                                                    title="Edit member"
+                                                >
+                                                    <Pencil className="w-4 h-4" />
+                                                    Edit
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDeleteMember(member.id, member.name)}
+                                                    className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
+                                                    title="Delete member"
+                                                >
+                                                    <Trash2 className="w-4 h-4" />
+                                                    Delete
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
@@ -253,13 +302,15 @@ export default function AdminLifetimeMembersPage() {
                 </div>
             )}
 
-            {/* Add Member Modal */}
+            {/* Add/Edit Member Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
                     <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                         {/* Modal Header */}
                         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-                            <h2 className="text-xl font-semibold text-gray-900">Add Lifetime Member</h2>
+                            <h2 className="text-xl font-semibold text-gray-900">
+                                {editingMember ? 'Edit Lifetime Member' : 'Add Lifetime Member'}
+                            </h2>
                             <button
                                 onClick={handleCloseModal}
                                 className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -376,16 +427,16 @@ export default function AdminLifetimeMembersPage() {
                                     </button>
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting || !formData.imageUrl}
+                                        disabled={isSubmitting || (!formData.imageUrl && !editingMember)}
                                         className="flex-1 bg-primary hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                                     >
                                         {isSubmitting ? (
                                             <>
                                                 <Loader2 className="w-5 h-5 animate-spin" />
-                                                Adding...
+                                                {editingMember ? 'Updating...' : 'Adding...'}
                                             </>
                                         ) : (
-                                            'Add Member'
+                                            editingMember ? 'Update Member' : 'Add Member'
                                         )}
                                     </button>
                                 </div>

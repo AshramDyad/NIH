@@ -126,6 +126,95 @@ export async function addLifetimeMember(formData: FormData): Promise<{
 }
 
 /**
+ * Update an existing lifetime member
+ * Validates input and updates database record
+ * Revalidates both public and admin pages
+ */
+export async function updateLifetimeMember(
+    id: string,
+    formData: FormData
+): Promise<{
+    success: boolean;
+    message: string;
+    data?: LifetimeMember;
+}> {
+    const supabase = await createClient();
+
+    try {
+        // Extract form data
+        const name = formData.get('name') as string;
+        const memberNumber = formData.get('memberNumber') as string;
+        const dateOfBirth = formData.get('dateOfBirth') as string;
+        const imageUrl = formData.get('imageUrl') as string;
+
+        // Validate using Zod schema
+        const validationResult = lifetimeMemberSchema.safeParse({
+            name,
+            memberNumber,
+            dateOfBirth,
+            imageUrl,
+        });
+
+        if (!validationResult.success) {
+            const errors = validationResult.error.issues.map((err) => err.message).join(', ');
+            console.error('Validation errors:', errors);
+            return {
+                success: false,
+                message: errors,
+            };
+        }
+
+        const validatedData = validationResult.data;
+
+        // Update in database
+        const { data: member, error: updateError } = await supabase
+            .from('lifetime_members')
+            .update({
+                name: validatedData.name,
+                member_number: validatedData.memberNumber,
+                date_of_birth: validatedData.dateOfBirth,
+                image_url: validatedData.imageUrl,
+            })
+            .eq('id', id)
+            .select()
+            .single();
+
+        if (updateError) {
+            console.error('Error updating lifetime member:', updateError);
+
+            // Check for duplicate member number
+            if (updateError.code === '23505') {
+                return {
+                    success: false,
+                    message: 'A member with this number already exists.',
+                };
+            }
+
+            return {
+                success: false,
+                message: 'Failed to update member. Please try again.',
+            };
+        }
+
+        // Revalidate paths
+        revalidatePath('/members/lifetime');
+        revalidatePath('/admin/members');
+
+        return {
+            success: true,
+            message: 'Lifetime member updated successfully!',
+            data: member as LifetimeMember,
+        };
+    } catch (error) {
+        console.error('Unexpected error updating lifetime member:', error);
+        return {
+            success: false,
+            message: 'An unexpected error occurred. Please try again.',
+        };
+    }
+}
+
+/**
  * Delete a lifetime member by ID
  * Revalidates both public and admin pages
  */
