@@ -177,7 +177,7 @@ const councilMembers: CouncilMember[] = [
         designation: "Advocate, Delhi",
         details: "",
         category: "LEGAL ADVISOR",
-        image: "/images/Tejashwini.jpg"
+        image: "/images/tejashwini.jpg"
     },
     {
         id: 22,
@@ -185,7 +185,7 @@ const councilMembers: CouncilMember[] = [
         designation: "Social Activist, Gurugram-Haryana",
         details: "",
         category: "TECHNICAL ADVISOR",
-        image: "/images/Meenakshi.jpg"
+        image: "/images/meenakshi.jpg"
     },
     {
         id: 23,
@@ -193,7 +193,7 @@ const councilMembers: CouncilMember[] = [
         designation: "Founder-Sohan Yoga, China",
         details: "",
         category: "COUNTRY HEAD",
-        image: "/images/Sohan.jpg"
+        image: "/images/sohan.jpg"
     },
     {
         id: 24,
@@ -201,7 +201,7 @@ const councilMembers: CouncilMember[] = [
         designation: "Founder-AGATH, Thailand",
         details: "",
         category: "INTERNATIONAL",
-        image: "/images/Alka.jpg"
+        image: "/images/alka.jpg"
     },
     {
         id: 25,
@@ -209,7 +209,7 @@ const councilMembers: CouncilMember[] = [
         designation: "England",
         details: "",
         category: "INTERNATIONAL",
-        image: "/images/Panna.jpg"
+        image: "/images/panna.jpg"
     }
 ];
 
