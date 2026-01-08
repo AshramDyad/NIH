@@ -48,7 +48,7 @@ export default function SecretaryPage() {
                                     <div className="relative size-36 md:size-56">
                                         <div className="relative w-full h-full rounded-full overflow-hidden border-6 border-white shadow-lg ring-4 ring-primary/20">
                                             <Image
-                                                src="/images/anurag.jpg"
+                                                src="/images/Secretary.jpeg"
                                                 alt="Anurag Kashyap - National Secretary NIH"
                                                 fill
                                                 className="object-cover"
