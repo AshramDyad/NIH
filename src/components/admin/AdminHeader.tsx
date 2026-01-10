@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { logout } from '@/app/actions/auth';
-import { LogOut, User } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { logout } from "@/app/actions/auth";
+import { LogOut, User } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface AdminHeaderProps {
   user: {
@@ -11,17 +11,17 @@ interface AdminHeaderProps {
 }
 
 const pageTitles: Record<string, string> = {
-  '/admin': 'Dashboard',
-  '/admin/upload': 'Upload Files',
-  '/admin/lifetime-members': 'Lifetime Members',
-  '/admin/events': 'Events',
-  '/admin/analytics': 'Analytics',
-  '/admin/settings': 'Settings',
+  "/admin": "Dashboard",
+  "/admin/hero-banner": "Hero Banner",
+  "/admin/lifetime-members": "Lifetime Members",
+  "/admin/events": "Events",
+  "/admin/analytics": "Analytics",
+  "/admin/settings": "Settings",
 };
 
 export default function AdminHeader({ user }: AdminHeaderProps) {
   const pathname = usePathname();
-  const pageTitle = pageTitles[pathname] || 'Dashboard';
+  const pageTitle = pageTitles[pathname] || "Dashboard";
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-gray-200 px-4 shadow-sm lg:h-24 lg:px-8 bg-white">
