@@ -13,6 +13,7 @@ interface AdminHeaderProps {
 const pageTitles: Record<string, string> = {
   "/admin": "Dashboard",
   "/admin/hero-banner": "Hero Banner",
+  "/admin/video-testimonials": "Video Testimonials",
   "/admin/lifetime-members": "Lifetime Members",
   "/admin/events": "Events",
   "/admin/analytics": "Analytics",
@@ -24,7 +25,7 @@ export default function AdminHeader({ user }: AdminHeaderProps) {
   const pageTitle = pageTitles[pathname] || "Dashboard";
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-gray-200 px-4 shadow-sm lg:h-24 lg:px-8 bg-white">
+    <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
       <div className="w-full flex-1">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-bold text-gray-900">

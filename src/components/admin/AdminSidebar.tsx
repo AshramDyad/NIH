@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -10,6 +11,7 @@ import {
   Calendar,
   BarChart3,
   Image as ImageIcon,
+  Video,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -20,6 +22,11 @@ interface AdminSidebarProps {
 const menuItems = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/hero-banner", icon: ImageIcon, label: "Hero Banner" },
+  {
+    href: "/admin/video-testimonials",
+    icon: Video,
+    label: "Video Testimonials",
+  },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   { href: "/admin/events", icon: Calendar, label: "Events" },
   { href: "/admin/analytics", icon: BarChart3, label: "Analytics" },
@@ -40,11 +47,19 @@ export default function AdminSidebar({
         ${isCollapsed ? "w-16" : "w-64"}
       `}
     >
-      <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
-        {!isCollapsed && <span className="font-bold text-gray-900">Menu</span>}
+      <div className="flex h-20  items-center justify-between px-4 gap-2 border-b border-gray-200">
+        {!isCollapsed && (
+          <Image
+            src="/logo.png"
+            alt="NIH Logo"
+            width={190}
+            height={100}
+            className="object-cover"
+          />
+        )}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-2 rounded hover:bg-gray-100 transition-colors"
+          className="p-2 rounded hover:bg-gray-100 transition-colors cursor-pointer"
         >
           {isCollapsed ? (
             <ChevronRight className="w-5 h-5" />
@@ -54,7 +69,11 @@ export default function AdminSidebar({
         </button>
       </div>
 
-      <nav className="flex-1 p-4 space-y-2">
+      <nav
+        className={`flex-1 p-2 space-y-2 ${
+          isCollapsed ? "flex flex-col items-center" : ""
+        }`}
+      >
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -62,13 +81,19 @@ export default function AdminSidebar({
               key={item.href}
               href={item.href}
               className={`
-                flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
+                flex items-center rounded-lg transition-colors
+                ${
+                  isCollapsed
+                    ? "justify-center w-10 h-10 p-2"
+                    : "gap-3 px-4 py-3 w-full"
+                }
                 ${
                   isActive
                     ? "bg-blue-600 text-white"
                     : "text-gray-700 hover:bg-gray-100"
                 }
               `}
+              title={isCollapsed ? item.label : undefined}
             >
               <item.icon className="w-5 h-5 shrink-0" />
               {!isCollapsed && (
