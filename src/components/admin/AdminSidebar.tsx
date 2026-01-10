@@ -11,6 +11,7 @@ import {
   Calendar,
   BarChart3,
   Image as ImageIcon,
+  Video,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -21,6 +22,11 @@ interface AdminSidebarProps {
 const menuItems = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/hero-banner", icon: ImageIcon, label: "Hero Banner" },
+  {
+    href: "/admin/video-testimonials",
+    icon: Video,
+    label: "Video Testimonials",
+  },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   { href: "/admin/events", icon: Calendar, label: "Events" },
   { href: "/admin/analytics", icon: BarChart3, label: "Analytics" },

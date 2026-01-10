@@ -3,6 +3,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import BulletList from "@/components/shared/BulletList";
 import Link from "next/link";
 import { Download } from "lucide-react";
+import { getVideoTestimonials } from "@/app/actions/video-testimonials";
 
 export const metadata: Metadata = {
   title: "International Conference 2026 | NIH Health",
@@ -34,6 +35,41 @@ const conferenceObjectives: string[] = [
   "To foster international collaboration and networking among institutions and professionals working in health and wellness.",
   "To inspire individuals and communities to adopt healthy, balanced, and mindful lifestyles for overall well-being.",
 ];
+
+// Async component to fetch and display video testimonials
+async function VideoTestimonialsSection() {
+  const videos = await getVideoTestimonials();
+
+  if (videos.length === 0) {
+    return null; // Don't show section if no videos
+  }
+
+  return (
+    <section className="py-12 md:py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 text-center">
+          Watch Video Testimonials from Our International Yoga Students
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {videos.map((video) => (
+            <div
+              key={video.id}
+              className="aspect-video rounded-xl overflow-hidden shadow-lg"
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${video.video_id}`}
+                title="Video Testimonial"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function InternationalConference2026Page() {
   return (
@@ -154,45 +190,7 @@ export default function InternationalConference2026Page() {
       </section>
 
       {/* Video Testimonials Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-8 text-center">
-            Watch Video Testimonials from Our International Yoga Students
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Video 1 */}
-            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID_1"
-                title="Yoga Teachers Training in Noida - Testimonial 1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-            {/* Video 2 */}
-            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID_2"
-                title="Yoga Teachers Training in Noida - Testimonial 2"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-            {/* Video 3 */}
-            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID_3"
-                title="Yoga Teachers Training in Noida - Testimonial 3"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <VideoTestimonialsSection />
 
       <section className="sm:py-16 py-12 bg-secondary overflow-hidden">
         <div className="container mx-auto px-4">

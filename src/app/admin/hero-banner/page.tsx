@@ -287,7 +287,7 @@ export default function HeroBannerAdminPage() {
                       Image
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                      Cloudflare R2 URL
+                      Image URL
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
                       Order
