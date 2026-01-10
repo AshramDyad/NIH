@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   LayoutDashboard,
-  FileText,
   Settings,
   Users,
   Calendar,
@@ -20,7 +19,6 @@ interface AdminSidebarProps {
 
 const menuItems = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/admin/upload", icon: FileText, label: "Upload Files" },
   { href: "/admin/hero-banner", icon: ImageIcon, label: "Hero Banner" },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   { href: "/admin/events", icon: Calendar, label: "Events" },
