@@ -69,10 +69,23 @@ function SortableRow({
     <tr
       ref={setNodeRef}
       style={style}
-      className={`hover:bg-gray-50 transition-colors  ${
+      className={`hover:bg-gray-50 transition-colors ${
         isDragging ? "bg-gray-100" : ""
       }`}
     >
+      {/* Drag Handle - First column, sticky to prevent scroll issues */}
+      <td className="px-4 py-4 sticky left-0 bg-white z-10">
+        <button
+          {...attributes}
+          {...listeners}
+          className="p-2 hover:bg-gray-100 rounded-lg cursor-grab active:cursor-grabbing transition-colors touch-none"
+          title="Drag to reorder"
+          style={{ touchAction: "none" }}
+        >
+          <GripVertical className="w-5 h-5 text-gray-400" />
+        </button>
+      </td>
+
       {/* Image */}
       <td className="px-6 py-4">
         <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-gray-100">
@@ -111,18 +124,6 @@ function SortableRow({
             Delete
           </button>
         </div>
-      </td>
-
-      {/* Drag Handle */}
-      <td className="px-6 py-4">
-        <button
-          {...attributes}
-          {...listeners}
-          className="p-2 hover:bg-gray-100 rounded-lg cursor-grab active:cursor-grabbing transition-colors"
-          title="Drag to reorder"
-        >
-          <GripVertical className="w-5 h-5 text-gray-400" />
-        </button>
       </td>
     </tr>
   );
@@ -281,6 +282,7 @@ export default function HeroBannerAdminPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
+                    <th className="text-left px-4 py-4 text-sm font-semibold text-gray-900 sticky left-0 bg-gray-50 z-10"></th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
                       Image
                     </th>
@@ -293,7 +295,6 @@ export default function HeroBannerAdminPage() {
                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
                       Actions
                     </th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900"></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">

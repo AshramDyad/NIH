@@ -6,7 +6,8 @@ import { Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "International Conference 2026 | NIH Health",
-  description: "Join us for the International Conference on Yoga and Holistic Health 2026 - a global gathering of wellness experts, practitioners, and enthusiasts.",
+  description:
+    "Join us for the International Conference on Yoga and Holistic Health 2026 - a global gathering of wellness experts, practitioners, and enthusiasts.",
 };
 
 interface PricingTier {
@@ -18,7 +19,7 @@ const pricingTiers: PricingTier[] = [
   { type: "Without Accomodation", price: "Rs. 2000/-" },
   { type: "Food + Dormitory Accomodation", price: "Rs. 3500/-" },
   { type: "Pvt. Accomodation (Twin Sharing)", price: "Rs. 7500/-" },
-  { type: "Single Accomodation", price: "Rs. 12000/-" }
+  { type: "Single Accomodation", price: "Rs. 12000/-" },
 ];
 
 const conferenceObjectives: string[] = [
@@ -31,7 +32,7 @@ const conferenceObjectives: string[] = [
   "To highlight the role of yoga and holistic therapies in disease prevention, mental well-being, and sustainable health care,",
   "To encourage scientific research, innovation, and evidence-based practices in yoga and holistic health.",
   "To foster international collaboration and networking among institutions and professionals working in health and wellness.",
-  "To inspire individuals and communities to adopt healthy, balanced, and mindful lifestyles for overall well-being."
+  "To inspire individuals and communities to adopt healthy, balanced, and mindful lifestyles for overall well-being.",
 ];
 
 export default function InternationalConference2026Page() {
@@ -41,10 +42,12 @@ export default function InternationalConference2026Page() {
 
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-
           <div className="mb-8 text-center">
             <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              International Conference on <span className="text-primary italic">Yoga and Holistic Health</span>
+              International Conference on{" "}
+              <span className="text-primary italic">
+                Yoga and Holistic Health
+              </span>
             </h1>
           </div>
 
@@ -56,13 +59,30 @@ export default function InternationalConference2026Page() {
               </h2>
               <div className="space-y-4 text-zinc-700 leading-relaxed text-base md:text-lg">
                 <p>
-                  The International Conference on Yoga & Holistic Health-2026 is being organized by National Institute of Holistic Health (NIH) from 07th-08th February, 2026 at Shri Swaminarayan Ashram, Rishikesh, Uttarakhand. <Link href="https://www.swaminarayan.yoga/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.swaminarayan.yoga</Link>
+                  The International Conference on Yoga & Holistic Health-2026 is
+                  being organized by National Institute of Holistic Health (NIH)
+                  from 07th-08th February, 2026 at Shri Swaminarayan Ashram,
+                  Rishikesh, Uttarakhand.{" "}
+                  <Link
+                    href="https://www.swaminarayan.yoga/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    www.swaminarayan.yoga
+                  </Link>
                 </p>
                 <p>
-                  Over 300 Naturopathy, Yoga, Neurotherapy, Electro Homoeopathy, Acupressure, Acupuncture, Chiropathy and other drugless therapy practitioners are expected to attend the conference from India and abroad.
+                  Over 300 Naturopathy, Yoga, Neurotherapy, Electro Homoeopathy,
+                  Acupressure, Acupuncture, Chiropathy and other drugless
+                  therapy practitioners are expected to attend the conference
+                  from India and abroad.
                 </p>
                 <p>
-                  President of India, Prime Minister, Chief Minister of Uttar Pradesh, Chief Minister of Uttarakhand and other Union Ministers, Member of Parliament and many other distinguished VIPs are being requested to grace this Conference.
+                  President of India, Prime Minister, Chief Minister of Uttar
+                  Pradesh, Chief Minister of Uttarakhand and other Union
+                  Ministers, Member of Parliament and many other distinguished
+                  VIPs are being requested to grace this Conference.
                 </p>
               </div>
             </div>
@@ -76,13 +96,22 @@ export default function InternationalConference2026Page() {
               </h2>
               <div className="space-y-4 text-zinc-700 leading-relaxed text-base md:text-lg">
                 <p>
-                  Health is a state of complete physical, mental, social and spiritual well-being and not merely the absence of disease or infirmity. Holistic Heatlh includes Yoga, Naturopathy, Acupressure, Acupuncture, Neurotherapy. Chiropathy, Electro Homeopathy and other drugless system which are ancient Indian theories and practices, focusing on unifying mind, body, spirit and promoting strength, balance & flexibility.
+                  Health is a state of complete physical, mental, social and
+                  spiritual well-being and not merely the absence of disease or
+                  infirmity. Holistic Heatlh includes Yoga, Naturopathy,
+                  Acupressure, Acupuncture, Neurotherapy. Chiropathy, Electro
+                  Homeopathy and other drugless system which are ancient Indian
+                  theories and practices, focusing on unifying mind, body,
+                  spirit and promoting strength, balance & flexibility.
                 </p>
                 <p>
-                  Health and well being can be influenced by our present lifestyle change and psychological stress.
+                  Health and well being can be influenced by our present
+                  lifestyle change and psychological stress.
                 </p>
                 <p>
-                  Holistic Health mainly emphasizes on returning to the nature by correcting our lifestyle by following simple natural laws, application of simple treatments based on the principles.
+                  Holistic Health mainly emphasizes on returning to the nature
+                  by correcting our lifestyle by following simple natural laws,
+                  application of simple treatments based on the principles.
                 </p>
               </div>
             </div>
@@ -121,7 +150,47 @@ export default function InternationalConference2026Page() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* Video Testimonials Section */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-8 text-center">
+            Watch Video Testimonials from Our International Yoga Students
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Video 1 */}
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_1"
+                title="Yoga Teachers Training in Noida - Testimonial 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            {/* Video 2 */}
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_2"
+                title="Yoga Teachers Training in Noida - Testimonial 2"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            {/* Video 3 */}
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID_3"
+                title="Yoga Teachers Training in Noida - Testimonial 3"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -129,9 +198,11 @@ export default function InternationalConference2026Page() {
         <div className="container mx-auto px-4">
           <div className="text-center text-white space-y-6">
             <h2 className="text-4xl md:text-5xl font-black">
-              <span className="text-primary italic">Register </span>Now</h2>
+              <span className="text-primary italic">Register </span>Now
+            </h2>
             <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
-              Secure your place at this transformative conference. Early bird registration opens soon.
+              Secure your place at this transformative conference. Early bird
+              registration opens soon.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
@@ -148,7 +219,12 @@ export default function InternationalConference2026Page() {
                 </Link>
               </button>
               <button className="bg-white hover:bg-white/90 text-secondary px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
-                <Link href="https://forms.gle/DLCwLUzFjkrYYGMo8" target="_blank">Register</Link>
+                <Link
+                  href="https://forms.gle/DLCwLUzFjkrYYGMo8"
+                  target="_blank"
+                >
+                  Register
+                </Link>
               </button>
             </div>
           </div>
