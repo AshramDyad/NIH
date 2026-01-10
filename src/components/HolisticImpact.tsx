@@ -134,7 +134,7 @@ const HolisticImpact = () => {
                             <div className="grid grid-cols-1 gap-4 flex-grow">
                                 {[
                                     { title: 'Membership', color: 'hover:bg-[#EEB9BB]', href: 'https://forms.gle/gyXBhDGFnFX9vkmS7', isExternal: true },
-                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '/international-conference-2026', isExternal: false },
+                                    { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '/international-conference', isExternal: false },
                                     { title: 'Affiliation', color: 'hover:bg-[#D3B6F0]', href: 'https://forms.gle/469FAG4UTLDvVaTy6', isExternal: true },
                                     { title: 'Certificate Course in Holistic Health', color: 'hover:bg-[#B2D1F2]', href: 'https://forms.gle/X1vFV8VqQSRfTics7', isExternal: true }
                                 ].map((activity, idx) => (
