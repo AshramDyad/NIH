@@ -98,10 +98,10 @@ export default function Home() {
       id: 21,
       image: getR2ImageUrl('banner-7-1.jpg'),
     },
-    {
-      id: 22,
-      image: getR2ImageUrl('banner-8-1.jpg'),
-    }
+    // {
+    //   id: 22,
+    //   image: getR2ImageUrl('banner-8-1.jpg'),
+    // }
   ];
 
   return (
