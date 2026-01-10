@@ -5,7 +5,6 @@ import {
   Image as ImageIcon,
   Trash2,
   Plus,
-  Pencil,
   GripVertical,
   Loader2,
   AlertCircle,
@@ -70,7 +69,7 @@ function SortableRow({
     <tr
       ref={setNodeRef}
       style={style}
-      className={`hover:bg-gray-50 transition-colors ${
+      className={`hover:bg-gray-50 transition-colors  ${
         isDragging ? "bg-gray-100" : ""
       }`}
     >
@@ -103,14 +102,6 @@ function SortableRow({
       {/* Actions */}
       <td className="px-6 py-4">
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => window.open(banner.image_url, "_blank")}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors font-medium"
-            title="View image"
-          >
-            <Pencil className="w-4 h-4" />
-            Edit
-          </button>
           <button
             onClick={() => onDelete(banner.id)}
             className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
