@@ -1,11 +1,10 @@
-import { LayoutDashboard, Users, FileText, Calendar } from 'lucide-react';
+import React from "react";
+import { LayoutDashboard, Users, FileText, Calendar } from "lucide-react";
 
 export default function AdminDashboardPage() {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-gray-900">
-        Dashboard Overview
-      </h2>
+      <h2 className="text-3xl font-bold text-gray-900">Dashboard Overview</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
@@ -40,7 +39,8 @@ export default function AdminDashboardPage() {
             Recent Activity
           </h3>
           <p className="text-sm text-gray-600">
-            Recent uploads, user registrations, and system events will appear here.
+            Recent uploads, user registrations, and system events will appear
+            here.
           </p>
         </div>
 

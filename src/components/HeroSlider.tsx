@@ -12,7 +12,7 @@ import "swiper/css";
 import Link from "next/link";
 
 interface HeroSlideData {
-  id: number;
+  id: string | number;
   image: string;
 }
 

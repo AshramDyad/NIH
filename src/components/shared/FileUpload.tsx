@@ -1,8 +1,21 @@
-'use client';
+"use client";
 
-import React, { useState, useCallback, useRef } from 'react';
-import { Upload, FileImage, FileText, X, Check, AlertCircle, Loader2, User } from 'lucide-react';
-import type { FileType, UploadResult, UploadError, UploadState } from '@/types/file-upload';
+import React, { useState, useCallback, useRef } from "react";
+import {
+  Upload,
+  FileImage,
+  FileText,
+  X,
+  Check,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
+import type {
+  FileType,
+  UploadResult,
+  UploadError,
+  UploadState,
+} from "@/types/file-upload";
 
 interface FileUploadProps {
   fileType: FileType;
@@ -10,7 +23,11 @@ interface FileUploadProps {
   maxFileSize?: number;
 }
 
-export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploadProps) {
+export function FileUpload({
+  fileType,
+  onUploadSuccess,
+  maxFileSize,
+}: FileUploadProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -19,26 +36,27 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
     progress: 0,
     error: null,
     result: null,
-    status: 'idle',
+    status: "idle",
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // File type configuration
-  const config = fileType === 'image'
-    ? {
-        accept: 'image/jpeg,image/png,image/webp,image/gif',
-        maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
-        icon: <FileImage className="w-16 h-16 text-gray-400" />,
-        label: 'Image',
-        formats: 'JPG, PNG, WebP, GIF',
-      }
-    : {
-        accept: 'application/pdf',
-        maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
-        icon: <FileText className="w-16 h-16 text-gray-400" />,
-        label: 'PDF',
-        formats: 'PDF',
-      };
+  const config =
+    fileType === "image"
+      ? {
+          accept: "image/jpeg,image/png,image/webp,image/gif",
+          maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
+          icon: <FileImage className="w-16 h-16 text-gray-400" />,
+          label: "Image",
+          formats: "JPG, PNG, WebP, GIF",
+        }
+      : {
+          accept: "application/pdf",
+          maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
+          icon: <FileText className="w-16 h-16 text-gray-400" />,
+          label: "PDF",
+          formats: "PDF",
+        };
 
   // Handle file selection
   const handleFileSelect = useCallback(
@@ -53,11 +71,11 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
         progress: 0,
         error: null,
         result: null,
-        status: 'idle',
+        status: "idle",
       });
 
       // Create preview for images
-      if (fileType === 'image') {
+      if (fileType === "image") {
         const url = URL.createObjectURL(file);
         setPreviewUrl(url);
       } else {
@@ -68,16 +86,22 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
   );
 
   // Handle drag enter
-  const handleDragEnter = useCallback((event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setIsDragging(true);
-  }, []);
+  const handleDragEnter = useCallback(
+    (event: React.DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      setIsDragging(true);
+    },
+    []
+  );
 
   // Handle drag leave
-  const handleDragLeave = useCallback((event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setIsDragging(false);
-  }, []);
+  const handleDragLeave = useCallback(
+    (event: React.DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      setIsDragging(false);
+    },
+    []
+  );
 
   // Handle drag and drop
   const handleDrop = useCallback(
@@ -94,11 +118,11 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
         progress: 0,
         error: null,
         result: null,
-        status: 'idle',
+        status: "idle",
       });
 
       // Create preview for images
-      if (fileType === 'image') {
+      if (fileType === "image") {
         const url = URL.createObjectURL(file);
         setPreviewUrl(url);
       } else {
@@ -108,17 +132,23 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
     [fileType]
   );
 
-  const handleDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  }, []);
+  const handleDragOver = useCallback(
+    (event: React.DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
+    },
+    []
+  );
 
   // Handle keyboard navigation
-  const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      fileInputRef.current?.click();
-    }
-  }, []);
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        fileInputRef.current?.click();
+      }
+    },
+    []
+  );
 
   // Clear selected file
   const handleClear = useCallback(() => {
@@ -129,10 +159,10 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
       progress: 0,
       error: null,
       result: null,
-      status: 'idle',
+      status: "idle",
     });
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   }, []);
 
@@ -145,28 +175,28 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
       progress: 0,
       error: null,
       result: null,
-      status: 'preparing',
+      status: "preparing",
     });
 
     try {
       const formData = new FormData();
-      formData.append('file', selectedFile);
-      formData.append('fileType', fileType);
+      formData.append("file", selectedFile);
+      formData.append("fileType", fileType);
 
       // Simulate progress for better UX (since fetch doesn't provide progress)
       const progressInterval = setInterval(() => {
         setUploadState((prev) => {
           if (prev.progress >= 90) {
             clearInterval(progressInterval);
-            return { ...prev, status: 'finishing', progress: 90 };
+            return { ...prev, status: "finishing", progress: 90 };
           }
-          return { ...prev, progress: prev.progress + 10, status: 'uploading' };
+          return { ...prev, progress: prev.progress + 10, status: "uploading" };
         });
       }, 200);
 
       // Upload file
-      const response = await fetch('/api/upload', {
-        method: 'POST',
+      const response = await fetch("/api/upload", {
+        method: "POST",
         body: formData,
       });
 
@@ -174,7 +204,7 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
       const data = (await response.json()) as UploadResult | UploadError;
 
       if (!response.ok || !data.success) {
-        const errorMessage = (data as UploadError).error || 'Upload failed';
+        const errorMessage = (data as UploadError).error || "Upload failed";
         throw new Error(errorMessage);
       }
 
@@ -183,43 +213,44 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
         progress: 100,
         error: null,
         result: data,
-        status: 'success',
+        status: "success",
       });
 
       // Notify parent component
       onUploadSuccess(data);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Upload failed';
+      const errorMessage =
+        error instanceof Error ? error.message : "Upload failed";
       setUploadState({
         isUploading: false,
         progress: 0,
         error: errorMessage,
         result: null,
-        status: 'error',
+        status: "error",
       });
     }
   }, [selectedFile, fileType, onUploadSuccess]);
 
   // Format file size for display
   const formatFileSize = (bytes: number): string => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
   };
 
   // Get status message
   const getStatusMessage = (): string => {
     switch (uploadState.status) {
-      case 'preparing':
-        return 'Preparing upload...';
-      case 'uploading':
+      case "preparing":
+        return "Preparing upload...";
+      case "uploading":
         return `Uploading... ${uploadState.progress}%`;
-      case 'finishing':
-        return 'Finishing up...';
+      case "finishing":
+        return "Finishing up...";
       default:
-        return 'Uploading...';
+        return "Uploading...";
     }
   };
 
@@ -238,8 +269,8 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
           onClick={() => fileInputRef.current?.click()}
           className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-200 ${
             isDragging
-              ? 'border-blue-500 bg-blue-50 scale-[1.02]'
-              : 'border-gray-300 hover:border-blue-400 hover:bg-gray-50'
+              ? "border-blue-500 bg-blue-50 scale-[1.02]"
+              : "border-gray-300 hover:border-blue-400 hover:bg-gray-50"
           }`}
         >
           <input
@@ -250,16 +281,23 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
             className="hidden"
           />
           <div className="flex flex-col items-center">
-            <div className={`p-4 rounded-full mb-4 transition-all duration-200 ${
-              isDragging ? 'bg-blue-100 scale-110' : 'bg-gray-100'
-            }`}>
-              <Upload className={`w-12 h-12 ${isDragging ? 'text-blue-600' : 'text-gray-500'}`} />
+            <div
+              className={`p-4 rounded-full mb-4 transition-all duration-200 ${
+                isDragging ? "bg-blue-100 scale-110" : "bg-gray-100"
+              }`}
+            >
+              <Upload
+                className={`w-12 h-12 ${
+                  isDragging ? "text-blue-600" : "text-gray-500"
+                }`}
+              />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Upload {config.label}
             </h3>
             <p className="text-sm text-gray-600 mb-4 max-w-md">
-              Drag and drop your {config.label.toLowerCase()} here, or click to browse
+              Drag and drop your {config.label.toLowerCase()} here, or click to
+              browse
             </p>
             <div className="flex items-center gap-2 text-xs text-gray-500 bg-white px-4 py-2 rounded-full border border-gray-200">
               <span>Supported formats: {config.formats}</span>
@@ -391,7 +429,9 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
                     {uploadState.isUploading ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />
-                        {uploadState.status === 'finishing' ? 'Finishing...' : 'Uploading...'}
+                        {uploadState.status === "finishing"
+                          ? "Finishing..."
+                          : "Uploading..."}
                       </>
                     ) : (
                       <>
@@ -420,7 +460,8 @@ export function FileUpload({ fileType, onUploadSuccess, maxFileSize }: FileUploa
                 Upload Successful!
               </h3>
               <p className="text-sm text-green-100">
-                Your {config.label.toLowerCase()} has been uploaded to Cloudflare R2
+                Your {config.label.toLowerCase()} has been uploaded to
+                Cloudflare R2
               </p>
             </div>
           </div>
