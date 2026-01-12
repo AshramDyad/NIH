@@ -223,7 +223,7 @@ export default function HeroBannerAdminPage() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 cursor-pointer text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
         >
           <Plus className="w-5 h-5" />
           Add Hero Banner

@@ -49,7 +49,7 @@ export default function AdminHeader({ user, onMenuToggle }: AdminHeaderProps) {
       <Dropdown
         align="right"
         trigger={
-          <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-colors">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-primary/90 transition-colors">
             <User className="w-5 h-5 text-white" />
           </div>
         }

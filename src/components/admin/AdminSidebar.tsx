@@ -72,19 +72,20 @@ export default function AdminSidebar({
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+            className="p-2 rounded-lg hover:bg-primary hover:text-white transition-colors cursor-pointer"
           >
             {isCollapsed ? (
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="size-5" />
             ) : (
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="size-5" />
             )}
           </button>
         </div>
 
         <nav
-          className={`flex-1 p-2 space-y-2 ${isCollapsed ? "flex flex-col items-center" : ""
-            }`}
+          className={`flex-1 p-2 space-y-2 ${
+            isCollapsed ? "flex flex-col items-center" : ""
+          }`}
         >
           {menuItems.map((item) => {
             const isActive = pathname === item.href;
@@ -94,13 +95,15 @@ export default function AdminSidebar({
                 href={item.href}
                 className={`
                   flex items-center rounded-lg transition-colors
-                  ${isCollapsed
-                    ? "justify-center w-10 h-10 p-2"
-                    : "gap-3 px-4 py-3 w-full"
+                  ${
+                    isCollapsed
+                      ? "justify-center w-10 h-10 p-2"
+                      : "gap-3 px-4 py-3 w-full"
                   }
-                  ${isActive
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
+                  ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "text-gray-700 hover:bg-primary/10"
                   }
                 `}
                 title={isCollapsed ? item.label : undefined}
@@ -120,14 +123,15 @@ export default function AdminSidebar({
         className={`
           fixed inset-0 z-50 lg:hidden
           transition-opacity duration-300
-          ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+          ${
+            isMobileOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
         `}
       >
         {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/50"
-          onClick={onMobileClose}
-        />
+        <div className="absolute inset-0 bg-black/50" onClick={onMobileClose} />
 
         {/* Sidebar Panel */}
         <aside
@@ -166,9 +170,10 @@ export default function AdminSidebar({
                   onClick={handleNavClick}
                   className={`
                     flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
-                    ${isActive
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                    ${
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-gray-700 hover:bg-gray-100"
                     }
                   `}
                 >
