@@ -33,6 +33,8 @@ function MemberCard({ member }: MemberCardProps) {
             src={member.image_url}
             alt={`${member.name} - Lifetime Member`}
             fill
+            sizes="128px"
+            unoptimized
             className="object-cover"
           />
         </div>

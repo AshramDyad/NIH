@@ -128,6 +128,7 @@ const MemberCard = ({ member }: { member: Member }) => (
                     src={member.image}
                     alt={member.name}
                     fill
+                    sizes="144px"
                     className="object-cover transition-transform duration-700 group-hover/card:scale-110"
                 />
             </div>
