@@ -17,7 +17,7 @@ export default async function Home() {
   const banners = await getHeroBanners();
 
   const slides = banners.map((banner) => ({
-    id: Number(banner.id.split("-")[0]) || Math.random(), // id is UUID, but component expects number
+    id: banner.id,
     image: banner.image_url,
   }));
 
