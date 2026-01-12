@@ -27,23 +27,23 @@ export default function AdminHeader({ user, onMenuToggle }: AdminHeaderProps) {
   const pageTitle = pageTitles[pathname] || "Dashboard";
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
+    <header className="sticky top-0 z-30 flex h-20 justify-end items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
       {/* Hamburger Menu Button - visible on tablet/mobile only */}
       <button
         type="button"
         onClick={onMenuToggle}
-        className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+        className="lg:hidden p-2 rounded-lg bg-primary transition-colors cursor-pointer"
         aria-label="Toggle menu"
       >
-        <Menu className="w-6 h-6 text-gray-700" />
+        <Menu className="w-6 h-6 text-white" />
       </button>
 
       {/* Page Title */}
-      <div className="flex-1">
+      {/* <div className="flex-1">
         <h1 className="text-xl lg:text-2xl font-bold text-gray-900">
           {pageTitle}
         </h1>
-      </div>
+      </div> */}
 
       {/* Profile Avatar with Dropdown */}
       <Dropdown

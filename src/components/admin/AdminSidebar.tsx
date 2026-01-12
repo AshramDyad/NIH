@@ -68,13 +68,15 @@ export default function AdminSidebar({
       >
         <div className="flex h-20 items-center justify-between px-4 gap-2 border-b border-gray-200">
           {!isCollapsed && (
-            <Image
-              src="/logo.png"
-              alt="NIH Logo"
-              width={190}
-              height={100}
-              className="object-cover"
-            />
+            <div className="relative w-[190px] h-[50px]">
+              <Image
+                src="/logo.png"
+                alt="NIH Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -149,13 +151,15 @@ export default function AdminSidebar({
         >
           {/* Mobile Sidebar Header */}
           <div className="flex h-20 items-center justify-between px-4 border-b border-gray-200">
-            <Image
-              src="/logo.png"
-              alt="NIH Logo"
-              width={160}
-              height={80}
-              className="object-cover"
-            />
+            <div className="relative w-[160px] h-[45px]">
+              <Image
+                src="/logo.png"
+                alt="NIH Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             <button
               onClick={onMobileClose}
               className="p-2 rounded hover:bg-gray-100 transition-colors cursor-pointer"

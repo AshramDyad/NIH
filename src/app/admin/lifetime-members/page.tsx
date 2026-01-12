@@ -12,6 +12,8 @@ import {
   Pencil,
 } from "lucide-react";
 import { FileUpload } from "@/components/shared/FileUpload";
+import { DataTable } from "@/components/ui/DataTable";
+import { useToast } from "@/components/ui/Toast";
 import {
   getLifetimeMembers,
   deleteLifetimeMember,
@@ -26,6 +28,7 @@ export default function AdminLifetimeMembersPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [, startTransition] = useTransition();
+  const { showToast } = useToast();
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -100,12 +103,25 @@ export default function AdminLifetimeMembersPage() {
         startTransition(() => {
           setMembers((prev) => prev.filter((member) => member.id !== id));
         });
+        showToast({
+          type: "success",
+          title: "Member Deleted",
+          message: `${name} has been removed successfully.`,
+        });
       } else {
-        alert(result.message);
+        showToast({
+          type: "error",
+          title: "Delete Failed",
+          message: result.message,
+        });
       }
     } catch (err) {
       console.error("Error deleting member:", err);
-      alert("Failed to delete member. Please try again.");
+      showToast({
+        type: "error",
+        title: "Delete Failed",
+        message: "Failed to delete member. Please try again.",
+      });
     }
   };
 
@@ -147,7 +163,6 @@ export default function AdminLifetimeMembersPage() {
       }
 
       if (result.success) {
-        setSubmitMessage({ type: "success", text: result.message });
         setIsModalOpen(false);
         setEditingMember(null);
         // Reset form
@@ -161,14 +176,25 @@ export default function AdminLifetimeMembersPage() {
         startTransition(() => {
           fetchMembers();
         });
+        // Show success toast
+        showToast({
+          type: "success",
+          title: editingMember ? "Member Updated" : "Member Added",
+          message: result.message,
+        });
       } else {
-        setSubmitMessage({ type: "error", text: result.message });
+        showToast({
+          type: "error",
+          title: "Save Failed",
+          message: result.message,
+        });
       }
     } catch (err) {
       console.error("Error saving member:", err);
-      setSubmitMessage({
+      showToast({
         type: "error",
-        text: "Failed to save member. Please try again.",
+        title: "Save Failed",
+        message: "Failed to save member. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -225,112 +251,77 @@ export default function AdminLifetimeMembersPage() {
         </div>
       )}
 
-      {/* Loading State */}
-      {isLoading && (
-        <div className="flex items-center justify-center py-12">
-          <Loader2 className="w-8 h-8 text-primary animate-spin" />
-          <span className="ml-3 text-gray-600">Loading members...</span>
-        </div>
-      )}
-
       {/* Members Table */}
-      {!isLoading && !error && members.length === 0 ? (
-        <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-          <User className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            No Members Yet
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Get started by adding your first lifetime member.
-          </p>
-        </div>
-      ) : (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Image
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Name
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Member Number
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {members.map((member) => (
-                  <tr
-                    key={member.id}
-                    className="hover:bg-gray-50 transition-colors"
+      {!error && (
+        <DataTable<LifetimeMember>
+          columns={[
+            {
+              id: "image",
+              header: "Image",
+              cell: (member) => (
+                <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100">
+                  {member.image_url ? (
+                    <Image
+                      src={member.image_url}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ImageIcon className="w-8 h-8 text-gray-400" />
+                    </div>
+                  )}
+                </div>
+              ),
+            },
+            {
+              id: "name",
+              header: "Name",
+              cell: (member) => (
+                <p className="text-sm font-medium text-gray-900">
+                  {member.name}
+                </p>
+              ),
+            },
+            {
+              id: "member_number",
+              header: "Member Number",
+              cell: (member) => (
+                <p className="text-sm text-gray-600">{member.member_number}</p>
+              ),
+            },
+            {
+              id: "actions",
+              header: "Actions",
+              cell: (member) => (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleEditMember(member)}
+                    className="flex items-center gap-2 text-primary bg-primary/10 hover:bg-primary/20 cursor-pointer px-3 py-2 rounded-lg transition-colors font-medium"
                   >
-                    {/* Image */}
-                    <td className="px-6 py-4">
-                      <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100">
-                        {member.image_url ? (
-                          <Image
-                            src={member.image_url}
-                            alt={member.name}
-                            fill
-                            className="object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <ImageIcon className="w-8 h-8 text-gray-400" />
-                          </div>
-                        )}
-                      </div>
-                    </td>
-
-                    {/* Name */}
-                    <td className="px-6 py-4">
-                      <p className="text-sm font-medium text-gray-900">
-                        {member.name}
-                      </p>
-                    </td>
-
-                    {/* Member Number */}
-                    <td className="px-6 py-4">
-                      <p className="text-sm text-gray-600">
-                        {member.member_number}
-                      </p>
-                    </td>
-
-                    {/* Actions */}
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => handleEditMember(member)}
-                          className="flex items-center gap-2 text-primary hover:text-orange-600 hover:bg-orange-50 px-3 py-2 rounded-lg transition-colors font-medium"
-                          title="Edit member"
-                        >
-                          <Pencil className="w-4 h-4" />
-                          Edit
-                        </button>
-                        <button
-                          onClick={() =>
-                            handleDeleteMember(member.id, member.name)
-                          }
-                          className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
-                          title="Delete member"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                    <Pencil className="w-4 h-4" />
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDeleteMember(member.id, member.name)}
+                    className="flex items-center gap-2 text-red-600 bg-red-600/10 hover:bg-red-600/20 cursor-pointer px-3 py-2 rounded-lg transition-colors font-medium"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Delete
+                  </button>
+                </div>
+              ),
+            },
+          ]}
+          data={members}
+          keyAccessor="id"
+          isLoading={isLoading}
+          loadingMessage="Loading members..."
+          emptyIcon={<User className="w-16 h-16 text-gray-400" />}
+          emptyTitle="No Members Yet"
+          emptyDescription="Get started by adding your first lifetime member."
+        />
       )}
 
       {/* Add/Edit Member Modal */}

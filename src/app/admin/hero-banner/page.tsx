@@ -5,11 +5,11 @@ import {
   Image as ImageIcon,
   Trash2,
   Plus,
-  GripVertical,
   Loader2,
   AlertCircle,
 } from "lucide-react";
 import { FileUpload } from "@/components/shared/FileUpload";
+import { DataTable } from "@/components/ui/DataTable";
 import {
   getHeroBanners,
   createHeroBanner,
@@ -19,115 +19,8 @@ import {
 } from "@/app/actions/hero-banners";
 import type { UploadResult } from "@/types/file-upload";
 import Image from "next/image";
-
-// dnd-kit imports
-import {
-  DndContext,
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-
-// Sortable Table Row Component
-function SortableRow({
-  banner,
-  index,
-  onDelete,
-}: {
-  banner: HeroBanner;
-  index: number;
-  onDelete: (id: string) => void;
-}) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: banner.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    opacity: isDragging ? 0.5 : 1,
-    zIndex: isDragging ? 1 : 0,
-  };
-
-  return (
-    <tr
-      ref={setNodeRef}
-      style={style}
-      className={`hover:bg-gray-50 transition-colors ${
-        isDragging ? "bg-gray-100" : ""
-      }`}
-    >
-      {/* Drag Handle - First column, sticky to prevent scroll issues */}
-      <td className="px-4 py-4 sticky left-0 bg-white z-10">
-        <button
-          {...attributes}
-          {...listeners}
-          className="p-2 hover:bg-gray-100 rounded-lg cursor-grab active:cursor-grabbing transition-colors touch-none"
-          title="Drag to reorder"
-          style={{ touchAction: "none" }}
-        >
-          <GripVertical className="w-5 h-5 text-gray-400" />
-        </button>
-      </td>
-
-      {/* Image */}
-      <td className="px-6 py-4">
-        <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-gray-100">
-          <Image
-            src={banner.image_url}
-            alt="Banner"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </td>
-
-      {/* URL */}
-      <td className="px-6 py-4">
-        <p className="text-sm text-gray-900 truncate max-w-xs font-mono bg-gray-50 px-2 py-1 rounded border">
-          {banner.image_url}
-        </p>
-      </td>
-
-      {/* Order */}
-      <td className="px-6 py-4">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-          {index + 1}
-        </span>
-      </td>
-
-      {/* Actions */}
-      <td className="px-6 py-4">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onDelete(banner.id)}
-            className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
-            title="Delete banner"
-          >
-            <Trash2 className="w-4 h-4" />
-            Delete
-          </button>
-        </div>
-      </td>
-    </tr>
-  );
-}
+import { arrayMove } from "@dnd-kit/sortable";
+import type { DragEndEvent } from "@dnd-kit/core";
 
 export default function HeroBannerAdminPage() {
   const [banners, setBanners] = useState<HeroBanner[]>([]);
@@ -136,14 +29,6 @@ export default function HeroBannerAdminPage() {
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Drag and drop sensors
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   // Load banners on mount
   useEffect(() => {
@@ -249,73 +134,69 @@ export default function HeroBannerAdminPage() {
         </div>
       )}
 
-      {/* Loading State */}
-      {isLoading && (
-        <div className="flex items-center justify-center py-12">
-          <Loader2 className="w-8 h-8 text-primary animate-spin" />
-          <span className="ml-3 text-gray-600">Loading banners...</span>
-        </div>
-      )}
-
-      {/* Empty State */}
-      {!isLoading && !error && banners.length === 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-          <ImageIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            No Banners Yet
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Get started by adding your first hero banner.
-          </p>
-        </div>
-      )}
-
       {/* Banners Table with Drag and Drop */}
-      {!isLoading && !error && banners.length > 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-          >
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
-                  <tr>
-                    <th className="text-left px-4 py-4 text-sm font-semibold text-gray-900 sticky left-0 bg-gray-50 z-10"></th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                      Image
-                    </th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                      Image URL
-                    </th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                      Order
-                    </th>
-                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  <SortableContext
-                    items={banners.map((b) => b.id)}
-                    strategy={verticalListSortingStrategy}
+      {!error && (
+        <DataTable<HeroBanner>
+          columns={[
+            {
+              id: "image",
+              header: "Image",
+              cell: (banner) => (
+                <div className="relative w-32 h-16 rounded-lg overflow-hidden bg-gray-100">
+                  <Image
+                    src={banner.image_url}
+                    alt="Banner"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ),
+            },
+            {
+              id: "url",
+              header: "Image URL",
+              cell: (banner) => (
+                <p className="text-sm text-gray-900 truncate max-w-xs font-mono bg-gray-50 px-2 py-1 rounded border">
+                  {banner.image_url}
+                </p>
+              ),
+            },
+            {
+              id: "order",
+              header: "Order",
+              cell: (_, index) => (
+                <span className="inline-flex items-center justify-center size-6 rounded-full text-xs font-semibold bg-primary text-white">
+                  {index + 1}
+                </span>
+              ),
+            },
+            {
+              id: "actions",
+              header: "Actions",
+              cell: (banner) => (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleDelete(banner.id)}
+                    className="flex items-center gap-2 text-red-600 bg-red-600/10 hover:bg-red-600/20 cursor-pointer px-3 py-2 rounded-lg transition-colors font-medium"
+                    title="Delete banner"
                   >
-                    {banners.map((banner, index) => (
-                      <SortableRow
-                        key={banner.id}
-                        banner={banner}
-                        index={index}
-                        onDelete={handleDelete}
-                      />
-                    ))}
-                  </SortableContext>
-                </tbody>
-              </table>
-            </div>
-          </DndContext>
-        </div>
+                    <Trash2 className="w-4 h-4" />
+                    Delete
+                  </button>
+                </div>
+              ),
+            },
+          ]}
+          data={banners}
+          keyAccessor="id"
+          isLoading={isLoading}
+          loadingMessage="Loading banners..."
+          emptyIcon={<ImageIcon className="w-16 h-16 text-gray-400" />}
+          emptyTitle="No Banners Yet"
+          emptyDescription="Get started by adding your first hero banner."
+          sortable
+          onDragEnd={handleDragEnd}
+        />
       )}
 
       {/* Add Banner Modal */}
