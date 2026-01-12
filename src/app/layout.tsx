@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SpiritualFloatingButton from "@/components/shared/SpiritualFloatingButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,7 +13,8 @@ const geistMono = Geist_Mono({
 });
 export const metadata: Metadata = {
   title: "NIH - National Institute of Holistic Health",
-  description: "Join NIH for holistic health, yoga, and wellness education. Transform your life through comprehensive holistic health programs.",
+  description:
+    "Join NIH for holistic health, yoga, and wellness education. Transform your life through comprehensive holistic health programs.",
   icons: {
     icon: "/favicon.png",
   },
@@ -25,9 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
         {children}
+        <SpiritualFloatingButton />
       </body>
     </html>
   );
