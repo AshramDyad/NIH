@@ -224,7 +224,7 @@ const SectionHeading = ({ title }: { title: string }) => (
 const MemberCard = ({ member }: { member: CouncilMember }) => (
     <div className="bg-primary/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-8 border border-primary/20 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/40">
         {/* Member Image */}
-        <div className="relative lg:size-36 size-28 flex-shrink-0">
+        <div className="relative lg:size-36 size-28 shrink-0">
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-50 shadow-sm">
                 <Image
                     src={member.image}

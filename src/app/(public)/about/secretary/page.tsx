@@ -44,7 +44,7 @@ export default function SecretaryPage() {
                             {/* Profile Header: Image + Name/Designation */}
                             <div className="flex flex-col md:flex-row items-center md:items-center sm:gap-10 gap-6 border-b border-primary/10 pb-10">
                                 {/* Profile Image */}
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
                                     <div className="relative size-36 md:size-56">
                                         <div className="relative w-full h-full rounded-full overflow-hidden border-6 border-white shadow-lg ring-4 ring-primary/20">
                                             <Image

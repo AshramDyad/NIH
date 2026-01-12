@@ -37,7 +37,7 @@ export default function AdminLayoutWrapper({
       <div className="flex h-screen min-w-0 flex-col bg-white">
         <AdminHeader user={{ email: userEmail }} />
         <main className="flex-1 overflow-y-auto">
-          <div className="p-6">
+          <div className="lg:p-6 p-4">
             {children}
           </div>
         </main>

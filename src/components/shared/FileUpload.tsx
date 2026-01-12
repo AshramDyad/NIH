@@ -329,7 +329,7 @@ export function FileUpload({
           <div className="p-6">
             <div className="flex flex-col sm:flex-row gap-6">
               {/* Preview or Icon */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 {previewUrl ? (
                   <div className="relative">
                     <img
@@ -339,7 +339,7 @@ export function FileUpload({
                     />
                   </div>
                 ) : (
-                  <div className="w-32 h-32 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="w-32 h-32 bg-linear-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center shadow-md">
                     {config.icon}
                   </div>
                 )}
@@ -400,7 +400,7 @@ export function FileUpload({
                 {/* Error Message */}
                 {uploadState.error && (
                   <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-red-900">
                         Upload Failed
@@ -470,7 +470,7 @@ export function FileUpload({
           <div className="p-6">
             <div className="flex flex-col sm:flex-row gap-6">
               {/* Preview */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 {previewUrl ? (
                   <img
                     src={previewUrl}

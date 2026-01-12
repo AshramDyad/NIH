@@ -55,7 +55,7 @@ const HolisticImpact = () => {
                     <div className="group bg-white rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-transform duration-300 flex flex-col relative">
                         {/* Top Accent Bar */}
                         <div className="h-2 w-full bg-primary" />
-                        <div className="p-6 flex flex-col flex-grow">
+                        <div className="p-6 flex flex-col grow">
                             <div className="flex items-center gap-5 mb-8">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md">
                                     <Image
@@ -70,7 +70,7 @@ const HolisticImpact = () => {
                                     <p className="text-primary font-sans font-semibold text-xs uppercase tracking-widest mt-1">Chairman, NIH</p>
                                 </div>
                             </div>
-                            <div className="flex-grow">
+                            <div className="grow">
                                 <div className="mb-6">
                                     <p className="text-gray-600 italic font-serif leading-relaxed text-lg">
                                         &ldquo;Health is the biggest necessity in today&apos;s life. We have to correct our diet, our thoughts and our behavior to keep our health constant...&rdquo;
@@ -93,7 +93,7 @@ const HolisticImpact = () => {
                     {/* Card 2: Gallery Slider */}
                     <div className="group bg-white rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-transform duration-300 flex flex-col relative">
                         <div className="h-2 w-full bg-primary" />
-                        <div className="p-6 flex flex-col flex-grow">
+                        <div className="p-6 flex flex-col grow">
                             <div className="flex items-center justify-between mb-8">
                                 <h3 className="text-secondary font-sans font-bold text-xl tracking-tight">NIH Gallery</h3>
                                 <div className="flex gap-2">
@@ -105,7 +105,7 @@ const HolisticImpact = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
+                            <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden shadow-sm">
                                 {galleryImages.map((img, idx) => (
                                     <Image
                                         key={idx}
@@ -129,9 +129,9 @@ const HolisticImpact = () => {
                     {/* Card 3: Strategic Blocks */}
                     <div className="group bg-white rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-transform duration-300 flex flex-col relative">
                         <div className="h-2 w-full bg-primary" />
-                        <div className="p-6 flex flex-col flex-grow">
+                        <div className="p-6 flex flex-col grow">
                             <h3 className="text-secondary font-sans font-bold text-xl tracking-tight mb-8">Quick Links</h3>
-                            <div className="grid grid-cols-1 gap-4 flex-grow">
+                            <div className="grid grid-cols-1 gap-4 grow">
                                 {[
                                     { title: 'Membership', color: 'hover:bg-[#EEB9BB]', href: 'https://forms.gle/gyXBhDGFnFX9vkmS7', isExternal: true },
                                     { title: 'International Conference', color: 'hover:bg-[#D4DC82]', href: '/international-conference', isExternal: false },
@@ -159,7 +159,7 @@ const HolisticImpact = () => {
 
             {/* Video Modal Overlay */}
             {isVideoOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-10">
                     {/* Backdrop */}
                     <div
                         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
