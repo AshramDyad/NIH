@@ -23,15 +23,6 @@ interface MemberCardProps {
 }
 
 function MemberCard({ member }: MemberCardProps) {
-  // Format date for display
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    });
-  };
 
   return (
     <div className="bg-white rounded-2xl p-4 md:p-6 shadow border border-gray-200 space-y-4">
@@ -42,6 +33,8 @@ function MemberCard({ member }: MemberCardProps) {
             src={member.image_url}
             alt={`${member.name} - Lifetime Member`}
             fill
+            sizes="128px"
+            unoptimized
             className="object-cover"
           />
         </div>
@@ -62,13 +55,6 @@ function MemberCard({ member }: MemberCardProps) {
             Member No.
           </span>
           <span className="font-medium">{member.member_number}</span>
-        </div>
-
-        <div className="flex flex-col items-center text-gray-600">
-          <span className="text-lg font-bold text-secondary">
-            D.O.B.
-          </span>
-          <span className="font-medium">{formatDate(member.date_of_birth)}</span>
         </div>
       </div>
     </div>

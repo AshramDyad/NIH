@@ -212,7 +212,7 @@ const NewMembers = () => {
                             Affiliated by
                         </span>
 
-                        <div className="relative h-20 sm:h-24 md:h-28 lg:h-32 w-auto flex-shrink-0">
+                        <div className="relative h-20 sm:h-24 md:h-28 lg:h-32 w-auto shrink-0">
                             <Image
                                 src="/images/univariety-white-logo.png"
                                 alt="Univariety Logo"

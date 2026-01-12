@@ -42,7 +42,7 @@ const EventCard = ({ event }: { event: Event }) => {
             {/* Action Section */}
             <div className="pt-4 border-t border-gray-200 mt-auto">
                 <Link
-                    href={`/events/${event.id}`}
+                    href={`/international-conference`}
                     className="flex items-center justify-between text-secondary font-semibold text-sm transition-colors hover:underline"
                 >
                     Register Now

@@ -54,14 +54,14 @@ export async function addLifetimeMember(formData: FormData): Promise<{
         // Extract form data
         const name = formData.get('name') as string;
         const memberNumber = formData.get('memberNumber') as string;
-        const dateOfBirth = formData.get('dateOfBirth') as string;
+        const dateOfBirth = formData.get('dateOfBirth') as string | null;
         const imageUrl = formData.get('imageUrl') as string;
 
         // Validate using Zod schema
         const validationResult = lifetimeMemberSchema.safeParse({
             name,
             memberNumber,
-            dateOfBirth,
+            ...(dateOfBirth ? { dateOfBirth } : {}),
             imageUrl,
         });
 
@@ -83,7 +83,7 @@ export async function addLifetimeMember(formData: FormData): Promise<{
                 {
                     name: validatedData.name,
                     member_number: validatedData.memberNumber,
-                    date_of_birth: validatedData.dateOfBirth,
+                    ...(validatedData.dateOfBirth ? { date_of_birth: validatedData.dateOfBirth } : {}),
                     image_url: validatedData.imageUrl,
                 },
             ])
@@ -144,14 +144,14 @@ export async function updateLifetimeMember(
         // Extract form data
         const name = formData.get('name') as string;
         const memberNumber = formData.get('memberNumber') as string;
-        const dateOfBirth = formData.get('dateOfBirth') as string;
+        const dateOfBirth = formData.get('dateOfBirth') as string | null;
         const imageUrl = formData.get('imageUrl') as string;
 
         // Validate using Zod schema
         const validationResult = lifetimeMemberSchema.safeParse({
             name,
             memberNumber,
-            dateOfBirth,
+            ...(dateOfBirth ? { dateOfBirth } : {}),
             imageUrl,
         });
 
@@ -172,7 +172,7 @@ export async function updateLifetimeMember(
             .update({
                 name: validatedData.name,
                 member_number: validatedData.memberNumber,
-                date_of_birth: validatedData.dateOfBirth,
+                ...(validatedData.dateOfBirth ? { date_of_birth: validatedData.dateOfBirth } : {}),
                 image_url: validatedData.imageUrl,
             })
             .eq('id', id)

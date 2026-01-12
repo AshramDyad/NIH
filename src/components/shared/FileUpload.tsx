@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useRef } from "react";
+import Image from "next/image";
 import {
   Upload,
   FileImage,
@@ -44,19 +45,19 @@ export function FileUpload({
   const config =
     fileType === "image"
       ? {
-          accept: "image/jpeg,image/png,image/webp,image/gif",
-          maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
-          icon: <FileImage className="w-16 h-16 text-gray-400" />,
-          label: "Image",
-          formats: "JPG, PNG, WebP, GIF",
-        }
+        accept: "image/jpeg,image/png,image/webp,image/gif",
+        maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
+        icon: <FileImage className="w-16 h-16 text-gray-400" />,
+        label: "Image",
+        formats: "JPG, PNG, WebP, GIF",
+      }
       : {
-          accept: "application/pdf",
-          maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
-          icon: <FileText className="w-16 h-16 text-gray-400" />,
-          label: "PDF",
-          formats: "PDF",
-        };
+        accept: "application/pdf",
+        maxSize: maxFileSize || 10 * 1024 * 1024, // 10MB
+        icon: <FileText className="w-16 h-16 text-gray-400" />,
+        label: "PDF",
+        formats: "PDF",
+      };
 
   // Handle file selection
   const handleFileSelect = useCallback(
@@ -267,11 +268,10 @@ export function FileUpload({
           onDragOver={handleDragOver}
           onKeyDown={handleKeyDown}
           onClick={() => fileInputRef.current?.click()}
-          className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-200 ${
-            isDragging
+          className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-200 ${isDragging
               ? "border-blue-500 bg-blue-50 scale-[1.02]"
               : "border-gray-300 hover:border-blue-400 hover:bg-gray-50"
-          }`}
+            }`}
         >
           <input
             ref={fileInputRef}
@@ -282,14 +282,12 @@ export function FileUpload({
           />
           <div className="flex flex-col items-center">
             <div
-              className={`p-4 rounded-full mb-4 transition-all duration-200 ${
-                isDragging ? "bg-blue-100 scale-110" : "bg-gray-100"
-              }`}
+              className={`p-4 rounded-full mb-4 transition-all duration-200 ${isDragging ? "bg-blue-100 scale-110" : "bg-gray-100"
+                }`}
             >
               <Upload
-                className={`w-12 h-12 ${
-                  isDragging ? "text-blue-600" : "text-gray-500"
-                }`}
+                className={`w-12 h-12 ${isDragging ? "text-blue-600" : "text-gray-500"
+                  }`}
               />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -329,17 +327,20 @@ export function FileUpload({
           <div className="p-6">
             <div className="flex flex-col sm:flex-row gap-6">
               {/* Preview or Icon */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 {previewUrl ? (
                   <div className="relative">
-                    <img
+                    <Image
                       src={previewUrl}
                       alt="Preview"
-                      className="w-32 h-32 object-cover rounded-xl shadow-md"
+                      width={128}
+                      height={128}
+                      className="object-cover rounded-xl shadow-md"
+                      unoptimized
                     />
                   </div>
                 ) : (
-                  <div className="w-32 h-32 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center shadow-md">
+                  <div className="w-32 h-32 bg-linear-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center shadow-md">
                     {config.icon}
                   </div>
                 )}
@@ -400,7 +401,7 @@ export function FileUpload({
                 {/* Error Message */}
                 {uploadState.error && (
                   <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-red-900">
                         Upload Failed
@@ -470,12 +471,15 @@ export function FileUpload({
           <div className="p-6">
             <div className="flex flex-col sm:flex-row gap-6">
               {/* Preview */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 {previewUrl ? (
-                  <img
+                  <Image
                     src={previewUrl}
                     alt="Uploaded image"
-                    className="w-32 h-32 object-cover rounded-xl shadow-md border-4 border-white"
+                    width={128}
+                    height={128}
+                    className="object-cover rounded-xl shadow-md border-4 border-white"
+                    unoptimized
                   />
                 ) : (
                   <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center shadow-md border-4 border-white">

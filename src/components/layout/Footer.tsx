@@ -9,13 +9,6 @@ import {
 } from "lucide-react";
 import { FaYoutube, FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
 
-// Simple type definitions for footer content
-interface FooterLink {
-  href?: string;
-  label: string;
-  target?: string;
-}
-
 /**
  * Default Footer Content
  * Used when no custom config is provided by the page

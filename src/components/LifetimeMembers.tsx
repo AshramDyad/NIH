@@ -121,32 +121,33 @@ const lifetimeMembers: Member[] = [
 const MemberCard = ({ member }: { member: Member }) => (
     <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center text-center transition-all duration-500 border border-gray-200 hover:border-gray-100 group/card">
         {/* Member Image */}
-        <div className="relative w-36 h-36 mb-6 flex-shrink-0">
+        <div className="relative w-36 h-36 mb-6 shrink-0">
             <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-0 group-hover/card:opacity-10 transition-opacity duration-500" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl">
                 <Image
                     src={member.image}
                     alt={member.name}
                     fill
+                    sizes="144px"
                     className="object-cover transition-transform duration-700 group-hover/card:scale-110"
                 />
             </div>
         </div>
 
         {/* Member Name - Fixed height for consistency */}
-        <h3 className="text-secondary text-xl font-bold mb-4 tracking-tight min-h-[3.5rem] flex items-center justify-center">{member.name}</h3>
+        <h3 className="text-secondary text-xl font-bold mb-4 tracking-tight min-h-14 flex items-center justify-center">{member.name}</h3>
 
         <div className="w-full h-px bg-gray-100 mb-4" />
 
         <div className="w-full space-y-3 text-left mt-auto">
             <div className="flex items-center gap-4 text-gray-500 group-hover/card:text-gray-700 transition-colors">
-                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors shrink-0">
                     <Briefcase className="w-5 h-5 text-secondary" />
                 </div>
                 <span className="text-sm font-bold tracking-wide uppercase">{member.role}</span>
             </div>
             <div className="flex items-center gap-4 text-gray-500 group-hover/card:text-gray-700 transition-colors">
-                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors shrink-0">
                     <MapPin className="w-5 h-5 text-secondary" />
                 </div>
                 <span className="text-sm font-bold tracking-wide">{member.location}</span>

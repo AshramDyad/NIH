@@ -29,7 +29,7 @@ export default function ChairmanAwards() {
                         <div className="space-y-6">
                             {awards.map((award, idx) => (
                                 <div key={idx} className="flex gap-4">
-                                    <div className="flex-shrink-0 mt-1">
+                                    <div className="shrink-0 mt-1">
                                         <ArrowRightCircle className="w-6 h-6 text-secondary" />
                                     </div>
                                     <p className="text-lg text-zinc-600 font-semibold leading-relaxed">
@@ -49,7 +49,7 @@ export default function ChairmanAwards() {
                         <div className="space-y-6">
                             {lectures.map((lecture, idx) => (
                                 <div key={idx} className="flex gap-4">
-                                    <div className="flex-shrink-0 mt-1">
+                                    <div className="shrink-0 mt-1">
                                         <ArrowRightCircle className="w-6 h-6 text-primary" />
                                     </div>
                                     <p className="text-lg text-zinc-600 font-semibold leading-relaxed">

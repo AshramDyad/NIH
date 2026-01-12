@@ -15,6 +15,7 @@ export default function AdminLayoutWrapper({
   userEmail,
 }: AdminLayoutWrapperProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const pathname = usePathname();
   const isAuthRoute = pathname === '/admin/login';
 
@@ -26,18 +27,23 @@ export default function AdminLayoutWrapper({
     <div
       className={`
         grid min-h-screen bg-gray-100 transition-all duration-300
-        ${isSidebarCollapsed ? 'md:grid-cols-[64px_1fr]' : 'md:grid-cols-[256px_1fr]'}
+        ${isSidebarCollapsed ? 'lg:grid-cols-[64px_1fr]' : 'lg:grid-cols-[256px_1fr]'}
       `}
     >
       <AdminSidebar
         isCollapsed={isSidebarCollapsed}
         setIsCollapsed={setIsSidebarCollapsed}
+        isMobileOpen={isMobileSidebarOpen}
+        onMobileClose={() => setIsMobileSidebarOpen(false)}
       />
 
       <div className="flex h-screen min-w-0 flex-col bg-white">
-        <AdminHeader user={{ email: userEmail }} />
+        <AdminHeader
+          user={{ email: userEmail }}
+          onMenuToggle={() => setIsMobileSidebarOpen(true)}
+        />
         <main className="flex-1 overflow-y-auto">
-          <div className="p-6">
+          <div className="lg:p-6 p-4">
             {children}
           </div>
         </main>
