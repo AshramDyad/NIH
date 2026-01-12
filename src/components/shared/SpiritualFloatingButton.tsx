@@ -3,13 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 /**
  * SpiritualFloatingButton Component
  * Refined Vertical Sticky Tab on the right edge of the screen.
- * Discrete and user-friendly size.
+ * Hidden on admin panel pages.
  */
 export default function SpiritualFloatingButton() {
+  const pathname = usePathname();
+
+  // Hide on admin pages
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <motion.div
       initial={{ x: 100 }}
