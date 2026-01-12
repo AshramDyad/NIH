@@ -15,7 +15,7 @@ export default function SpiritualFloatingButton() {
       initial={{ x: 100 }}
       animate={{ x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-50 pointer-events-none"
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-20 pointer-events-none"
     >
       <Link
         href="https://www.swaminarayan.yoga/"

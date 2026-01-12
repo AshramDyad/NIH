@@ -53,17 +53,17 @@ export default function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.80fr_1.2fr_0.80fr] gap-8 lg:gap-10">
                     {/* Column 1: Brand & Socials */}
                     <div className="space-y-6">
-                        <div className="flex items-center gap-3">
-                            {/* Logo Image */}
-                            <div className="relative w-full">
-                                <Image
-                                    src="/logo.png"
-                                    alt="NIH Logo"
-                                    width={500}
-                                    height={200}
-                                    className="h-auto"
-                                />
-                            </div>
+                        {/* Logo Image */}
+                        <div className="relative">
+                            <Image
+                                src="/logo.png"
+                                alt="NIH Logo"
+                                width={300}
+                                height={150}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 300px, 300px"
+                                priority
+                                className="h-auto"
+                            />
                         </div>
                         <p className="text-secondary/80 leading-relaxed font-medium">
                             Empowering lives through holistic health education and wellness practices since 2025.
