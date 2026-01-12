@@ -106,6 +106,7 @@ const Header = () => {
         { name: "Active Members", href: "/members/active" },
         { name: "Member's Institutions", href: "/members/institutions" },
         { name: "Lifetime Members", href: "/members/lifetime" },
+        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" },
         { name: "Associate Centres", href: "/members/associate" },
       ]
     },
@@ -153,8 +154,7 @@ const Header = () => {
         { name: "NIH Active Members", href: "/members/active" },
         { name: "Lifetime Members", href: "/members/lifetime" },
         { name: "Members Institutions", href: "/members/institutions" },
-        { name: "Yoga Volunteer Members", href: "/members/yoga-volunteer" },
-        { name: "Yoga Professional Members", href: "/members/yoga-professional" },
+        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" },
         { name: "Associate Centres", href: "/members/associate" }
       ]
     },
