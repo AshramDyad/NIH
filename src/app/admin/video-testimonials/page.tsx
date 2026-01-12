@@ -16,6 +16,7 @@ import {
   type VideoTestimonial,
 } from "@/app/actions/video-testimonials";
 import Image from "next/image";
+import { DataTable } from "@/components/ui/DataTable";
 
 // Helper function to get YouTube thumbnail URL
 function getYouTubeThumbnail(videoId: string): string {
@@ -94,7 +95,7 @@ export default function VideoTestimonialsAdminPage() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-primary hover:bg-primary/90 cursor-pointer text-white font-medium py-2.5 px-4 rounded-lg transition-colors"
         >
           <Plus className="w-5 h-5" />
           Add Video
@@ -120,93 +121,62 @@ export default function VideoTestimonialsAdminPage() {
         </div>
       )}
 
-      {/* Loading State */}
-      {isLoading && (
-        <div className="flex items-center justify-center py-12">
-          <Loader2 className="w-8 h-8 text-primary animate-spin" />
-          <span className="ml-3 text-gray-600">Loading videos...</span>
-        </div>
-      )}
-
-      {/* Empty State */}
-      {!isLoading && !error && videos.length === 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-          <Video className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            No Videos Yet
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Get started by adding your first video testimonial.
-          </p>
-        </div>
-      )}
-
       {/* Videos Table */}
-      {!isLoading && !error && videos.length > 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Thumbnail
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    YouTube URL
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {videos.map((video) => (
-                  <tr
-                    key={video.id}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    {/* Thumbnail */}
-                    <td className="px-6 py-4">
-                      <div className="relative w-40 h-24 rounded-lg overflow-hidden bg-gray-100">
-                        <Image
-                          src={getYouTubeThumbnail(video.video_id)}
-                          alt="Video thumbnail"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </td>
-
-                    {/* URL */}
-                    <td className="px-6 py-4">
-                      <a
-                        href={video.youtube_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1 max-w-xs truncate"
-                      >
-                        {video.youtube_url}
-                        <ExternalLink className="w-3 h-3 shrink-0" />
-                      </a>
-                    </td>
-
-                    {/* Actions */}
-                    <td className="px-6 py-4">
-                      <button
-                        onClick={() => handleDelete(video.id)}
-                        className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-colors font-medium"
-                        title="Delete video"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      {!error && (
+        <DataTable<VideoTestimonial>
+          columns={[
+            {
+              id: "thumbnail",
+              header: "Thumbnail",
+              cell: (video) => (
+                <div className="relative w-40 h-24 rounded-lg overflow-hidden bg-gray-100">
+                  <Image
+                    src={getYouTubeThumbnail(video.video_id)}
+                    alt="Video thumbnail"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ),
+            },
+            {
+              id: "url",
+              header: "YouTube URL",
+              cell: (video) => (
+                <a
+                  href={video.youtube_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:text-primary/90 hover:underline flex items-center gap-1 max-w-xs truncate"
+                >
+                  {video.youtube_url}
+                  <ExternalLink className="w-3 h-3 shrink-0" />
+                </a>
+              ),
+            },
+            {
+              id: "actions",
+              header: "Actions",
+              cell: (video) => (
+                <button
+                  onClick={() => handleDelete(video.id)}
+                  className="flex items-center gap-2 text-red-600 bg-red-600/10 hover:bg-red-600/20 cursor-pointer px-3 py-2 rounded-lg transition-colors font-medium"
+                  title="Delete video"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Delete
+                </button>
+              ),
+            },
+          ]}
+          data={videos}
+          keyAccessor="id"
+          isLoading={isLoading}
+          loadingMessage="Loading videos..."
+          emptyIcon={<Video className="w-16 h-16 text-gray-400" />}
+          emptyTitle="No Videos Yet"
+          emptyDescription="Get started by adding your first video testimonial."
+        />
       )}
 
       {/* Add Video Modal */}
