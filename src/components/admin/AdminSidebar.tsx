@@ -12,6 +12,7 @@ import {
   BarChart3,
   Image as ImageIcon,
   Video,
+  Building2,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -30,6 +31,11 @@ const menuItems = [
     label: "Video Testimonials",
   },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
+  {
+    href: "/admin/members-institutions",
+    icon: Building2,
+    label: "Institution Members",
+  },
   { href: "/admin/events", icon: Calendar, label: "Events" },
   { href: "/admin/analytics", icon: BarChart3, label: "Analytics" },
   { href: "/admin/settings", icon: Settings, label: "Settings" },
