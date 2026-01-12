@@ -26,9 +26,9 @@ export const lifetimeMemberSchema = z.object({
 
     dateOfBirth: z
         .string()
-        .min(1, 'Date of birth is required')
         .regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format (e.g., 1975-10-05)')
-        .trim(),
+        .trim()
+        .optional(),
 
     imageUrl: z
         .string()

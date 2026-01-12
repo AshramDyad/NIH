@@ -121,7 +121,7 @@ const lifetimeMembers: Member[] = [
 const MemberCard = ({ member }: { member: Member }) => (
     <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center text-center transition-all duration-500 border border-gray-200 hover:border-gray-100 group/card">
         {/* Member Image */}
-        <div className="relative w-36 h-36 mb-6 flex-shrink-0">
+        <div className="relative w-36 h-36 mb-6 shrink-0">
             <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-0 group-hover/card:opacity-10 transition-opacity duration-500" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl">
                 <Image

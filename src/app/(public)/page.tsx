@@ -16,8 +16,8 @@ import { getHeroBanners } from "@/app/actions/hero-banners";
 export default async function Home() {
   const banners = await getHeroBanners();
 
-  const slides = banners.map((banner) => ({
-    id: Number(banner.id.split("-")[0]) || Math.random(), // id is UUID, but component expects number
+  const slides = banners.map((banner, index) => ({
+    id: index + 1,
     image: banner.image_url,
   }));
 
