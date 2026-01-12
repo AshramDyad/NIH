@@ -74,7 +74,7 @@ export default function VisionMissionSplit() {
                                     className="group relative bg-zinc-50 border border-zinc-100 p-4 lg:p-6 rounded-2xl hover:bg-white hover:shadow-md hover:border-transparent transition-all duration-300"
                                 >
                                     <div className="flex items-start gap-6">
-                                        <div className="flex-shrink-0 w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                        <div className="shrink-0 w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                                             <point.icon className="w-7 h-7" />
                                         </div>
                                         <div className="space-y-3">

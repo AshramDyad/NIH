@@ -134,7 +134,7 @@ export default function AdminUploadPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4 flex-1 min-w-0">
                         {/* File Icon */}
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           {file.fileType === 'image' ? (
                             <div className="p-2 bg-orange-100 rounded-lg">
                               <ImageIcon className="w-5 h-5 text-primary" />
@@ -165,7 +165,7 @@ export default function AdminUploadPage() {
                       </div>
 
                       {/* Actions */}
-                      <div className="flex items-center gap-2 flex-shrink-0 ml-4">
+                      <div className="flex items-center gap-2 shrink-0 ml-4">
                         <a
                           href={file.fileUrl}
                           target="_blank"

@@ -52,8 +52,6 @@ export default function ChairmanHero() {
                                 className="object-cover object-top"
                                 priority
                             />
-                            {/* Subtle overlay for depth */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-secondary/10 to-transparent" />
                         </div>
                     </div>
                 </div>

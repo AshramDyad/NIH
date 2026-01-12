@@ -246,7 +246,7 @@ export default function AimsContent() {
                                 key={index}
                                 className="flex gap-6 items-start"
                             >
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
                                     <span className="text-4xl md:text-5xl font-black text-primary/20">
                                         0{index + 1}
                                     </span>

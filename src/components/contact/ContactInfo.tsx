@@ -63,7 +63,7 @@ export default function ContactInfo() {
                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-1">
                                 {detail.title}
                             </h4>
-                            <p className="text-lg font-semibold text-secondary break-words">
+                            <p className="text-lg font-semibold text-secondary word-break-words">
                                 {detail.content}
                             </p>
                             {detail.action && (

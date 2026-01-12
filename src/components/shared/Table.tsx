@@ -29,7 +29,7 @@ export default function Table({ data }: TableProps) {
                   rowSpan={row.label.rowspan}
                   className={`px-6 py-3 text-sm md:text-base ${
                     row.label.isHeader
-                      ? "bg-primary text-white font-semibold text-zinc-900"
+                      ? "bg-primary text-white font-semibold"
                       : row.label.rowspan && row.label.rowspan > 1
                       ? "bg-zinc-100 font-semibold text-zinc-900"
                       : "bg-white text-zinc-600"

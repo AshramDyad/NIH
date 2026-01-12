@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useTransition } from 'react';
+import Image from 'next/image';
 import { Plus, Image as ImageIcon, Trash2, Loader2, AlertCircle, User, Pencil } from 'lucide-react';
 import { FileUpload } from '@/components/shared/FileUpload';
 import { getLifetimeMembers, deleteLifetimeMember, addLifetimeMember, updateLifetimeMember, type LifetimeMember } from '@/app/actions/lifetimeMembers';
@@ -10,7 +11,7 @@ export default function AdminLifetimeMembersPage() {
     const [members, setMembers] = useState<LifetimeMember[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [isPending, startTransition] = useTransition();
+    const [, startTransition] = useTransition();
 
     // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,7 +19,6 @@ export default function AdminLifetimeMembersPage() {
     const [formData, setFormData] = useState({
         name: '',
         memberNumber: '',
-        dateOfBirth: '',
         imageUrl: '',
     });
     const [uploadResult, setUploadResult] = useState<UploadResult | null>(null);
@@ -36,7 +36,6 @@ export default function AdminLifetimeMembersPage() {
             setFormData({
                 name: editingMember.name,
                 memberNumber: editingMember.member_number,
-                dateOfBirth: editingMember.date_of_birth,
                 imageUrl: editingMember.image_url,
             });
             // Set upload result to show existing image preview
@@ -113,7 +112,6 @@ export default function AdminLifetimeMembersPage() {
         const formDataObj = new FormData();
         formDataObj.append('name', formData.name);
         formDataObj.append('memberNumber', formData.memberNumber);
-        formDataObj.append('dateOfBirth', formData.dateOfBirth);
         formDataObj.append('imageUrl', formData.imageUrl);
 
         try {
@@ -134,7 +132,6 @@ export default function AdminLifetimeMembersPage() {
                 setFormData({
                     name: '',
                     memberNumber: '',
-                    dateOfBirth: '',
                     imageUrl: '',
                 });
                 setUploadResult(null);
@@ -159,22 +156,13 @@ export default function AdminLifetimeMembersPage() {
         setFormData({
             name: '',
             memberNumber: '',
-            dateOfBirth: '',
             imageUrl: '',
         });
         setUploadResult(null);
         setSubmitMessage(null);
     };
 
-    // Format date for display
-    const formatDate = (dateString: string): string => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric',
-        });
-    };
+
 
     return (
         <div className="space-y-6">
@@ -196,7 +184,7 @@ export default function AdminLifetimeMembersPage() {
             {/* Error State */}
             {error && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <div className="flex-1">
                         <p className="text-sm font-medium text-red-900">Error Loading Data</p>
                         <p className="text-sm text-red-700 mt-1">{error}</p>
@@ -234,7 +222,6 @@ export default function AdminLifetimeMembersPage() {
                                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">Image</th>
                                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">Name</th>
                                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">Member Number</th>
-                                    <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">Date of Birth</th>
                                     <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900">Actions</th>
                                 </tr>
                             </thead>
@@ -243,12 +230,13 @@ export default function AdminLifetimeMembersPage() {
                                     <tr key={member.id} className="hover:bg-gray-50 transition-colors">
                                         {/* Image */}
                                         <td className="px-6 py-4">
-                                            <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-100">
+                                            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100">
                                                 {member.image_url ? (
-                                                    <img
+                                                    <Image
                                                         src={member.image_url}
                                                         alt={member.name}
-                                                        className="w-full h-full object-cover"
+                                                        fill
+                                                        className="object-cover"
                                                     />
                                                 ) : (
                                                     <div className="w-full h-full flex items-center justify-center">
@@ -266,11 +254,6 @@ export default function AdminLifetimeMembersPage() {
                                         {/* Member Number */}
                                         <td className="px-6 py-4">
                                             <p className="text-sm text-gray-600">{member.member_number}</p>
-                                        </td>
-
-                                        {/* Date of Birth */}
-                                        <td className="px-6 py-4">
-                                            <p className="text-sm text-gray-600">{formatDate(member.date_of_birth)}</p>
                                         </td>
 
                                         {/* Actions */}
@@ -332,10 +315,12 @@ export default function AdminLifetimeMembersPage() {
                                 />
                                 {uploadResult && (
                                     <div className="mt-4 flex items-center gap-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                                        <img
+                                        <Image
                                             src={uploadResult.fileUrl}
                                             alt="Uploaded image"
-                                            className="w-20 h-20 object-cover rounded-lg"
+                                            width={80}
+                                            height={80}
+                                            className="object-cover rounded-lg"
                                         />
                                         <div className="flex-1">
                                             <p className="text-sm font-medium text-green-900">Image Uploaded</p>
@@ -382,22 +367,6 @@ export default function AdminLifetimeMembersPage() {
                                     <p className="text-xs text-gray-500 mt-1">Format: NIH/XX/#### (e.g., NIH/DL/1234)</p>
                                 </div>
 
-                                {/* Date of Birth */}
-                                <div>
-                                    <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Date of Birth <span className="text-red-500">*</span>
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="dateOfBirth"
-                                        name="dateOfBirth"
-                                        value={formData.dateOfBirth}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                                    />
-                                </div>
-
                                 {/* Hidden Image URL */}
                                 <input
                                     type="hidden"
@@ -407,11 +376,10 @@ export default function AdminLifetimeMembersPage() {
 
                                 {/* Submit Message */}
                                 {submitMessage && (
-                                    <div className={`p-4 rounded-lg ${
-                                        submitMessage.type === 'success'
-                                            ? 'bg-green-50 border border-green-200 text-green-900'
-                                            : 'bg-red-50 border border-red-200 text-red-900'
-                                    }`}>
+                                    <div className={`p-4 rounded-lg ${submitMessage.type === 'success'
+                                        ? 'bg-green-50 border border-green-200 text-green-900'
+                                        : 'bg-red-50 border border-red-200 text-red-900'
+                                        }`}>
                                         <p className="text-sm font-medium">{submitMessage.text}</p>
                                     </div>
                                 )}

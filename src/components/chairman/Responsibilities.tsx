@@ -27,7 +27,7 @@ export default function Responsibilities() {
                             key={idx}
                             className="bg-white sm:p-6 p-4 rounded-2xl border border-slate-200 shadow-sm flex gap-5 items-start"
                         >
-                            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mt-1">
+                            <div className="shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mt-1">
                                 <CheckCircle2 className="w-4 h-4 text-primary" />
                             </div>
 

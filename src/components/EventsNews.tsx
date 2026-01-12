@@ -63,8 +63,8 @@ export default function EventsNews() {
 
                             <div className="relative flex-1 overflow-hidden">
                                 {/* Gradient Fades */}
-                                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-secondary to-transparent z-10" />
-                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-secondary to-transparent z-10" />
+                                <div className="absolute inset-x-0 top-0 h-16 bg-linear-to-b from-secondary to-transparent z-10" />
+                                <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-secondary to-transparent z-10" />
 
                                 <div className="h-96 overflow-hidden relative">
                                     <div className="flex flex-col animate-scroll-vertical scroll-container">
