@@ -1,101 +1,41 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 /**
  * SpiritualFloatingButton Component
- * Premium Floating Action Button (FAB) with Custom Image Icon.
- * - Desktop: Expands on hover.
- * - Mobile: Expands on tap.
- * - Design: White background to contrast with the orange logo.
+ * Refined Vertical Sticky Tab on the right edge of the screen.
+ * Discrete and user-friendly size.
  */
 export default function SpiritualFloatingButton() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  const handleExpand = () => {
-    setIsExpanded(true);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setIsExpanded(false);
-    }, 5000);
-  };
-
-  const handleCollapse = () => {
-    setIsExpanded(false);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (!isExpanded) {
-      e.preventDefault();
-      handleExpand();
-    }
-  };
-
   return (
-    <div className="fixed bottom-4 right-4 z-20 flex items-center justify-end">
-      <motion.div
-        onMouseEnter={handleExpand}
-        onMouseLeave={handleCollapse}
-        onTouchStart={() => {
-          if (!isExpanded) handleExpand();
-        }}
-        layout
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-        }}
-        className="overflow-hidden bg-white border border-gray-100 rounded-full shadow-lg group active:scale-95 transition-transform"
+    <motion.div
+      initial={{ x: 100 }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-50 pointer-events-none"
+    >
+      <Link
+        href="https://www.swaminarayan.yoga/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block pointer-events-auto group"
       >
-        <a
-          href="https://www.swaminarayan.yoga/"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleClick}
-          className="flex items-center no-underline cursor-pointer"
-          aria-label="Connect with Us Spiritually"
-        >
-          {/* Icon Section (Custom Image) */}
-          <div className="flex items-center justify-center p-2 transition-transform duration-300 group-hover:scale-110">
-            <div className="relative size-8 sm:size-10">
-              <Image
-                src="/icon.png"
-                alt="Spiritual Icon"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* Text Section (Animated Expansion) */}
-          <AnimatePresence initial={false}>
-            {isExpanded && (
-              <motion.span
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: "auto", opacity: 1 }}
-                exit={{ width: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <span className="pr-5 sm:pr-6 font-bold text-[#4a3b33] text-[13px] sm:text-sm whitespace-nowrap tracking-tight">
-                  Connect with Us Spiritually
-                </span>
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </a>
-      </motion.div>
-    </div>
+        <div className="bg-primary text-white px-2 py-4 sm:px-2.5 sm:py-6 rounded-l-xl transition-all duration-300 transform flex items-center justify-center">
+          <span
+            className="font-bold text-xs sm:text-sm capitalize whitespace-nowrap"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "mixed",
+              transform: "rotate(0deg)",
+            }}
+          >
+            Connect with us spiritually
+          </span>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
