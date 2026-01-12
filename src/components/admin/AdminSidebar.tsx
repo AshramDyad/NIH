@@ -13,6 +13,7 @@ import {
   Image as ImageIcon,
   Video,
   Building2,
+  UserPlus,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -25,6 +26,11 @@ interface AdminSidebarProps {
 const menuItems = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/hero-banner", icon: ImageIcon, label: "Hero Banner" },
+  {
+    href: "/admin/ypm-applications",
+    icon: UserPlus,
+    label: "YPM Applications",
+  },
   {
     href: "/admin/video-testimonials",
     icon: Video,

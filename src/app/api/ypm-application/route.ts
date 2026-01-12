@@ -7,12 +7,14 @@ import {
 } from '@/lib/r2-client';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { ypmFormSchema } from '@/lib/validation/ypmFormSchema';
+import { createClient } from '@/lib/supabase/server';
 
 // Types for response
 interface YPMApplicationResponse {
     success: boolean;
     message: string;
     data?: {
+        applicationId: string;
         qualificationUrl: string;
         photoUrl: string;
     };
@@ -161,28 +163,46 @@ export async function POST(request: NextRequest) {
         const photoResult = await uploadToR2(photoFile, 'ypm-photos');
         console.log('Photo uploaded:', photoResult.url);
 
-        // Log submission data (prototype - database can be added later)
-        console.log('=== YPM Application Data ===');
-        console.log('Full Name:', validationResult.data.fullName);
-        console.log('Last Name:', validationResult.data.lastName);
-        console.log('Email:', validationResult.data.email);
-        console.log('Mobile:', validationResult.data.mobile);
-        console.log('Gender:', validationResult.data.gender);
-        console.log('Country:', validationResult.data.country);
-        console.log('State:', validationResult.data.state);
-        console.log('City:', validationResult.data.city);
-        console.log('Address:', validationResult.data.address);
-        console.log('Pincode:', validationResult.data.pincode);
-        console.log('Referred By:', validationResult.data.referredBy || 'N/A');
-        console.log('Qualification URL:', qualificationResult.url);
-        console.log('Photo URL:', photoResult.url);
-        console.log('=== End Application Data ===');
+        // Save to Supabase
+        const supabase = await createClient();
+        const { data: application, error: insertError } = await supabase
+            .from('ypm_applications')
+            .insert({
+                full_name: validationResult.data.fullName,
+                last_name: validationResult.data.lastName,
+                email: validationResult.data.email,
+                mobile: validationResult.data.mobile,
+                gender: validationResult.data.gender,
+                country: validationResult.data.country,
+                state: validationResult.data.state,
+                city: validationResult.data.city,
+                address: validationResult.data.address,
+                pincode: validationResult.data.pincode,
+                qualification_url: qualificationResult.url,
+                photo_url: photoResult.url,
+                referred_by: validationResult.data.referredBy || null,
+                status: 'pending',
+            })
+            .select('id')
+            .single();
+
+        if (insertError) {
+            console.error('Error inserting application:', insertError);
+            return NextResponse.json<YPMApplicationResponse>(
+                { success: false, message: 'Failed to save application', error: insertError.message },
+                { status: 500 }
+            );
+        }
+
+        console.log('=== YPM Application Saved ===');
+        console.log('Application ID:', application.id);
 
         return NextResponse.json<YPMApplicationResponse>(
             {
                 success: true,
-                message: 'Application submitted successfully!',
+                message: 'Application submitted successfully! We will review your application and contact you soon.',
                 data: {
+                    applicationId: application.id,
                     qualificationUrl: qualificationResult.url,
                     photoUrl: photoResult.url,
                 },
@@ -198,3 +218,4 @@ export async function POST(request: NextRequest) {
         );
     }
 }
+
