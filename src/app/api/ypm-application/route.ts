@@ -7,7 +7,7 @@ import {
 } from '@/lib/r2-client';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { ypmFormSchema } from '@/lib/validation/ypmFormSchema';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/server';
 
 // Types for response
 interface YPMApplicationResponse {
@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
         console.log('Photo uploaded:', photoResult.url);
 
         // Save to Supabase
-        const supabase = await createClient();
+        const supabase = createAdminClient();
         const { data: application, error: insertError } = await supabase
             .from('ypm_applications')
             .insert({
