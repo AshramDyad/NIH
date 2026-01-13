@@ -5,7 +5,6 @@ import {
   Image as ImageIcon,
   Trash2,
   Plus,
-  Loader2,
   AlertCircle,
 } from "lucide-react";
 import { FileUpload } from "@/components/shared/FileUpload";

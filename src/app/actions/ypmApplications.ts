@@ -39,6 +39,24 @@ type ActionResult = {
 };
 
 /**
+ * Type for updating YPM application
+ */
+export type UpdateYPMData = {
+    fullName: string;
+    lastName: string;
+    email: string;
+    mobile: string;
+    gender: string;
+    country: string;
+    state: string;
+    city: string;
+    address: string;
+    pincode: string;
+    referredBy?: string | null;
+    memberId?: string | null;
+};
+
+/**
  * Get all YPM applications
  * Optionally filter by status
  */
@@ -232,7 +250,7 @@ async function deleteFromR2(fileUrl: string): Promise<boolean> {
  */
 export async function updateYPMApplication(
     id: string,
-    data: any, // Using any here temporarily because defining the full partial type is complex, but will ensure type safety inside
+    data: UpdateYPMData,
     originalMemberId: string | null
 ): Promise<ActionResult> {
     const supabase = await createClient();

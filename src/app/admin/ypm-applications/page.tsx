@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useTransition } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
     Loader2,
@@ -20,6 +20,7 @@ import {
     deleteYPMApplication,
     updateYPMApplication,
     type YPMApplication,
+    type UpdateYPMData,
 } from '@/app/actions/ypmApplications';
 
 type StatusFilter = 'pending' | 'approved' | 'rejected' | 'all';
@@ -28,7 +29,6 @@ export default function AdminYPMApplicationsPage() {
     const [applications, setApplications] = useState<YPMApplication[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [, startTransition] = useTransition();
 
     // Filter state
     const [statusFilter, setStatusFilter] = useState<StatusFilter>('pending');
@@ -41,18 +41,13 @@ export default function AdminYPMApplicationsPage() {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
     // Form state for Edit
-    const [editForm, setEditForm] = useState<any>(null);
+    const [editForm, setEditForm] = useState<UpdateYPMData | null>(null);
 
     const [memberId, setMemberId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [actionMessage, setActionMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-    // Fetch applications on mount and filter change
-    useEffect(() => {
-        fetchApplications();
-    }, [statusFilter]);
-
-    const fetchApplications = async () => {
+    const fetchApplications = React.useCallback(async () => {
         setIsLoading(true);
         setError(null);
 
@@ -65,7 +60,12 @@ export default function AdminYPMApplicationsPage() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [statusFilter]);
+
+    // Fetch applications on mount and filter change
+    useEffect(() => {
+        fetchApplications();
+    }, [fetchApplications]);
 
     const handleApprove = async () => {
         if (!selectedApplication || !memberId.trim()) return;
@@ -615,10 +615,10 @@ export default function AdminYPMApplicationsPage() {
                                 {/* Status Specific */}
                                 {selectedApplication.status === 'approved' && (
                                     <div className="md:col-span-2">
-                                        <label className="block text-sm font-medium text-gray-700 mb-1 text-green-700">Member ID (Approved Only)</label>
+                                        <label className="block text-sm font-medium text-green-700 mb-1">Member ID (Approved Only)</label>
                                         <input
                                             type="text"
-                                            value={editForm.memberId}
+                                            value={editForm.memberId || ''}
                                             onChange={(e) => setEditForm({ ...editForm, memberId: e.target.value })}
                                             className="w-full px-4 py-2 border border-green-300 bg-green-50 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
                                             required
