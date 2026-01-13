@@ -3,7 +3,6 @@
 import { logout } from "@/app/actions/auth";
 import { Dropdown } from "@/components/ui/Dropdown";
 import { LogOut, User, Menu } from "lucide-react";
-import { usePathname } from "next/navigation";
 
 interface AdminHeaderProps {
   user: {
@@ -12,19 +11,9 @@ interface AdminHeaderProps {
   onMenuToggle?: () => void;
 }
 
-const pageTitles: Record<string, string> = {
-  "/admin": "Dashboard",
-  "/admin/hero-banner": "Hero Banner",
-  "/admin/video-testimonials": "Video Testimonials",
-  "/admin/lifetime-members": "Lifetime Members",
-  "/admin/events": "Events",
-  "/admin/analytics": "Analytics",
-  "/admin/settings": "Settings",
-};
+
 
 export default function AdminHeader({ user, onMenuToggle }: AdminHeaderProps) {
-  const pathname = usePathname();
-  const pageTitle = pageTitles[pathname] || "Dashboard";
 
   return (
     <header className="sticky top-0 z-30 flex h-20 justify-end items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
