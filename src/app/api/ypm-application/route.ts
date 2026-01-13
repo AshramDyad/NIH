@@ -80,7 +80,6 @@ export async function POST(request: NextRequest) {
             city: formData.get('city') as string,
             address: formData.get('address') as string,
             pincode: formData.get('pincode') as string,
-            membershipType: formData.get('membershipType') === 'true',
             referredBy: (formData.get('referredBy') as string) || '',
             confirmationChecked: formData.get('confirmationChecked') === 'true',
         };
@@ -101,35 +100,30 @@ export async function POST(request: NextRequest) {
         const qualificationFile = formData.get('qualificationFile') as File | null;
         const photoFile = formData.get('photoFile') as File | null;
 
-        // Validate qualification file
-        if (!qualificationFile) {
-            return NextResponse.json<YPMApplicationResponse>(
-                { success: false, message: 'Qualification file is required' },
-                { status: 400 }
-            );
+        // Validate qualification file only if provided
+        if (qualificationFile && qualificationFile.size > 0) {
+            if (qualificationFile.size > MAX_QUALIFICATION_SIZE) {
+                return NextResponse.json<YPMApplicationResponse>(
+                    {
+                        success: false,
+                        message: 'Qualification file must be less than 200KB',
+                    },
+                    { status: 400 }
+                );
+            }
+
+            if (!ALLOWED_QUALIFICATION_TYPES.includes(qualificationFile.type)) {
+                return NextResponse.json<YPMApplicationResponse>(
+                    {
+                        success: false,
+                        message: 'Qualification file must be an image or PDF',
+                    },
+                    { status: 400 }
+                );
+            }
         }
 
-        if (qualificationFile.size > MAX_QUALIFICATION_SIZE) {
-            return NextResponse.json<YPMApplicationResponse>(
-                {
-                    success: false,
-                    message: 'Qualification file must be less than 200KB',
-                },
-                { status: 400 }
-            );
-        }
-
-        if (!ALLOWED_QUALIFICATION_TYPES.includes(qualificationFile.type)) {
-            return NextResponse.json<YPMApplicationResponse>(
-                {
-                    success: false,
-                    message: 'Qualification file must be an image or PDF',
-                },
-                { status: 400 }
-            );
-        }
-
-        // Validate photo file
+        // Validate photo file (required)
         if (!photoFile) {
             return NextResponse.json<YPMApplicationResponse>(
                 { success: false, message: 'Profile photo is required' },
@@ -151,14 +145,19 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Upload files to R2
-        console.log('Uploading qualification file...');
-        const qualificationResult = await uploadToR2(
-            qualificationFile,
-            'ypm-qualifications'
-        );
-        console.log('Qualification uploaded:', qualificationResult.url);
+        // Upload qualification file to R2 (optional)
+        let qualificationUrl: string | null = null;
+        if (qualificationFile && qualificationFile.size > 0) {
+            console.log('Uploading qualification file...');
+            const qualificationResult = await uploadToR2(
+                qualificationFile,
+                'ypm-qualifications'
+            );
+            qualificationUrl = qualificationResult.url;
+            console.log('Qualification uploaded:', qualificationUrl);
+        }
 
+        // Upload photo file to R2 (required)
         console.log('Uploading photo file...');
         const photoResult = await uploadToR2(photoFile, 'ypm-photos');
         console.log('Photo uploaded:', photoResult.url);
@@ -178,7 +177,7 @@ export async function POST(request: NextRequest) {
                 city: validationResult.data.city,
                 address: validationResult.data.address,
                 pincode: validationResult.data.pincode,
-                qualification_url: qualificationResult.url,
+                qualification_url: qualificationUrl,
                 photo_url: photoResult.url,
                 referred_by: validationResult.data.referredBy || null,
                 status: 'pending',
@@ -203,7 +202,7 @@ export async function POST(request: NextRequest) {
                 message: 'Application submitted successfully! We will review your application and contact you soon.',
                 data: {
                     applicationId: application.id,
-                    qualificationUrl: qualificationResult.url,
+                    qualificationUrl: qualificationUrl || '',
                     photoUrl: photoResult.url,
                 },
             },

@@ -67,8 +67,6 @@ export const ypmFormSchema = z.object({
         .regex(/^[0-9]+$/, 'Please enter a valid pincode')
         .trim(),
 
-    membershipType: z.literal(true, 'Please confirm membership type'),
-
     referredBy: z
         .string()
         .max(100, 'Referral name must not exceed 100 characters')

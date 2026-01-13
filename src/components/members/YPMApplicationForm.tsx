@@ -38,9 +38,6 @@ export default function YPMApplicationForm() {
     } = useForm<YPMFormData>({
         resolver: zodResolver(ypmFormSchema),
         mode: 'onSubmit',
-        defaultValues: {
-            membershipType: true,
-        },
     });
 
     // Handle qualification file selection
@@ -97,12 +94,7 @@ export default function YPMApplicationForm() {
     };
 
     const onSubmit = async (data: YPMFormData) => {
-        // Validate files before submission
-        if (!qualificationFile) {
-            setQualificationError('Qualification certificate is required');
-            return;
-        }
-
+        // Validate photo file (required)
         if (!photoFile) {
             setPhotoError('Profile photo is required');
             return;
@@ -126,12 +118,13 @@ export default function YPMApplicationForm() {
             formData.append('city', data.city);
             formData.append('address', data.address);
             formData.append('pincode', data.pincode);
-            formData.append('membershipType', String(data.membershipType));
             formData.append('referredBy', data.referredBy || '');
             formData.append('confirmationChecked', String(data.confirmationChecked));
 
             // Add files
-            formData.append('qualificationFile', qualificationFile);
+            if (qualificationFile) {
+                formData.append('qualificationFile', qualificationFile);
+            }
             formData.append('photoFile', photoFile);
 
             // Submit to API
@@ -417,39 +410,19 @@ export default function YPMApplicationForm() {
                     )}
                 </div>
 
-                {/* Type of Membership Checkbox */}
-                <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            {...register('membershipType')}
-                            className="mt-1 w-5 h-5 rounded border-zinc-300 text-primary focus:ring-primary"
-                            defaultChecked
-                        />
-                        <div>
-                            <span className="font-semibold text-zinc-900">Type of Membership</span>
-                            <p className="text-zinc-600 text-sm">Yoga Professional Member</p>
-                        </div>
-                    </label>
-                    {errors.membershipType && (
-                        <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-                            <AlertCircle size={14} />
-                            {errors.membershipType.message}
-                        </p>
-                    )}
-                </div>
 
-                {/* Qualification File Upload */}
+
+                {/* Qualification File Upload (Optional) */}
                 <div>
                     <label className="block text-sm font-semibold text-zinc-700 mb-2">
-                        Attach Completed Professional Qualification <span className="text-red-500">*</span>
+                        Attach Completed Professional Qualification <span className="text-zinc-400 font-normal">(Optional)</span>
                     </label>
                     <div
                         className={`border-2 border-dashed rounded-lg p-4 transition-colors ${qualificationError
-                                ? 'border-red-300 bg-red-50'
-                                : qualificationFile
-                                    ? 'border-green-300 bg-green-50'
-                                    : 'border-zinc-200 hover:border-primary/50'
+                            ? 'border-red-300 bg-red-50'
+                            : qualificationFile
+                                ? 'border-green-300 bg-green-50'
+                                : 'border-zinc-200 hover:border-primary/50'
                             }`}
                     >
                         {qualificationFile ? (
@@ -507,10 +480,10 @@ export default function YPMApplicationForm() {
                     </label>
                     <div
                         className={`border-2 border-dashed rounded-lg p-4 transition-colors ${photoError
-                                ? 'border-red-300 bg-red-50'
-                                : photoFile
-                                    ? 'border-green-300 bg-green-50'
-                                    : 'border-zinc-200 hover:border-primary/50'
+                            ? 'border-red-300 bg-red-50'
+                            : photoFile
+                                ? 'border-green-300 bg-green-50'
+                                : 'border-zinc-200 hover:border-primary/50'
                             }`}
                     >
                         {photoFile ? (
