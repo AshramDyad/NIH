@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { lifetimeMemberSchema } from "@/lib/validation/lifetimeMemberSchema";
+import { deleteFromR2 } from "@/lib/r2-client";
 
 /**
  * Lifetime Member Type Definition
@@ -112,9 +113,8 @@ export async function addLifetimeMember(formData: FormData): Promise<{
 
       return {
         success: false,
-        message: `Database error: ${
-          insertError.message || "Failed to add member. Please try again."
-        }`,
+        message: `Database error: ${insertError.message || "Failed to add member. Please try again."
+          }`,
       };
     }
 
@@ -240,14 +240,31 @@ export async function deleteLifetimeMember(id: string): Promise<{
   const supabase = await createClient();
 
   try {
-    // Delete from database
+    // 1. Get the member record first to get the image URL
+    const { data: member, error: fetchError } = await supabase
+      .from("lifetime_members")
+      .select("image_url")
+      .eq("id", id)
+      .single();
+
+    if (fetchError || !member) {
+      console.error("Error fetching lifetime member for deletion:", fetchError);
+      return { success: false, message: "Member not found." };
+    }
+
+    // 2. Delete the image from R2
+    if (member.image_url) {
+      await deleteFromR2(member.image_url);
+    }
+
+    // 3. Delete from database
     const { error: deleteError } = await supabase
       .from("lifetime_members")
       .delete()
       .eq("id", id);
 
     if (deleteError) {
-      console.error("Error deleting lifetime member:", deleteError);
+      console.error("Error deleting lifetime member record:", deleteError);
       return {
         success: false,
         message: "Failed to delete member. Please try again.",
@@ -260,7 +277,7 @@ export async function deleteLifetimeMember(id: string): Promise<{
 
     return {
       success: true,
-      message: "Lifetime member deleted successfully!",
+      message: "Lifetime member and associated image deleted successfully!",
     };
   } catch (error) {
     console.error("Unexpected error deleting lifetime member:", error);

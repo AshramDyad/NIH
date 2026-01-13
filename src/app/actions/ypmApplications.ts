@@ -2,8 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
-import { r2Client, R2_CONFIG } from '@/lib/r2-client';
-import { DeleteObjectCommand } from '@aws-sdk/client-s3';
+import { deleteFromR2 } from '@/lib/r2-client';
 
 /**
  * YPM Application Type Definition
@@ -208,41 +207,6 @@ export async function approveYPMApplication(
     }
 }
 
-/**
- * Helper to extract R2 file key from URL
- */
-function extractR2KeyFromUrl(url: string): string | null {
-    try {
-        // URL format: https://pub-xxx.r2.dev/folder/filename.ext
-        const urlObj = new URL(url);
-        // Remove leading slash
-        return urlObj.pathname.slice(1);
-    } catch {
-        console.error('Invalid URL:', url);
-        return null;
-    }
-}
-
-/**
- * Delete a file from R2 storage
- */
-async function deleteFromR2(fileUrl: string): Promise<boolean> {
-    const fileKey = extractR2KeyFromUrl(fileUrl);
-    if (!fileKey) return false;
-
-    try {
-        const command = new DeleteObjectCommand({
-            Bucket: R2_CONFIG.bucketName,
-            Key: fileKey,
-        });
-        await r2Client.send(command);
-        console.log('Deleted R2 file:', fileKey);
-        return true;
-    } catch (error) {
-        console.error('Error deleting R2 file:', error);
-        return false;
-    }
-}
 
 /**
  * Update a YPM application

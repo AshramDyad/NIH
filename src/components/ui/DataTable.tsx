@@ -99,9 +99,8 @@ function SortableRow<T>({
     <tr
       ref={setNodeRef}
       style={style}
-      className={`hover:bg-gray-50 transition-colors ${
-        isDragging ? "bg-gray-100" : ""
-      }`}
+      className={`hover:bg-gray-50 transition-colors ${isDragging ? "bg-gray-100" : ""
+        }`}
     >
       {/* Drag Handle - First column */}
       <td className="px-4 py-4 sticky left-0 bg-white z-10">
@@ -124,8 +123,8 @@ function SortableRow<T>({
           {column.cell
             ? column.cell(row, index)
             : column.accessorKey
-            ? String(row[column.accessorKey] ?? "")
-            : null}
+              ? String(row[column.accessorKey] ?? "")
+              : null}
         </td>
       ))}
     </tr>
@@ -192,7 +191,7 @@ export function DataTable<T>({
   if (data.length === 0) {
     return (
       <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-        {emptyIcon && <div className="mx-auto mb-4">{emptyIcon}</div>}
+        {emptyIcon && <div className="flex justify-center mb-4">{emptyIcon}</div>}
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           {emptyTitle}
         </h3>
@@ -215,9 +214,8 @@ export function DataTable<T>({
               {columns.map((column) => (
                 <th
                   key={column.id}
-                  className={`text-left px-6 py-4 text-sm font-semibold text-gray-900 ${
-                    column.headerClassName || ""
-                  }`}
+                  className={`text-left px-6 py-4 text-sm font-semibold text-gray-900 ${column.headerClassName || ""
+                    }`}
                 >
                   {column.header}
                 </th>
@@ -254,8 +252,8 @@ export function DataTable<T>({
                       {column.cell
                         ? column.cell(row, index)
                         : column.accessorKey
-                        ? String(row[column.accessorKey] ?? "")
-                        : null}
+                          ? String(row[column.accessorKey] ?? "")
+                          : null}
                     </td>
                   ))}
                 </tr>

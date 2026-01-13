@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { deleteFromR2 } from "@/lib/r2-client";
 
 export interface HeroBanner {
   id: string;
@@ -60,6 +61,24 @@ export async function createHeroBanner(
 export async function deleteHeroBanner(id: string) {
   const supabase = await createClient();
 
+  // 1. Get the banner record first to get the image URL
+  const { data: banner, error: fetchError } = await supabase
+    .from("hero_banners")
+    .select("image_url")
+    .eq("id", id)
+    .single();
+
+  if (fetchError || !banner) {
+    console.error("Error fetching hero banner for deletion:", fetchError);
+    throw new Error("Hero banner not found.");
+  }
+
+  // 2. Delete the image from R2
+  if (banner.image_url) {
+    await deleteFromR2(banner.image_url);
+  }
+
+  // 3. Delete from database
   const { error } = await supabase.from("hero_banners").delete().eq("id", id);
 
   if (error) {

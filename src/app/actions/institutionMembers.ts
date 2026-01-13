@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { institutionMemberSchema } from '@/lib/validation/institutionMemberSchema';
+import { deleteFromR2 } from '@/lib/r2-client';
 
 /**
  * Institution Member Type Definition
@@ -170,6 +171,24 @@ export async function deleteInstitutionMember(id: string): Promise<{
     const supabase = await createClient();
 
     try {
+        // 1. Get the institution record first to get the image URL
+        const { data: member, error: fetchError } = await supabase
+            .from('institution_members')
+            .select('image_url')
+            .eq('id', id)
+            .single();
+
+        if (fetchError || !member) {
+            console.error('Error fetching institution member for deletion:', fetchError);
+            return { success: false, message: 'Institution member not found.' };
+        }
+
+        // 2. Delete the image from R2
+        if (member.image_url) {
+            await deleteFromR2(member.image_url);
+        }
+
+        // 3. Delete from database
         const { error: deleteError } = await supabase
             .from('institution_members')
             .delete()
@@ -183,7 +202,7 @@ export async function deleteInstitutionMember(id: string): Promise<{
         revalidatePath('/members/institutions');
         revalidatePath('/admin/members-institutions');
 
-        return { success: true, message: 'Institution deleted successfully!' };
+        return { success: true, message: 'Institution and associated image deleted successfully!' };
     } catch (error) {
         console.error('Unexpected error deleting institution member:', error);
         return { success: false, message: 'An unexpected error occurred.' };
