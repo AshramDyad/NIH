@@ -14,7 +14,7 @@ import { Send, CheckCircle, AlertCircle, Upload, X } from 'lucide-react';
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
 // Max file sizes in bytes
-const MAX_QUALIFICATION_SIZE = 200 * 1024; // 200KB
+const MAX_QUALIFICATION_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_PHOTO_SIZE = 10 * 1024 * 1024; // 10MB
 
 export default function YPMApplicationForm() {
@@ -51,7 +51,7 @@ export default function YPMApplicationForm() {
         }
 
         if (file.size > MAX_QUALIFICATION_SIZE) {
-            setQualificationError('File must be less than 200KB');
+            setQualificationError('File must be less than 5MB');
             setQualificationFile(null);
             if (qualificationInputRef.current) qualificationInputRef.current.value = '';
             return;
@@ -463,7 +463,7 @@ export default function YPMApplicationForm() {
                         )}
                     </div>
                     <p className="mt-2 text-xs text-zinc-500 italic">
-                        Certificate / Diploma / Degree / Master Degree / PhD in Yoga, Max-200KB
+                        Certificate / Diploma / Degree / Master Degree / PhD in Yoga, Max-5MB
                     </p>
                     {qualificationError && (
                         <p className="mt-1 text-sm text-red-600 flex items-center gap-1">

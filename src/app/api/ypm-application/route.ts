@@ -22,7 +22,7 @@ interface YPMApplicationResponse {
 }
 
 // Max file sizes
-const MAX_QUALIFICATION_SIZE = 200 * 1024; // 200KB
+const MAX_QUALIFICATION_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_PHOTO_SIZE = 10 * 1024 * 1024; // 10MB
 
 // Allowed file types
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
                 return NextResponse.json<YPMApplicationResponse>(
                     {
                         success: false,
-                        message: 'Qualification file must be less than 200KB',
+                        message: 'Qualification file must be less than 5MB',
                     },
                     { status: 400 }
                 );

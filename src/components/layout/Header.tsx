@@ -104,10 +104,10 @@ const Header = () => {
       dropdownItems: [
         { name: "Membership form", href: "https://forms.gle/gyXBhDGFnFX9vkmS7", isExternal: true },
         { name: "Active Members", href: "/members/active" },
-        { name: "Member's Institutions", href: "/members/institutions" },
+        { name: "Associate Centre of Members", href: "/members/institutions" },
         { name: "Lifetime Members", href: "/members/lifetime" },
+        { name: "Registered Yoga/Naturopathy Professional Members", href: "/members/registered-yoga-naturopathy-professional" },
         { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" },
-        { name: "Associate Centres", href: "/members/associate" },
       ]
     },
     {
@@ -153,9 +153,9 @@ const Header = () => {
       children: [
         { name: "NIH Active Members", href: "/members/active" },
         { name: "Lifetime Members", href: "/members/lifetime" },
-        { name: "Members Institutions", href: "/members/institutions" },
-        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" },
-        { name: "Associate Centres", href: "/members/associate" }
+        { name: "Associate Centre of Members", href: "/members/institutions" },
+        { name: "Registered Yoga/Naturopathy Professional Members", href: "/members/registered-yoga-naturopathy-professional" },
+        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" }
       ]
     },
     {

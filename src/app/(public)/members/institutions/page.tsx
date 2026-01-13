@@ -86,10 +86,10 @@ export default async function InstitutionsPage() {
             <div className="container mx-auto px-4">
                 {/* Header Section */}
                 <div className="text-center space-y-4 mb-8">
-                    <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
-                        <span className="text-secondary italic">Institution</span> Members
+                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
+                        <span className="text-secondary italic">Associate Centre</span> of Members
                     </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                    <p className="text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto">
                         We take pride in our network of affiliated institutions and centers dedicated to
                         promoting holistic health and education across the nation.
                     </p>

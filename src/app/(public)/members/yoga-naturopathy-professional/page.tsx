@@ -1,12 +1,27 @@
 import { Metadata } from "next";
-import YPMApplicationForm from "@/components/members/YPMApplicationForm";
+import { createClient } from "@/lib/supabase/server";
+import MemberCard, { DatabaseMember } from "@/components/members/MemberCard";
+import { Users } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Yoga & Naturopathy Professional Members | NIH Health",
     description: "Our distinguished Yoga and Naturopathy professionals dedicated to holistic health.",
 };
 
-export default function YogaNaturopathyProfessionalMembersPage() {
+export default async function YogaNaturopathyProfessionalMembersPage() {
+    const supabase = await createClient();
+
+    const { data: members, error } = await supabase
+        .from('yoga_naturopathy_members')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.warn('Error fetching professional members:', error.message);
+    }
+
+    const professionalMembers = (members as DatabaseMember[]) || [];
+
     return (
         <>
             {/* Hero Section */}
@@ -19,68 +34,31 @@ export default function YogaNaturopathyProfessionalMembersPage() {
                             <span className="text-secondary">Professional</span> Members
                         </h2>
                         <p className="text-lg text-zinc-600 leading-relaxed max-w-4xl mx-auto">
-                            Meeting our certified professionals who are advancing the science and practice
+                            Meet our certified professionals who are advancing the science and practice
                             of Yoga and Naturopathy for a healthier society.
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* YPM Membership Info Section */}
-            <section className="bg-slate-50 py-12 sm:py-16">
+            {/* Members Grid Section */}
+            <section className="bg-slate-50 py-12 sm:py-16 min-h-[50vh]">
                 <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {/* Membership Info */}
-                            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-zinc-100">
-                                <h3 className="text-2xl font-black text-secondary mb-4">
-                                    MEMBERSHIP
-                                </h3>
-                                <p className="text-zinc-700 leading-relaxed">
-                                    A Yoga Volunteer Member is any person who wishes to contribute to the
-                                    overall development of Yoga and National Institute of Holistic Health (NIH).
-                                    A Yoga Volunteer member need not have any prequalification in yoga.
-                                    The Yoga Volunteer Membership is free for 1 year.
-                                </p>
+                    {professionalMembers.length === 0 ? (
+                        <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200 max-w-2xl mx-auto">
+                            <div className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
+                                <Users className="w-8 h-8" />
                             </div>
-
-                            {/* Benefits */}
-                            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-zinc-100">
-                                <h3 className="text-2xl font-black text-secondary mb-4">
-                                    BENEFITS
-                                </h3>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3">
-                                        <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                        <span className="text-zinc-700">
-                                            A NIH Yoga Professional member would be provided a Unique ID and an ID Card.
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                        <span className="text-zinc-700">
-                                            A NIH member is entitled to a free copy of quarterly e-magazine.
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                        <span className="text-zinc-700">
-                                            A YPM will be eligible for discounts on Events/Conferences/Seminars.
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <p className="text-gray-600 font-medium text-lg">Members list will be updated soon.</p>
+                            <p className="text-gray-400 text-sm mt-2">Our technical team is currently updating the directory.</p>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Application Form Section */}
-            <section className="bg-white py-12 sm:py-16">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-3xl mx-auto">
-                        <YPMApplicationForm />
-                    </div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            {professionalMembers.map((member) => (
+                                <MemberCard key={member.id} member={member} />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
         </>
