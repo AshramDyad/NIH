@@ -11,11 +11,14 @@ import {
     Eye,
     FileText,
     ExternalLink,
+    Pencil,
+    Trash2,
 } from 'lucide-react';
 import {
     getYPMApplications,
     approveYPMApplication,
-    rejectYPMApplication,
+    deleteYPMApplication,
+    updateYPMApplication,
     type YPMApplication,
 } from '@/app/actions/ypmApplications';
 
@@ -33,8 +36,13 @@ export default function AdminYPMApplicationsPage() {
     // Modal states
     const [selectedApplication, setSelectedApplication] = useState<YPMApplication | null>(null);
     const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
-    const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+    // Form state for Edit
+    const [editForm, setEditForm] = useState<any>(null);
+
     const [memberId, setMemberId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [actionMessage, setActionMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -73,10 +81,7 @@ export default function AdminYPMApplicationsPage() {
                 setIsApproveModalOpen(false);
                 setMemberId('');
                 setSelectedApplication(null);
-                // Refresh list
-                startTransition(() => {
-                    fetchApplications();
-                });
+                fetchApplications();
             } else {
                 setActionMessage({ type: 'error', text: result.message });
             }
@@ -88,29 +93,56 @@ export default function AdminYPMApplicationsPage() {
         }
     };
 
-    const handleReject = async () => {
+    const handleDelete = async () => {
         if (!selectedApplication) return;
 
         setIsSubmitting(true);
         setActionMessage(null);
 
         try {
-            const result = await rejectYPMApplication(selectedApplication.id);
+            const result = await deleteYPMApplication(selectedApplication.id);
 
             if (result.success) {
                 setActionMessage({ type: 'success', text: result.message });
-                setIsRejectModalOpen(false);
+                setIsDeleteModalOpen(false);
                 setSelectedApplication(null);
-                // Refresh list
-                startTransition(() => {
-                    fetchApplications();
-                });
+                fetchApplications();
             } else {
                 setActionMessage({ type: 'error', text: result.message });
             }
         } catch (err) {
-            console.error('Error rejecting application:', err);
-            setActionMessage({ type: 'error', text: 'Failed to reject application' });
+            console.error('Error deleting application:', err);
+            setActionMessage({ type: 'error', text: 'Failed to delete application' });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleUpdate = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!selectedApplication || !editForm) return;
+
+        setIsSubmitting(true);
+        setActionMessage(null);
+
+        try {
+            const result = await updateYPMApplication(
+                selectedApplication.id,
+                editForm,
+                selectedApplication.status === 'approved' ? selectedApplication.member_id : null
+            );
+
+            if (result.success) {
+                setActionMessage({ type: 'success', text: result.message });
+                setIsEditModalOpen(false);
+                setSelectedApplication(null);
+                fetchApplications();
+            } else {
+                setActionMessage({ type: 'error', text: result.message });
+            }
+        } catch (err) {
+            console.error('Error updating application:', err);
+            setActionMessage({ type: 'error', text: 'Failed to update application' });
         } finally {
             setIsSubmitting(false);
         }
@@ -123,10 +155,30 @@ export default function AdminYPMApplicationsPage() {
         setIsApproveModalOpen(true);
     };
 
-    const openRejectModal = (app: YPMApplication) => {
+    const openDeleteModal = (app: YPMApplication) => {
         setSelectedApplication(app);
         setActionMessage(null);
-        setIsRejectModalOpen(true);
+        setIsDeleteModalOpen(true);
+    };
+
+    const openEditModal = (app: YPMApplication) => {
+        setSelectedApplication(app);
+        setEditForm({
+            fullName: app.full_name,
+            lastName: app.last_name,
+            email: app.email,
+            mobile: app.mobile,
+            gender: app.gender,
+            country: app.country,
+            state: app.state,
+            city: app.city,
+            address: app.address,
+            pincode: app.pincode,
+            referredBy: app.referred_by || '',
+            memberId: app.member_id || '',
+        });
+        setActionMessage(null);
+        setIsEditModalOpen(true);
     };
 
     const openDetailModal = (app: YPMApplication) => {
@@ -136,11 +188,13 @@ export default function AdminYPMApplicationsPage() {
 
     const closeAllModals = () => {
         setIsApproveModalOpen(false);
-        setIsRejectModalOpen(false);
+        setIsDeleteModalOpen(false);
         setIsDetailModalOpen(false);
+        setIsEditModalOpen(false);
         setSelectedApplication(null);
         setMemberId('');
         setActionMessage(null);
+        setEditForm(null);
     };
 
     const getStatusBadge = (status: string) => {
@@ -172,8 +226,8 @@ export default function AdminYPMApplicationsPage() {
                             key={status}
                             onClick={() => setStatusFilter(status)}
                             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors capitalize ${statusFilter === status
-                                    ? 'bg-white text-gray-900 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
+                                ? 'bg-white text-gray-900 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900'
                                 }`}
                         >
                             {status}
@@ -185,8 +239,8 @@ export default function AdminYPMApplicationsPage() {
             {/* Action Message */}
             {actionMessage && (
                 <div className={`p-4 rounded-lg ${actionMessage.type === 'success'
-                        ? 'bg-green-50 border border-green-200 text-green-900'
-                        : 'bg-red-50 border border-red-200 text-red-900'
+                    ? 'bg-green-50 border border-green-200 text-green-900'
+                    : 'bg-red-50 border border-red-200 text-red-900'
                     }`}>
                     <p className="text-sm font-medium">{actionMessage.text}</p>
                 </div>
@@ -311,36 +365,45 @@ export default function AdminYPMApplicationsPage() {
                                                         <Eye className="w-4 h-4" />
                                                     </button>
 
+                                                    {/* Edit */}
+                                                    <button
+                                                        onClick={() => openEditModal(app)}
+                                                        className="p-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                                                        title="Edit"
+                                                    >
+                                                        <Pencil className="w-4 h-4" />
+                                                    </button>
+
                                                     {/* Qualification Link */}
                                                     <a
                                                         href={app.qualification_url}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="p-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                                                        className="p-2 text-zinc-600 hover:text-zinc-700 hover:bg-zinc-100 rounded-lg transition-colors"
                                                         title="View Qualification"
                                                     >
                                                         <FileText className="w-4 h-4" />
                                                     </a>
 
-                                                    {/* Approve/Reject only for pending */}
+                                                    {/* Approve (only for pending) */}
                                                     {app.status === 'pending' && (
-                                                        <>
-                                                            <button
-                                                                onClick={() => openApproveModal(app)}
-                                                                className="p-2 text-green-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors"
-                                                                title="Approve"
-                                                            >
-                                                                <Check className="w-4 h-4" />
-                                                            </button>
-                                                            <button
-                                                                onClick={() => openRejectModal(app)}
-                                                                className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
-                                                                title="Reject"
-                                                            >
-                                                                <X className="w-4 h-4" />
-                                                            </button>
-                                                        </>
+                                                        <button
+                                                            onClick={() => openApproveModal(app)}
+                                                            className="p-2 text-green-600 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors"
+                                                            title="Approve"
+                                                        >
+                                                            <Check className="w-4 h-4" />
+                                                        </button>
                                                     )}
+
+                                                    {/* Delete/Reject */}
+                                                    <button
+                                                        onClick={() => openDeleteModal(app)}
+                                                        className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+                                                        title={app.status === 'pending' ? "Reject" : "Delete"}
+                                                    >
+                                                        <Trash2 className="w-4 h-4" />
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -377,14 +440,6 @@ export default function AdminYPMApplicationsPage() {
                                 />
                                 <p className="text-xs text-gray-500 mt-1">Enter unique member ID to approve</p>
                             </div>
-                            {actionMessage && (
-                                <div className={`p-3 rounded-lg text-sm ${actionMessage.type === 'success'
-                                        ? 'bg-green-50 text-green-900'
-                                        : 'bg-red-50 text-red-900'
-                                    }`}>
-                                    {actionMessage.text}
-                                </div>
-                            )}
                             <div className="flex gap-3 pt-4">
                                 <button
                                     onClick={closeAllModals}
@@ -415,28 +470,22 @@ export default function AdminYPMApplicationsPage() {
                 </div>
             )}
 
-            {/* Reject Modal */}
-            {isRejectModalOpen && selectedApplication && (
+            {/* Delete/Reject Modal */}
+            {isDeleteModalOpen && selectedApplication && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
                     <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
                         <div className="px-6 py-4 border-b border-gray-200">
-                            <h2 className="text-xl font-semibold text-gray-900">Reject Application</h2>
+                            <h2 className="text-xl font-semibold text-gray-900">
+                                {selectedApplication.status === 'pending' ? "Reject Application" : "Delete Application"}
+                            </h2>
                         </div>
                         <div className="px-6 py-6 space-y-4">
                             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                                <p className="text-sm text-red-900">
-                                    <strong>Warning:</strong> This will permanently delete the application and all associated files for{' '}
+                                <p className="text-sm text-red-900 leading-relaxed">
+                                    <strong>Warning:</strong> This will permanently delete the application and all associated records/files for{' '}
                                     <strong>{selectedApplication.full_name} {selectedApplication.last_name}</strong>.
                                 </p>
                             </div>
-                            {actionMessage && (
-                                <div className={`p-3 rounded-lg text-sm ${actionMessage.type === 'success'
-                                        ? 'bg-green-50 text-green-900'
-                                        : 'bg-red-50 text-red-900'
-                                    }`}>
-                                    {actionMessage.text}
-                                </div>
-                            )}
                             <div className="flex gap-3 pt-4">
                                 <button
                                     onClick={closeAllModals}
@@ -445,24 +494,166 @@ export default function AdminYPMApplicationsPage() {
                                     Cancel
                                 </button>
                                 <button
-                                    onClick={handleReject}
+                                    onClick={handleDelete}
                                     disabled={isSubmitting}
                                     className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
                                 >
                                     {isSubmitting ? (
                                         <>
                                             <Loader2 className="w-5 h-5 animate-spin" />
-                                            Rejecting...
+                                            Deleting...
                                         </>
                                     ) : (
                                         <>
-                                            <X className="w-5 h-5" />
-                                            Reject & Delete
+                                            <Trash2 className="w-5 h-5" />
+                                            Confirm Delete
                                         </>
                                     )}
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Edit Modal */}
+            {isEditModalOpen && selectedApplication && editForm && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+                        <div className="sticky top-0 bg-white px-6 py-4 border-b border-gray-200 flex items-center justify-between z-10">
+                            <h2 className="text-xl font-semibold text-gray-900">Edit Application</h2>
+                            <button onClick={closeAllModals} className="text-gray-400 hover:text-gray-600">
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+                        <form onSubmit={handleUpdate} className="px-6 py-6 space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Basic Info */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.fullName}
+                                        onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.lastName}
+                                        onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input
+                                        type="email"
+                                        value={editForm.email}
+                                        onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Mobile</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.mobile}
+                                        onChange={(e) => setEditForm({ ...editForm, mobile: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+
+                                {/* Location */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.city}
+                                        onChange={(e) => setEditForm({ ...editForm, city: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.state}
+                                        onChange={(e) => setEditForm({ ...editForm, state: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.country}
+                                        onChange={(e) => setEditForm({ ...editForm, country: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Pincode</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.pincode}
+                                        onChange={(e) => setEditForm({ ...editForm, pincode: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+
+                                {/* Status Specific */}
+                                {selectedApplication.status === 'approved' && (
+                                    <div className="md:col-span-2">
+                                        <label className="block text-sm font-medium text-gray-700 mb-1 text-green-700">Member ID (Approved Only)</label>
+                                        <input
+                                            type="text"
+                                            value={editForm.memberId}
+                                            onChange={(e) => setEditForm({ ...editForm, memberId: e.target.value })}
+                                            className="w-full px-4 py-2 border border-green-300 bg-green-50 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
+                                            required
+                                        />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="flex gap-3 pt-6 border-t border-gray-100">
+                                <button
+                                    type="button"
+                                    onClick={closeAllModals}
+                                    className="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            Saving...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Check className="w-5 h-5" />
+                                            Save Changes
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             )}
@@ -568,7 +759,7 @@ export default function AdminYPMApplicationsPage() {
                             </div>
 
                             {/* Dates */}
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-gray-500 text-right italic">
                                 <p>Submitted: {new Date(selectedApplication.created_at).toLocaleString()}</p>
                                 {selectedApplication.updated_at !== selectedApplication.created_at && (
                                     <p>Updated: {new Date(selectedApplication.updated_at).toLocaleString()}</p>

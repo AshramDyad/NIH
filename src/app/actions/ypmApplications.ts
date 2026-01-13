@@ -227,39 +227,107 @@ async function deleteFromR2(fileUrl: string): Promise<boolean> {
 }
 
 /**
- * Reject a YPM application
- * Deletes the application and associated R2 files
+ * Update a YPM application
+ * Synchronizes changes to yoga_naturopathy_members if approved
  */
-export async function rejectYPMApplication(
+export async function updateYPMApplication(
+    id: string,
+    data: any, // Using any here temporarily because defining the full partial type is complex, but will ensure type safety inside
+    originalMemberId: string | null
+): Promise<ActionResult> {
+    const supabase = await createClient();
+
+    try {
+        // 1. Update the application table
+        const { error: updateError } = await supabase
+            .from('ypm_applications')
+            .update({
+                full_name: data.fullName,
+                last_name: data.lastName,
+                email: data.email,
+                mobile: data.mobile,
+                gender: data.gender,
+                country: data.country,
+                state: data.state,
+                city: data.city,
+                address: data.address,
+                pincode: data.pincode,
+                referred_by: data.referredBy || null,
+                member_id: data.memberId || null,
+                updated_at: new Date().toISOString(),
+            })
+            .eq('id', id);
+
+        if (updateError) {
+            console.error('Error updating application:', updateError);
+            return { success: false, message: 'Failed to update application' };
+        }
+
+        // 2. If it was approved, sync with members table
+        if (originalMemberId) {
+            const { error: memberUpdateError } = await supabase
+                .from('yoga_naturopathy_members')
+                .update({
+                    name: `${data.fullName} ${data.lastName}`.trim(),
+                    member_number: data.memberId?.trim() || '',
+                })
+                .eq('member_number', originalMemberId);
+
+            if (memberUpdateError) {
+                console.error('Error syncing member data:', memberUpdateError);
+                return {
+                    success: true,
+                    message: 'Application updated but failed to sync with public members list'
+                };
+            }
+        }
+
+        revalidatePath('/admin/ypm-applications');
+        revalidatePath('/members/yoga-naturopathy-professional');
+
+        return { success: true, message: 'Application updated successfully' };
+    } catch (error) {
+        console.error('Unexpected error in updateYPMApplication:', error);
+        return { success: false, message: 'An unexpected error occurred' };
+    }
+}
+
+/**
+ * Delete a YPM application (previously rejectYPMApplication)
+ * Deletes from ypm_applications, yoga_naturopathy_members (if approved), and R2 storage
+ */
+export async function deleteYPMApplication(
     applicationId: string
 ): Promise<ActionResult> {
     const supabase = await createClient();
 
     try {
-        // Get application to get file URLs
+        // 1. Get application to get file URLs and member status
         const { data: application, error: fetchError } = await supabase
             .from('ypm_applications')
-            .select('qualification_url, photo_url, status')
+            .select('qualification_url, photo_url, status, member_id')
             .eq('id', applicationId)
             .single();
 
         if (fetchError || !application) {
             console.error('Error fetching application:', fetchError);
-            return {
-                success: false,
-                message: 'Application not found',
-            };
+            return { success: false, message: 'Application not found' };
         }
 
-        // Check if already rejected
-        if (application.status === 'rejected') {
-            return {
-                success: false,
-                message: 'Application is already rejected',
-            };
+        // 2. If approved, delete from members table first
+        if (application.status === 'approved' && application.member_id) {
+            const { error: memberDeleteError } = await supabase
+                .from('yoga_naturopathy_members')
+                .delete()
+                .eq('member_number', application.member_id);
+
+            if (memberDeleteError) {
+                console.error('Error deleting member record:', memberDeleteError);
+                // Continue anyway to try and delete the main application
+            }
         }
 
-        // Delete files from R2
+        // 3. Delete files from R2
         if (application.qualification_url) {
             await deleteFromR2(application.qualification_url);
         }
@@ -267,7 +335,7 @@ export async function rejectYPMApplication(
             await deleteFromR2(application.photo_url);
         }
 
-        // Delete application from database
+        // 4. Delete application from database
         const { error: deleteError } = await supabase
             .from('ypm_applications')
             .delete()
@@ -275,24 +343,24 @@ export async function rejectYPMApplication(
 
         if (deleteError) {
             console.error('Error deleting application:', deleteError);
-            return {
-                success: false,
-                message: 'Failed to delete application',
-            };
+            return { success: false, message: 'Failed to delete application record' };
         }
 
-        // Revalidate paths
         revalidatePath('/admin/ypm-applications');
+        revalidatePath('/members/yoga-naturopathy-professional');
 
         return {
             success: true,
-            message: 'Application rejected and deleted successfully',
+            message: application.status === 'approved'
+                ? 'Approved application and member record deleted successfully'
+                : 'Application rejected and deleted successfully'
         };
     } catch (error) {
-        console.error('Unexpected error rejecting application:', error);
-        return {
-            success: false,
-            message: 'An unexpected error occurred',
-        };
+        console.error('Unexpected error in deleteYPMApplication:', error);
+        return { success: false, message: 'An unexpected error occurred' };
     }
 }
+
+// Keep the old name for backward compatibility until UI is updated
+export const rejectYPMApplication = deleteYPMApplication;
+
