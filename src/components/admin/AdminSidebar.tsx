@@ -36,6 +36,7 @@ const menuItems = [
     icon: Video,
     label: "Video Testimonials",
   },
+  { href: "/admin/active-members", icon: Users, label: "Active Members" },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   {
     href: "/admin/members-institutions",

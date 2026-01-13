@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 
 // Get R2 endpoint - auto-detects EU vs non-EU region
 const getR2Endpoint = (): string => {
@@ -195,4 +195,60 @@ export async function createUploadCommand(
   });
 
   return command;
+}
+
+/**
+ * Helper to extract Cloudflare R2 file key from a public URL
+ * Handles various R2 URL formats (custom domains vs default r2.dev)
+ */
+export function extractR2KeyFromUrl(url: string): string | null {
+  try {
+    const urlObj = new URL(url);
+    // Pathname usually contains /bucket/key or /key depending on custom domain setup
+    // For NIH, images are in 'images/' folder, PDFs in 'pdfs/'
+    // We remove the leading / and potential bucket name prefix if present
+    let path = urlObj.pathname.startsWith('/') ? urlObj.pathname.slice(1) : urlObj.pathname;
+
+    // If the path starts with the bucket name (common in direct R2 URLs), remove it
+    if (path.startsWith(`${R2_CONFIG.bucketName}/`)) {
+      path = path.replace(`${R2_CONFIG.bucketName}/`, '');
+    }
+
+    return path || null;
+  } catch (err) {
+    console.error('Invalid R2 URL for key extraction:', url, err);
+    return null;
+  }
+}
+
+/**
+ * Delete a file from Cloudflare R2 storage
+ * Robustly handles cases where the URL or key might be invalid
+ */
+export async function deleteFromR2(fileUrl: string | null | undefined): Promise<boolean> {
+  if (!fileUrl) {
+    console.log('No file URL provided for R2 deletion, skipping.');
+    return true; // Technically "deleted" or nothing to delete
+  }
+
+  const fileKey = extractR2KeyFromUrl(fileUrl);
+  if (!fileKey) {
+    console.error('Could not extract file key from URL:', fileUrl);
+    return false;
+  }
+
+  try {
+    const command = new DeleteObjectCommand({
+      Bucket: R2_CONFIG.bucketName,
+      Key: fileKey,
+    });
+
+    await r2Client.send(command);
+    console.log(`Successfully deleted R2 file: ${fileKey}`);
+    return true;
+  } catch (error) {
+    console.error(`Failed to delete file from R2 (${fileKey}):`, error);
+    // We return false but in many cases the app might continue
+    return false;
+  }
 }
