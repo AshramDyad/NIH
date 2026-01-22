@@ -22,7 +22,7 @@ interface HeroSliderProps {
 
 export default function HeroSlider({ slides }: HeroSliderProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(
-    null
+    null,
   );
 
   const handleNext = () => {
@@ -97,13 +97,6 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           ))}
         </SwiperComponent>
       </section>
-      <div className="bg-secondary py-2 text-center text-white">
-        <button className="font-semibold text-white capitalize">
-          <Link href="https://swaminarayan.yoga/" target="_blank">
-            connect with us spiritually
-          </Link>
-        </button>
-      </div>
     </React.Fragment>
   );
 }
