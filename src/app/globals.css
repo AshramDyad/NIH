@@ -37,7 +37,7 @@
     }
   }
 
-  --animate-marquee: marquee 20s linear infinite;
+  --animate-marquee: marquee 30s linear infinite;
   --animate-scroll-vertical: scroll-vertical 25s linear infinite;
 }
 

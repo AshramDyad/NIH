@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Building2 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -95,14 +95,26 @@ export default async function InstitutionsPage() {
         <section className="bg-white sm:py-16 py-12">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
-                <div className="text-center space-y-4 mb-8">
-                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
-                        <span className="text-secondary italic">Associate Centre</span> of Members
-                    </h2>
-                    <p className="text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto">
-                        We take pride in our network of affiliated institutions and centers dedicated to
-                        promoting holistic health and education across the nation.
-                    </p>
+                <div className="text-center space-y-6 mb-12">
+                    <div className="space-y-4">
+                        <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
+                            <span className="text-secondary italic">Associate Centre</span> of Members
+                        </h2>
+                        <p className="text-lg text-zinc-600 leading-relaxed max-w-3xl mx-auto">
+                            We take pride in our network of affiliated institutions and centers dedicated to
+                            promoting holistic health and education across the nation.
+                        </p>
+                    </div>
+
+                    <div className="flex justify-center">
+                        <Link
+                            href="/centres-institute"
+                            className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-bold transition-all "
+                        >
+                            <Building2 className="w-5 h-5" />
+                            Register Associate Center Institute
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Empty State */}
