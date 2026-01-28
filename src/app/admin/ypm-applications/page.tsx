@@ -166,6 +166,7 @@ export default function AdminYPMApplicationsPage() {
         setEditForm({
             firstName: app.first_name,
             lastName: app.last_name,
+            dateOfBirth: app.date_of_birth,
             email: app.email,
             mobile: app.mobile,
             gender: app.gender,
@@ -551,6 +552,16 @@ export default function AdminYPMApplicationsPage() {
                                     />
                                 </div>
                                 <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                    <input
+                                        type="date"
+                                        value={editForm.dateOfBirth}
+                                        onChange={(e) => setEditForm({ ...editForm, dateOfBirth: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                                     <input
                                         type="email"
@@ -569,6 +580,19 @@ export default function AdminYPMApplicationsPage() {
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                         required
                                     />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                                    <select
+                                        value={editForm.gender}
+                                        onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    >
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
                                 </div>
 
                                 {/* Location */}
@@ -609,6 +633,16 @@ export default function AdminYPMApplicationsPage() {
                                         value={editForm.pincode}
                                         onChange={(e) => setEditForm({ ...editForm, pincode: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Address</label>
+                                    <textarea
+                                        value={editForm.address}
+                                        onChange={(e) => setEditForm({ ...editForm, address: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        rows={3}
                                         required
                                     />
                                 </div>
@@ -726,6 +760,10 @@ export default function AdminYPMApplicationsPage() {
                                 <div>
                                     <p className="text-sm font-medium text-gray-500">Gender</p>
                                     <p className="text-gray-900">{selectedApplication.gender}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Date of Birth</p>
+                                    <p className="text-gray-900">{selectedApplication.date_of_birth}</p>
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-gray-500">Country</p>

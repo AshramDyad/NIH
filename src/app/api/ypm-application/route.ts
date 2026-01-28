@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
         const textFields = {
             firstName: formData.get('firstName') as string,
             lastName: formData.get('lastName') as string,
+            dateOfBirth: formData.get('dateOfBirth') as string,
             email: formData.get('email') as string,
             mobile: formData.get('mobile') as string,
             gender: formData.get('gender') as string,
@@ -170,6 +171,7 @@ export async function POST(request: NextRequest) {
             .insert({
                 first_name: validationResult.data.firstName,
                 last_name: validationResult.data.lastName,
+                date_of_birth: validationResult.data.dateOfBirth,
                 email: validationResult.data.email,
                 mobile: validationResult.data.mobile,
                 gender: validationResult.data.gender,
