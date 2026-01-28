@@ -9,7 +9,6 @@ import type { Swiper as SwiperClass } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
-import Link from "next/link";
 
 interface HeroSlideData {
   id: string | number;
@@ -82,6 +81,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                   sizes="100vw"
                   priority={index === 0}
                   className="w-full h-auto md:hidden"
+                  unoptimized
                 />
                 {/* Desktop Image - Cinematic fill with cover */}
                 <Image
@@ -91,6 +91,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                   priority={index === 0}
                   className="hidden md:block object-cover object-center"
                   sizes="100vw"
+                  unoptimized
                 />
               </div>
             </SwiperSlide>
