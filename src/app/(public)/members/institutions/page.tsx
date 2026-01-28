@@ -18,12 +18,14 @@ interface InstitutionMember {
 }
 
 function InstitutionCard({ institution }: { institution: InstitutionMember }) {
+    const isValidUrl = institution.url && (institution.url.startsWith('http://') || institution.url.startsWith('https://'));
+
     return (
         <div className="flex flex-col items-center">
             {/* Logo Container */}
-            <div className="relative w-full aspect-4/3 overflow-hidden rounded-xl border border-gray-100 mb-4 flex items-center justify-center bg-slate-50 group cursor-pointer">
+            <div className={`relative w-full aspect-4/3 overflow-hidden rounded-xl border border-gray-100 mb-4 flex items-center justify-center bg-slate-50 ${isValidUrl ? 'group cursor-pointer' : ''}`}>
                 {/* Background Image with Zoom */}
-                <div className="relative w-full h-full p-6 sm:p-8 transition-transform duration-500 ease-out group-hover:scale-105">
+                <div className={`relative w-full h-full p-6 sm:p-8 transition-transform duration-500 ease-out ${isValidUrl ? 'group-hover:scale-105' : ''}`}>
                     <Image
                         src={institution.image_url}
                         alt={institution.name}
@@ -34,30 +36,38 @@ function InstitutionCard({ institution }: { institution: InstitutionMember }) {
                 </div>
 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                    <div className="text-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                        <span className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2.5 rounded-full font-bold text-sm shadow-lg whitespace-nowrap">
-                            Visit Website <ExternalLink className="w-4 h-4" />
-                        </span>
+                {isValidUrl && (
+                    <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                        <div className="text-center transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                            <span className="inline-flex items-center gap-2 bg-white text-primary px-5 py-2.5 rounded-full font-bold text-sm shadow-lg whitespace-nowrap">
+                                Visit Website <ExternalLink className="w-4 h-4" />
+                            </span>
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Invisible link overlay for the whole card area */}
-                <Link
-                    href={institution.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 z-10"
-                    aria-label={`Visit ${institution.name} website`}
-                />
+                {isValidUrl && (
+                    <Link
+                        href={institution.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 z-10"
+                        aria-label={`Visit ${institution.name} website`}
+                    />
+                )}
             </div>
 
             {/* Institution Info */}
             <div className="text-center space-y-1 px-2">
                 <h3 className="text-zinc-900 text-base font-semibold hover:text-primary transition-colors duration-300">
-                    <Link href={institution.url} target="_blank" rel="noopener noreferrer">
-                        {institution.name}
-                    </Link>
+                    {isValidUrl ? (
+                        <Link href={institution.url} target="_blank" rel="noopener noreferrer">
+                            {institution.name}
+                        </Link>
+                    ) : (
+                        <span>{institution.name}</span>
+                    )}
                 </h3>
                 <p className="text-zinc-700 text-base leading-relaxed">
                     {institution.address}

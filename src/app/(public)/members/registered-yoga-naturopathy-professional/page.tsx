@@ -12,13 +12,12 @@ export default function RegisteredYogaNaturopathyProfessionalPage() {
             {/* Hero Section */}
             <section className="bg-white sm:py-16 py-12">
                 <div className="container mx-auto px-4">
-                    <div className="text-center space-y-4 mb-8">
+                    <div className="text-center space-y-4 mb-8 max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-black text-zinc-900">
-                            Registered Yoga & <span className="text-primary italic">Naturopathy</span>
-                            <br />
-                            <span className="text-secondary italic">Professional</span> Members
+                            <span className="text-primary italic">Membership-Yoga/Naturopathy </span>
+                            and <span className="text-secondary italic">other Drugless System </span>Professionals
                         </h2>
-                        <p className="text-lg text-zinc-600 leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-lg text-zinc-600 leading-relaxed">
                             Apply to become a certified professional and advance the science and practice
                             of Yoga and Naturopathy for a healthier society.
                         </p>
