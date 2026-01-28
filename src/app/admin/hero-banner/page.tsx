@@ -147,6 +147,7 @@ export default function HeroBannerAdminPage() {
                     alt="Banner"
                     fill
                     className="object-cover"
+                    unoptimized
                   />
                 </div>
               ),
