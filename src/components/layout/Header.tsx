@@ -118,7 +118,7 @@ const Header = () => {
     },
     {
       name: "Events",
-      href: "/events",
+      href: "#",
       icon: <Calendar size={18} />
     },
     {
@@ -143,7 +143,7 @@ const Header = () => {
         { name: "Central Council Board", href: "/about/central-council-board" },
         { name: "Aims and Objectives", href: "/about/aims" },
         { name: "Course Brochure", href: "/pdfs/brochure-in-sequence-2025.pdf" },
-        { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "/about/magazine" },
+        { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "#" },
       ]
     },
     {
@@ -163,13 +163,13 @@ const Header = () => {
       name: "ACTIVITIES",
       hasChildren: true,
       children: [
-        { name: "Projects", href: "/activities/projects" },
-        { name: "Franchise", href: "/activities/franchise" },
-        { name: "Training Progamme", href: "/activities/training" },
-        { name: "Internship", href: "/activities/internship" },
-        { name: "Volunteership", href: "/activities/volunteership" },
-        { name: "NIH Events", href: "/events" },
-        { name: "Retreat Programmes", href: "/activities/retreat" }
+        { name: "Projects", href: "#" },
+        { name: "Franchise", href: "#" },
+        { name: "Training Progamme", href: "#" },
+        { name: "Internship", href: "#" },
+        { name: "Volunteership", href: "#" },
+        { name: "NIH Events", href: "#" },
+        { name: "Retreat Programmes", href: "#" }
       ]
     },
     {
@@ -185,14 +185,14 @@ const Header = () => {
       name: "MEDIA",
       hasChildren: true,
       children: [
-        { name: "Photo Gallery", href: "/media/photo-gallery" },
-        { name: "Achievements", href: "/media/achievements" },
-        { name: "Video Gallery", href: "/media/video-gallery" },
-        { name: "Media Coverage", href: "/media/coverage" }
+        { name: "Photo Gallery", href: "#" },
+        { name: "Achievements", href: "#" },
+        { name: "Video Gallery", href: "#" },
+        { name: "Media Coverage", href: "#" }
       ]
     },
     { id: "join-us", name: "JOIN US", href: "https://forms.gle/DEajoyPQMDhhh1tC9" },
-    { id: "careers", name: "CAREERS", href: "/careers" },
+    { id: "careers", name: "CAREERS", href: "#" },
     { id: "contact-us", name: "CONTACT US", href: "/contact" }
   ] as const;
 
