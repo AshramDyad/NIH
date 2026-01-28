@@ -22,6 +22,11 @@ export const ypmFormSchema = z.object({
         .max(50, 'Last name must not exceed 50 characters')
         .trim(),
 
+    dateOfBirth: z
+        .string()
+        .min(1, 'Date of birth is required')
+        .regex(/^\d{4}-\d{2}-\d{2}$/, 'Please enter a valid date in YYYY-MM-DD format'),
+
     email: z
         .string()
         .email('Please enter a valid email address')

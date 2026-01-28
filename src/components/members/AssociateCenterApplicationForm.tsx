@@ -179,7 +179,7 @@ export default function AssociateCenterApplicationForm() {
     return (
         <div className="bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100">
             <div className="mb-6 space-y-2">
-                <h3 className="text-2xl font-black text-secondary">
+                <h3 className="text-2xl font-semibold text-black">
                     Associate Center Application Form
                 </h3>
                 <p className="text-zinc-600">

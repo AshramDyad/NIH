@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
+import { Users } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Active Members | NIH Health - National Institute of Holistic Health",
@@ -92,9 +93,13 @@ export default async function ActiveMembersPage() {
 
                 {/* Empty State */}
                 {activeMembers.length === 0 ? (
-                    <div className="text-center py-16">
-                        <p className="text-gray-600">No active members found.</p>
-                    </div>
+                    <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200 max-w-2xl mx-auto">
+                            <div className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
+                                <Users className="w-8 h-8" />
+                            </div>
+                            <p className="text-gray-600 font-medium text-lg">Members list will be updated soon.</p>
+                            <p className="text-gray-400 text-sm mt-2">Our technical team is currently updating the directory.</p>
+                        </div>
                 ) : (
                     /* Members Grid */
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

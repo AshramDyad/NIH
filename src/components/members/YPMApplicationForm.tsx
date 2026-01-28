@@ -110,6 +110,7 @@ export default function YPMApplicationForm() {
             // Add text fields
             formData.append('firstName', data.firstName);
             formData.append('lastName', data.lastName);
+            formData.append('dateOfBirth', data.dateOfBirth);
             formData.append('email', data.email);
             formData.append('mobile', data.mobile);
             formData.append('gender', data.gender);
@@ -231,6 +232,26 @@ export default function YPMApplicationForm() {
                             <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
                                 <AlertCircle size={14} />
                                 {errors.lastName.message}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Date of Birth */}
+                    <div>
+                        <label htmlFor="dateOfBirth" className="block text-sm font-semibold text-zinc-700 mb-2">
+                            Date of Birth <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="date"
+                            id="dateOfBirth"
+                            {...register('dateOfBirth')}
+                            className={getInputClasses(!!errors.dateOfBirth)}
+                            aria-invalid={errors.dateOfBirth ? 'true' : 'false'}
+                        />
+                        {errors.dateOfBirth && (
+                            <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                                <AlertCircle size={14} />
+                                {errors.dateOfBirth.message}
                             </p>
                         )}
                     </div>

@@ -12,6 +12,7 @@ export type YPMApplication = {
     readonly id: string;
     readonly first_name: string;
     readonly last_name: string;
+    readonly date_of_birth: string;
     readonly email: string;
     readonly mobile: string;
     readonly gender: string;
@@ -44,6 +45,7 @@ type ActionResult = {
 export type UpdateYPMData = {
     firstName: string;
     lastName: string;
+    dateOfBirth: string;
     email: string;
     mobile: string;
     gender: string;
@@ -228,6 +230,7 @@ export async function updateYPMApplication(
             .update({
                 first_name: data.firstName,
                 last_name: data.lastName,
+                date_of_birth: data.dateOfBirth,
                 email: data.email,
                 mobile: data.mobile,
                 gender: data.gender,
