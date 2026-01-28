@@ -35,7 +35,8 @@ export const r2Client = new S3Client({
 export const R2_CONFIG = {
   bucketName: process.env.R2_BUCKET_NAME || 'nih-assets',
   accountId: process.env.R2_ACCOUNT_ID || '',
-  publicUrl: process.env.R2_PUBLIC_URL || '',
+  // Default to the known working public URL if env var is missing
+  publicUrl: process.env.R2_PUBLIC_URL || 'https://pub-81805ff84c1645c1a62c73f691611c86.r2.dev',
   maxFileSize: 10 * 1024 * 1024, // 10MB
   allowedImageTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
   allowedPdfTypes: ['application/pdf'],
