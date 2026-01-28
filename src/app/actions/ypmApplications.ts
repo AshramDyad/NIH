@@ -10,7 +10,7 @@ import { deleteFromR2 } from '@/lib/r2-client';
  */
 export type YPMApplication = {
     readonly id: string;
-    readonly full_name: string;
+    readonly first_name: string;
     readonly last_name: string;
     readonly email: string;
     readonly mobile: string;
@@ -22,7 +22,8 @@ export type YPMApplication = {
     readonly pincode: string;
     readonly qualification_url: string;
     readonly photo_url: string;
-    readonly referred_by: string | null;
+    readonly referred_by_name: string | null;
+    readonly referred_by_mobile: string | null;
     readonly status: 'pending' | 'approved' | 'rejected';
     readonly member_id: string | null;
     readonly created_at: string;
@@ -41,7 +42,7 @@ type ActionResult = {
  * Type for updating YPM application
  */
 export type UpdateYPMData = {
-    fullName: string;
+    firstName: string;
     lastName: string;
     email: string;
     mobile: string;
@@ -51,7 +52,8 @@ export type UpdateYPMData = {
     city: string;
     address: string;
     pincode: string;
-    referredBy?: string | null;
+    referredByName?: string | null;
+    referredByMobile?: string | null;
     memberId?: string | null;
 };
 
@@ -152,7 +154,7 @@ export async function approveYPMApplication(
         const { error: memberInsertError } = await supabase
             .from('yoga_naturopathy_members')
             .insert({
-                name: `${application.full_name} ${application.last_name}`.trim(),
+                name: `${application.first_name} ${application.last_name}`.trim(),
                 member_number: memberId.trim(),
                 image_url: application.photo_url,
             });
@@ -224,7 +226,7 @@ export async function updateYPMApplication(
         const { error: updateError } = await supabase
             .from('ypm_applications')
             .update({
-                full_name: data.fullName,
+                first_name: data.firstName,
                 last_name: data.lastName,
                 email: data.email,
                 mobile: data.mobile,
@@ -234,7 +236,8 @@ export async function updateYPMApplication(
                 city: data.city,
                 address: data.address,
                 pincode: data.pincode,
-                referred_by: data.referredBy || null,
+                referred_by_name: data.referredByName || null,
+                referred_by_mobile: data.referredByMobile || null,
                 member_id: data.memberId || null,
                 updated_at: new Date().toISOString(),
             })
@@ -250,7 +253,7 @@ export async function updateYPMApplication(
             const { error: memberUpdateError } = await supabase
                 .from('yoga_naturopathy_members')
                 .update({
-                    name: `${data.fullName} ${data.lastName}`.trim(),
+                    name: `${data.firstName} ${data.lastName}`.trim(),
                     member_number: data.memberId?.trim() || '',
                 })
                 .eq('member_number', originalMemberId);

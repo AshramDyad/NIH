@@ -108,7 +108,7 @@ export default function YPMApplicationForm() {
             const formData = new FormData();
 
             // Add text fields
-            formData.append('fullName', data.fullName);
+            formData.append('firstName', data.firstName);
             formData.append('lastName', data.lastName);
             formData.append('email', data.email);
             formData.append('mobile', data.mobile);
@@ -118,7 +118,8 @@ export default function YPMApplicationForm() {
             formData.append('city', data.city);
             formData.append('address', data.address);
             formData.append('pincode', data.pincode);
-            formData.append('referredBy', data.referredBy || '');
+            formData.append('referredByName', data.referredByName || '');
+            formData.append('referredByMobile', data.referredByMobile || '');
             formData.append('confirmationChecked', String(data.confirmationChecked));
 
             // Add files
@@ -196,20 +197,20 @@ export default function YPMApplicationForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label htmlFor="fullName" className="block text-sm font-semibold text-zinc-700 mb-2">
-                            Full Name <span className="text-red-500">*</span>
+                            First Name <span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
                             id="fullName"
-                            placeholder="Enter your full name"
-                            {...register('fullName')}
-                            className={getInputClasses(!!errors.fullName)}
-                            aria-invalid={errors.fullName ? 'true' : 'false'}
+                            placeholder="Enter your first name"
+                            {...register('firstName')}
+                            className={getInputClasses(!!errors.firstName)}
+                            aria-invalid={errors.firstName ? 'true' : 'false'}
                         />
-                        {errors.fullName && (
+                        {errors.firstName && (
                             <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
                                 <AlertCircle size={14} />
-                                {errors.fullName.message}
+                                {errors.firstName.message}
                             </p>
                         )}
                     </div>
@@ -534,18 +535,44 @@ export default function YPMApplicationForm() {
                     )}
                 </div>
 
-                {/* Referred By (Optional) */}
-                <div>
-                    <label htmlFor="referredBy" className="block text-sm font-semibold text-zinc-700 mb-2">
+                {/* Referred By Section (Optional) */}
+                <div className="space-y-3 p-4 bg-zinc-50/50 rounded-xl border border-zinc-100">
+                    <label className="block text-sm font-semibold text-zinc-700">
                         Referred by <span className="text-zinc-400 font-normal">(Optional)</span>
                     </label>
-                    <input
-                        type="text"
-                        id="referredBy"
-                        placeholder="Name of the person who referred you"
-                        {...register('referredBy')}
-                        className={getInputClasses(!!errors.referredBy)}
-                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <input
+                                type="text"
+                                id="referredByName"
+                                placeholder="Referral Name"
+                                {...register('referredByName')}
+                                className={getInputClasses(!!errors.referredByName)}
+                            />
+                            {errors.referredByName && (
+                                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                                    <AlertCircle size={14} />
+                                    {errors.referredByName.message}
+                                </p>
+                            )}
+                        </div>
+                        <div>
+                            <input
+                                type="tel"
+                                id="referredByMobile"
+                                placeholder="Referral Mobile Number"
+                                maxLength={10}
+                                {...register('referredByMobile')}
+                                className={getInputClasses(!!errors.referredByMobile)}
+                            />
+                            {errors.referredByMobile && (
+                                <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                                    <AlertCircle size={14} />
+                                    {errors.referredByMobile.message}
+                                </p>
+                            )}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Confirmation Checkbox */}
