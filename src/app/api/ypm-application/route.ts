@@ -70,8 +70,9 @@ export async function POST(request: NextRequest) {
 
         // Extract text fields
         const textFields = {
-            fullName: formData.get('fullName') as string,
+            firstName: formData.get('firstName') as string,
             lastName: formData.get('lastName') as string,
+            dateOfBirth: formData.get('dateOfBirth') as string,
             email: formData.get('email') as string,
             mobile: formData.get('mobile') as string,
             gender: formData.get('gender') as string,
@@ -80,7 +81,8 @@ export async function POST(request: NextRequest) {
             city: formData.get('city') as string,
             address: formData.get('address') as string,
             pincode: formData.get('pincode') as string,
-            referredBy: (formData.get('referredBy') as string) || '',
+            referredByName: (formData.get('referredByName') as string) || '',
+            referredByMobile: (formData.get('referredByMobile') as string) || '',
             confirmationChecked: formData.get('confirmationChecked') === 'true',
         };
 
@@ -167,8 +169,9 @@ export async function POST(request: NextRequest) {
         const { data: application, error: insertError } = await supabase
             .from('ypm_applications')
             .insert({
-                full_name: validationResult.data.fullName,
+                first_name: validationResult.data.firstName,
                 last_name: validationResult.data.lastName,
+                date_of_birth: validationResult.data.dateOfBirth,
                 email: validationResult.data.email,
                 mobile: validationResult.data.mobile,
                 gender: validationResult.data.gender,
@@ -179,7 +182,8 @@ export async function POST(request: NextRequest) {
                 pincode: validationResult.data.pincode,
                 qualification_url: qualificationUrl,
                 photo_url: photoResult.url,
-                referred_by: validationResult.data.referredBy || null,
+                referred_by_name: validationResult.data.referredByName || null,
+                referred_by_mobile: validationResult.data.referredByMobile || null,
                 status: 'pending',
             })
             .select('id')

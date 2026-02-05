@@ -43,6 +43,7 @@ const menuItems = [
     icon: Building2,
     label: "Institution Members",
   },
+  { href: "/admin/associate-centers", icon: Building2, label: "Associate Centers" },
   { href: "/admin/events", icon: Calendar, label: "Events" },
   { href: "/admin/analytics", icon: BarChart3, label: "Analytics" },
   { href: "/admin/settings", icon: Settings, label: "Settings" },

@@ -118,7 +118,7 @@ const Header = () => {
     },
     {
       name: "Events",
-      href: "/events",
+      href: "#",
       icon: <Calendar size={18} />
     },
     {
@@ -143,7 +143,7 @@ const Header = () => {
         { name: "Central Council Board", href: "/about/central-council-board" },
         { name: "Aims and Objectives", href: "/about/aims" },
         { name: "Course Brochure", href: "/pdfs/brochure-in-sequence-2025.pdf" },
-        { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "/about/magazine" },
+        { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "#" },
       ]
     },
     {
@@ -163,13 +163,13 @@ const Header = () => {
       name: "ACTIVITIES",
       hasChildren: true,
       children: [
-        { name: "Projects", href: "/activities/projects" },
-        { name: "Franchise", href: "/activities/franchise" },
-        { name: "Training Progamme", href: "/activities/training" },
-        { name: "Internship", href: "/activities/internship" },
-        { name: "Volunteership", href: "/activities/volunteership" },
-        { name: "NIH Events", href: "/events" },
-        { name: "Retreat Programmes", href: "/activities/retreat" }
+        { name: "Projects", href: "#" },
+        { name: "Franchise", href: "#" },
+        { name: "Training Progamme", href: "#" },
+        { name: "Internship", href: "#" },
+        { name: "Volunteership", href: "#" },
+        { name: "NIH Events", href: "#" },
+        { name: "Retreat Programmes", href: "#" }
       ]
     },
     {
@@ -185,14 +185,14 @@ const Header = () => {
       name: "MEDIA",
       hasChildren: true,
       children: [
-        { name: "Photo Gallery", href: "/media/photo-gallery" },
-        { name: "Achievements", href: "/media/achievements" },
-        { name: "Video Gallery", href: "/media/video-gallery" },
-        { name: "Media Coverage", href: "/media/coverage" }
+        { name: "Photo Gallery", href: "#" },
+        { name: "Achievements", href: "#" },
+        { name: "Video Gallery", href: "#" },
+        { name: "Media Coverage", href: "#" }
       ]
     },
     { id: "join-us", name: "JOIN US", href: "https://forms.gle/DEajoyPQMDhhh1tC9" },
-    { id: "careers", name: "CAREERS", href: "/careers" },
+    { id: "careers", name: "CAREERS", href: "#" },
     { id: "contact-us", name: "CONTACT US", href: "/contact" }
   ] as const;
 
@@ -282,18 +282,34 @@ const Header = () => {
                       </AnimatePresence>
                     </>
                   ) : (
-                    <Link
-                      href={btn.href}
-                      target={btn.isExternal ? "_blank" : undefined}
-                      rel={btn.isExternal ? "noopener noreferrer" : undefined}
-                      className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${btn.name === "Membership"
-                        ? "bg-primary text-white hover:bg-opacity-90"
-                        : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
-                        }`}
-                    >
-                      {btn.icon}
-                      {btn.name}
-                    </Link>
+                    <>
+                      {btn.href && (btn.isExternal || btn.href.endsWith(".pdf")) ? (
+                        <Link
+                          href={btn.href}
+                          target={btn.isExternal || btn.href.endsWith(".pdf") ? "_blank" : undefined}
+                          rel={btn.isExternal || btn.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                          prefetch={btn.href.endsWith(".pdf") ? false : undefined}
+                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${btn.name === "Membership"
+                            ? "bg-primary text-white hover:bg-opacity-90"
+                            : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                            }`}
+                        >
+                          {btn.icon}
+                          {btn.name}
+                        </Link>
+                      ) : (
+                        <Link
+                          href={btn.href}
+                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${btn.name === "Membership"
+                            ? "bg-primary text-white hover:bg-opacity-90"
+                            : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                            }`}
+                        >
+                          {btn.icon}
+                          {btn.name}
+                        </Link>
+                      )}
+                    </>
                   )}
                 </div>
               ))}
@@ -380,17 +396,32 @@ const Header = () => {
                       className="px-6"
                     >
                       {item.href ? (
-                        <Link
-                          href={item.href}
-                          target={(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? "_blank" : undefined}
-                          rel={(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
-                          onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                          className="flex items-center group py-4 border-b border-white/5"
-                        >
-                          <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
-                            {item.name}
-                          </span>
-                        </Link>
+                        <>
+                          {(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? (
+                            <Link
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              prefetch={false}
+                              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                              className="flex items-center group py-4 border-b border-white/5"
+                            >
+                              <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
+                                {item.name}
+                              </span>
+                            </Link>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                              className="flex items-center group py-4 border-b border-white/5"
+                            >
+                              <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
+                                {item.name}
+                              </span>
+                            </Link>
+                          )}
+                        </>
                       ) : (
                         <button
                           onClick={() => setActiveSubMenu(item.id)}
@@ -476,17 +507,32 @@ const Header = () => {
                                 <ChevronRight size={18} className="text-white/40 group-hover:text-primary" />
                               </button>
                             ) : (
-                              <Link
-                                href={subItem.href || "#"}
-                                target={(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? "_blank" : undefined}
-                                rel={(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
-                                onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                                className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
-                              >
-                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                  {subItem.name}
-                                </span>
-                              </Link>
+                              <>
+                                {(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? (
+                                  <Link
+                                    href={subItem.href || "#"}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    prefetch={false}
+                                    onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                                    className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                  >
+                                    <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                      {subItem.name}
+                                    </span>
+                                  </Link>
+                                ) : (
+                                  <Link
+                                    href={subItem.href || "#"}
+                                    onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                                    className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                  >
+                                    <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                      {subItem.name}
+                                    </span>
+                                  </Link>
+                                )}
+                              </>
                             )}
                           </motion.div>
                         ))}

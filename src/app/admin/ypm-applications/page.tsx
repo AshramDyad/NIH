@@ -164,8 +164,9 @@ export default function AdminYPMApplicationsPage() {
     const openEditModal = (app: YPMApplication) => {
         setSelectedApplication(app);
         setEditForm({
-            fullName: app.full_name,
+            firstName: app.first_name,
             lastName: app.last_name,
+            dateOfBirth: app.date_of_birth,
             email: app.email,
             mobile: app.mobile,
             gender: app.gender,
@@ -174,7 +175,8 @@ export default function AdminYPMApplicationsPage() {
             city: app.city,
             address: app.address,
             pincode: app.pincode,
-            referredBy: app.referred_by || '',
+            referredByName: app.referred_by_name || '',
+            referredByMobile: app.referred_by_mobile || '',
             memberId: app.member_id || '',
         });
         setActionMessage(null);
@@ -308,7 +310,7 @@ export default function AdminYPMApplicationsPage() {
                                                     {app.photo_url ? (
                                                         <Image
                                                             src={app.photo_url}
-                                                            alt={app.full_name}
+                                                            alt={app.first_name}
                                                             fill
                                                             className="object-cover"
                                                             sizes="48px"
@@ -324,7 +326,7 @@ export default function AdminYPMApplicationsPage() {
                                             {/* Name */}
                                             <td className="px-6 py-4">
                                                 <p className="text-sm font-medium text-gray-900">
-                                                    {app.full_name} {app.last_name}
+                                                    {app.first_name} {app.last_name}
                                                 </p>
                                                 {app.member_id && (
                                                     <p className="text-xs text-gray-500">ID: {app.member_id}</p>
@@ -424,7 +426,7 @@ export default function AdminYPMApplicationsPage() {
                         </div>
                         <div className="px-6 py-6 space-y-4">
                             <p className="text-sm text-gray-600">
-                                Approving application for <strong>{selectedApplication.full_name} {selectedApplication.last_name}</strong>
+                                Approving application for <strong>{selectedApplication.first_name} {selectedApplication.last_name}</strong>
                             </p>
                             <div>
                                 <label htmlFor="memberId" className="block text-sm font-medium text-gray-700 mb-2">
@@ -483,7 +485,7 @@ export default function AdminYPMApplicationsPage() {
                             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                                 <p className="text-sm text-red-900 leading-relaxed">
                                     <strong>Warning:</strong> This will permanently delete the application and all associated records/files for{' '}
-                                    <strong>{selectedApplication.full_name} {selectedApplication.last_name}</strong>.
+                                    <strong>{selectedApplication.first_name} {selectedApplication.last_name}</strong>.
                                 </p>
                             </div>
                             <div className="flex gap-3 pt-4">
@@ -533,8 +535,8 @@ export default function AdminYPMApplicationsPage() {
                                     <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                                     <input
                                         type="text"
-                                        value={editForm.fullName}
-                                        onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                                        value={editForm.firstName}
+                                        onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                         required
                                     />
@@ -545,6 +547,16 @@ export default function AdminYPMApplicationsPage() {
                                         type="text"
                                         value={editForm.lastName}
                                         onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                    <input
+                                        type="date"
+                                        value={editForm.dateOfBirth}
+                                        onChange={(e) => setEditForm({ ...editForm, dateOfBirth: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                         required
                                     />
@@ -568,6 +580,19 @@ export default function AdminYPMApplicationsPage() {
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                         required
                                     />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                                    <select
+                                        value={editForm.gender}
+                                        onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        required
+                                    >
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
                                 </div>
 
                                 {/* Location */}
@@ -609,6 +634,36 @@ export default function AdminYPMApplicationsPage() {
                                         onChange={(e) => setEditForm({ ...editForm, pincode: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                         required
+                                    />
+                                </div>
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Address</label>
+                                    <textarea
+                                        value={editForm.address}
+                                        onChange={(e) => setEditForm({ ...editForm, address: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                        rows={3}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Referral Info */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Referred By Name</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.referredByName || ''}
+                                        onChange={(e) => setEditForm({ ...editForm, referredByName: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Referred By Mobile</label>
+                                    <input
+                                        type="text"
+                                        value={editForm.referredByMobile || ''}
+                                        onChange={(e) => setEditForm({ ...editForm, referredByMobile: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
 
@@ -678,7 +733,7 @@ export default function AdminYPMApplicationsPage() {
                                     {selectedApplication.photo_url && (
                                         <Image
                                             src={selectedApplication.photo_url}
-                                            alt={selectedApplication.full_name}
+                                            alt={selectedApplication.first_name}
                                             fill
                                             className="object-cover"
                                             sizes="96px"
@@ -687,7 +742,7 @@ export default function AdminYPMApplicationsPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-900">
-                                        {selectedApplication.full_name} {selectedApplication.last_name}
+                                        {selectedApplication.first_name} {selectedApplication.last_name}
                                     </h3>
                                     <p className="text-gray-600">{selectedApplication.email}</p>
                                     <p className="text-gray-600">{selectedApplication.mobile}</p>
@@ -707,6 +762,10 @@ export default function AdminYPMApplicationsPage() {
                                     <p className="text-gray-900">{selectedApplication.gender}</p>
                                 </div>
                                 <div>
+                                    <p className="text-sm font-medium text-gray-500">Date of Birth</p>
+                                    <p className="text-gray-900">{selectedApplication.date_of_birth}</p>
+                                </div>
+                                <div>
                                     <p className="text-sm font-medium text-gray-500">Country</p>
                                     <p className="text-gray-900">{selectedApplication.country}</p>
                                 </div>
@@ -723,8 +782,12 @@ export default function AdminYPMApplicationsPage() {
                                     <p className="text-gray-900">{selectedApplication.pincode}</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-gray-500">Referred By</p>
-                                    <p className="text-gray-900">{selectedApplication.referred_by || 'N/A'}</p>
+                                    <p className="text-sm font-medium text-gray-500">Referred By Name</p>
+                                    <p className="text-gray-900">{selectedApplication.referred_by_name || 'N/A'}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Referred By Mobile</p>
+                                    <p className="text-gray-900">{selectedApplication.referred_by_mobile || 'N/A'}</p>
                                 </div>
                             </div>
 

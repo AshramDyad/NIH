@@ -10,10 +10,10 @@ import { z } from 'zod';
  * YPM Application Form Validation Rules
  */
 export const ypmFormSchema = z.object({
-    fullName: z
+    firstName: z
         .string()
-        .min(2, 'Full name must be at least 2 characters')
-        .max(100, 'Full name must not exceed 100 characters')
+        .min(2, 'First name must be at least 2 characters')
+        .max(100, 'First name must not exceed 100 characters')
         .trim(),
 
     lastName: z
@@ -21,6 +21,11 @@ export const ypmFormSchema = z.object({
         .min(1, 'Last name is required')
         .max(50, 'Last name must not exceed 50 characters')
         .trim(),
+
+    dateOfBirth: z
+        .string()
+        .min(1, 'Date of birth is required')
+        .regex(/^\d{4}-\d{2}-\d{2}$/, 'Please enter a valid date in YYYY-MM-DD format'),
 
     email: z
         .string()
@@ -67,9 +72,17 @@ export const ypmFormSchema = z.object({
         .regex(/^[0-9]+$/, 'Please enter a valid pincode')
         .trim(),
 
-    referredBy: z
+    referredByName: z
         .string()
         .max(100, 'Referral name must not exceed 100 characters')
+        .trim()
+        .optional()
+        .or(z.literal('')),
+
+    referredByMobile: z
+        .string()
+        .max(10, 'Referral mobile must not exceed 10 digits')
+        .regex(/^[0-9]*$/, 'Please enter a valid mobile number')
         .trim()
         .optional()
         .or(z.literal('')),
