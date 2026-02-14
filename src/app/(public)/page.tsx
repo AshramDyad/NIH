@@ -24,6 +24,7 @@ export default async function Home() {
   if (slides.length === 0) {
     return (
       <>
+        {/* <EventBannerPopup /> */}
         <div className="h-[40vh] md:h-[60vh] bg-gray-100 flex items-center justify-center">
           <p className="text-gray-500">
             Welcome to NIH. Please upload hero banners in admin panel.
@@ -42,6 +43,7 @@ export default async function Home() {
 
   return (
     <>
+      {/* <EventBannerPopup /> */}
       <div id="hero">
         <HeroSlider slides={slides} />
       </div>
