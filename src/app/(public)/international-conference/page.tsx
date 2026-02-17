@@ -134,7 +134,7 @@ export default function InternationalConferencePremiumReportPage() {
                     },
                     { name: "Yogi Naveen Joshi", desc: "Renowned Yoga Expert" },
                     { name: "Acharya Prasanna", desc: "Spiritual Leader" },
-                    { name: "Pinky Sluger", desc: "Expert from France" },
+                    { name: "Pinky Slager", desc: "Expert from France" },
                   ].map((guest, i) => (
                     <li key={i} className="flex items-start gap-4 group">
                       <div className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-150 transition-transform" />
