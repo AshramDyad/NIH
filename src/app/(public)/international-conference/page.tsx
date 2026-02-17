@@ -1,234 +1,385 @@
 import { Metadata } from "next";
 import Breadcrumb from "@/components/shared/Breadcrumb";
-import BulletList from "@/components/shared/BulletList";
-import Link from "next/link";
-import { Download } from "lucide-react";
-import { getVideoTestimonials } from "@/app/actions/video-testimonials";
+import Image from "next/image";
+import {
+  Calendar,
+  MapPin,
+  Award,
+  Globe,
+  BookOpen,
+  Quote,
+  Sparkles,
+  Users,
+  Music,
+  Heart,
+} from "lucide-react";
+import NewsCuttingSection from "@/components/international-conference/NewsCuttingSection";
+import GallerySection from "@/components/international-conference/GallerySection";
 
 export const metadata: Metadata = {
-  title: "International Conference 2026 | NIH Health",
+  title: "International Conference 2026 | NIH Health Report",
   description:
-    "Join us for the International Conference on Yoga and Holistic Health 2026 - a global gathering of wellness experts, practitioners, and enthusiasts.",
+    "Official report and highlights from the International Conference on Yoga and Holistic Health at Rishikesh.",
 };
 
-interface PricingTier {
-  type: string;
-  price: string;
-}
-
-const pricingTiers: PricingTier[] = [
-  { type: "Without Accomodation", price: "Rs. 2000/-" },
-  { type: "Food + Dormitory Accomodation", price: "Rs. 3500/-" },
-  { type: "Pvt. Accomodation (Twin Sharing)", price: "Rs. 7500/-" },
-  { type: "Single Accomodation", price: "Rs. 12000/-" },
-];
-
-const conferenceObjectives: string[] = [
-  "To bring a broader awareness among public about the utility of Yoga Holistic Health in treatment of diseases.",
-  "To disseminate the existing knowledge of Holistic Health to the practitioners and health workers.",
-  "To provide assistance to institute and persons working in the field of Holistic Health.",
-  "To strengthen Holistic Health institutes and NGOs to plan, implement a evaluate projects in rural, urban, tribal, slums and other areas in India abroad.",
-  "To promote a holistic understanding of health through the integration of Yoga, Ayurveda, and modern wellness practices.",
-  "To provide a global platform for researchers, practitioners educators, and health professionals to share knowledge and experiences in yoga and holistic health.",
-  "To highlight the role of yoga and holistic therapies in disease prevention, mental well-being, and sustainable health care,",
-  "To encourage scientific research, innovation, and evidence-based practices in yoga and holistic health.",
-  "To foster international collaboration and networking among institutions and professionals working in health and wellness.",
-  "To inspire individuals and communities to adopt healthy, balanced, and mindful lifestyles for overall well-being.",
-];
-
-// Async component to fetch and display video testimonials
-async function VideoTestimonialsSection() {
-  const videos = await getVideoTestimonials();
-
-  if (videos.length === 0) {
-    return null; // Don't show section if no videos
-  }
-
-  return (
-    <section className="py-12 md:py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 text-left">
-          Best Wishes
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((video) => (
-            <div
-              key={video.id}
-              className="aspect-video rounded-xl overflow-hidden shadow-lg"
-            >
-              <iframe
-                src={`https://www.youtube.com/embed/${video.video_id}`}
-                title="Video Testimonial"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export default function InternationalConference2026Page() {
+export default function InternationalConferencePremiumReportPage() {
   return (
     <>
       <Breadcrumb />
 
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="mb-8 text-center">
-            <h1 className="text-3xl md:text-5xl font-black text-zinc-900">
-              International Conference on{" "}
+      {/* Cinematic Hero Section */}
+      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden bg-zinc-900 border-b border-primary/20">
+        <Image
+          src="/images/632419928_10232166932288541_6839320354689223216_n.jpg"
+          alt="International Conference on Yoga and Holistic Health"
+          fill
+          className="object-cover object-center opacity-40"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+
+        <div className="container mx-auto px-4 h-full relative z-10 flex flex-col justify-end pb-12 md:pb-20">
+          <div className="max-w-4xl space-y-6">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/20 backdrop-blur-md rounded-full text-primary font-black text-xs uppercase tracking-[0.3em] border border-primary/30">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Official Event Report
+            </div>
+            <h1 className="text-4xl md:text-7xl font-black text-white leading-tight">
+              International Conference <br />
+              on{" "}
               <span className="text-primary italic">
-                Yoga and Holistic Health
+                Yoga & Holistic Health
               </span>
             </h1>
-          </div>
-
-          {/* The Conference Section */}
-          <div className="mb-8">
-            <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-4">
-                The Conference
-              </h2>
-              <div className="space-y-4 text-zinc-700 leading-relaxed text-base md:text-lg">
-                <p>
-                  The International Conference on Yoga & Holistic Health-2026 is
-                  being organized by National Institute of Holistic Health (NIH)
-                  from 07th-08th February, 2026 at Shri Swaminarayan Ashram,
-                  Rishikesh, Uttarakhand.{" "}
-                  <Link
-                    href="https://www.swaminarayan.yoga/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    www.swaminarayan.yoga
-                  </Link>
-                </p>
-                <p>
-                  Over 300 Naturopathy, Yoga, Neurotherapy, Electro Homoeopathy,
-                  Acupressure, Acupuncture, Chiropathy and other drugless
-                  therapy practitioners are expected to attend the conference
-                  from India and abroad.
-                </p>
-                <p>
-                  President of India, Prime Minister, Chief Minister of Uttar
-                  Pradesh, Chief Minister of Uttarakhand and other Union
-                  Ministers, Member of Parliament and many other distinguished
-                  VIPs are being requested to grace this Conference.
-                </p>
+            <div className="flex flex-wrap gap-8 text-zinc-300 pt-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                  <Calendar className="w-5 h-5 text-primary" />
+                </div>
+                <span className="font-bold text-lg md:text-xl text-white">
+                  February 7th & 8th, 2026
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+                <span className="font-bold text-lg md:text-xl text-white">
+                  Rishikesh, Uttarakhand
+                </span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Introduction Section */}
-          <div className="mb-8">
-            <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-4">
-                Introduction
-              </h2>
-              <div className="space-y-4 text-zinc-700 leading-relaxed text-base md:text-lg">
-                <p>
-                  Health is a state of complete physical, mental, social and
-                  spiritual well-being and not merely the absence of disease or
-                  infirmity. Holistic Heatlh includes Yoga, Naturopathy,
-                  Acupressure, Acupuncture, Neurotherapy. Chiropathy, Electro
-                  Homeopathy and other drugless system which are ancient Indian
-                  theories and practices, focusing on unifying mind, body,
-                  spirit and promoting strength, balance & flexibility.
-                </p>
-                <p>
-                  Health and well being can be influenced by our present
-                  lifestyle change and psychological stress.
-                </p>
-                <p>
-                  Holistic Health mainly emphasizes on returning to the nature
-                  by correcting our lifestyle by following simple natural laws,
-                  application of simple treatments based on the principles.
+      {/* Narrative Story Flow */}
+      <section className="py-20 md:py-32 bg-zinc-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="space-y-12 md:space-y-20">
+            {/* Story Card 1: The Event Context */}
+            <div className="group relative bg-white rounded-[3rem] p-6 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-zinc-100 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]">
+              <div className="absolute top-0 right-0 p-8 text-zinc-100 group-hover:text-primary/10 transition-colors duration-500">
+                <Globe className="w-32 h-32 rotate-12" />
+              </div>
+              <div className="relative z-10 max-w-3xl">
+                <p className="text-xl md:text-3xl leading-relaxed text-zinc-800 font-bold italic">
+                  &quot;The National Institute of Holistic Health (NIH), Shri
+                  Swaminarayan Ashram, in collaboration with SKM Yoga and GLG
+                  Yoga, Vietnam, organized the International Conference on Yoga
+                  and Holistic Health at Shri Swaminarayan Ashram, Rishikesh, on
+                  February 7th and 8th, 2026.&quot;
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* Objectives of the Conference Section */}
-          <div className="mb-8">
-            <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-4 md:p-6 space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-4">
-                Objectives of the Conference
-              </h2>
-              <BulletList items={conferenceObjectives} />
+            {/* Story Card 2 & 3: Inauguration & Guests */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div className="bg-white rounded-[3rem] p-6 md:p-10 border border-zinc-100 shadow-sm hover:shadow-md transition-all">
+                <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary/20">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-black text-zinc-900 mb-6 uppercase tracking-tight italic">
+                  The Grand Opening
+                </h3>
+                <p className="text-zinc-600 text-lg leading-relaxed mb-6">
+                  The conference was inaugurated by{" "}
+                  <strong>Chief Guest Padmashree Indra Agus Udayan</strong> from
+                  Bali, Indonesia.
+                </p>
+                <div className="pt-6 border-t border-zinc-50">
+                  <div className="text-sm font-black text-primary uppercase tracking-widest mb-4">
+                    Presided Over By
+                  </div>
+                  <p className="text-zinc-800 font-bold text-xl leading-snug">
+                    Supreme President Sunil Bhagat <br />
+                    <span className="text-zinc-400 text-base">
+                      Swaminarayan Ashram
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-secondary rounded-[3rem] p-6 md:p-10 text-white shadow-xl relative overflow-hidden flex flex-col justify-center">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16" />
+                <h3 className="text-2xl font-black mb-8 italic">
+                  Special Guests
+                </h3>
+                <ul className="space-y-6">
+                  {[
+                    {
+                      name: "Dr. Yogrishi Vishvketu",
+                      desc: "Founder, Akhand Yoga Institute",
+                    },
+                    { name: "Yogi Naveen Joshi", desc: "Renowned Yoga Expert" },
+                    { name: "Acharya Prasanna", desc: "Spiritual Leader" },
+                    { name: "Pinky Sluger", desc: "Expert from France" },
+                  ].map((guest, i) => (
+                    <li key={i} className="flex items-start gap-4 group">
+                      <div className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-150 transition-transform" />
+                      <div>
+                        <div className="font-bold text-lg">{guest.name}</div>
+                        <div className="text-white/60 text-sm">
+                          {guest.desc}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
 
-          {/* Registration Fees Section */}
-          <div>
-            <div className="bg-secondary/5 rounded-2xl shadow-sm border border-secondary/20 p-4 md:p-6 space-y-8">
-              <h2 className="text-2xl md:text-4xl font-bold text-zinc-900 mb-6 text-center">
-                Registration Fees
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {pricingTiers.map((tier, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-xl shadow-md border border-zinc-200 p-6 hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <h3 className="text-lg font-semibold text-zinc-900 mb-4 text-center min-h-[60px] flex items-center justify-center">
-                      {tier.type}
-                    </h3>
-                    <p className="text-2xl md:text-3xl font-black text-primary text-center">
-                      {tier.price}
+            {/* Story Card 4: Lighting the Lamp */}
+            <div className="bg-white rounded-[3rem] p-6 md:p-10 border border-zinc-100 shadow-sm overflow-hidden relative">
+              <div className="flex flex-col md:flex-row gap-12 items-center">
+                <div className="size-20 bg-zinc-950 rounded-2xl flex items-center justify-center shrink-0 shadow-2xl relative group">
+                  <div className="absolute inset-0 bg-primary/20 blur-2xl group-hover:blur-3xl transition-all" />
+                  <Sparkles className="w-10 h-10 text-primary relative z-10" />
+                </div>
+                <div className="flex-1 space-y-6">
+                  <h3 className="text-2xl md:text-3xl font-black text-zinc-900 leading-tight italic">
+                    Lighting the Eternal Lamp
+                  </h3>
+                  <p className="text-zinc-600 text-lg leading-relaxed">
+                    The auspicious program was inaugurated with the lighting of
+                    the lamp by NIH Chairman <strong>Dr. Vinod Kashyap</strong>,
+                    Patron <strong>Ravindra Singh Dawas</strong>,{" "}
+                    <strong>Dr. Mahendra Kumar Taneja</strong>,{" "}
+                    <strong>Acharya Chandrashekhar Shastri</strong>, and{" "}
+                    <strong>Shri Pushkar Mishra</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Story Card 5: Honors & Speakers */}
+            <div className="bg-zinc-950 rounded-[3.5rem] p-6 md:p-10 text-white shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent" />
+              </div>
+
+              <div className="relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
+                <div className="lg:w-1/3 space-y-8">
+                  <div className="w-16 h-1 bg-primary rounded-full" />
+                  <h3 className="text-3xl md:text-5xl font-black leading-tight tracking-tighter italic">
+                    Honors & <br />
+                    Recognition
+                  </h3>
+                  <p className="text-zinc-400 text-lg leading-loose font-medium">
+                    Yogacharyas, teachers, and Naturopaths making outstanding
+                    contributions were honored with <strong>Gold Medals</strong>{" "}
+                    and <strong>Mementos</strong>.
+                  </p>
+                </div>
+                <div className="lg:w-2/3">
+                  <h4 className="text-primary font-black uppercase tracking-[0.2em] text-sm mb-10">
+                    Distinguished Speakers
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-x-12 gap-y-6 text-zinc-300">
+                    {[
+                      "Dr-Govinda Kumar Trivedi",
+                      "Dr. Mahendra Kumar Taneja",
+                      "Dr. Shivam Mishra",
+                      "Dr. R.P. Singh",
+                      "Dr. Alka Gupta (Thailand)",
+                      "Mr. Pushkar Mishra",
+                      "Mr. Bhaskar Asthana",
+                      "Dr. Satyendra Misra",
+                      "Dr. Saraswati Kala",
+                      "Dr. Sanjay Srivastava",
+                      "Dr. Subhash Sarangi",
+                    ].map((speaker, i) => (
+                      <div key={i} className="flex items-center gap-3 group">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                        <span className="font-bold group-hover:text-white transition-colors">
+                          {speaker}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Story Card 6: Academic & Cultural Fusion */}
+            <div className="grid md:grid-cols-5 gap-8">
+              <div className="md:col-span-3 bg-white rounded-[3rem] p-6 md:p-10 border border-zinc-100 shadow-sm space-y-8 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-primary to-secondary transition-all" />
+                <div className="flex items-center gap-4 text-zinc-900 font-black text-2xl tracking-tight">
+                  <BookOpen className="w-8 h-8 text-primary" /> Scientific
+                  Excellence
+                </div>
+                <p className="text-zinc-600 text-lg leading-relaxed font-medium">
+                  Numerous research scholars presented their innovative research
+                  papers, adding academic depth to the holistic health summit.
+                </p>
+              </div>
+              <div className="md:col-span-2 bg-linear-to-br from-primary to-secondary rounded-[3rem] p-6 md:p-10 text-white shadow-xl flex flex-col justify-between group overflow-hidden">
+                <Music className="w-12 h-12 mb-8 group-hover:rotate-12 transition-transform duration-500" />
+                <div className="space-y-4">
+                  <h4 className="text-2xl font-black italic">
+                    Cultural Evening
+                  </h4>
+                  <p className="text-white/80 leading-relaxed font-medium">
+                    Dr. Smriti Vaghela presented{" "}
+                    <strong>&quot;Krishnapriya Meera&quot;</strong> and her team
+                    performed a soul-stirring Hanuman Chalisa.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Story Card 7: Global Participation */}
+            <div className="bg-secondary rounded-[3rem] p-6 md:p-10 text-white text-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-5 bg-[url('/images/pattern.png')] bg-repeat" />
+              <div className="relative z-10 space-y-10">
+                <div className="flex justify-center gap-4">
+                  {[Globe, Users, Heart].map((Icon, i) => (
+                    <Icon key={i} className="w-10 h-10 text-primary" />
+                  ))}
+                </div>
+                <h3 className="text-3xl md:text-5xl font-black italic">
+                  Delegates from 8+ Countries
+                </h3>
+                <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed font-medium">
+                  Netherlands, Romania, France, Germany, Thailand, Italy,
+                  Indonesia, and various parts of India.
+                </p>
+                <div className="inline-block px-10 py-6 bg-white/5 backdrop-blur-md rounded-4xl border border-white/10 mt-6 shadow-2xl">
+                  <p className="text-primary font-black text-2xl md:text-3xl tracking-tight">
+                    6:00 AM Daily Yoga @ Ganga Ghats
+                  </p>
+                  <p className="text-white/50 font-bold uppercase tracking-widest text-xs mt-2">
+                    followed by Evening Ganga Aarti
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Story Card 8: Closing & Gratitude */}
+            <div className="bg-white rounded-[4rem] p-6 md:p-10 border border-zinc-100 shadow-sm relative z-10 overflow-hidden">
+              <div className="absolute top-0 right-0 p-10 opacity-5">
+                <Quote className="w-64 h-64 rotate-180" />
+              </div>
+              <div className="max-w-3xl space-y-10 relative z-10">
+                <h3 className="text-3xl md:text-4xl font-black text-zinc-900 italic">
+                  Conclusion & Gratitude
+                </h3>
+                <div className="prose prose-xl prose-zinc max-w-none space-y-8 text-zinc-600 font-medium leading-relaxed">
+                  <p>
+                    At the closing ceremony,{" "}
+                    <strong>Mrs. Universe Namrata Shukla</strong> presented
+                    certificates and honored{" "}
+                    <strong>Dr. Pawan Chauhan (NIOS)</strong>, world-renowned{" "}
+                    <strong>Yogaguru Dhakaram Ji</strong>,{" "}
+                    <strong>Shri Pravendra Dahiya ji</strong>, and{" "}
+                    <strong>Dr. Rajeev Kumar</strong>.
+                  </p>
+                  <p>
+                    NIH Chairman <strong>Dr. Vinod Kashyap</strong> thanked all
+                    participants and expressed special gratitude to{" "}
+                    <strong>Dr. Ishwara Acharya (MDNIY)</strong> for logo
+                    support.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-8 pt-10">
+                  <div className="p-8 bg-zinc-50 rounded-[2.5rem] border border-zinc-100 group transition-all hover:bg-zinc-900 hover:text-white">
+                    <div className="text-4xl font-black text-primary mb-2">
+                      78+
+                    </div>
+                    <p className="text-sm font-bold uppercase tracking-widest text-zinc-400 group-hover:text-primary transition-colors">
+                      Seminars Organized
+                    </p>
+                    <p className="text-zinc-600 font-medium mt-4 group-hover:text-zinc-300">
+                      By NIH in the last five years, strengthening the global
+                      holistic community.
                     </p>
                   </div>
-                ))}
+                  <div className="p-8 bg-primary/5 rounded-[2.5rem] border border-primary/10 flex flex-col justify-center">
+                    <p className="text-zinc-800 font-bold leading-relaxed">
+                      &quot;Dr. Shivam Mishra, founder of SKM Yoga, provided
+                      unexpected support in making the event a success.&quot;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Final Section: Future Events integrated seamlessly */}
+            <div className="bg-zinc-950 rounded-[4rem] p-6 md:p-10 text-white relative overflow-hidden group">
+              <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+              <div className="relative z-10 flex flex-col items-center text-center space-y-12">
+                <div className="w-20 h-2 bg-primary rounded-full" />
+                <h3 className="text-4xl md:text-6xl font-black italic tracking-tight">
+                  The Journey Continues
+                </h3>
+
+                <div className="grid md:grid-cols-2 gap-12 w-full max-w-5xl text-left">
+                  <div className="bg-white/5 backdrop-blur-md p-10 rounded-[3rem] border border-white/5 space-y-6 hover:border-primary/50 transition-colors">
+                    <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary font-black text-xs uppercase tracking-widest rounded-full">
+                      April 25th - 29th
+                    </span>
+                    <h4 className="text-3xl font-black text-white">
+                      #Vietnam Conference
+                    </h4>
+                    <p className="text-zinc-400 text-lg font-medium leading-relaxed">
+                      Jointly organized with NIH and S.K.M. Yoga. We cordially
+                      invite you to join this international summit.
+                    </p>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-md p-6 md:p-10 rounded-[3rem] border border-white/5 space-y-6 hover:border-primary/50 transition-colors">
+                    <span className="inline-block px-4 py-1.5 bg-zinc-700 text-white font-black text-xs uppercase tracking-widest rounded-full">
+                      Dec 18th - 20th, 2026
+                    </span>
+                    <h4 className="text-3xl font-black text-white">
+                      Rishikesh Health Expo
+                    </h4>
+                    <p className="text-zinc-400 text-lg font-medium leading-relaxed">
+                      A grand international conference and health expo at the
+                      Shri Swaminarayan Ashram.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-12">
+                  <div className="text-zinc-500 font-bold uppercase tracking-[0.5em] text-sm mb-6">
+                    Institutional Mark
+                  </div>
+                  <div className="text-2xl md:text-4xl font-black tracking-tighter uppercase leading-none">
+                    National Institute of{" "}
+                    <span className="text-primary">Holistic Health</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
-      <VideoTestimonialsSection />
-
-      <section className="sm:py-16 py-12 bg-secondary overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center text-white space-y-6">
-            <h2 className="text-4xl md:text-5xl font-black">
-              <span className="text-primary italic">Register </span>Now
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed">
-              Secure your place at this transformative conference. Early bird
-              registration opens soon.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
-                {/* Download Brochure */}
-                <Link
-                  href="/pdfs/BROCHURE ICYH 26 copy new (2).pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                  className="inline-flex items-center justify-center gap-3"
-                  aria-label="Download Conference Brochure PDF"
-                >
-                  <Download className="w-6 h-6" />
-                  <span>Download Brochure</span>
-                </Link>
-              </button>
-              <button className="bg-white hover:bg-white/90 text-secondary px-10 py-4 rounded-full font-black capitalize shadow-lg transition-colors duration-300 cursor-pointer">
-                <Link
-                  href="https://forms.gle/DLCwLUzFjkrYYGMo8"
-                  target="_blank"
-                >
-                  Register
-                </Link>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NewsCuttingSection />
+      <GallerySection />
     </>
   );
 }

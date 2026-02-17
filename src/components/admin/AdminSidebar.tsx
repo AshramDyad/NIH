@@ -37,13 +37,22 @@ const menuItems = [
     label: "Video Testimonials",
   },
   { href: "/admin/active-members", icon: Users, label: "Active Members" },
+  {
+    href: "/admin/international-gallery",
+    icon: ImageIcon,
+    label: "Int. Gallery",
+  },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   {
     href: "/admin/members-institutions",
     icon: Building2,
     label: "Institution Members",
   },
-  { href: "/admin/associate-centers", icon: Building2, label: "Associate Centers" },
+  {
+    href: "/admin/associate-centers",
+    icon: Building2,
+    label: "Associate Centers",
+  },
   { href: "/admin/events", icon: Calendar, label: "Events" },
   { href: "/admin/analytics", icon: BarChart3, label: "Analytics" },
   { href: "/admin/settings", icon: Settings, label: "Settings" },
