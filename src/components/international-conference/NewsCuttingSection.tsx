@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Modal } from "@/components/ui/Modal";
-import { Newspaper, Eye, X } from "lucide-react";
+import { Newspaper, Eye } from "lucide-react";
 
 /**
  * News Cutting images provided by the user (new-1 to new-6) with specific titles

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Modal } from "@/components/ui/Modal";
-import { Image as ImageIcon, Eye, X, Camera } from "lucide-react";
+import Image from "next/image";
+import { Eye, Camera } from "lucide-react";
 import {
   getGalleryImages,
   type GalleryImage,
@@ -64,9 +64,12 @@ export default function GallerySection() {
                 className="group relative break-inside-avoid rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.image_url}
                   alt={image.caption || "Gallery image"}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -98,9 +101,11 @@ export default function GallerySection() {
           maxWidth="5xl"
         >
           <div className="relative w-full min-h-[50vh] md:h-[80vh] flex flex-col items-center justify-center bg-zinc-100/50 rounded-2xl overflow-hidden">
-            <img
+            <Image
               src={selectedImage.image_url}
               alt={selectedImage.caption || "Full view"}
+              width={1200}
+              height={800}
               className="max-w-full max-h-full object-contain p-4 md:p-8"
             />
             {selectedImage.caption && (
