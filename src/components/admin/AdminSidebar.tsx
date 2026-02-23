@@ -42,6 +42,11 @@ const menuItems = [
     icon: ImageIcon,
     label: "Int. Gallery",
   },
+  {
+    href: "/admin/nih-gallery",
+    icon: ImageIcon,
+    label: "NIH Gallery",
+  },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   {
     href: "/admin/members-institutions",

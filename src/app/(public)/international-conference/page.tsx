@@ -33,7 +33,7 @@ export default function InternationalConferencePremiumReportPage() {
           src="/images/632419928_10232166932288541_6839320354689223216_n.jpg"
           alt="International Conference on Yoga and Holistic Health"
           fill
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center opacity-60"
           priority
           unoptimized
         />
