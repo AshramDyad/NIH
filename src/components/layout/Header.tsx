@@ -2,7 +2,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { User, FileText, Calendar, Menu, X, ChevronRight, ChevronLeft, UserPlus } from "lucide-react";
+import {
+  User,
+  FileText,
+  Calendar,
+  Menu,
+  X,
+  ChevronRight,
+  ChevronLeft,
+  UserPlus,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Simple type definitions for mobile menu
@@ -17,6 +26,7 @@ interface MobileMenuItem {
   id: string;
   name: string;
   href?: string;
+  badge?: string;
   hasChildren?: true;
   children?: readonly MobileMenuChild[];
 }
@@ -24,21 +34,21 @@ interface MobileMenuItem {
 // Animation variants for premium mobile menu
 const overlayVariants = {
   closed: { opacity: 0, backdropFilter: "blur(0px)" },
-  open: { opacity: 1, backdropFilter: "blur(8px)" }
+  open: { opacity: 1, backdropFilter: "blur(8px)" },
 };
 
 const menuVariants = {
   closed: { x: "100%", opacity: 0 },
-  open: { x: "0%", opacity: 1 }
+  open: { x: "0%", opacity: 1 },
 };
 
 const containerVariants = {
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
   closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  }
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
 };
 
 const itemVariants = {
@@ -46,29 +56,32 @@ const itemVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      x: { stiffness: 1000, velocity: -100 }
-    }
+      x: { stiffness: 1000, velocity: -100 },
+    },
   },
   closed: {
     x: 50,
     opacity: 0,
     transition: {
-      x: { stiffness: 1000 }
-    }
-  }
+      x: { stiffness: 1000 },
+    },
+  },
 };
 
 const subMenuVariants = {
   closed: { x: "100%" },
-  open: { x: "0%" }
+  open: { x: "0%" },
 };
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
-  const [activeNestedSubMenu, setActiveNestedSubMenu] = useState<string | null>(null);
+  const [activeNestedSubMenu, setActiveNestedSubMenu] = useState<string | null>(
+    null,
+  );
   const [hoveredBtn, setHoveredBtn] = useState<string | null>(null);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,18 +94,69 @@ const Header = () => {
   // Body scroll lock when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isMenuOpen]);
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Activities", href: "/activities" },
-    { name: "Careers", href: "/careers" },
+    {
+      name: "Activities",
+      href: "#",
+      badge: "New",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: "Projects",
+          href: "/activities/projects",
+          colorClass:
+            "bg-white hover:bg-[#ffebee] text-gray-700 hover:text-[#b71c1c] hover:border-[#ef9a9a]",
+        },
+        {
+          name: "Franchise",
+          href: "/activities/franchise",
+          colorClass:
+            "bg-white hover:bg-[#e3f2fd] text-gray-700 hover:text-[#0d47a1] hover:border-[#90caf9]",
+        },
+        {
+          name: "Training Programme",
+          href: "/activities/training-programme",
+          colorClass:
+            "bg-white hover:bg-[#e8f5e9] text-gray-700 hover:text-[#1b5e20] hover:border-[#a5d6a7]",
+        },
+        {
+          name: "Internship",
+          href: "/activities/internship",
+          colorClass:
+            "bg-white hover:bg-[#fff8e1] text-gray-700 hover:text-[#f57f17] hover:border-[#ffe082]",
+        },
+        {
+          name: "Volunteership",
+          href: "/activities/volunteership",
+          colorClass:
+            "bg-white hover:bg-[#ffebee] text-gray-700 hover:text-[#b71c1c] hover:border-[#ef9a9a]",
+        },
+        {
+          name: "NIH Events",
+          href: "/activities/events",
+          colorClass:
+            "bg-white hover:bg-[#f3e5f5] text-gray-700 hover:text-[#4a148c] hover:border-[#ce93d8]",
+        },
+        {
+          name: "Retreat Programmes",
+          href: "/activities/retreat-programmes",
+          colorClass:
+            "bg-white hover:bg-[#fce4ec] text-gray-700 hover:text-[#880e4f] hover:border-[#f48fb1]",
+        },
+      ],
+    },
+    { name: "Careers", href: "/careers", badge: "New" },
   ];
 
   const ctaButtons = [
@@ -102,30 +166,40 @@ const Header = () => {
       icon: <User size={18} />,
       hasDropdown: true,
       dropdownItems: [
-        { name: "Membership form", href: "https://forms.gle/gyXBhDGFnFX9vkmS7", isExternal: true },
+        {
+          name: "Membership form",
+          href: "https://forms.gle/gyXBhDGFnFX9vkmS7",
+          isExternal: true,
+        },
         { name: "Active Members", href: "/members/active" },
         { name: "Associate Centre of Members", href: "/members/institutions" },
         { name: "Lifetime Members", href: "/members/lifetime" },
-        { name: "Registered Yoga/Naturopathy Professional Members", href: "/members/registered-yoga-naturopathy-professional" },
-        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" },
-      ]
+        {
+          name: "Registered Yoga/Naturopathy Professional Members",
+          href: "/members/registered-yoga-naturopathy-professional",
+        },
+        {
+          name: "Yoga/Naturopathy Professional Members",
+          href: "/members/yoga-naturopathy-professional",
+        },
+      ],
     },
     {
       name: "Course Brochure",
       href: "/pdfs/brochure-in-sequence-2025.pdf",
       icon: <FileText size={18} />,
-      isExternal: true
+      isExternal: true,
     },
     {
       name: "Events",
       href: "#",
-      icon: <Calendar size={18} />
+      icon: <Calendar size={18} />,
     },
     {
       name: "Join us",
       href: "https://forms.gle/DEajoyPQMDhhh1tC9",
       icon: <UserPlus size={18} />,
-      isExternal: true
+      isExternal: true,
     },
   ];
 
@@ -142,9 +216,12 @@ const Header = () => {
         { name: "Secretary Column", href: "/about/secretary" },
         { name: "Central Council Board", href: "/about/central-council-board" },
         { name: "Aims and Objectives", href: "/about/aims" },
-        { name: "Course Brochure", href: "/pdfs/brochure-in-sequence-2025.pdf" },
+        {
+          name: "Course Brochure",
+          href: "/pdfs/brochure-in-sequence-2025.pdf",
+        },
         { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "#" },
-      ]
+      ],
     },
     {
       id: "members",
@@ -154,31 +231,41 @@ const Header = () => {
         { name: "NIH Active Members", href: "/members/active" },
         { name: "Lifetime Members", href: "/members/lifetime" },
         { name: "Associate Centre of Members", href: "/members/institutions" },
-        { name: "Registered Yoga/Naturopathy Professional Members", href: "/members/registered-yoga-naturopathy-professional" },
-        { name: "Yoga/Naturopathy Professional Members", href: "/members/yoga-naturopathy-professional" }
-      ]
+        {
+          name: "Registered Yoga/Naturopathy Professional Members",
+          href: "/members/registered-yoga-naturopathy-professional",
+        },
+        {
+          name: "Yoga/Naturopathy Professional Members",
+          href: "/members/yoga-naturopathy-professional",
+        },
+      ],
     },
     {
       id: "activities",
       name: "ACTIVITIES",
+      badge: "New",
       hasChildren: true,
       children: [
-        { name: "Projects", href: "#" },
-        { name: "Franchise", href: "#" },
-        { name: "Training Progamme", href: "#" },
-        { name: "Internship", href: "#" },
-        { name: "Volunteership", href: "#" },
-        { name: "NIH Events", href: "#" },
-        { name: "Retreat Programmes", href: "#" }
-      ]
+        { name: "Projects", href: "/activities/projects" },
+        { name: "Franchise", href: "/activities/franchise" },
+        { name: "Training Programme", href: "/activities/training-programme" },
+        { name: "Internship", href: "/activities/internship" },
+        { name: "Volunteership", href: "/activities/volunteership" },
+        { name: "NIH Events", href: "/activities/events" },
+        { name: "Retreat Programmes", href: "/activities/retreat-programmes" },
+      ],
     },
     {
       id: "membership",
       name: "MEMBERSHIP",
       hasChildren: true,
       children: [
-        { name: "Become NIH Member", href: "https://forms.gle/gyXBhDGFnFX9vkmS7" }
-      ]
+        {
+          name: "Become NIH Member",
+          href: "https://forms.gle/gyXBhDGFnFX9vkmS7",
+        },
+      ],
     },
     {
       id: "media",
@@ -188,12 +275,16 @@ const Header = () => {
         { name: "Photo Gallery", href: "#" },
         { name: "Achievements", href: "#" },
         { name: "Video Gallery", href: "#" },
-        { name: "Media Coverage", href: "#" }
-      ]
+        { name: "Media Coverage", href: "#" },
+      ],
     },
-    { id: "join-us", name: "JOIN US", href: "https://forms.gle/DEajoyPQMDhhh1tC9" },
-    { id: "careers", name: "CAREERS", href: "#" },
-    { id: "contact-us", name: "CONTACT US", href: "/contact" }
+    {
+      id: "join-us",
+      name: "JOIN US",
+      href: "https://forms.gle/DEajoyPQMDhhh1tC9",
+    },
+    { id: "careers", name: "CAREERS", href: "#", badge: "New" },
+    { id: "contact-us", name: "CONTACT US", href: "/contact" },
   ] as const;
 
   return (
@@ -224,13 +315,58 @@ const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden xl:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <Link
+                <div
                   key={link.name}
-                  href={link.href}
-                  className="font-medium text-black"
+                  className="relative h-full flex items-center"
+                  onMouseEnter={() =>
+                    link.hasDropdown && setHoveredNav(link.name)
+                  }
+                  onMouseLeave={() => link.hasDropdown && setHoveredNav(null)}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className="font-medium text-black py-8 flex items-center gap-1"
+                  >
+                    {link.name}
+                    {link.badge && (
+                      <span className="relative flex items-center justify-center -mt-3">
+                        <span className="relative inline-flex rounded-full bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 uppercase tracking-widest shadow-sm shadow-red-500/30">
+                          {link.badge}
+                        </span>
+                      </span>
+                    )}
+                  </Link>
+
+                  {/* Dropdown Menu for Nav Links */}
+                  {link.hasDropdown && (
+                    <AnimatePresence>
+                      {hoveredNav === link.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-60"
+                        >
+                          <div className="bg-white rounded-2xl p-3 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] min-w-64 border border-secondary/10">
+                            <div className="flex flex-col gap-1.5">
+                              {link.dropdownItems?.map((item) => (
+                                <Link
+                                  key={item.name}
+                                  href={item.href}
+                                  className={`flex items-center justify-between px-5 py-3.5 rounded-xl font-bold transition-all duration-300 border border-transparent ${item.colorClass || "text-secondary hover:bg-primary/10 hover:border-primary/30"}`}
+                                  onClick={() => setHoveredNav(null)}
+                                >
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
               ))}
             </nav>
             {/* Right side buttons */}
@@ -239,7 +375,9 @@ const Header = () => {
                 <div
                   key={btn.name}
                   className="relative"
-                  onMouseEnter={() => btn.hasDropdown && setHoveredBtn(btn.name)}
+                  onMouseEnter={() =>
+                    btn.hasDropdown && setHoveredBtn(btn.name)
+                  }
                   onMouseLeave={() => btn.hasDropdown && setHoveredBtn(null)}
                 >
                   {btn.hasDropdown ? (
@@ -267,8 +405,14 @@ const Header = () => {
                                   <div key={item.name}>
                                     <Link
                                       href={item.href}
-                                      target={item.isExternal ? "_blank" : undefined}
-                                      rel={item.isExternal ? "noopener noreferrer" : undefined}
+                                      target={
+                                        item.isExternal ? "_blank" : undefined
+                                      }
+                                      rel={
+                                        item.isExternal
+                                          ? "noopener noreferrer"
+                                          : undefined
+                                      }
                                       className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-secondary hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-200"
                                     >
                                       {item.name}
@@ -283,16 +427,28 @@ const Header = () => {
                     </>
                   ) : (
                     <>
-                      {btn.href && (btn.isExternal || btn.href.endsWith(".pdf")) ? (
+                      {btn.href &&
+                      (btn.isExternal || btn.href.endsWith(".pdf")) ? (
                         <Link
                           href={btn.href}
-                          target={btn.isExternal || btn.href.endsWith(".pdf") ? "_blank" : undefined}
-                          rel={btn.isExternal || btn.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
-                          prefetch={btn.href.endsWith(".pdf") ? false : undefined}
-                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${btn.name === "Membership"
-                            ? "bg-primary text-white hover:bg-opacity-90"
-                            : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
-                            }`}
+                          target={
+                            btn.isExternal || btn.href.endsWith(".pdf")
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            btn.isExternal || btn.href.endsWith(".pdf")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          prefetch={
+                            btn.href.endsWith(".pdf") ? false : undefined
+                          }
+                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${
+                            btn.name === "Membership"
+                              ? "bg-primary text-white hover:bg-opacity-90"
+                              : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                          }`}
                         >
                           {btn.icon}
                           {btn.name}
@@ -300,10 +456,11 @@ const Header = () => {
                       ) : (
                         <Link
                           href={btn.href}
-                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${btn.name === "Membership"
-                            ? "bg-primary text-white hover:bg-opacity-90"
-                            : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
-                            }`}
+                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${
+                            btn.name === "Membership"
+                              ? "bg-primary text-white hover:bg-opacity-90"
+                              : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                          }`}
                         >
                           {btn.icon}
                           {btn.name}
@@ -322,11 +479,7 @@ const Header = () => {
                 aria-expanded={isMenuOpen}
               >
                 <span className="sr-only">Open main menu</span>
-                {isMenuOpen ? (
-                  <X size={24} />
-                ) : (
-                  <Menu size={24} />
-                )}
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
@@ -343,7 +496,11 @@ const Header = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+              onClick={() => {
+                setIsMenuOpen(false);
+                setActiveSubMenu(null);
+                setActiveNestedSubMenu(null);
+              }}
               className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm"
               aria-hidden="true"
             />
@@ -371,11 +528,18 @@ const Header = () => {
                   className="h-10 w-auto"
                 />
                 <button
-                  onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setActiveSubMenu(null);
+                    setActiveNestedSubMenu(null);
+                  }}
                   className="text-secondary hover:text-primary transition-colors p-2 rounded-full hover:bg-gray-100 group"
                   aria-label="Close menu"
                 >
-                  <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                  <X
+                    size={24}
+                    className="group-hover:rotate-90 transition-transform duration-300"
+                  />
                 </button>
               </div>
 
@@ -397,28 +561,51 @@ const Header = () => {
                     >
                       {item.href ? (
                         <>
-                          {(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? (
+                          {item.href.startsWith("http") ||
+                          item.href.endsWith(".pdf") ? (
                             <Link
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
                               prefetch={false}
-                              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                              className="flex items-center group py-4 border-b border-white/5"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setActiveSubMenu(null);
+                                setActiveNestedSubMenu(null);
+                              }}
+                              className="flex items-center group py-4 border-b border-white/5 gap-2"
                             >
                               <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
                                 {item.name}
                               </span>
+                              {item.badge && (
+                                <span className="relative flex items-center justify-center -mt-3">
+                                  <span className="relative inline-flex rounded-full bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 uppercase tracking-widest shadow-sm shadow-red-500/30">
+                                    {item.badge}
+                                  </span>
+                                </span>
+                              )}
                             </Link>
                           ) : (
                             <Link
                               href={item.href}
-                              onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                              className="flex items-center group py-4 border-b border-white/5"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setActiveSubMenu(null);
+                                setActiveNestedSubMenu(null);
+                              }}
+                              className="flex items-center group py-4 border-b border-white/5 gap-2"
                             >
                               <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
                                 {item.name}
                               </span>
+                              {item.badge && (
+                                <span className="relative flex items-center justify-center -mt-3">
+                                  <span className="relative inline-flex rounded-full bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 uppercase tracking-widest shadow-sm shadow-red-500/30">
+                                    {item.badge}
+                                  </span>
+                                </span>
+                              )}
                             </Link>
                           )}
                         </>
@@ -427,11 +614,23 @@ const Header = () => {
                           onClick={() => setActiveSubMenu(item.id)}
                           className="w-full flex items-center justify-between group py-4 border-b border-white/5"
                         >
-                          <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
-                            {item.name}
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-white/90 group-hover:text-primary font-bold text-base tracking-wider transition-colors uppercase">
+                              {item.name}
+                            </span>
+                            {item.badge && (
+                              <span className="relative flex items-center justify-center -mt-3">
+                                <span className="relative inline-flex rounded-full bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 uppercase tracking-widest shadow-sm shadow-red-500/30">
+                                  {item.badge}
+                                </span>
+                              </span>
+                            )}
+                          </div>
                           <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                            <ChevronRight size={18} className="text-white/40 group-hover:text-primary" />
+                            <ChevronRight
+                              size={18}
+                              className="text-white/40 group-hover:text-primary"
+                            />
                           </div>
                         </button>
                       )}
@@ -474,9 +673,14 @@ const Header = () => {
                         <ChevronLeft size={20} />
                       </button>
                       <div className="flex flex-col">
-                        <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">Explore</span>
+                        <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">
+                          Explore
+                        </span>
                         <span className="text-white font-bold text-lg tracking-tight leading-none">
-                          {mobileMenuItems.find(i => i.id === activeSubMenu)?.name}
+                          {
+                            mobileMenuItems.find((i) => i.id === activeSubMenu)
+                              ?.name
+                          }
                         </span>
                       </div>
                     </div>
@@ -489,53 +693,69 @@ const Header = () => {
                         animate="open"
                         className="space-y-2 px-4"
                       >
-                        {mobileMenuItems.find(i => i.id === activeSubMenu)?.children?.map((subItem: MobileMenuChild) => (
-                          <motion.div
-                            key={subItem.name}
-                            variants={itemVariants}
-                            whileHover={{ x: 5 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            {subItem.hasChildren ? (
-                              <button
-                                onClick={() => setActiveNestedSubMenu(subItem.name)}
-                                className="w-full group flex items-center justify-between py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
-                              >
-                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                  {subItem.name}
-                                </span>
-                                <ChevronRight size={18} className="text-white/40 group-hover:text-primary" />
-                              </button>
-                            ) : (
-                              <>
-                                {(subItem.href?.startsWith("http") || subItem.href?.endsWith(".pdf")) ? (
-                                  <Link
-                                    href={subItem.href || "#"}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    prefetch={false}
-                                    onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                                    className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
-                                  >
-                                    <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                      {subItem.name}
-                                    </span>
-                                  </Link>
-                                ) : (
-                                  <Link
-                                    href={subItem.href || "#"}
-                                    onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                                    className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
-                                  >
-                                    <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                      {subItem.name}
-                                    </span>
-                                  </Link>
-                                )}
-                              </>
-                            )}
-                          </motion.div>
-                        ))}
+                        {mobileMenuItems
+                          .find((i) => i.id === activeSubMenu)
+                          ?.children?.map((subItem: MobileMenuChild) => (
+                            <motion.div
+                              key={subItem.name}
+                              variants={itemVariants}
+                              whileHover={{ x: 5 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              {subItem.hasChildren ? (
+                                <button
+                                  onClick={() =>
+                                    setActiveNestedSubMenu(subItem.name)
+                                  }
+                                  className="w-full group flex items-center justify-between py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                >
+                                  <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                    {subItem.name}
+                                  </span>
+                                  <ChevronRight
+                                    size={18}
+                                    className="text-white/40 group-hover:text-primary"
+                                  />
+                                </button>
+                              ) : (
+                                <>
+                                  {subItem.href?.startsWith("http") ||
+                                  subItem.href?.endsWith(".pdf") ? (
+                                    <Link
+                                      href={subItem.href || "#"}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      prefetch={false}
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setActiveSubMenu(null);
+                                        setActiveNestedSubMenu(null);
+                                      }}
+                                      className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                    >
+                                      <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                        {subItem.name}
+                                      </span>
+                                    </Link>
+                                  ) : (
+                                    <Link
+                                      href={subItem.href || "#"}
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setActiveSubMenu(null);
+                                        setActiveNestedSubMenu(null);
+                                      }}
+                                      className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                    >
+                                      <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                        {subItem.name}
+                                      </span>
+                                    </Link>
+                                  )}
+                                </>
+                              )}
+                            </motion.div>
+                          ))}
                       </motion.div>
                     </div>
                   </motion.div>
@@ -562,7 +782,9 @@ const Header = () => {
                         <ChevronLeft size={20} />
                       </button>
                       <div className="flex flex-col">
-                        <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">Explore</span>
+                        <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">
+                          Explore
+                        </span>
                         <span className="text-white font-bold text-lg tracking-tight leading-none">
                           {activeNestedSubMenu}
                         </span>
@@ -579,27 +801,46 @@ const Header = () => {
                       >
                         {mobileMenuItems
                           .find((i: MobileMenuItem) => i.id === activeSubMenu)
-                          ?.children?.find((c: MobileMenuChild) => c.name === activeNestedSubMenu)
-                          ?.children?.map((nestedItem: { name: string; href: string }) => (
-                            <motion.div
-                              key={nestedItem.name}
-                              variants={itemVariants}
-                              whileHover={{ x: 5 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              <Link
-                                href={nestedItem.href}
-                                target={(nestedItem.href.startsWith("http") || nestedItem.href.endsWith(".pdf")) ? "_blank" : undefined}
-                                rel={(nestedItem.href.startsWith("http") || nestedItem.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
-                                onClick={() => { setIsMenuOpen(false); setActiveSubMenu(null); setActiveNestedSubMenu(null); }}
-                                className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                          ?.children?.find(
+                            (c: MobileMenuChild) =>
+                              c.name === activeNestedSubMenu,
+                          )
+                          ?.children?.map(
+                            (nestedItem: { name: string; href: string }) => (
+                              <motion.div
+                                key={nestedItem.name}
+                                variants={itemVariants}
+                                whileHover={{ x: 5 }}
+                                whileTap={{ scale: 0.98 }}
                               >
-                                <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
-                                  {nestedItem.name}
-                                </span>
-                              </Link>
-                            </motion.div>
-                          ))}
+                                <Link
+                                  href={nestedItem.href}
+                                  target={
+                                    nestedItem.href.startsWith("http") ||
+                                    nestedItem.href.endsWith(".pdf")
+                                      ? "_blank"
+                                      : undefined
+                                  }
+                                  rel={
+                                    nestedItem.href.startsWith("http") ||
+                                    nestedItem.href.endsWith(".pdf")
+                                      ? "noopener noreferrer"
+                                      : undefined
+                                  }
+                                  onClick={() => {
+                                    setIsMenuOpen(false);
+                                    setActiveSubMenu(null);
+                                    setActiveNestedSubMenu(null);
+                                  }}
+                                  className="group flex items-center py-3 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                                >
+                                  <span className="text-white/70 group-hover:text-white font-medium text-base transition-colors">
+                                    {nestedItem.name}
+                                  </span>
+                                </Link>
+                              </motion.div>
+                            ),
+                          )}
                       </motion.div>
                     </div>
                   </motion.div>
