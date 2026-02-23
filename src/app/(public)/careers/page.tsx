@@ -1,30 +1,20 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import HeroSection from "@/components/careers/HeroSection";
+import DepartmentsGrid from "@/components/careers/DepartmentsGrid";
+import InternshipsSection from "@/components/careers/InternshipsSection";
+import BenefitsSection from "@/components/careers/BenefitsSection";
+import RecruitmentProcess from "@/components/careers/RecruitmentProcess";
+import CallToAction from "@/components/careers/CallToAction";
 
 export default function CareersPage() {
-    return (
-        <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-            <div className="bg-white p-8 rounded-2xl shadow-lg max-w-2xl text-center space-y-6">
-                <div className="relative w-24 h-24 mx-auto mb-4">
-                    <Image
-                        src="https://pub-81805ff84c1645c1a62c73f691611c86.r2.dev/images/logo.png"
-                        alt="NIH Logo"
-                        fill
-                        className="object-contain"
-                        unoptimized
-                    />
-                </div>
-                <h1 className="text-3xl font-bold text-gray-900">Careers at NIH</h1>
-                <p className="text-gray-600 text-lg">
-                    We are currently building our careers portal. Please check back soon for exciting opportunities to join our team.
-                </p>
-                <div className="pt-4">
-                    <Link href="/" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-colors">
-                        Return Home
-                    </Link>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <main className="min-h-screen bg-gray-50 flex flex-col">
+      <HeroSection />
+      <DepartmentsGrid />
+      <InternshipsSection />
+      <BenefitsSection />
+      <RecruitmentProcess />
+      <CallToAction />
+    </main>
+  );
 }
