@@ -7,7 +7,7 @@ export default function BenefitsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-tight">
-            Benefits of Working with NIHH
+            Benefits of Working with NIH
           </h2>
           <div className="w-24 h-1.5 bg-primary rounded-full mx-auto mt-6 mb-6" />
         </div>

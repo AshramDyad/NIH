@@ -19,7 +19,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-8 font-bold tracking-wide text-sm shadow-sm"
             >
               <Briefcase size={16} />
-              Careers at NIHH
+              Careers at NIH
             </motion.div>
 
             <motion.h1

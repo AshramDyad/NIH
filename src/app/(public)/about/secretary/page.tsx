@@ -93,9 +93,8 @@ export default function SecretaryPage() {
                   This year, we have focused on strengthening our core
                   activities, expanding our services, and enhancing the impact
                   of our programs. We have seen remarkable progress in
-                  International Conference on Yoga & Health, held on 26 DEC-
-                  2025, which enabled the Health check-up camp and we are more
-                  committed than ever to continuing this work.
+                  International Conference on Yoga & Holistic Health 2026, held
+                  on 07-08 February, 2026.
                 </p>
 
                 <p className="sm:text-lg text-base">
@@ -116,8 +115,9 @@ export default function SecretaryPage() {
                 </p>
 
                 <p className="sm:text-lg text-base">
-                  We have seen remarkable progress in International Conference
-                  on Yoga & Holistic Health 2026, held on 07-08 February, 2026
+                  I would also like to extend my sincere gratitude to all
+                  members for your continued trust and support. Together, we
+                  will continue to make a positive difference.
                 </p>
 
                 <div className="pt-5 border-t border-primary/10">
