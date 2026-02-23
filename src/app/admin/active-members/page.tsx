@@ -39,7 +39,6 @@ export default function AdminActiveMembersPage() {
         memberNumber: "",
         imageUrl: "",
     });
-    const [uploadResult, setUploadResult] = useState<UploadResult | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Fetch members on mount
@@ -55,18 +54,6 @@ export default function AdminActiveMembersPage() {
                 memberNumber: editingMember.member_number,
                 imageUrl: editingMember.image_url,
             });
-            // Set upload result to show existing image preview
-            if (editingMember.image_url) {
-                setUploadResult({
-                    success: true,
-                    fileUrl: editingMember.image_url,
-                    fileKey: editingMember.image_url,
-                    fileName: editingMember.name,
-                    fileSize: 0,
-                    fileType: "image",
-                    uploadedAt: editingMember.created_at,
-                });
-            }
             setIsModalOpen(true);
         }
     }, [editingMember]);
@@ -125,7 +112,6 @@ export default function AdminActiveMembersPage() {
     };
 
     const handleUploadSuccess = (result: UploadResult) => {
-        setUploadResult(result);
         setFormData((prev) => ({ ...prev, imageUrl: result.fileUrl }));
     };
 
@@ -162,7 +148,6 @@ export default function AdminActiveMembersPage() {
                     memberNumber: "",
                     imageUrl: "",
                 });
-                setUploadResult(null);
                 startTransition(() => {
                     fetchMembers();
                 });
@@ -198,7 +183,6 @@ export default function AdminActiveMembersPage() {
             memberNumber: "",
             imageUrl: "",
         });
-        setUploadResult(null);
     };
 
     return (
