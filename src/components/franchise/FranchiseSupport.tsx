@@ -70,7 +70,7 @@ export default function FranchiseSupport() {
             </h2>
           </div>
           <p className="text-lg md:text-xl text-gray-500 font-medium max-w-lg md:pb-2">
-            We don't just hand you a brand name; we grant you access to an
+            We don&apos;t just hand you a brand name; we grant you access to an
             entire proven ecosystem. Experience end-to-end guidance tailored for
             growth.
           </p>
