@@ -13,15 +13,8 @@ import { getGalleryImages } from "@/app/actions/nih-gallery";
 const HolisticImpact = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [galleryImages, setGalleryImages] = useState<string[]>([
-    "/images/banner-5.jpg",
-    "/images/banner-6.jpg",
-    "/images/banner-7.jpg",
-    "/images/banner-8.jpg",
-    "/images/banner-9.jpg",
-    "/images/banner-10.jpg",
-    "/images/banner-11.jpg",
-  ]);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -30,9 +23,31 @@ const HolisticImpact = () => {
         if (images && images.length > 0) {
           setGalleryImages(images.map((img) => img.image_url));
           setCurrentSlide(0);
+        } else {
+          // If no dynamic images, fallback to default static images
+          setGalleryImages([
+            "/images/banner-5.jpg",
+            "/images/banner-6.jpg",
+            "/images/banner-7.jpg",
+            "/images/banner-8.jpg",
+            "/images/banner-9.jpg",
+            "/images/banner-10.jpg",
+            "/images/banner-11.jpg",
+          ]);
         }
       } catch (error) {
         console.error("Failed to load dynamic NIH gallery images:", error);
+        setGalleryImages([
+          "/images/banner-5.jpg",
+          "/images/banner-6.jpg",
+          "/images/banner-7.jpg",
+          "/images/banner-8.jpg",
+          "/images/banner-9.jpg",
+          "/images/banner-10.jpg",
+          "/images/banner-11.jpg",
+        ]);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchImages();
@@ -129,25 +144,48 @@ const HolisticImpact = () => {
                   NIH Gallery
                 </h3>
                 <div className="flex gap-2">
-                  {galleryImages.map((_, idx) => (
-                    <div
+                  {isLoading
+                    ? [0, 1, 2, 3].map((_, idx) => (
+                        <div
+                          key={idx}
+                          className="h-1.5 w-2 bg-gray-200 rounded-full animate-pulse"
+                        />
+                      ))
+                    : galleryImages.map((_, idx) => (
+                        <div
+                          key={idx}
+                          className={`h-1.5 transition-all duration-500 rounded-full ${currentSlide === idx ? "w-6 bg-primary" : "w-2 bg-gray-200"}`}
+                        />
+                      ))}
+                </div>
+              </div>
+
+              {isLoading ? (
+                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden shadow-sm bg-gray-200 animate-pulse flex items-center justify-center">
+                  <div className="h-12 w-12 text-gray-400 opacity-50">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden shadow-sm">
+                  {galleryImages.map((img, idx) => (
+                    <Image
                       key={idx}
-                      className={`h-1.5 transition-all duration-500 rounded-full ${currentSlide === idx ? "w-6 bg-primary" : "w-2 bg-gray-200"}`}
+                      src={img}
+                      alt={`Slide ${idx + 1}`}
+                      fill
+                      className={`object-cover transition-opacity duration-1000 ${currentSlide === idx ? "opacity-100" : "opacity-0"}`}
                     />
                   ))}
                 </div>
-              </div>
-              <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden shadow-sm">
-                {galleryImages.map((img, idx) => (
-                  <Image
-                    key={idx}
-                    src={img}
-                    alt={`Slide ${idx + 1}`}
-                    fill
-                    className={`object-cover transition-opacity duration-1000 ${currentSlide === idx ? "opacity-100" : "opacity-0"}`}
-                  />
-                ))}
-              </div>
+              )}
               <div className="mt-10 flex flex-col items-center">
                 <button
                   onClick={scrollToHero}
