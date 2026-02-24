@@ -60,7 +60,7 @@ export default function NIHNumbers() {
         <section className="sm:py-16 py-12 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center">
-                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">NIH In <span className="text-secondary italic">Numbers</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">NIH In <span className="text-primary">Numbers</span></h2>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 md:gap-8">

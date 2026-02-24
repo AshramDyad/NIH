@@ -128,7 +128,7 @@ const HolisticImpact = () => {
                 </Link>
                 <button
                   onClick={() => setIsVideoOpen(true)}
-                  className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:bg-secondary transition-colors active:scale-95 cursor-pointer"
+                  className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20 transition-colors cursor-pointer"
                 >
                   Watch Video
                 </button>
@@ -212,9 +212,9 @@ const HolisticImpact = () => {
                     isExternal: true,
                   },
                   {
-                    title: "International Conference",
+                    title: "Vietnam Conference",
                     color: "hover:bg-[#D4DC82]",
-                    href: "/international-conference",
+                    href: "/vietnam-conference",
                     isExternal: false,
                   },
                   {

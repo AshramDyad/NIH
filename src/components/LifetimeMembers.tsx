@@ -168,7 +168,7 @@ const LifetimeMembers = () => {
             <div className="max-w-7xl mx-auto px-4">
                 {/* Header Section */}
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">Our Lifetime <span className="text-secondary italic">Members</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-black text-zinc-900">Our Lifetime <span className="text-primary">Members</span></h2>
                     <p className="text-gray-600 text-lg md:text-xl font-medium max-w-4xl mx-auto leading-relaxed">
                         NIH Honours our Lifetime Members.<br />
                         These are our dedicated members who have made significant contributions to Holistic Health.<br />
