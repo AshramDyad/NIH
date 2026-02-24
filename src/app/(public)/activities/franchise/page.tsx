@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function FranchisePage() {
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col font-sans">
+    <main className="min-h-screen bg-gray-50 flex flex-col">
       <FranchiseHero />
       <FranchiseModels />
       <FranchiseRevenue />

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title:
     "5th International Conference on Yoga & Holistic Health | Vietnam | NIH",
   description:
-    "Join the 5th International Conference on Yoga and Holistic Health in Vietnam from April 25th to 29th, 2026. Organized by NIH, Green Living Group, and SKM Yoga.",
+    "Join the 5th International Conference on Yoga and Holistic Health in Vietnam on 16 May & 17 May, 2026. Organized by NIH, Green Living Group, and SKM Yoga.",
 };
 
 export default function VietnamConferencePage() {
@@ -106,7 +106,7 @@ export default function VietnamConferencePage() {
                   <Calendar className="w-5 h-5 text-primary" />
                 </div>
                 <span className="font-bold text-lg text-white">
-                  25th - 29th April, 2026
+                  16 May & 17 May, 2026.
                 </span>
               </div>
               <div className="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-md border border-white/10">
