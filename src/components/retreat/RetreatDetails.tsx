@@ -59,7 +59,7 @@ export default function RetreatDetails() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Logistics Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

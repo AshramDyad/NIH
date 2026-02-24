@@ -111,7 +111,7 @@ export default function RetreatSchedule() {
   const activeSchedule = schedule.filter((s) => s.session === activeTab);
 
   return (
-    <section className="py-16 md:py-20 bg-white overflow-hidden relative">
+    <section className="py-16 md:py-24 bg-white overflow-hidden relative">
       <div className="container relative z-10 mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16 md:mb-20">
           <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">

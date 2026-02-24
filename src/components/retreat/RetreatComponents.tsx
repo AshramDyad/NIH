@@ -61,7 +61,7 @@ export default function RetreatComponents() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-white relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center mb-16 md:mb-20">
           <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">
