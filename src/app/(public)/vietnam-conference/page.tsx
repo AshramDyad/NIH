@@ -96,7 +96,7 @@ export default function VietnamConferencePage() {
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight shadow-sm">
               5th International Conference <br />
-              <span className="text-primary italic font-serif">
+              <span className="text-primary">
                 Yoga & Holistic Health
               </span>
             </h1>

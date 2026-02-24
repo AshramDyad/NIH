@@ -24,15 +24,6 @@ const events: Event[] = [
     category: "Conference",
     link: "/vietnam-conference",
   },
-  {
-    id: 2,
-    day: "07-08",
-    month: "Feb",
-    year: "2026",
-    title: "International Conference on Yoga & Holistic Health",
-    category: "Conference",
-    link: "/international-conference",
-  },
 ];
 
 const EventCard = ({ event }: { event: Event }) => {
