@@ -273,8 +273,8 @@ const Header = () => {
       hasChildren: true,
       children: [
         { name: "Photo Gallery", href: "/media/photo-gallery" },
+        { name: "Video Gallery", href: "/media/video-gallery" },
         { name: "Achievements", href: "#" },
-        { name: "Video Gallery", href: "#" },
         { name: "Media Coverage", href: "#" },
       ],
     },
