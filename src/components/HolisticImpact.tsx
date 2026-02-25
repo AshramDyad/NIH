@@ -13,7 +13,9 @@ import { getGalleryImages } from "@/app/actions/nih-gallery";
 const HolisticImpact = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [galleryImages, setGalleryImages] = useState<
+    { url: string; caption: string | null }[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,11 +23,31 @@ const HolisticImpact = () => {
       try {
         const images = await getGalleryImages();
         if (images && images.length > 0) {
-          setGalleryImages(images.map((img) => img.image_url));
+          setGalleryImages(
+            images.map((img) => ({
+              url: img.image_url,
+              caption: img.caption ?? null,
+            })),
+          );
           setCurrentSlide(0);
         } else {
           // If no dynamic images, fallback to default static images
-          setGalleryImages([
+          setGalleryImages(
+            [
+              "/images/banner-5.jpg",
+              "/images/banner-6.jpg",
+              "/images/banner-7.jpg",
+              "/images/banner-8.jpg",
+              "/images/banner-9.jpg",
+              "/images/banner-10.jpg",
+              "/images/banner-11.jpg",
+            ].map((url) => ({ url, caption: null })),
+          );
+        }
+      } catch (error) {
+        console.error("Failed to load dynamic NIH gallery images:", error);
+        setGalleryImages(
+          [
             "/images/banner-5.jpg",
             "/images/banner-6.jpg",
             "/images/banner-7.jpg",
@@ -33,19 +55,8 @@ const HolisticImpact = () => {
             "/images/banner-9.jpg",
             "/images/banner-10.jpg",
             "/images/banner-11.jpg",
-          ]);
-        }
-      } catch (error) {
-        console.error("Failed to load dynamic NIH gallery images:", error);
-        setGalleryImages([
-          "/images/banner-5.jpg",
-          "/images/banner-6.jpg",
-          "/images/banner-7.jpg",
-          "/images/banner-8.jpg",
-          "/images/banner-9.jpg",
-          "/images/banner-10.jpg",
-          "/images/banner-11.jpg",
-        ]);
+          ].map((url) => ({ url, caption: null })),
+        );
       } finally {
         setIsLoading(false);
       }
@@ -178,12 +189,20 @@ const HolisticImpact = () => {
                   {galleryImages.map((img, idx) => (
                     <Image
                       key={idx}
-                      src={img}
-                      alt={`Slide ${idx + 1}`}
+                      src={img.url}
+                      alt={img.caption || `Slide ${idx + 1}`}
                       fill
                       className={`object-cover transition-opacity duration-1000 ${currentSlide === idx ? "opacity-100" : "opacity-0"}`}
                     />
                   ))}
+                  {/* Caption overlay */}
+                  {galleryImages[currentSlide]?.caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent px-4 py-3 transition-opacity duration-500">
+                      <p className="text-white text-sm font-semibold drop-shadow-md">
+                        {galleryImages[currentSlide].caption}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
               <div className="mt-10 flex flex-col items-center">

@@ -37,21 +37,7 @@ const menuItems = [
     label: "Video Testimonials",
   },
   { href: "/admin/active-members", icon: Users, label: "Active Members" },
-  {
-    href: "/admin/international-gallery",
-    icon: ImageIcon,
-    label: "Int. Gallery",
-  },
-  {
-    href: "/admin/photo-gallery",
-    icon: ImageIcon,
-    label: "Photo Gallery",
-  },
-  {
-    href: "/admin/nih-gallery",
-    icon: ImageIcon,
-    label: "NIH Gallery",
-  },
+  { href: "/admin/gallery", icon: ImageIcon, label: "Gallery" },
   { href: "/admin/lifetime-members", icon: Users, label: "Lifetime Members" },
   {
     href: "/admin/members-institutions",

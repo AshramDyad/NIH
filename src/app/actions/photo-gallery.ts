@@ -9,6 +9,7 @@ export interface PhotoGalleryImage {
   image_url: string;
   image_key: string;
   title: string | null;
+  display_order: number;
   is_active: boolean;
   created_at: string;
 }
@@ -22,7 +23,7 @@ export async function getPublicPhotoGallery(): Promise<PhotoGalleryImage[]> {
     .from("photo_gallery")
     .select("*")
     .eq("is_active", true)
-    .order("created_at", { ascending: false });
+    .order("display_order", { ascending: true });
 
   if (error) {
     console.error("Error fetching public photo gallery images:", error);
@@ -40,7 +41,7 @@ export async function getAllPhotoGalleryAdmin(): Promise<PhotoGalleryImage[]> {
   const { data, error } = await supabase
     .from("photo_gallery")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("display_order", { ascending: true });
 
   if (error) {
     console.error("Error fetching all photo gallery images:", error);
@@ -57,6 +58,7 @@ export async function createPhotoGalleryImage(
   imageUrl: string,
   imageKey: string,
   title: string | null = null,
+  displayOrder: number = 0,
 ) {
   const supabase = await createClient();
 
@@ -67,6 +69,7 @@ export async function createPhotoGalleryImage(
         image_url: imageUrl,
         image_key: imageKey,
         title,
+        display_order: displayOrder,
       },
     ])
     .select()
@@ -77,7 +80,7 @@ export async function createPhotoGalleryImage(
   }
 
   revalidatePath("/media/photo-gallery");
-  revalidatePath("/admin/photo-gallery");
+  revalidatePath("/admin/gallery");
   return data;
 }
 
@@ -111,7 +114,7 @@ export async function deletePhotoGalleryImage(id: string) {
   }
 
   revalidatePath("/media/photo-gallery");
-  revalidatePath("/admin/photo-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }
 
@@ -134,6 +137,6 @@ export async function updatePhotoGalleryImage(
   }
 
   revalidatePath("/media/photo-gallery");
-  revalidatePath("/admin/photo-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }

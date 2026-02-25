@@ -80,7 +80,7 @@ export async function createGalleryImage(
   }
 
   revalidatePath("/");
-  revalidatePath("/admin/nih-gallery");
+  revalidatePath("/admin/gallery");
   return data;
 }
 
@@ -114,7 +114,7 @@ export async function deleteGalleryImage(id: string) {
   }
 
   revalidatePath("/");
-  revalidatePath("/admin/nih-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }
 
@@ -137,6 +137,6 @@ export async function updateGalleryImage(
   }
 
   revalidatePath("/");
-  revalidatePath("/admin/nih-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }

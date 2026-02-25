@@ -80,7 +80,7 @@ export async function createGalleryImage(
   }
 
   revalidatePath("/international-conference");
-  revalidatePath("/admin/international-gallery");
+  revalidatePath("/admin/gallery");
   return data;
 }
 
@@ -117,7 +117,7 @@ export async function deleteGalleryImage(id: string) {
   }
 
   revalidatePath("/international-conference");
-  revalidatePath("/admin/international-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }
 
@@ -140,6 +140,6 @@ export async function updateGalleryImage(
   }
 
   revalidatePath("/international-conference");
-  revalidatePath("/admin/international-gallery");
+  revalidatePath("/admin/gallery");
   return { success: true };
 }

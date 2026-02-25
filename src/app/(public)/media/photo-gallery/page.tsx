@@ -34,7 +34,11 @@ export default async function PhotoGalleryPage() {
                 key={img.id}
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border border-gray-100 flex flex-col"
               >
-                <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
+                <div
+                  className={`relative w-full overflow-hidden bg-gray-100 ${
+                    img.title ? "aspect-4/3" : "aspect-4/3 grow"
+                  }`}
+                >
                   <Image
                     src={img.image_url}
                     alt={img.title || "NIH Gallery Image"}
@@ -46,9 +50,9 @@ export default async function PhotoGalleryPage() {
                   <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/10 transition-colors duration-300 pointer-events-none" />
                 </div>
 
-                {/* Title Section (conditionally rendered if title exists) */}
+                {/* Title Section — only rendered when title exists */}
                 {img.title && (
-                  <div className="p-4 grow flex items-center justify-start border-t border-gray-50 bg-white">
+                  <div className="p-4 flex items-center justify-start border-t border-gray-50 bg-white">
                     <h3 className="text-gray-800 font-semibold text-lg line-clamp-2">
                       {img.title}
                     </h3>
