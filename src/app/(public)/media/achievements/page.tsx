@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import { getPublicPhotoGallery } from "@/app/actions/photo-gallery";
+import { getPublicAchievements } from "@/app/actions/achievements";
 
 export const metadata = {
-  title: "Photo Gallery - National Institute of Health",
+  title: "Achievements - National Institute of Health",
   description:
-    "Explore our photo gallery showcasing events, activities, and campus life at NIH.",
+    "Explore our notable achievements, awards, and milestones at NIH.",
 };
 
-export default async function PhotoGalleryPage() {
-  const images = await getPublicPhotoGallery();
+export default async function AchievementsPage() {
+  const achievements = await getPublicAchievements();
+
+  // Only display active achievements to the public
+  const activeAchievements = achievements.filter((a) => a.is_active);
 
   return (
     <div className="bg-gray-50 py-20">
@@ -17,19 +20,19 @@ export default async function PhotoGalleryPage() {
         {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4 relative inline-block">
-            Photo Gallery
+            Achievements
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></div>
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
-            Explore memorable moments, events, and activities at the National
-            Institute of Health through our curated photo gallery.
+            Explore our notable achievements, awards, and milestones at the
+            National Institute of Health.
           </p>
         </div>
 
         {/* Gallery Masonry */}
-        {images.length > 0 ? (
+        {activeAchievements.length > 0 ? (
           <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8">
-            {images.map((img) => (
+            {activeAchievements.map((img) => (
               <div
                 key={img.id}
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm transition-all duration-300 border border-gray-100 break-inside-avoid"
@@ -37,7 +40,7 @@ export default async function PhotoGalleryPage() {
                 <div className="relative w-full bg-zinc-50 flex justify-center items-center">
                   <Image
                     src={img.image_url}
-                    alt={img.title || "NIH Gallery Image"}
+                    alt={img.title || "NIH Achievement Image"}
                     width={800}
                     height={1200}
                     className="w-full h-auto transition-transform duration-300"
@@ -69,16 +72,16 @@ export default async function PhotoGalleryPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                 />
               </svg>
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              No Images Yet
+              No Achievements Yet
             </h3>
             <p className="text-gray-500 max-w-sm">
-              We are currently updating our gallery. Please check back later for
-              new photos!
+              We are currently updating our achievements gallery. Please check
+              back later!
             </p>
           </div>
         )}

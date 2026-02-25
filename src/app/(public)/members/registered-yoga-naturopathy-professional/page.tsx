@@ -28,7 +28,7 @@ export default function RegisteredYogaNaturopathyProfessionalPage() {
             {/* YPM Membership Info Section */}
             <section className="bg-slate-50 py-12 sm:py-16">
                 <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="max-w-3xl mx-auto">
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Membership Info */}
                             <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-zinc-100">

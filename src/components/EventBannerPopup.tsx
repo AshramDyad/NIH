@@ -99,7 +99,7 @@ export default function EventBannerPopup() {
               </button>
 
               <Image
-                src="/images/vietnam-conference.jpeg"
+                src="/images/vietnam-conference.png"
                 alt="Vietnam Conference Event Banner"
                 width={800}
                 height={1200}

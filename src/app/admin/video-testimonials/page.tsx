@@ -8,6 +8,7 @@ import {
   Loader2,
   AlertCircle,
   ExternalLink,
+  X,
 } from "lucide-react";
 import {
   getVideoTestimonials,
@@ -63,7 +64,7 @@ export default function VideoTestimonialsAdminPage() {
       fetchVideos();
     } catch (err) {
       setSubmitError(
-        err instanceof Error ? err.message : "Failed to add video"
+        err instanceof Error ? err.message : "Failed to add video",
       );
     } finally {
       setIsSubmitting(false);
@@ -181,8 +182,8 @@ export default function VideoTestimonialsAdminPage() {
 
       {/* Add Video Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
               <h2 className="text-xl font-semibold text-gray-900">
@@ -196,19 +197,7 @@ export default function VideoTestimonialsAdminPage() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -257,7 +246,7 @@ export default function VideoTestimonialsAdminPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || !youtubeUrl}
-                  className="flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
