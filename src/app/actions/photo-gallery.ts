@@ -4,29 +4,29 @@ import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { deleteFromR2 } from "@/lib/r2-client";
 
-export interface GalleryImage {
+export interface PhotoGalleryImage {
   id: string;
   image_url: string;
   image_key: string;
-  caption: string | null;
+  title: string | null;
   display_order: number;
   is_active: boolean;
   created_at: string;
 }
 
 /**
- * Fetch all active gallery images ordered by display_order
+ * Fetch all active gallery images ordered by created_at (newest first)
  */
-export async function getGalleryImages(): Promise<GalleryImage[]> {
+export async function getPublicPhotoGallery(): Promise<PhotoGalleryImage[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("international_gallery")
+    .from("photo_gallery")
     .select("*")
     .eq("is_active", true)
     .order("display_order", { ascending: true });
 
   if (error) {
-    console.error("Error fetching gallery images:", error);
+    console.error("Error fetching public photo gallery images:", error);
     return [];
   }
 
@@ -36,15 +36,15 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
 /**
  * Fetch all gallery images for admin (including inactive)
  */
-export async function getAllGalleryImages(): Promise<GalleryImage[]> {
+export async function getAllPhotoGalleryAdmin(): Promise<PhotoGalleryImage[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("international_gallery")
+    .from("photo_gallery")
     .select("*")
     .order("display_order", { ascending: true });
 
   if (error) {
-    console.error("Error fetching all gallery images:", error);
+    console.error("Error fetching all photo gallery images:", error);
     return [];
   }
 
@@ -54,21 +54,21 @@ export async function getAllGalleryImages(): Promise<GalleryImage[]> {
 /**
  * Create a new gallery image entry
  */
-export async function createGalleryImage(
+export async function createPhotoGalleryImage(
   imageUrl: string,
   imageKey: string,
-  caption: string | null = null,
+  title: string | null = null,
   displayOrder: number = 0,
 ) {
   const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from("international_gallery")
+    .from("photo_gallery")
     .insert([
       {
         image_url: imageUrl,
         image_key: imageKey,
-        caption,
+        title,
         display_order: displayOrder,
       },
     ])
@@ -76,10 +76,10 @@ export async function createGalleryImage(
     .single();
 
   if (error) {
-    throw new Error(`Failed to create gallery image: ${error.message}`);
+    throw new Error(`Failed to create photo gallery image: ${error.message}`);
   }
 
-  revalidatePath("/international-conference");
+  revalidatePath("/media/photo-gallery");
   revalidatePath("/admin/gallery");
   return data;
 }
@@ -87,18 +87,18 @@ export async function createGalleryImage(
 /**
  * Delete a gallery image entry
  */
-export async function deleteGalleryImage(id: string) {
+export async function deletePhotoGalleryImage(id: string) {
   const supabase = await createClient();
 
   // 1. Get the record first for R2 deletion
   const { data: item, error: fetchError } = await supabase
-    .from("international_gallery")
+    .from("photo_gallery")
     .select("image_url")
     .eq("id", id)
     .single();
 
   if (fetchError || !item) {
-    throw new Error("Gallery image not found.");
+    throw new Error("Photo gallery image not found.");
   }
 
   // 2. Delete from R2
@@ -107,16 +107,13 @@ export async function deleteGalleryImage(id: string) {
   }
 
   // 3. Delete from database
-  const { error } = await supabase
-    .from("international_gallery")
-    .delete()
-    .eq("id", id);
+  const { error } = await supabase.from("photo_gallery").delete().eq("id", id);
 
   if (error) {
-    throw new Error(`Failed to delete gallery image: ${error.message}`);
+    throw new Error(`Failed to delete photo gallery image: ${error.message}`);
   }
 
-  revalidatePath("/international-conference");
+  revalidatePath("/media/photo-gallery");
   revalidatePath("/admin/gallery");
   return { success: true };
 }
@@ -124,22 +121,22 @@ export async function deleteGalleryImage(id: string) {
 /**
  * Update gallery image metadata
  */
-export async function updateGalleryImage(
+export async function updatePhotoGalleryImage(
   id: string,
-  updates: Partial<GalleryImage>,
+  updates: Partial<PhotoGalleryImage>,
 ) {
   const supabase = await createClient();
 
   const { error } = await supabase
-    .from("international_gallery")
+    .from("photo_gallery")
     .update(updates)
     .eq("id", id);
 
   if (error) {
-    throw new Error(`Failed to update gallery image: ${error.message}`);
+    throw new Error(`Failed to update photo gallery image: ${error.message}`);
   }
 
-  revalidatePath("/international-conference");
+  revalidatePath("/media/photo-gallery");
   revalidatePath("/admin/gallery");
   return { success: true };
 }

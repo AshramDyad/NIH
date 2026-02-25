@@ -192,7 +192,7 @@ const Header = () => {
     },
     {
       name: "Events",
-      href: "#",
+      href: "/activities/events",
       icon: <Calendar size={18} />,
     },
     {
@@ -272,7 +272,7 @@ const Header = () => {
       name: "MEDIA",
       hasChildren: true,
       children: [
-        { name: "Photo Gallery", href: "#" },
+        { name: "Photo Gallery", href: "/media/photo-gallery" },
         { name: "Achievements", href: "#" },
         { name: "Video Gallery", href: "#" },
         { name: "Media Coverage", href: "#" },

@@ -8,6 +8,7 @@ const recentEvents = [
   {
     date: "07–08 February 2026",
     title: "International Conference on Yoga & Holistic Health",
+    link: "/international-conference",
   },
   { date: "1 January 2026", title: "Swasth Bharat Yatra" },
   {
@@ -18,6 +19,7 @@ const recentEvents = [
   {
     date: "8–9 February 2025",
     title: "International Conference on Yoga & Holistic Health",
+    link: "/international-conference",
   },
   {
     date: "12 November 2022",

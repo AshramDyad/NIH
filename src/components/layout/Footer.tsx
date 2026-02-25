@@ -21,7 +21,7 @@ const defaultQuickLinks = [
     { href: "/contact", label: "Contact Us" },
     // { href: "/projects", label: "Projects" },
     { href: "https://forms.gle/gyXBhDGFnFX9vkmS7", label: "Membership", target: "_blank" },
-    { href: "#", label: "Internship" },
+    { href: "activities/internship", label: "Internship" },
     { href: "https://forms.gle/469FAG4UTLDvVaTy6", label: "Affiliation ", target: "_blank" },
 ];
 
