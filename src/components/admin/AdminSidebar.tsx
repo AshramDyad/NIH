@@ -43,6 +43,11 @@ const menuItems = [
     label: "Int. Gallery",
   },
   {
+    href: "/admin/photo-gallery",
+    icon: ImageIcon,
+    label: "Photo Gallery",
+  },
+  {
     href: "/admin/nih-gallery",
     icon: ImageIcon,
     label: "NIH Gallery",
@@ -88,9 +93,9 @@ export default function AdminSidebar({
           ${isCollapsed ? "w-16" : "w-64"}
         `}
       >
-        <div className="flex h-20 items-center justify-between px-4 gap-2 border-b border-gray-200">
+        <div className="flex h-16 items-center justify-between px-4 gap-2 border-b border-gray-200">
           {!isCollapsed && (
-            <div className="relative w-[190px] h-[50px]">
+            <div className="relative w-[200px] h-[65px]">
               <Image
                 src="/logo.png"
                 alt="NIH Logo"
@@ -172,7 +177,7 @@ export default function AdminSidebar({
           `}
         >
           {/* Mobile Sidebar Header */}
-          <div className="flex h-20 items-center justify-between px-4 border-b border-gray-200">
+          <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
             <div className="relative w-[160px] h-[45px]">
               <Image
                 src="/logo.png"

@@ -16,7 +16,7 @@ interface AdminHeaderProps {
 export default function AdminHeader({ user, onMenuToggle }: AdminHeaderProps) {
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 justify-end items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
+    <header className="sticky top-0 z-30 flex h-16 justify-end items-center gap-4 border-b border-gray-200 px-4 lg:px-8 bg-white">
       {/* Hamburger Menu Button - visible on tablet/mobile only */}
       <button
         type="button"
