@@ -274,8 +274,8 @@ const Header = () => {
       children: [
         { name: "Photo Gallery", href: "/media/photo-gallery" },
         { name: "Video Gallery", href: "/media/video-gallery" },
-        { name: "Achievements", href: "#" },
-        { name: "Media Coverage", href: "#" },
+        { name: "Achievements", href: "/media/achievements" },
+        { name: "Media Coverage", href: "/media/media-coverage" },
       ],
     },
     {
@@ -283,7 +283,7 @@ const Header = () => {
       name: "JOIN US",
       href: "https://forms.gle/DEajoyPQMDhhh1tC9",
     },
-    { id: "careers", name: "CAREERS", href: "#", badge: "New" },
+    { id: "careers", name: "CAREERS", href: "/careers", badge: "New" },
     { id: "contact-us", name: "CONTACT US", href: "/contact" },
   ] as const;
 

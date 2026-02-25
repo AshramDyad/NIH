@@ -16,8 +16,8 @@ interface Event {
 const events: Event[] = [
   {
     id: 1,
-    day: "25-29",
-    month: "Apr",
+    day: "16-17",
+    month: "May",
     year: "2026",
     title:
       "5th International Conference on Yoga & Holistic Health (Vietnam Calling)",

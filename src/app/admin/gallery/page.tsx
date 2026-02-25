@@ -27,6 +27,22 @@ import {
   updateGalleryImage as updateNih,
 } from "@/app/actions/nih-gallery";
 
+// Achievements actions
+import {
+  getAllAchievements as fetchAchievements,
+  createAchievement,
+  deleteAchievement,
+  updateAchievement,
+} from "@/app/actions/achievements";
+
+// Media Coverage actions
+import {
+  getAllMediaCoverage as fetchMediaCoverage,
+  createMediaCoverage,
+  deleteMediaCoverage,
+  updateMediaCoverage,
+} from "@/app/actions/media-coverage";
+
 const TABS = [
   {
     key: "international",
@@ -65,6 +81,30 @@ const TABS = [
     modalDescription:
       "Upload a high-quality image to be displayed in the NIH gallery.",
   },
+  {
+    key: "achievements",
+    label: "Achievements",
+    textField: "title" as const,
+    fetchImages: fetchAchievements,
+    createImage: createAchievement,
+    deleteImage: deleteAchievement,
+    updateImage: updateAchievement,
+    emptyDescription: "Start by adding images to the Achievements gallery.",
+    modalDescription:
+      "Upload a high-quality achievement image. You can title it from the main table after uploading.",
+  },
+  {
+    key: "media-coverage",
+    label: "Media Coverage",
+    textField: "caption" as const,
+    fetchImages: fetchMediaCoverage,
+    createImage: createMediaCoverage,
+    deleteImage: deleteMediaCoverage,
+    updateImage: updateMediaCoverage,
+    emptyDescription: "Start by adding images to the Media Coverage gallery.",
+    modalDescription:
+      "Upload an image for the Media Coverage page. You can add a caption from the main table after uploading.",
+  },
 ] as const;
 
 export default function GalleryAdminPage() {
@@ -75,9 +115,10 @@ export default function GalleryAdminPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Gallery</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Gallery & Media</h1>
         <p className="text-gray-600 mt-1">
-          Manage all gallery images from one place.
+          Manage all gallery, achievement, and media coverage images from one
+          place.
         </p>
       </div>
 
