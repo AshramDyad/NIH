@@ -37,9 +37,9 @@ const councilMembers: CouncilMember[] = [
     },
     {
         id: 4,
-        name: "Dr. Dr. M.K. Taneja, Uttar Pradesh",
-        designation: "Member-Ministry of AYUSH, Govt. of India,",
-        details: "Director- Indian Institute of Yoga & Naturopathy",
+        name: "Dr. M.K. TANEJA",
+        designation: "Founder-Yogi Gorakshnath Wellness Centre,",
+        details: "Rishikesh",
         category: "OUR PATRONS",
         image: "/images/mktaneja.jpg"
     },
@@ -210,6 +210,14 @@ const councilMembers: CouncilMember[] = [
         details: "",
         category: "INTERNATIONAL",
         image: "/images/panna.jpg"
+    },
+    {
+        id: 26,
+        name: "Pravendra Dahiya",
+        designation: "Patron-NIH",
+        details: "",
+        category: "OUR PATRONS",
+        image: "/images/Pravendra.png"
     }
 ];
 

@@ -45,7 +45,7 @@ const stats = [
     },
     {
         icon: Video,
-        number: 64,
+        number: 142,
         label: "Webinars",
     },
     {

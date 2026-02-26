@@ -58,7 +58,7 @@ export default function EventsHero() {
                 </span>
               </div>
               <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-2 leading-tight">
-                International Conference on Holistic Health
+                International Conference on Yoga & Holistic Health
               </h3>
               <p className="text-gray-500 text-xs md:text-sm font-medium mb-6">
                 Annual gathering of wellness professionals, students, and

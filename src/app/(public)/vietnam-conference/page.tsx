@@ -237,7 +237,7 @@ export default function VietnamConferencePage() {
                       <span className="text-primary">Registration</span>
                     </h2>
                     <div className="inline-block mt-4 text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-white to-zinc-400">
-                      5th March, 2026
+                      15 March, 2026
                     </div>
                   </div>
 

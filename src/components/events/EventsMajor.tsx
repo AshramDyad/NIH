@@ -50,7 +50,7 @@ export default function EventsMajor() {
               </div>
 
               <h3 className="text-3xl font-black text-gray-900 mb-6 leading-tight min-h-[72px] lg:min-h-[80px]">
-                International Conference on Holistic Health
+                International Conference on Yoga & Holistic Health
               </h3>
 
               <p className="text-lg text-gray-500 font-medium leading-relaxed mb-10 min-h-[112px]">

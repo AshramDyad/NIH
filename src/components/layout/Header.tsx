@@ -154,6 +154,12 @@ const Header = () => {
           colorClass:
             "bg-white hover:bg-[#fce4ec] text-gray-700 hover:text-[#880e4f] hover:border-[#f48fb1]",
         },
+        {
+          name: "Admissions",
+          href: "/activities/admissions",
+          colorClass:
+            "bg-white hover:bg-[#e0f7fa] text-gray-700 hover:text-[#006064] hover:border-[#80deea]",
+        },
       ],
     },
     { name: "Careers", href: "/careers", badge: "New" },
@@ -254,6 +260,7 @@ const Header = () => {
         { name: "Volunteership", href: "/activities/volunteership" },
         { name: "NIH Events", href: "/activities/events" },
         { name: "Retreat Programmes", href: "/activities/retreat-programmes" },
+        { name: "Admissions", href: "/activities/admissions" },
       ],
     },
     {
