@@ -62,7 +62,7 @@ export default function SecretaryPage() {
                 {/* Name and Designation */}
                 <div className="text-center md:text-left">
                   <h3 className="text-3xl md:text-5xl font-black text-secondary mb-3">
-                    Anurag Kashyap
+                    Anurag
                   </h3>
                   <p className="text-xl font-bold text-primary mb-2">
                     (National Secretary-NIH)
@@ -127,7 +127,10 @@ export default function SecretaryPage() {
                       Sincerely,
                     </p>
                     <p className="font-black text-xl sm:text-2xl text-primary mt-1">
-                      Anurag Kashyap
+                      Anurag
+                    </p>
+                    <p className="text-sm font-bold text-black/60 mt-1">
+                      +91 85952 51312
                     </p>
                     <p className="text-sm font-bold text-black/60 mt-1">
                       National Secretary, NIH
