@@ -61,7 +61,7 @@ export default function AdmissionsHero() {
             className="flex flex-wrap gap-4 pt-6"
           >
             <Link
-              href="https://forms.gle/DEajoyPQMDhhh1tC9"
+              href="https://forms.gle/nSVrUNjNcFgBYfbR7"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center lg:px-8 px-6 lg:py-4 py-3 bg-primary text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(var(--color-primary-rgb),0.3)]"
