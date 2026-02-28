@@ -68,7 +68,7 @@ function buildEmailHtml(data: ContactFormData): string {
                         New Contact Request
                     </h2>
                     <p style="margin: 8px 0 0; color: #d1fae5; font-size: 15px; opacity: 0.9;">
-                        via the National Institutes of Health (NIH) Website
+                        National Institute of Holistic Health (NIH)
                     </p>
                 </td>
             </tr>
@@ -117,7 +117,7 @@ export async function sendContactEmail(
 
   try {
     await transporter.sendMail({
-      from: `"National Institutes of Health (NIH)" <${process.env.SMTP_USER}>`,
+      from: `"National Institute of Holistic Health (NIH)" <${process.env.SMTP_USER}>`,
       to: recipientEmail,
       replyTo: data.email,
       subject: `New Inquiry: ${data.name} — NIH Contact Form`,

@@ -52,8 +52,8 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100">
-      {formStatus === "success" ? (
+    <div className="bg-white rounded-2xl sm:p-6 p-4 shadow-sm border border-zinc-100 min-h-full">
+      {formStatus == "success" ? (
         <SuccessMessage onDismiss={() => setFormStatus("idle")} />
       ) : (
         <>
@@ -426,11 +426,11 @@ export default function ContactForm() {
  */
 function SuccessMessage({ onDismiss }: { onDismiss: () => void }) {
   return (
-    <div className="text-center py-10">
+    <div className="text-center py-24">
       <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
         <CheckCircle size={48} className="text-green-600" />
       </div>
-      <h3 className="text-2xl font-black text-secondary mb-4">
+      <h3 className="text-2xl font-bold text-secondary mb-4">
         Message Sent Successfully!
       </h3>
       <p className="text-zinc-600 mb-4 max-w-md mx-auto">
