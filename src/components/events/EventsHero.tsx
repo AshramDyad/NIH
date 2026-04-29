@@ -1,12 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   ShieldCheck,
   CalendarDays,
   MapPin,
   Clock,
-  Star,
-  Users,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -84,10 +83,12 @@ export default function EventsHero() {
                     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64",
                     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64",
                   ].map((url, i) => (
-                    <img
+                    <Image
                       key={i}
                       src={url}
                       alt={`Attendee ${i + 1}`}
+                      width={40}
+                      height={40}
                       className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover shadow-sm"
                     />
                   ))}

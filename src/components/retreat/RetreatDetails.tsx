@@ -1,6 +1,5 @@
 import React from "react";
-import { Clock, MapPin, Users2, Award, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Clock, MapPin, Users2, Award } from "lucide-react";
 
 export default function RetreatDetails() {
   const details = [

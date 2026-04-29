@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   GraduationCap,
   Users2,
+  type LucideIcon,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -42,27 +43,31 @@ const highlightCircleVariants: Variants = {
 };
 
 export default function AdmissionProcess() {
-  const steps = [
+  const steps: {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  }[] = [
     {
-      icon: <ClipboardList />,
+      icon: ClipboardList,
       title: "Step 1: Check Eligibility",
       description:
         "Review the prerequisites for your desired course (CCH, Yoga Training, etc.) in our official brochure.",
     },
     {
-      icon: <FileSignature />,
+      icon: FileSignature,
       title: "Step 2: Submit Application",
       description:
         "Complete the online admission form with your educational details and identity proof.",
     },
     {
-      icon: <CheckCircle2 />,
+      icon: CheckCircle2,
       title: "Step 3: Verification & Approval",
       description:
         "Our administrative team will review your application and documents for approval within 48 hours.",
     },
     {
-      icon: <GraduationCap />,
+      icon: GraduationCap,
       title: "Step 4: Enrollment & Induction",
       description:
         "Upon approval and fee submission, you will receive your official enrollment kit and batch details.",
@@ -154,57 +159,50 @@ export default function AdmissionProcess() {
               />
 
               <div className="space-y-12 relative z-10">
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: index === 0 ? 0 : 0.5 + index * 1.0,
-                      duration: 0.5,
-                    }}
-                    className="flex flex-col md:flex-row gap-6 md:gap-8 items-start relative group"
-                  >
-                    {/* Minimalist Icon Node */}
-                    <div className="relative w-10 h-10 mt-1 md:mt-0 shrink-0">
-                      {/* Base Icon Node */}
-                      <div className="absolute inset-0 rounded-full bg-white border border-zinc-200 shadow-sm flex items-center justify-center z-10 transition-all duration-300">
-                        {React.cloneElement(
-                          step.icon as React.ReactElement<any>,
-                          {
-                            className:
-                              "w-4 h-4 text-zinc-400 transition-colors",
-                          },
-                        )}
+                {steps.map((step, index) => {
+                  const StepIcon = step.icon;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: index === 0 ? 0 : 0.5 + index * 1.0,
+                        duration: 0.5,
+                      }}
+                      className="flex flex-col md:flex-row gap-6 md:gap-8 items-start relative group"
+                    >
+                      {/* Minimalist Icon Node */}
+                      <div className="relative w-10 h-10 mt-1 md:mt-0 shrink-0">
+                        {/* Base Icon Node */}
+                        <div className="absolute inset-0 rounded-full bg-white border border-zinc-200 shadow-sm flex items-center justify-center z-10 transition-all duration-300">
+                          <StepIcon className="w-4 h-4 text-zinc-400 transition-colors" />
+                        </div>
+
+                        {/* Highlighted Animated Icon Node */}
+                        <motion.div
+                          custom={index}
+                          variants={highlightCircleVariants}
+                          className="absolute inset-0 rounded-full bg-white border border-primary shadow-sm flex items-center justify-center z-20 group-hover:bg-primary/5 transition-colors"
+                        >
+                          <StepIcon className="w-4 h-4 text-primary transition-colors" />
+                        </motion.div>
                       </div>
 
-                      {/* Highlighted Animated Icon Node */}
-                      <motion.div
-                        custom={index}
-                        variants={highlightCircleVariants}
-                        className="absolute inset-0 rounded-full bg-white border border-primary shadow-sm flex items-center justify-center z-20 group-hover:bg-primary/5 transition-colors"
-                      >
-                        {React.cloneElement(
-                          step.icon as React.ReactElement<any>,
-                          {
-                            className: "w-4 h-4 text-primary transition-colors",
-                          },
-                        )}
-                      </motion.div>
-                    </div>
-
-                    {/* Clean Text Block */}
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-zinc-900 mb-2">
-                        {step.title}
-                      </h4>
-                      <p className="text-zinc-500 leading-relaxed font-medium">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      {/* Clean Text Block */}
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-zinc-900 mb-2">
+                          {step.title}
+                        </h4>
+                        <p className="text-zinc-500 leading-relaxed font-medium">
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
