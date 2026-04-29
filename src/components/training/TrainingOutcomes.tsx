@@ -1,39 +1,10 @@
 import React from "react";
 import {
   Award,
-  Presentation,
-  RefreshCw,
   ShieldCheck,
-  MonitorPlay,
-  Users,
-  BadgeCheck,
-  FileText,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function TrainingOutcomes() {
-  const deliveryMethods = [
-    { title: "In-person workshops", icon: <Users className="w-5 h-5" /> },
-    { title: "Online modules", icon: <MonitorPlay className="w-5 h-5" /> },
-    {
-      title: "Practical demonstrations",
-      icon: <Presentation className="w-5 h-5" />,
-    },
-    { title: "Role-play sessions", icon: <Users className="w-5 h-5" /> },
-    { title: "Assessment tests", icon: <FileText className="w-5 h-5" /> },
-    {
-      title: "Certification upon completion",
-      icon: <BadgeCheck className="w-5 h-5" />,
-    },
-  ];
-
-  const ongoingSupport = [
-    "Quarterly refresher training",
-    "Annual skill upgrade workshops",
-    "New service introduction training",
-    "Performance audits",
-  ];
-
   return (
     <section className="pt-20 md:pt-20 bg-white relative">
       <div className="container mx-auto px-4 max-w-7xl">

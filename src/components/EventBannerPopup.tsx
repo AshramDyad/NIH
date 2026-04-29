@@ -99,10 +99,10 @@ export default function EventBannerPopup() {
               </button>
 
               <Image
-                src="/images/vietnam-conference.png"
-                alt="Vietnam Conference Event Banner"
-                width={800}
-                height={1200}
+                src="/images/Vietnam-Yoga-Health-Conference-Poster.jpg"
+                alt="5th International Conference on Yoga and Holistic Health Vietnam poster"
+                width={1024}
+                height={1536}
                 className="w-full h-auto max-h-[85vh] object-contain"
                 priority
               />
