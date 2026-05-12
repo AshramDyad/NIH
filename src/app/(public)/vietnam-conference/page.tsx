@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "Join the 5th International Conference on Yoga and Holistic Health in Vietnam on 16 May & 17 May, 2026. Organized by NIH, Green Living Group, and SKM Yoga.",
 };
 
+const registrationFormUrl = "https://forms.gle/kKuyWyB5H9eckYAK7";
+
 export default function VietnamConferencePage() {
   const organisedBy = [
     {
@@ -316,9 +318,14 @@ export default function VietnamConferencePage() {
 
                 <div className="lg:col-span-2">
                   <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-10 flex flex-col justify-center space-y-8">
-                    <div className="bg-primary text-white text-center py-4 rounded-2xl font-black text-2xl uppercase tracking-widest shadow-lg shadow-primary/30">
-                      Book Now
-                    </div>
+                    <Link
+                      href={registrationFormUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary text-white text-center py-4 rounded-2xl font-black text-xl uppercase tracking-widest shadow-lg shadow-primary/30 hover:bg-primary/85 transition-colors"
+                    >
+                      Register Now
+                    </Link>
 
                     <div className="space-y-6 text-zinc-300">
                       <p className="font-bold text-xl text-white border-l-4 border-primary pl-4">
