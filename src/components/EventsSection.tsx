@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 
+const registrationFormUrl = "https://forms.gle/kKuyWyB5H9eckYAK7";
+
 interface Event {
   id: number;
   day: string;
@@ -22,7 +24,7 @@ const events: Event[] = [
     title:
       "5th International Conference on Yoga & Holistic Health (Vietnam Calling)",
     category: "Conference",
-    link: "/vietnam-conference",
+    link: registrationFormUrl,
   },
 ];
 
@@ -50,6 +52,8 @@ const EventCard = ({ event }: { event: Event }) => {
       <div className="pt-4 border-t border-gray-200 mt-auto">
         <Link
           href={event.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center justify-between text-secondary font-semibold text-sm transition-colors hover:underline"
         >
           Register Now
