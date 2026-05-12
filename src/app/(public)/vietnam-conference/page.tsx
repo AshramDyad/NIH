@@ -17,7 +17,6 @@ import {
   Mail,
   Instagram,
   ChevronRight,
-  ShieldCheck,
   Building,
 } from "lucide-react";
 
@@ -29,6 +28,36 @@ export const metadata: Metadata = {
 };
 
 export default function VietnamConferencePage() {
+  const organisedBy = [
+    {
+      name: "NIH",
+      image: "/images/NIH.jpeg",
+    },
+  ];
+
+  const associationWith = [
+    {
+      name: "Yoga Song Khoe Academy",
+      image: "/images/YOGA-SONG-KHOE.jpeg",
+    },
+    {
+      name: "SKM Yoga",
+      image: "/images/SKM-YOGA.jpeg",
+    },
+    {
+      name: "DIN",
+      image: "/images/DIN.jpeg",
+    },
+    {
+      name: "Yogapeace Sansthan",
+      image: "/images/YOGAPEACE.jpeg",
+    },
+    {
+      name: "Nisha Joshi Yoga Academy",
+      image: "/images/NishaJoshi.jpeg",
+    },
+  ];
+
   const attractions = [
     {
       icon: FileText,
@@ -106,7 +135,7 @@ export default function VietnamConferencePage() {
                   <Calendar className="w-5 h-5 text-primary" />
                 </div>
                 <span className="font-bold text-lg text-white">
-                  16 May & 17 May, 2026.
+                  15<sup>th</sup> - 19<sup>th</sup> August, 2026.
                 </span>
               </div>
               <div className="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-md border border-white/10">
@@ -168,65 +197,84 @@ export default function VietnamConferencePage() {
             </div>
 
             {/* Organizers Section */}
-            <div className="bg-white rounded-[3rem] p-8 md:p-14 border border-zinc-100 shadow-xl relative overflow-hidden">
+            <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 border border-zinc-100 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-primary via-secondary to-primary" />
               <div className="flex items-center gap-4 mb-10">
-                <Building className="w-10 h-10 text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <Building className="w-7 h-7 text-primary" />
+                </div>
                 <h2 className="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">
-                  Organised In Association With
+                  Organisers & Associations
                 </h2>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div className="p-8 rounded-4xl bg-zinc-50 border border-zinc-100 flex flex-col items-center justify-center space-y-4 hover:border-primary/30 transition-colors cursor-default">
-                  <ShieldCheck className="w-12 h-12 text-secondary mb-2" />
-                  <h3 className="text-xl font-bold text-zinc-900">NIH</h3>
-                  <p className="text-zinc-500 font-medium">
-                    National Institute of Holistic Health
-                  </p>
-                  <div className="w-12 h-1 bg-primary/20 rounded-full mt-4" />
-                  <p className="text-zinc-800 font-bold mt-4">
-                    Dr. Vinod Kashyap
-                  </p>
-                  <p className="text-sm text-zinc-500 font-medium">
-                    Chairman, NIH Delhi
-                  </p>
+              <div className="space-y-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                  {organisedBy.map((partner) => (
+                    <div
+                      key={partner.name}
+                      className="rounded-3xl bg-linear-to-br from-zinc-50 to-white border border-zinc-100 p-6 md:p-8 text-center shadow-[0_14px_45px_-30px_rgba(0,0,0,0.35)]"
+                    >
+                      <div className="mb-6 inline-flex rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-xs md:text-sm font-black uppercase tracking-[0.12em] text-primary shadow-sm shadow-primary/10">
+                        Organised by
+                      </div>
+
+                      <div className="flex min-h-[260px] flex-col items-center justify-end">
+                        <div className="relative w-full max-w-[240px] aspect-square mb-5">
+                          <Image
+                            src={partner.image}
+                            alt={`${partner.name} logo`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 240px"
+                            unoptimized
+                          />
+                        </div>
+                        <h4 className="text-xl font-bold text-zinc-900">
+                          {partner.name}
+                        </h4>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="p-8 rounded-4xl bg-zinc-50 border border-zinc-100 flex flex-col items-center justify-center space-y-4 hover:border-secondary/30 transition-colors cursor-default">
-                  <Globe className="w-12 h-12 text-secondary mb-2" />
-                  <h3 className="text-xl font-bold text-zinc-900">GLG Yoga</h3>
-                  <p className="text-zinc-500 font-medium">
-                    Green Living Group
-                  </p>
-                  <div className="w-12 h-1 bg-secondary/20 rounded-full mt-4" />
-                  <p className="text-zinc-800 font-bold mt-4">
-                    Vietnam Chapter
-                  </p>
+                <div className="flex items-center gap-4">
+                  <span className="h-px flex-1 bg-zinc-200" />
+                  <h3 className="rounded-full border border-secondary/20 bg-secondary/10 px-5 py-2 text-xs md:text-sm font-black uppercase tracking-[0.12em] text-secondary shadow-sm shadow-secondary/10">
+                    Association With
+                  </h3>
+                  <span className="h-px flex-1 bg-zinc-200" />
                 </div>
 
-                <div className="p-8 rounded-4xl bg-zinc-50 border border-zinc-100 flex flex-col items-center justify-center space-y-4 hover:border-primary/30 transition-colors cursor-default">
-                  <Sparkles className="w-12 h-12 text-secondary mb-2" />
-                  <h3 className="text-xl font-bold text-zinc-900">SKM Yoga</h3>
-                  <p className="text-zinc-500 font-medium">
-                    International Yoga Institute
-                  </p>
-                  <div className="w-12 h-1 bg-primary/20 rounded-full mt-4" />
-                  <p className="text-zinc-800 font-bold mt-4">
-                    Dr. Shivam Mishra
-                  </p>
-                  <p className="text-sm text-zinc-500 font-medium">
-                    Founder President, SKM Yoga
-                    <br />
-                    Vice President-GLG Yoga, Vietnam
-                  </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                  {associationWith.map((partner) => (
+                    <div
+                      key={partner.name}
+                      className="rounded-3xl bg-linear-to-br from-zinc-50 to-white border border-zinc-100 p-6 md:p-8 text-center shadow-[0_14px_45px_-30px_rgba(0,0,0,0.35)]"
+                    >
+                      <div className="flex min-h-[260px] flex-col items-center justify-end">
+                        <div className="relative w-full max-w-[240px] aspect-square mb-5">
+                          <Image
+                            src={partner.image}
+                            alt={`${partner.name} logo`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 240px"
+                            unoptimized
+                          />
+                        </div>
+                        <h4 className="text-xl font-bold text-zinc-900">
+                          {partner.name}
+                        </h4>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
             {/* Registration Call to Action */}
             <div className="bg-zinc-950 rounded-[4rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-[url('/images/pattern.png')] bg-repeat opacity-10" />
               <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
               <div className="relative z-10 grid lg:grid-cols-5 gap-12 items-center">
@@ -237,7 +285,7 @@ export default function VietnamConferencePage() {
                       <span className="text-primary">Registration</span>
                     </h2>
                     <div className="inline-block mt-4 text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-white to-zinc-400">
-                      15 March, 2026
+                      15 May, 2026
                     </div>
                   </div>
 

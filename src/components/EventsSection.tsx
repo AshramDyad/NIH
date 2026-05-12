@@ -16,8 +16,8 @@ interface Event {
 const events: Event[] = [
   {
     id: 1,
-    day: "16-17",
-    month: "May",
+    day: "15-19",
+    month: "August",
     year: "2026",
     title:
       "5th International Conference on Yoga & Holistic Health (Vietnam Calling)",
@@ -32,7 +32,7 @@ const EventCard = ({ event }: { event: Event }) => {
       {/* Date and Title Section */}
       <div className="flex gap-4 mb-6">
         <div className="flex flex-col items-center justify-center min-w-[60px] h-[60px] bg-secondary rounded-lg text-white">
-          <span className="text-lg font-semibold leading-none">
+          <span className="text-sm font-semibold leading-none">
             {event.day}
           </span>
           <span className="text-xs font-semibold uppercase tracking-wide mt-1">
