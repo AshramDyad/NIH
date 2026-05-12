@@ -99,7 +99,7 @@ export default function EventBannerPopup() {
               </button>
 
               <Image
-                src="/images/Vietnam-Yoga-Health-Conference-Poster.jpg"
+                src="/images/Vietnam-Yoga-Health-Conference-Poster.jpeg"
                 alt="5th International Conference on Yoga and Holistic Health Vietnam poster"
                 width={1024}
                 height={1536}
