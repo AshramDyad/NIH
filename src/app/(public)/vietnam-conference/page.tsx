@@ -178,6 +178,17 @@ export default function VietnamConferencePage() {
                 </p>
               </div>
 
+              <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-[2rem] border border-zinc-100 bg-white shadow-[0_20px_70px_-35px_rgba(0,0,0,0.35)]">
+                <Image
+                  src="/images/vietnam-conference-yatra-yojana-poster.jpeg"
+                  alt="Vietnam International Conference Yatra Yojana itinerary poster"
+                  width={1024}
+                  height={1536}
+                  className="h-auto w-full"
+                  unoptimized
+                />
+              </div>
+
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {attractions.map((item, idx) => (
                   <div
@@ -283,12 +294,9 @@ export default function VietnamConferencePage() {
                 <div className="lg:col-span-3 space-y-10">
                   <div className="space-y-4">
                     <h2 className="text-4xl md:text-6xl font-black italic tracking-tight leading-tight">
-                      Last Date for <br />{" "}
-                      <span className="text-primary">Registration</span>
+                      Hurry Up... <br />{" "}
+                      <span className="text-primary">Register Now</span>
                     </h2>
-                    <div className="inline-block mt-4 text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-white to-zinc-400">
-                      15 May, 2026
-                    </div>
                   </div>
 
                   <hr className="border-white/10" />
