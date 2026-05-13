@@ -283,12 +283,9 @@ export default function VietnamConferencePage() {
                 <div className="lg:col-span-3 space-y-10">
                   <div className="space-y-4">
                     <h2 className="text-4xl md:text-6xl font-black italic tracking-tight leading-tight">
-                      Last Date for <br />{" "}
-                      <span className="text-primary">Registration</span>
+                      Hurry Up... <br />{" "}
+                      <span className="text-primary">Register Now</span>
                     </h2>
-                    <div className="inline-block mt-4 text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-white to-zinc-400">
-                      15 May, 2026
-                    </div>
                   </div>
 
                   <hr className="border-white/10" />
