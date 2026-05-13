@@ -178,6 +178,17 @@ export default function VietnamConferencePage() {
                 </p>
               </div>
 
+              <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-[2rem] border border-zinc-100 bg-white shadow-[0_20px_70px_-35px_rgba(0,0,0,0.35)]">
+                <Image
+                  src="/images/vietnam-conference-yatra-yojana-poster.jpeg"
+                  alt="Vietnam International Conference Yatra Yojana itinerary poster"
+                  width={1024}
+                  height={1536}
+                  className="h-auto w-full"
+                  unoptimized
+                />
+              </div>
+
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {attractions.map((item, idx) => (
                   <div
