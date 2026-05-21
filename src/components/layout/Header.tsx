@@ -74,6 +74,7 @@ const subMenuVariants = {
 };
 
 const Header = () => {
+  const courseBrochureHref = "/pdfs/course%20brochure%202026.pdf";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
@@ -192,7 +193,7 @@ const Header = () => {
     },
     {
       name: "Course Brochure",
-      href: "/pdfs/brochure-in-sequence-2025.pdf",
+      href: courseBrochureHref,
       icon: <FileText size={18} />,
       isExternal: true,
     },
@@ -224,7 +225,7 @@ const Header = () => {
         { name: "Aims and Objectives", href: "/about/aims" },
         {
           name: "Course Brochure",
-          href: "/pdfs/brochure-in-sequence-2025.pdf",
+          href: courseBrochureHref,
         },
         { name: "Holistic 'n' Wellness: Monthly E-Magazine", href: "#" },
       ],
@@ -320,7 +321,7 @@ const Header = () => {
               </Link>
             </div>
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center space-x-8">
+            <nav className="hidden xl:flex items-center gap-6">
               {navLinks.map((link) => (
                 <div
                   key={link.name}
@@ -332,7 +333,7 @@ const Header = () => {
                 >
                   <Link
                     href={link.href}
-                    className="font-medium text-black py-8 flex items-center gap-1"
+                    className="font-medium text-black py-8 flex items-center gap-1 whitespace-nowrap"
                   >
                     {link.name}
                     {link.badge && (
@@ -377,7 +378,7 @@ const Header = () => {
               ))}
             </nav>
             {/* Right side buttons */}
-            <div className="hidden xl:flex items-center space-x-4">
+            <div className="hidden xl:flex items-center gap-3">
               {ctaButtons.map((btn) => (
                 <div
                   key={btn.name}
@@ -390,7 +391,7 @@ const Header = () => {
                   {btn.hasDropdown ? (
                     <>
                       <button
-                        className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md bg-primary text-white hover:bg-opacity-90 cursor-pointer`}
+                        className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all hover:shadow-md bg-primary text-white hover:bg-opacity-90 cursor-pointer"
                       >
                         {btn.icon}
                         {btn.name}
@@ -451,7 +452,7 @@ const Header = () => {
                           prefetch={
                             btn.href.endsWith(".pdf") ? false : undefined
                           }
-                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${
+                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all hover:shadow-md ${
                             btn.name === "Membership"
                               ? "bg-primary text-white hover:bg-opacity-90"
                               : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
@@ -463,7 +464,7 @@ const Header = () => {
                       ) : (
                         <Link
                           href={btn.href}
-                          className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all hover:shadow-md ${
+                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all hover:shadow-md ${
                             btn.name === "Membership"
                               ? "bg-primary text-white hover:bg-opacity-90"
                               : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
@@ -479,7 +480,7 @@ const Header = () => {
               ))}
             </div>
             {/* Mobile menu button */}
-            <div>
+            <div className="xl:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"

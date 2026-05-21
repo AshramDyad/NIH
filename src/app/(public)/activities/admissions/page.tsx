@@ -2,21 +2,19 @@ import React from "react";
 import { Metadata } from "next";
 
 import AdmissionsHero from "@/components/admissions/AdmissionsHero";
-import WhyChooseNIH from "@/components/admissions/WhyChooseNIH";
-import AdmissionProcess from "@/components/admissions/AdmissionProcess";
+import CourseBrochureSections from "@/components/admissions/CourseBrochureSections";
 
 export const metadata: Metadata = {
-  title: "Admissions | National Institute of Holistic Health",
+  title: "Certificate Course in Holistic Health | NIH Admissions",
   description:
-    "Join the National Institute of Holistic Health. Explore our admission process for CCH, Yoga, and Naturopathy courses.",
+    "Apply for NIH's 2026 Certificate Course in Holistic Health. Review the one-month CCH course details, syllabus, eligibility, benefits, and student facilities.",
 };
 
 export default function AdmissionsPage() {
   return (
     <main className="min-h-screen bg-white flex flex-col font-sans">
       <AdmissionsHero />
-      <WhyChooseNIH />
-      <AdmissionProcess />
+      <CourseBrochureSections />
     </main>
   );
 }
