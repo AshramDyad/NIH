@@ -7,7 +7,7 @@ import {
     Phone,
     Mail,
 } from "lucide-react";
-import { FaYoutube, FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { FaYoutube, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6";
 
 /**
  * Default Footer Content
@@ -16,7 +16,6 @@ import { FaYoutube, FaXTwitter, FaLinkedin, FaFacebookF, FaInstagram } from "rea
 const defaultQuickLinks = [
     { href: "/about", label: "About NIH" },
     // { href: "/gallery", label: "Photo/Video Gallery" },
-    { href: "#", label: "New E-magazine" },
     // { href: "/news", label: "News" },
     { href: "/contact", label: "Contact Us" },
     // { href: "/projects", label: "Projects" },
@@ -71,9 +70,8 @@ export default function Footer() {
                         <div className="flex flex-wrap gap-4">
                             <SocialLink href="https://www.facebook.com/profile.php?id=61568351847847" icon={<FaFacebookF size={18} />} label="Facebook" />
                             <SocialLink href="https://www.instagram.com/nih_delhi/" icon={<FaInstagram size={18} />} label="Instagram" />
-                            <SocialLink href="#" icon={<FaXTwitter size={18} />} label="Twitter" />
-                            <SocialLink href="#" icon={<FaLinkedin size={18} />} label="LinkedIn" />
-                            <SocialLink href="#" icon={<FaYoutube size={18} />} label="YouTube" />
+                            <SocialLink href="https://www.linkedin.com/in/delhinih" icon={<FaLinkedin size={18} />} label="LinkedIn" />
+                            <SocialLink href="https://www.youtube.com/@delhinih" icon={<FaYoutube size={18} />} label="YouTube" />
                         </div>
                     </div>
 
