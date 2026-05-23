@@ -161,6 +161,12 @@ const Header = () => {
       ],
     },
     { name: "Careers", href: "/careers", badge: "New" },
+    {
+      name: "E-magazine",
+      href: "/pdfs/E-magazine.pdf",
+      badge: "New",
+      isExternal: true,
+    },
   ];
 
   const ctaButtons = [
@@ -322,6 +328,9 @@ const Header = () => {
                 >
                   <Link
                     href={link.href}
+                    target={link.isExternal ? "_blank" : undefined}
+                    rel={link.isExternal ? "noopener noreferrer" : undefined}
+                    prefetch={link.href.endsWith(".pdf") ? false : undefined}
                     className="font-medium text-black py-8 flex items-center gap-1 whitespace-nowrap"
                   >
                     {link.name}

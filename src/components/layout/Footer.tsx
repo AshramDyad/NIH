@@ -16,6 +16,7 @@ import { FaYoutube, FaLinkedin, FaFacebookF, FaInstagram } from "react-icons/fa6
 const defaultQuickLinks = [
     { href: "/about", label: "About NIH" },
     // { href: "/gallery", label: "Photo/Video Gallery" },
+    { href: "/pdfs/E-magazine.pdf", label: "New E-magazine", target: "_blank" },
     // { href: "/news", label: "News" },
     { href: "/contact", label: "Contact Us" },
     // { href: "/projects", label: "Projects" },
@@ -176,6 +177,7 @@ function FooterLinkItem({ href, label, target }: { href?: string; label: string;
                     href={href}
                     target={target}
                     rel={target === "_blank" ? "noopener noreferrer" : undefined}
+                    prefetch={href.endsWith(".pdf") ? false : undefined}
                     className="text-secondary/80 hover:text-primary hover:translate-x-1 transition-all duration-300 flex items-center gap-2 font-medium"
                 >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary hover:opacity-100 transition-opacity" />
