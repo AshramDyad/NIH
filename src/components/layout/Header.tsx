@@ -3,14 +3,11 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  User,
-  FileText,
-  Calendar,
   Menu,
   X,
   ChevronRight,
   ChevronLeft,
-  UserPlus,
+  ChevronDown,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -164,13 +161,18 @@ const Header = () => {
       ],
     },
     { name: "Careers", href: "/careers", badge: "New" },
+    {
+      name: "E-magazine",
+      href: "/pdfs/E-magazine.pdf",
+      badge: "New",
+      isExternal: true,
+    },
   ];
 
   const ctaButtons = [
     {
       name: "Membership",
       href: "/membership",
-      icon: <User size={18} />,
       hasDropdown: true,
       dropdownItems: [
         {
@@ -194,18 +196,11 @@ const Header = () => {
     {
       name: "Course Brochure",
       href: courseBrochureHref,
-      icon: <FileText size={18} />,
       isExternal: true,
-    },
-    {
-      name: "Events",
-      href: "/activities/events",
-      icon: <Calendar size={18} />,
     },
     {
       name: "Join us",
       href: "https://forms.gle/DEajoyPQMDhhh1tC9",
-      icon: <UserPlus size={18} />,
       isExternal: true,
     },
   ];
@@ -333,9 +328,20 @@ const Header = () => {
                 >
                   <Link
                     href={link.href}
+                    target={link.isExternal ? "_blank" : undefined}
+                    rel={link.isExternal ? "noopener noreferrer" : undefined}
+                    prefetch={link.href.endsWith(".pdf") ? false : undefined}
                     className="font-medium text-black py-8 flex items-center gap-1 whitespace-nowrap"
                   >
                     {link.name}
+                    {link.hasDropdown && (
+                      <ChevronDown
+                        className={`h-4 w-4 text-zinc-500 transition-transform duration-200 ${
+                          hoveredNav === link.name ? "rotate-180" : ""
+                        }`}
+                        aria-hidden="true"
+                      />
+                    )}
                     {link.badge && (
                       <span className="relative flex items-center justify-center -mt-3">
                         <span className="relative inline-flex rounded-full bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 uppercase tracking-widest shadow-sm shadow-red-500/30">
@@ -393,8 +399,13 @@ const Header = () => {
                       <button
                         className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all hover:shadow-md bg-primary text-white hover:bg-opacity-90 cursor-pointer"
                       >
-                        {btn.icon}
                         {btn.name}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            hoveredBtn === btn.name ? "rotate-180" : ""
+                          }`}
+                          aria-hidden="true"
+                        />
                       </button>
 
                       {/* Dropdown Menu */}
@@ -458,7 +469,6 @@ const Header = () => {
                               : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
                           }`}
                         >
-                          {btn.icon}
                           {btn.name}
                         </Link>
                       ) : (
@@ -470,7 +480,6 @@ const Header = () => {
                               : "border-2 border-primary text-primary hover:bg-primary hover:text-white"
                           }`}
                         >
-                          {btn.icon}
                           {btn.name}
                         </Link>
                       )}
@@ -480,10 +489,10 @@ const Header = () => {
               ))}
             </div>
             {/* Mobile menu button */}
-            <div className="xl:hidden">
+            <div className="flex shrink-0 items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center cursor-pointer rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"
+                className="inline-flex size-10 items-center justify-center cursor-pointer rounded-md text-gray-700 hover:bg-gray-100 hover:text-secondary focus:outline-none"
                 aria-expanded={isMenuOpen}
               >
                 <span className="sr-only">Open main menu</span>

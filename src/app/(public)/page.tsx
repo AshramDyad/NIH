@@ -8,13 +8,17 @@ import EventsNews from "@/components/EventsNews";
 import QuickLinks from "@/components/QuickLinks";
 import EventBannerPopup from "@/components/EventBannerPopup";
 import { getHeroBanners } from "@/app/actions/hero-banners";
+import { getLifetimeMembers } from "@/app/actions/lifetimeMembers";
 
 // function getR2ImageUrl(filename: string): string {
 //   return `https://pub-81805ff84c1645c1a62c73f691611c86.r2.dev/images/${filename}`;
 // }
 
 export default async function Home() {
-  const banners = await getHeroBanners();
+  const [banners, lifetimeMembers] = await Promise.all([
+    getHeroBanners(),
+    getLifetimeMembers(),
+  ]);
 
   const slides = banners.map((banner, index) => ({
     id: index + 1,
@@ -34,7 +38,7 @@ export default async function Home() {
         <NIHNumbers />
         <EventsNews />
         <HolisticImpact />
-        <LifetimeMembers />
+        <LifetimeMembers members={lifetimeMembers} />
         <NewMembers />
         <QuickLinks />
         <EventsSection />
@@ -51,7 +55,7 @@ export default async function Home() {
       <NIHNumbers />
       <EventsNews />
       <HolisticImpact />
-      <LifetimeMembers />
+      <LifetimeMembers members={lifetimeMembers} />
       <NewMembers />
       <QuickLinks />
       <EventsSection />

@@ -11,7 +11,6 @@ import {
   MessageSquare,
   Globe,
   Facebook,
-  Twitter,
   Linkedin,
   Youtube,
   Instagram,
@@ -87,14 +86,7 @@ export default function ContactInfo() {
             <Instagram size={18} />
           </Link>
           <Link
-            href="#"
-            className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
-            aria-label="Twitter"
-          >
-            <Twitter size={18} />
-          </Link>
-          <Link
-            href="#"
+            href="https://www.linkedin.com/in/delhinih"
             className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
             aria-label="LinkedIn"
           >

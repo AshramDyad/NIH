@@ -3,134 +3,43 @@ import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight, Briefcase, MapPin } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Hash, User } from 'lucide-react';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-interface Member {
-    id: number;
-    name: string;
-    role: string;
-    location: string;
-    image: string;
+interface LifetimeMember {
+    readonly id: number;
+    readonly name: string;
+    readonly member_number: string;
+    readonly image_url: string;
 }
 
-const lifetimeMembers: Member[] = [
-    {
-        id: 1,
-        name: "Dr. Vikas Upadhyay",
-        role: "Lifetime Member",
-        location: "Aligarh, UP",
-        image: "/images/vikasupadhyay.jpg"
-    },
-    {
-        id: 2,
-        name: "Anil Kumar Gupta",
-        role: "Lifetime Member",
-        location: "Lucknow, UP",
-        image: "/images/Anil-Kumar.png"
-    },
-    {
-        id: 3,
-        name: "Shashi Sharma",
-        role: "Lifetime Member",
-        location: "Aligarh, UP",
-        image: "/images/Shashi-Sharma.png"
-    },
-    {
-        id: 4,
-        name: "Dr. Rekha Choudhary",
-        role: "Lifetime Member",
-        location: "Indirapuram, Ghaziabad",
-        image: "/images/Rekha-Choudhary.png"
-    },
-    {
-        id: 5,
-        name: "Sadhna Upadhyay",
-        role: "Lifetime Member",
-        location: "Aligarh, UP",
-        image: "/images/Sadhna-Upadhyay.png"
-    },
-    {
-        id: 6,
-        name: "Praveen Jain",
-        role: "Lifetime Member",
-        location: "Delhi",
-        image: "/images/Praveen-Jain.png"
-    },
-    {
-        id: 7,
-        name: "Dr. Sumanlata Dewangan",
-        role: "Lifetime Member",
-        location: "Haridwar",
-        image: "/images/Sumanlata-Dewangan.png"
-    },
-    {
-        id: 8,
-        name: "Dr. Virendra Vikram Singh",
-        role: "Lifetime Member",
-        location: "Balrampur, UP",
-        image: "/images/Virendra-Vikram-Singh.png"
-    },
-    {
-        id: 9,
-        name: "Dr. Krantiveer Shivram Mahindrakar",
-        role: "Lifetime Member",
-        location: "Solapur, Maharashtra",
-        image: "/images/Krantiveer-Shivram-Mahindrakar.png"
-    },
-    {
-        id: 10,
-        name: "Dhaval Dholakia",
-        role: "Lifetime Member",
-        location: "Ahmedabad, Gujarat",
-        image: "/images/dhavaldholakia.jpg"
-    },
-    {
-        id: 11,
-        name: "Dr. Ramesh Chandra",
-        role: "Lifetime Member",
-        location: "Prayagraj, UP",
-        image: "/images/Ramesh-Chandra.png"
-    },
-    {
-        id: 12,
-        name: "Amarjit Singh Jaisingh Ahluwalia",
-        role: "Lifetime Member",
-        location: "Jamnagar, Gujarat",
-        image: "/images/Amarjit-Singh.png"
-    },
-    {
-        id: 13,
-        name: "Dr. Parth Bhavesh Pandya",
-        role: "Lifetime Member",
-        location: "Rajkot, Gujarat",
-        image: "/images/Parth-Bhavesh-Pandya.png"
-    },
-    {
-        id: 14,
-        name: "T.N Hassija",
-        role: "Lifetime Member",
-        location: "New Delhi",
-        image: "/images/Hassija.png"
-    },
-];
+interface LifetimeMembersProps {
+    readonly members: LifetimeMember[];
+}
 
-const MemberCard = ({ member }: { member: Member }) => (
+const MemberCard = ({ member }: { member: LifetimeMember }) => (
     <div className="bg-white rounded-2xl p-8 h-full flex flex-col items-center text-center transition-all duration-500 border border-gray-200 hover:border-gray-100 group/card">
         {/* Member Image */}
         <div className="relative w-36 h-36 mb-6 shrink-0">
             <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-0 group-hover/card:opacity-10 transition-opacity duration-500" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl">
-                <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="144px"
-                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                />
+                {member.image_url ? (
+                    <Image
+                        src={member.image_url}
+                        alt={`${member.name} - Lifetime Member`}
+                        fill
+                        sizes="144px"
+                        unoptimized
+                        className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                    />
+                ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-zinc-100">
+                        <User className="h-12 w-12 text-zinc-400" />
+                    </div>
+                )}
             </div>
         </div>
 
@@ -142,26 +51,41 @@ const MemberCard = ({ member }: { member: Member }) => (
         <div className="w-full space-y-3 text-left mt-auto">
             <div className="flex items-center gap-4 text-gray-500 group-hover/card:text-gray-700 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors shrink-0">
-                    <Briefcase className="w-5 h-5 text-secondary" />
+                    <User className="w-5 h-5 text-secondary" />
                 </div>
-                <span className="text-sm font-bold tracking-wide uppercase">{member.role}</span>
+                <span className="text-sm font-bold tracking-wide uppercase">Lifetime Member</span>
             </div>
             <div className="flex items-center gap-4 text-gray-500 group-hover/card:text-gray-700 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center group-hover/card:bg-secondary/5 transition-colors shrink-0">
-                    <MapPin className="w-5 h-5 text-secondary" />
+                    <Hash className="w-5 h-5 text-secondary" />
                 </div>
-                <span className="text-sm font-bold tracking-wide">{member.location}</span>
+                <span className="text-sm font-bold tracking-wide">Member No. {member.member_number}</span>
             </div>
         </div>
     </div>
 );
 
-const LifetimeMembers = () => {
+const LifetimeMembers = ({ members }: LifetimeMembersProps) => {
     const [isMounted, setIsMounted] = React.useState(false);
 
     React.useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    if (members.length === 0) {
+        return (
+            <section className="bg-white sm:pt-16 pt-12 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="text-center space-y-4">
+                        <h2 className="text-3xl md:text-5xl font-black text-zinc-900">Our Lifetime <span className="text-primary">Members</span></h2>
+                        <p className="text-gray-600 text-lg md:text-xl font-medium max-w-4xl mx-auto leading-relaxed">
+                            Lifetime member profiles will appear here once they are added.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="bg-white sm:pt-16 pt-12 relative overflow-hidden">
@@ -181,7 +105,7 @@ const LifetimeMembers = () => {
                     <div>
                         {!isMounted ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                                {lifetimeMembers.slice(0, 4).map((member, idx) => (
+                                {members.slice(0, 4).map((member, idx) => (
                                     <div
                                         key={member.id}
                                         className={`
@@ -219,7 +143,7 @@ const LifetimeMembers = () => {
                                     },
                                 }}
                             >
-                                {lifetimeMembers.map((member) => (
+                                {members.map((member) => (
                                     <SwiperSlide key={member.id}>
                                         <MemberCard member={member} />
                                     </SwiperSlide>
