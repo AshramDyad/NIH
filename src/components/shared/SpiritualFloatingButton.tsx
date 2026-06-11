@@ -10,7 +10,7 @@ const blinkMembership = {
 };
 
 const blinkConference = {
-  backgroundColor: ["#f3972a", "#ffb347", "#f3972a"],
+  backgroundColor: ["#b91c1c", "#dc2626", "#991b1b"],
 };
 
 const blinkTransition = {
